@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'antd/dist/antd.css';
 import './normalize.css';
 import App from './App';
-
-
-
 import {Provider}from "react-redux"
-import Store from './redux/create';
+import Store from './Redux/create';
 
 const store = Store()
 
