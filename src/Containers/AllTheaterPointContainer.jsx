@@ -9,11 +9,13 @@ export function AllTheaterPointContainer(props) {
   },[dispatch])
   const allTheater = useSelector(state => state.theaters.theaters);
   const resTheater = useSelector(state=> state.theaters.selectedTheaters);
+  const point = useSelector(state=> state.selectData.point);
   return (
     <AllTheaterPointComponent
       allTheater={allTheater}
       resTheater={resTheater}
       selectPoint={selectPoint}
+      point={point}
     />
   );
 };
