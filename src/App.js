@@ -1,15 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import ErrorBoundary from 'antd/lib/alert/ErrorBoundary';
 import { ConnectedRouter } from 'connected-react-router';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import { history } from './Redux/create';
+import { BookPage } from './Pages/BookPage';
 function App() {
   return (
     <ErrorBoundary>
-      <ConnectedRouter>
+      <ConnectedRouter history={history}>
         <Switch>
-          
+          <Route exact path="/ticketing" component={BookPage}/>
         </Switch>
       </ConnectedRouter>
     </ErrorBoundary>
