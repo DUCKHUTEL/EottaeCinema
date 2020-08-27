@@ -6,16 +6,16 @@ import { history } from "./Redux/create";
 import { BookPage } from "./Pages/BookPage";
 import Mainpage from "./Pages/Mainpage";
 function App() {
-    return (
-        <ErrorBoundary>
-            <ConnectedRouter history={history}>
-                <Switch>
-                    <Route exact path="/" component={Mainpage} />
-                    <Route path="/ticketing" component={BookPage} />
-                </Switch>
-            </ConnectedRouter>
-        </ErrorBoundary>
-    );
+  return (
+    <ErrorBoundary>
+      <ConnectedRouter history={history}>
+        <Switch>
+          <Route exact path="/" component={Mainpage} />
+          <Route path="/ticketing" component={BookPage} />
+        </Switch>
+      </ConnectedRouter>
+    </ErrorBoundary>
+  );
 }
 
 export default App;
