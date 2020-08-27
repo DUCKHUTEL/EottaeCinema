@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import BookComponent from "../components/bookComponent/BookComponent";
+import BookComponent from "../Components/bookComponent/BookComponent";
 export function BookContainer(props) {
     return <BookComponent />;
 }
