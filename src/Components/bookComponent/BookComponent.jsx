@@ -24,7 +24,7 @@ function BookComponent({point}) {
         </ul>
         <section>
           <div className={styles.theater}>
-            <h3>{point===""?"영화관":point}</h3>
+            <h3>{point==="없음"?"영화관":point}</h3>
             <div className={styles.divide}>
               <div className={styles.clicked}>
                 <button className={styles.all}>전체</button>

@@ -77,11 +77,13 @@ function* startGetSelectDataSaga(action) {
   try {
     yield put(start());
     const selectedMoiveData = yield call(theaterService.getTheater,date,title,point);
+    console.log(selectedMoiveData)
     const selectedTheaters = selectedMoiveData.map(data =>({
       [data.locationName]:data.theaterLocation
     }))
     yield put(success(selectedTheaters,selectedMoiveData));
   }catch(error){
+    console.log(error)
     yield put(fail(error))
   }
 }
