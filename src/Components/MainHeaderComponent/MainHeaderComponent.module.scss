@@ -1,0 +1,22 @@
+@import "../../commonVariables";
+
+.header {
+    width: 100%;
+    height: 194px;
+    background-color: skyblue;
+    .nav_header {
+        @include layout;
+        border: solid black;
+        ul {
+            display: none;
+        }
+    }
+
+    .nav_main {
+        @include layout;
+        border: solid black;
+        ul {
+            display: none;
+        }
+    }
+}
