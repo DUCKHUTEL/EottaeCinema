@@ -10,7 +10,7 @@ function App() {
         <ErrorBoundary>
             <ConnectedRouter history={history}>
                 <Switch>
-                    <Route path="/" component={Mainpage} />
+                    <Route exact path="/" component={Mainpage} />
                     <Route path="/ticketing" component={BookPage} />
                 </Switch>
             </ConnectedRouter>
