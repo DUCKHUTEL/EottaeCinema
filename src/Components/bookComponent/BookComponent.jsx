@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './BookComponent.module.scss';
 import { AllTheaterPointContainer } from '../../Containers/AllTheaterPointContainer';
+import { BookMoviesContainer } from '../../Containers/BookMoviesContainer';
 
 function BookComponent({point}) {
   return (
@@ -31,16 +32,16 @@ function BookComponent({point}) {
                 <AllTheaterPointContainer/>
               </div>
               <div className={styles.disable}>
-                <button className={styles.special }>스페셜관</button>
+                <button className={styles.special}>스페셜관</button>
                 <AllTheaterPointContainer/>
               </div>
             </div>
           </div> 
+          <BookMoviesContainer/>
           {/* <BookTheaterContainer/> */}
-          {/* <BookMoviesContainer/> */}
         </section>
       </div>
     </main>
   );
 };
-export default BookComponent
+export default React.memo(BookComponent) 

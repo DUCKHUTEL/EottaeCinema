@@ -12,17 +12,14 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
 
 	const localTabChange = useCallback((e)=>{
 		if(!e.target.matches("#locationTitle"))return;
-		console.log()
 		setActive(e.target.parentNode.id);
 	},[])
 
 	const selectTheater = useCallback(e=>{
-		console.log(e.target.id);
 		selectPoint(e.target.id)
 	},[])
 
   return (
-    // <div className={styles.all}>
 			<ul className={styles.pointList} onClick={localTabChange}>
 				<li id="my영화관" className={active === "my영화관" ? ([styles.active, styles.theaterTitle].join(' ')) : styles.theaterTitle}>
 					<a id="locationTitle" href="#">MY 영화관 (0)</a>
@@ -51,6 +48,5 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
 						</li>)
     			})}
 			</ul>
-		// </div>
   );
 };
