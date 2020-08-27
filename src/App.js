@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import './normalize.css';
+import React from "react";
+import ErrorBoundary from "antd/lib/alert/ErrorBoundary";
+import { ConnectedRouter } from "connected-react-router";
+import { Switch, Route } from "react-router-dom";
+import { history } from "./Redux/create";
+import { BookPage } from "./Pages/BookPage";
+import Mainpage from "./Pages/Mainpage";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <ErrorBoundary>
+            <ConnectedRouter history={history}>
+                <Switch>
+                    <Route exact path="/" component={Mainpage} />
+                    <Route path="/ticketing" component={BookPage} />
+                </Switch>
+            </ConnectedRouter>
+        </ErrorBoundary>
+    );
 }
 
 export default App;
