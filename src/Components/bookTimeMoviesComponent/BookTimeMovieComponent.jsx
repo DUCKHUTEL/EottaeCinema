@@ -8,14 +8,7 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
   const doSortMovie = useCallback(e=>{
     setfilter(e.target.id);
   },[])
-  console.log(movieDataForBookBtn)
-  // .filter(movies => {
-  //   if(filtertBy === "전체") return true
-  //   if(filtertBy === "13시 이후") return movies.movieTime.split(":").join("") >= 133000
-  //   if(filtertBy === "19시 이후") return movies.movieTime.split(":").join("") >= 190000
-  //   if(filtertBy === "심야") return movies.movieTime.split(":").join("") >= 210000
-  //   if(filtertBy === "스페셜관" ||filtertBy === "Atoms" ) return false
-  // })
+
   return (
     <div className={styles.BookTimeMovie}>
       <h3>{selectedDate}</h3>
@@ -37,11 +30,19 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
                   if(filtertBy === "심야") return movies.movieTime.split(":").join("") >= 210000
                   if(filtertBy === "스페셜관" ||filtertBy === "Atoms" ) return false
                 });
-                return (movie.map(willBtnData =>(
-                  <div>{willBtnData.movieTime.slice(0,5)}</div>
-                )))
+                console.log(movie)
+                return (<>
+                    {movie.map((willBtnData,idx) =>(
+                      <div>
+                        <>{movie.length === 0 ? <></> : idx === 0 ? <div>{willBtnData.movieTitle}</div> : <></>}</>
+                        <div>{willBtnData.movieTime.slice(0,5)}</div>
+                      </div>
+                      )
+                    )
+                    }
+                  </>)
+                })
               }
-          )}
         </article>
       </div>
     </div>
