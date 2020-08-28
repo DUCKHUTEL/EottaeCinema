@@ -16,7 +16,6 @@ ul{
   padding: 50px 0 70px;
   .BookContents{
     margin: auto;
- 
     width: 1280px;
     height: 870px;  
     display: flex;
@@ -50,19 +49,22 @@ ul{
       }
     }
     section{
+      display: flex;
       .theater{
         h3{
-          padding-top: 20px;
+          padding-top: 16px;
           text-align: center;
           margin: 0;
           width: 350px;
           height: 55px;
           background-color: #000;
           color: #fff;
+          font-size: 20px;
         }
         .divide{
           position: relative;
           width: 350px;
+          height: 815px;
           &>div{
             position: absolute;
             top: 0;

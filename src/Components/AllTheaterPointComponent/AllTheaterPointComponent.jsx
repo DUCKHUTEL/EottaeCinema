@@ -8,7 +8,8 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
 		console.log("1");
 	},[resTheater])
 	
-	const [active,setActive] = useState(point!==""?point:"서울");
+	const [active,setActive] = useState(point!=="없음"?point:"서울");
+	const [clickedPoint,setPoint] = useState("");
 
 	const localTabChange = useCallback((e)=>{
 		if(!e.target.matches("#locationTitle"))return;
@@ -16,7 +17,9 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
 	},[])
 
 	const selectTheater = useCallback(e=>{
-		selectPoint(e.target.id)
+		selectPoint(e.target.id);
+		console.log(e.target.id)
+		setPoint(e.target.id)
 	},[])
 
   return (
@@ -42,7 +45,7 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
           		<ul onClick={selectTheater}>
             		{allT[location].map(point => (
 			      		<li key={point}>
-              		<a href="#" id={point}>{point}</a>
+              		<a href="#" id={point} className={clickedPoint === point ? ([styles.activePoint, styles.point].join(' ')) : styles.point}>{point}</a>
 								</li>))}
 							</ul>
 						</li>)

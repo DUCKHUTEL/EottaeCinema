@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './BookComponent.module.scss';
 import { AllTheaterPointContainer } from '../../Containers/AllTheaterPointContainer';
 import { BookMoviesContainer } from '../../Containers/BookMoviesContainer';
+import { BookTimeMoviesContainer } from '../../Containers/BookTimeMoviesContainer';
 
 function BookComponent({point}) {
   return (
@@ -37,8 +38,7 @@ function BookComponent({point}) {
               </div>
             </div>
           </div> 
-          <BookMoviesContainer/>
-          {/* <BookTheaterContainer/> */}
+          <BookTimeMoviesContainer/>
         </section>
       </div>
     </main>

@@ -1,0 +1,39 @@
+.BookTimeMovie{
+  h3{
+    padding-top: 16px;
+    text-align: center;
+    margin: 0;
+    width: 500px;
+    height: 55px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+  }
+  .timeMovieContents{
+    width: 100%;
+    height: 815px;
+
+    .filtertBy{
+      display: flex;
+      width: 100%;
+      .filterItem{
+        height: 60px;
+        font-size: 13px;
+        padding-top: 20px;
+        width: 16.6%;
+        color: #7f7f7f;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+        cursor: pointer;
+      }
+      .active{
+        color: #000;
+        border-bottom: 2px solid #000;
+      }
+    }
+
+    article{
+      height: 752px;
+    }
+  }
+}
