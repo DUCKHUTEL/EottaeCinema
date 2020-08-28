@@ -21,6 +21,7 @@ html {
    */
 
 body {
+    /* position: relative; */
     margin: 0;
 }
 
@@ -384,4 +385,21 @@ input,
 select,
 a {
     cursor: pointer;
+}
+
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@400;700&display=swap");
+
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+/* typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
 }

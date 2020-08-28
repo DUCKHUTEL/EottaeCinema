@@ -1,22 +1,79 @@
 @import "../../commonVariables";
 
+.header * {
+    font-family: "Open Sans", sans-serif;
+}
+
 .header {
+    padding: 0;
     width: 100%;
     height: 194px;
     background-color: skyblue;
-    .nav_header {
+    // 타 page로 export시 relaive로 변경.
+    position: absolute;
+    z-index: 100;
+    section {
         @include layout;
-        border: solid black;
-        ul {
-            display: none;
+        position: relative;
+        height: 70px;
+        border-bottom: 1px solid #{$main-border-bottom};
+        h1 {
+            width: 219px;
+            height: 37px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            a {
+                width: 219px;
+                height: 37px;
+                font-size: 24px;
+                background-image: url(../../images/common/logo_wht.png);
+            }
         }
-    }
+        .sns {
+            position: absolute;
+            left: 0;
+            padding-top: 40px;
+            display: inline;
+            font-size: 12px;
+            .facebook {
+                display: inline;
+                a {
+                    background-image: url(../../images/icon/gnb_facebook_wht.png);
+                    @include main-header-icon;
+                }
+            }
+            .youtube {
+                display: inline;
+                padding-left: 8px;
+                a {
+                    background-image: url(../../images/icon/gnb_youtube_wht.png);
+                    @include main-header-icon;
+                }
+            }
+        }
+        .personal {
+            position: absolute;
+            right: 0;
+            padding-top: 40px;
+            display: inline;
+            font-size: 12px;
+            li {
+                display: inline;
+            }
 
-    .nav_main {
-        @include layout;
-        border: solid black;
-        ul {
-            display: none;
+            .memership {
+                @include main-header-icon;
+            }
+
+            .customer {
+                @include main-header-icon;
+            }
+
+            .login_logout {
+                @include main-header-icon;
+            }
         }
     }
 }

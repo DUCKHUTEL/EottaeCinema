@@ -1,20 +1,20 @@
 // @flow
-import React, { useCallback } from 'react';
-import BookMoviesComponent from '../Components/bookMoviesComponent/BookMoviesComponent';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSelectTitleAction } from '../Redux/modules/select';
+import React, { useCallback } from "react";
+import BookMoviesComponent from "../Components/bookMoviesComponent/BookmoviesComponent";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectTitleAction } from "../Redux/modules/select";
 export function BookMoviesContainer(props) {
+    const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
-  
-  const selectTitle = useCallback(selectedTitle => {
-    dispatch(setSelectTitleAction(selectedTitle))
-  },[dispatch])
-  
-  const allTitles = "";
-  const selectedTitle = useSelector(state=> state.selectData.title);
+    const selectTitle = useCallback(
+        (selectedTitle) => {
+            dispatch(setSelectTitleAction(selectedTitle));
+        },
+        [dispatch]
+    );
 
-  return (
-    <BookMoviesComponent/>
-  );
-};
+    const allTitles = "";
+    const selectedTitle = useSelector((state) => state.selectData.title);
+
+    return <BookMoviesComponent />;
+}
