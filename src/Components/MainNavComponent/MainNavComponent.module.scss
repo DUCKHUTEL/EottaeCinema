@@ -1,0 +1,56 @@
+@import "../../commonVariables";
+
+nav {
+    @include layout;
+    background-color: red;
+    position: relative;
+    .main_nav {
+        border: 1px solid black;
+        display: inline-flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        .book {
+            border: 1px solid black;
+            ul {
+                display: none;
+            }
+        }
+        .movie {
+            border: 1px solid black;
+            ul {
+                display: none;
+            }
+        }
+        .cinema {
+            border: 1px solid black;
+            ul {
+                display: none;
+            }
+        }
+
+        .event {
+            border: 1px solid black;
+            ul {
+                display: none;
+            }
+        }
+
+        .store {
+            border: 1px solid black;
+            ul {
+                display: none;
+            }
+        }
+    }
+    .menu {
+        display: inline-flex;
+        border: 1px solid black;
+        position: absolute;
+        right: 0;
+        li {
+            border: 1px solid black;
+        }
+    }
+}

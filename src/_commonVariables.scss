@@ -3,10 +3,33 @@ $breakpoint-mobile: 335px;
 $breakpoint-tablet: 758px;
 $breakpoint-desktop: 1024px;
 
+//font
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif; */
+//해당 내용을 적용시키기만 하면 됌.
+
 //colors
+$main-header-whtie: #fff;
+$main-border-bottom: #b2b2b2;
 
 //layout
 @mixin layout {
     width: 980px;
     margin: 0 auto;
+}
+
+//icon
+@mixin main-header-icon {
+    color: #{$main-header-whtie};
+    height: 14px;
+    line-height: 14px;
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    padding-left: 18px;
+}
+
+@mixin main-header-noicon {
+    color: #{$main-header-whtie};
+    height: 14px;
+    line-height: 14px;
 }
