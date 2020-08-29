@@ -34,6 +34,41 @@
 
     article{
       height: 752px;
+      padding: 0 20px;
+      .BookTitleArea{
+        margin-top: 30px;
+        &>div>span{
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+          margin-right: 5px;
+          border-radius: 11px;
+          font-size: 13px;
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+          vertical-align: middle;
+          padding-top: 3px;
+        }
+        &>p{
+          margin: 20px 0 5px;
+          font-size: 13px;
+          font-weight: 600;
+        }
+        .ageCut12{
+          background-color: skyblue;
+        }
+        .ageCut15{
+          background-color: #FFC134;
+        }
+        .ageCut0{
+          background-color: green;
+        }
+        .BookBtnContainer{
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+      }
     }
   }
-}

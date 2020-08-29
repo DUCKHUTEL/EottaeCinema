@@ -22,7 +22,8 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
           ))}
         </ul>
         <article>
-          {movieDataForBookBtn.map(movies => {
+          {movieDataForBookBtn.map((movies,i) => {
+                
                 const movie = movies[Object.keys(movies)[0]].filter(movies => {
                   if(filtertBy === "전체") return true
                   if(filtertBy === "13시 이후") return movies.movieTime.split(":").join("") >= 133000
@@ -30,17 +31,20 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
                   if(filtertBy === "심야") return movies.movieTime.split(":").join("") >= 210000
                   if(filtertBy === "스페셜관" ||filtertBy === "Atoms" ) return false
                 });
-                console.log(movie)
-                return (<>
-                    {movie.map((willBtnData,idx) =>(
-                      <div>
-                        <>{movie.length === 0 ? <></> : idx === 0 ? <div>{willBtnData.movieTitle}</div> : <></>}</>
-                        <div>{willBtnData.movieTime.slice(0,5)}</div>
-                      </div>
-                      )
-                    )
-                    }
-                  </>)
+                if (movie.length === 0) return;
+
+                return (
+                <div className={styles.BookTitleArea}>
+                  <div>
+                    <span className={styles[`ageCut${movie[0].ageCut}`]}>{movie[0].ageCut}</span>{movie[0].movieTitle}
+                  </div>
+                  <p>2D</p>
+                  <ul className={styles.BookBtnContainer}>
+                    {movie.map(willBtnData =>(
+                      <li>{willBtnData.movieTime.slice(0,5)}</li>
+                    ))}
+                  </ul>
+                </div>)
                 })
               }
         </article>
