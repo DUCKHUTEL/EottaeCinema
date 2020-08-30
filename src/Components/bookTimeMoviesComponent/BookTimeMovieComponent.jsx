@@ -1,6 +1,4 @@
 import React, { useState, useRef, useCallback } from 'react';
-import moment from "moment";
-import deepmerge from "deepmerge";
 import styles from "./BookTimeMovuesComponent.module.scss"
 function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, selectedDate}) {
   const [filtertBy,setfilter] = useState("전체");
@@ -23,7 +21,6 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
         </ul>
         <article>
           {movieDataForBookBtn.map((movies,i) => {
-                
                 const movie = movies[Object.keys(movies)[0]].filter(movies => {
                   if(filtertBy === "전체") return true
                   if(filtertBy === "13시 이후") return movies.movieTime.split(":").join("") >= 133000
@@ -36,12 +33,26 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
                 return (
                 <div className={styles.BookTitleArea}>
                   <div>
-                    <span className={styles[`ageCut${movie[0].ageCut}`]}>{movie[0].ageCut}</span>{movie[0].movieTitle}
+                    <span className={styles[`ageCut${movie[0].ageCut}`]}>{movie[0].ageCut === 0 ? "전체":movie[0].ageCut}</span>{movie[0].movieTitle}
                   </div>
                   <p>2D</p>
                   <ul className={styles.BookBtnContainer}>
                     {movie.map(willBtnData =>(
-                      <li>{willBtnData.movieTime.slice(0,5)}</li>
+                      <li>
+                          <a role="button" className={styles.bookBtn}>
+                            <dl>
+                              <dt className={styles.a11yHidden}>상영시간</dt>
+                              <dd className={styles.showTime}>
+                                <span>{willBtnData.movieTime.slice(0,5)}</span>
+                                <div className={styles.toolTipText}>{`종료 ${willBtnData.movieEndTime.slice(0,5)}`}</div>
+                              </dd>
+                              <dt className={styles.a11yHidden}>잔여석</dt>
+                              <dd className={styles.seatData}><span>{willBtnData.bookedSeatCnt}</span>/{willBtnData.allSeat}</dd>
+                              <dt className={styles.a11yHidden}>상영관</dt>
+                              <dd className={styles.stageData}>{willBtnData.stage}관</dd>
+                            </dl>
+                          </a>
+                      </li>
                     ))}
                   </ul>
                 </div>)

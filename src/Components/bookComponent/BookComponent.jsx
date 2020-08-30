@@ -4,8 +4,15 @@ import styles from './BookComponent.module.scss';
 import { AllTheaterPointContainer } from '../../Containers/AllTheaterPointContainer';
 import { BookMoviesContainer } from '../../Containers/BookMoviesContainer';
 import { BookTimeMoviesContainer } from '../../Containers/BookTimeMoviesContainer';
+import { useState } from 'react';
+import { useCallback } from 'react';
 
 function BookComponent({point}) {
+  const [select,setSelect] = useState('all');
+  const clickTheater = useCallback( e=>{
+    if(!e.target.matches("button"))return
+    setSelect(e.target.id);
+  },[])
   return (
     <main className={styles.main}>
       <div className={styles.BookContents}>
@@ -27,13 +34,13 @@ function BookComponent({point}) {
         <section>
           <div className={styles.theater}>
             <h3>{point==="없음"?"영화관":point}</h3>
-            <div className={styles.divide}>
-              <div className={styles.clicked}>
-                <button className={styles.all}>전체</button>
+            <div className={styles.divide} onClick={clickTheater}>
+              <div className={ select === "all" ? styles.clicked : styles.disable}>
+                <button className={styles.all} id="all">전체</button>
                 <AllTheaterPointContainer/>
               </div>
-              <div className={styles.disable}>
-                <button className={styles.special}>스페셜관</button>
+              <div className={ select === "special" ? styles.clicked : styles.disable}>
+                <button className={styles.special} id="special">스페셜관</button>
                 <AllTheaterPointContainer/>
               </div>
             </div>
