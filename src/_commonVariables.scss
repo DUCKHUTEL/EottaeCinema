@@ -9,8 +9,10 @@ font-family: 'Roboto', sans-serif; */
 //해당 내용을 적용시키기만 하면 됌.
 
 //colors
-$main-header-whtie: #fff;
+$main-whtie: #fff;
 $main-border-bottom: #b2b2b2;
+$main-nav-border: #707070;
+$main-background-black: rgba(0, 0, 0, 1);
 
 //layout
 @mixin layout {
@@ -18,9 +20,9 @@ $main-border-bottom: #b2b2b2;
     margin: 0 auto;
 }
 
-//icon
+//header
 @mixin main-header-icon {
-    color: #{$main-header-whtie};
+    color: #{$main-whtie};
     height: 14px;
     line-height: 14px;
     background-repeat: no-repeat;
@@ -29,7 +31,26 @@ $main-border-bottom: #b2b2b2;
 }
 
 @mixin main-header-noicon {
-    color: #{$main-header-whtie};
+    color: #{$main-whtie};
     height: 14px;
     line-height: 14px;
+}
+
+@mixin main-header-nav-noicon {
+    color: #{$main-whtie};
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+}
+
+@mixin main-header-nav-border-right {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 9px;
+    border-right: 1px solid #{$main-nav-border};
 }

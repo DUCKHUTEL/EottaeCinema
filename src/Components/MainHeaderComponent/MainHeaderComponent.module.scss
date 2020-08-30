@@ -8,10 +8,14 @@
     padding: 0;
     width: 100%;
     height: 194px;
-    background-color: skyblue;
     // 타 page로 export시 relaive로 변경.
     position: absolute;
     z-index: 100;
+    background: linear-gradient(
+        to bottom,
+        rgba(29, 29, 31, 1) 0%,
+        rgba(0, 0, 0, 0) 100%
+    );
     section {
         @include layout;
         position: relative;
@@ -37,6 +41,7 @@
             padding-top: 40px;
             display: inline;
             font-size: 12px;
+
             .facebook {
                 display: inline;
                 a {
@@ -50,6 +55,12 @@
                 a {
                     background-image: url(../../images/icon/gnb_youtube_wht.png);
                     @include main-header-icon;
+                }
+            }
+            //all
+            li {
+                a {
+                    opacity: 0.4;
                 }
             }
         }
@@ -73,6 +84,10 @@
 
             .login_logout {
                 @include main-header-icon;
+            }
+            //all
+            li {
+                opacity: 0.4;
             }
         }
     }

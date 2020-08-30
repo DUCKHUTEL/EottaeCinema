@@ -2,55 +2,123 @@
 
 nav {
     @include layout;
-    background-color: red;
-    position: relative;
+    display: flex;
     .main_nav {
-        border: 1px solid black;
-        display: inline-flex;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%);
+        margin: auto;
+        display: flex;
+        transform: translate(15%);
         .book {
-            border: 1px solid black;
+            @include main-header-nav-noicon;
+            width: 90px;
+            position: relative;
+            a {
+                font-size: 14px;
+                color: inherit;
+            }
+            a::after {
+                @include main-header-nav-border-right;
+            }
             ul {
                 display: none;
             }
         }
+
         .movie {
-            border: 1px solid black;
+            @include main-header-nav-noicon;
+            width: 90px;
+            position: relative;
+            a {
+                font-size: 14px;
+                color: inherit;
+            }
             ul {
                 display: none;
             }
+        }
+        .movie::after {
+            @include main-header-nav-border-right;
         }
         .cinema {
-            border: 1px solid black;
+            @include main-header-nav-noicon;
+            width: 90px;
+            position: relative;
+            a {
+                font-size: 14px;
+                color: inherit;
+            }
             ul {
                 display: none;
             }
+        }
+        .cinema::after {
+            @include main-header-nav-border-right;
         }
 
         .event {
-            border: 1px solid black;
+            @include main-header-nav-noicon;
+            width: 90px;
+            position: relative;
+            a {
+                font-size: 14px;
+                color: inherit;
+            }
             ul {
                 display: none;
             }
         }
+        .event::after {
+            @include main-header-nav-border-right;
+        }
 
         .store {
-            border: 1px solid black;
+            @include main-header-nav-noicon;
+            width: 90px;
+            position: relative;
+            a {
+                font-size: 14px;
+                color: inherit;
+            }
             ul {
                 display: none;
             }
         }
     }
     .menu {
-        display: inline-flex;
-        border: 1px solid black;
-        position: absolute;
-        right: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 180px;
+
         li {
-            border: 1px solid black;
+            @include main-header-nav-noicon;
+            a {
+                font-size: 12px;
+                @include main-header-icon;
+            }
+        }
+
+        .my {
+            a {
+                text-align: right;
+                background-image: url(../../images/icon/nav_side_my_wht.png);
+            }
+        }
+        .reservation {
+            a {
+                background-image: url(../../images/icon/nav_side_reserve_wht.png);
+            }
+        }
+
+        .burger-bar {
+            button {
+                border-style: none;
+                width: 20px;
+                background-color: transparent;
+                background-image: url(../../images/icon/nav_side_all_wht.png);
+                background-repeat: no-repeat;
+                background-position: 0 center;
+                text-indent: -999px;
+                overflow: hidden;
+            }
         }
     }
 }
