@@ -41,11 +41,42 @@ li{
     }
   }
   .theaterTitle.active{
-    >ul{
-     display: block; 
-    }
+    position: relative;
+
     >a{
       background-color: #fff;
+      
+      &::after{
+        position: absolute;
+        background-image: url("../../images/icon/check.png");
+        width: 18px;
+        height: 14px;
+        top: 12px;
+        right: 55%;
+        content: "";
+      }
     }
+    >ul{
+      display: block; 
+
+      li{
+        position: relative;
+        .point{
+          display: block;
+        }
+        .activePoint{
+          color: red;
+          &::after{
+            position: absolute;
+            background-image: url("../../images/icon/check.png");
+            width: 18px;
+            height: 14px;
+            top: 12px;
+            right: 30%;
+            content: "";
+          }
+        }
+      }
+     }
   }
 }
