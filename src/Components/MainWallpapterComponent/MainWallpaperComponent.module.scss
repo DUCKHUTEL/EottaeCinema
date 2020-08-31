@@ -1,10 +1,29 @@
 .wallpaper {
-    background-color: pink;
     position: relative;
-    width: 100vw;
+    z-index: 0;
     height: 774px;
-    z-index: 1;
-    background-image: url(../../images/wallpaper/Mutants_1920774.jpg);
-    background-size: auto;
-    background-repeat: no-repeat;
+    width: 100%;
+    .img {
+        height: 774px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        background-color: pink;
+        background-image: url(../../images/wallpaper/Mutants_1920774.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .control {
+        width: 100%;
+        height: 140px;
+        position: absolute;
+        bottom: 0;
+        z-index: 2;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 85%,
+            rgba(0, 0, 0, 1) 100%
+        );
+    }
 }

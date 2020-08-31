@@ -6,7 +6,7 @@ export default function MainNavComponent() {
         <nav>
             <ul className={styles["main_nav"]}>
                 <li className={styles["book"]}>
-                    예매
+                    <a href="/">예매</a>
                     <ul>
                         <li>예매하기</li>
                         <li>상영시간표</li>
@@ -14,7 +14,7 @@ export default function MainNavComponent() {
                     </ul>
                 </li>
                 <li className={styles["movie"]}>
-                    영화
+                    <a href="/">영화</a>
                     <ul>
                         <li>홈</li>
                         <li>현재 상영작</li>
@@ -25,7 +25,7 @@ export default function MainNavComponent() {
                     </ul>
                 </li>
                 <li className={styles["cinema"]}>
-                    영화관
+                    <a href="/">영화관</a>
                     <ul>
                         <li>
                             스페셜관
@@ -218,7 +218,7 @@ export default function MainNavComponent() {
                     </ul>
                 </li>
                 <li className={styles["event"]}>
-                    이벤트
+                    <a href="/">이벤트</a>
                     <ul>
                         <li>홈</li>
                         <li>영화</li>
@@ -229,7 +229,7 @@ export default function MainNavComponent() {
                     </ul>
                 </li>
                 <li className={styles["store"]}>
-                    스토어
+                    <a href="/">스토어</a>
                     <ul>
                         <li>베스트</li>
                         <li>관람권</li>
@@ -239,9 +239,15 @@ export default function MainNavComponent() {
                 </li>
             </ul>
             <ul className={styles["menu"]}>
-                <li>회원가입</li>
-                <li>바로예매</li>
-                <li className="burder bar">버거바</li>
+                <li className={styles["my"]}>
+                    <a href="/">마이</a>
+                </li>
+                <li className={styles["reservation"]}>
+                    <a href="/">바로예매</a>
+                </li>
+                <li className={styles["burger-bar"]}>
+                    <button>네비게이션바 입니다</button>
+                </li>
             </ul>
         </nav>
     );

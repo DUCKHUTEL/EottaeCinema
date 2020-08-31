@@ -1,3 +1,183 @@
+@import "../../commonVariables";
+
+// @mixin same-size-as-background-img() {
+//     //사용할 때 이미지랑 퍼센테이지는 각자 계산해서 넣을 것.
+//     // background-image:;
+//     // padding-top: percentage();
+//     background-size: contain;
+//     background-repeat: no-repeat;
+//     width: 100%;
+//     height: 0;
+// }
+
+.sub-section * {
+    // border: 1px solid orangered;
+}
+
 .sub-section {
-    background-color: gray;
+    .special {
+        @include layout;
+        header {
+            display: flex;
+            span {
+                margin-left: auto;
+            }
+        }
+        ul {
+            margin-bottom: 3%;
+            display: flex;
+            padding-top: 3%;
+            padding-bottom: 3%;
+            padding-left: 1%;
+            padding-right: 1%;
+            .special-1 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-1.png);
+                padding-top: 3%;
+            }
+            .special-2 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-2.png);
+                padding-top: 3%;
+            }
+            .special-3 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-3.png);
+                padding-top: 3%;
+            }
+            .special-4 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-4.png);
+                padding-top: 3%;
+            }
+            .special-5 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-5.png);
+                padding-top: 3%;
+            }
+            .special-6 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-6.png);
+                padding-top: 3%;
+            }
+            .special-7 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-7.png);
+                padding-top: 3%;
+            }
+            .special-8 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/special-8.png);
+                padding-top: 3%;
+            }
+        }
+    }
+
+    .event {
+        @include layout;
+        header {
+            display: flex;
+            span {
+                margin-left: auto;
+            }
+        }
+        ul {
+            padding-bottom: 3%;
+            position: relative;
+            width: 980px;
+            height: 540px;
+
+            li {
+                border-radius: 5px;
+            }
+            .event-1 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/event-1.jpg);
+                width: 182px;
+                height: 250px;
+            }
+            .event-2 {
+                position: absolute;
+                top: 0;
+                left: 192px;
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/event-2.jpg);
+                width: 182px;
+                height: 250px;
+            }
+            .event-3 {
+                position: absolute;
+                top: 0;
+                left: calc(192px * 2);
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/event-3.jpg);
+                width: 285px;
+                height: 250px;
+            }
+            .event-4 {
+                position: absolute;
+                top: 48%;
+                left: 0;
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/event-4.jpg);
+                width: 478px;
+                height: 250px;
+            }
+            .event-5 {
+                position: absolute;
+                top: 48%;
+                left: 50%;
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/event-5.jpg);
+                width: 182px;
+                height: 250px;
+            }
+
+            .event-6 {
+                position: absolute;
+                top: 0;
+                right: 0;
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/event-6.jpg);
+                width: 296px;
+                height: 511px;
+            }
+        }
+    }
+
+    .info {
+        @include layout;
+        ul {
+            padding-bottom: 6%;
+            display: flex;
+            .info-1 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/info-1.png);
+                padding-top: 13.5%;
+            }
+            .info-2 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/info-2.png);
+                padding-top: 13.5%;
+            }
+            .info-3 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/info-3.png);
+                padding-top: 13.5%;
+            }
+            .info-4 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/info-4.png);
+                padding-top: 13.5%;
+            }
+            .info-5 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/mainpage_side/info-5.png);
+                padding-top: 13.5%;
+            }
+        }
+    }
 }
