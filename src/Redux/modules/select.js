@@ -4,8 +4,8 @@ import { getSelecetDataAction } from './resTheater';
 
 const initState={
   date:"2020-08-24",
-  title:"",
-  point:"",
+  title:"없음",
+  point:"없음",
   error:null
 }
 
@@ -36,21 +36,21 @@ const selectData = handleActions({
   }),
   SUCCESS_TITLE:(state,action)=>({
     date:state.date,
-    title:action.title,
+    title:action.payload.title,
     point:state.point,
     error:null
   }),
   SUCCESS_POINT:(state,action)=>({
     date:state.date,
     title:state.title,
-    point:action.point,
+    point:action.payload.point,
     error:null
   }),
   FAIL: (state,action)=>({
     date:state.date,
     title:state.title,
     point:state.point,
-    error:action.error
+    error:action.payload.error
   }),
 },
 initState,
@@ -103,6 +103,7 @@ function* setSelectPointSaga (action){
   yield put(successPoint(point));
   const date = yield select(state=> state.selectData.date);
   const title = yield select(state=> state.selectData.title);
+  console.log(date, title, point)
   yield put(getSelecetDataAction(date,title,point));
 }
 

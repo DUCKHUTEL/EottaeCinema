@@ -1,3 +1,58 @@
-.footer {
-    background-color: red;
+@import "../../commonVariables";
+
+footer {
+    // 전체
+
+    .commercial {
+        @include layout;
+    }
+
+    .footer {
+        ul {
+            @include layout;
+            display: flex;
+            margin-top: 6%;
+            margin-bottom: 3%;
+            .NCSI-1 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/common/footer_award_NCSI5.png);
+                padding-top: 4.5%;
+            }
+            .NCSI-2 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/common/footer_award_kssqi.png);
+                padding-top: 4.5%;
+            }
+            .NCSI-3 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/common/footer_award_kcsi.png);
+                padding-top: 4.5%;
+            }
+            .NCSI-4 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/common/footer_award_greenstar.png);
+                padding-top: 4.5%;
+            }
+            .NCSI-5 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/common/footer_award_familyship.png);
+                padding-top: 4.5%;
+            }
+            .NCSI-6 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/common/footer_award_brandstar.png);
+                padding-top: 4.5%;
+            }
+            .NCSI-7 {
+                @include same-size-as-background-img;
+                background-image: url(../../images/common/footer_award_brandcinema.png);
+                padding-top: 4.5%;
+            }
+        }
+        .background {
+            width: 100vw;
+            height: 30%;
+            background-color: #b2b2b2;
+        }
+    }
 }

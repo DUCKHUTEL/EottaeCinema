@@ -21,6 +21,7 @@ html {
    */
 
 body {
+    /* position: relative; */
     margin: 0;
 }
 
@@ -354,13 +355,25 @@ template {
 
 body * {
     box-sizing: border-box;
+    font-family: "Open Sans", sans-serif, "Roboto";
+    font-size: 12px;
+    color: #000;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    /* font-family: "Roboto", sans-serif; */
 }
 
 ul,
-ol {
+ol,
+figure {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+button {
+    border-style: none;
+    background-color: transparent;
+    outline: none;
 }
 
 /* common style */
@@ -384,4 +397,20 @@ input,
 select,
 a {
     cursor: pointer;
+}
+
+/* font */
+
+/* font-family: 'Open Sans', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+/* typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
 }

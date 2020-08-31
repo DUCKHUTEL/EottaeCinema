@@ -1,9 +1,9 @@
 import React from 'react';
-function BookmoviesComponent(props) {
+function BookMoviesComponent(props) {
   return (
     <div>
       
     </div>
   );
 };
-export default BookmoviesComponent
+export default BookMoviesComponent

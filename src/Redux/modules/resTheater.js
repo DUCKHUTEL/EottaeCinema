@@ -1,7 +1,7 @@
 import {createActions, handleActions} from 'redux-actions';
 import {put,call,takeLatest} from 'redux-saga/effects';
 import theaterService from '../../Services/theaterService';
-
+import deepmerge from "deepmerge";
 const initState={
   loading: false,
   theaters:[
@@ -16,12 +16,13 @@ const initState={
   ],
   selectedTheaters:[],
   selectedMoiveData:[],
+  movieDataForBookBtn:[],
   error:null
 }
 
 const {start, success, fail} = createActions(
   {
-    SUCCESS: (selectedTheaters,selectedMoiveData) => ({selectedTheaters,selectedMoiveData})
+    SUCCESS: (selectedTheaters,selectedMoiveData,movieDataForBookBtn) => ({selectedTheaters,selectedMoiveData,movieDataForBookBtn})
   },
   "START",
   "FAIL",
@@ -36,6 +37,7 @@ const theaters = handleActions({
       theaters: state.theaters,
       selectedTheaters: [],
       selectedMoiveData:[],
+      movieDataForBookBtn:[],
       error:null
     }),
     SUCCESS: (state,action) => ({
@@ -43,6 +45,7 @@ const theaters = handleActions({
       theaters: state.theaters,
       selectedTheaters: action.payload.selectedTheaters,
       selectedMoiveData:action.payload.selectedMoiveData,
+      movieDataForBookBtn:action.payload.movieDataForBookBtn,
       error:null
     }),
     FAIL: (state,action) => ({
@@ -50,6 +53,7 @@ const theaters = handleActions({
       theaters: state.theaters,
       selectedTheaters: [],
       selectedMoiveData:[],
+      movieDataForBookBtn:[],
       error: action.payload.error
     })
   },
@@ -76,12 +80,23 @@ function* startGetSelectDataSaga(action) {
   const {date,title,point} = action.payload;
   try {
     yield put(start());
+    let movieDataForBookBtn;
+    
     const selectedMoiveData = yield call(theaterService.getTheater,date,title,point);
+    const setMovies = [deepmerge.all(selectedMoiveData.map(data => ({
+      [data.movieTitle]:[data]  
+    })))];
+
+    setMovies.forEach(item =>{
+      movieDataForBookBtn =  Object.keys(item).map( i => ({[i]:item[i]}))
+    })
+
     const selectedTheaters = selectedMoiveData.map(data =>({
       [data.locationName]:data.theaterLocation
     }))
-    yield put(success(selectedTheaters,selectedMoiveData));
+    yield put(success(selectedTheaters,selectedMoiveData,movieDataForBookBtn));
   }catch(error){
+    console.log(error)
     yield put(fail(error))
   }
 }
