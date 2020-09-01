@@ -29,7 +29,7 @@ const selectData = handleActions({
     error:null
   }),
   SUCCESS_DATE:(state,action)=>({
-    date:action.date,
+    date:action.payload.date,
     title:state.title,
     point:state.point,
     error:null
@@ -103,7 +103,6 @@ function* setSelectPointSaga (action){
   yield put(successPoint(point));
   const date = yield select(state=> state.selectData.date);
   const title = yield select(state=> state.selectData.title);
-  console.log(date, title, point)
   yield put(getSelecetDataAction(date,title,point));
 }
 
