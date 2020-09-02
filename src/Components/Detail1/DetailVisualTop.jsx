@@ -1,7 +1,9 @@
 import React from "react";
 import styles from "./DetailVisualTop.module.scss";
 
-export default function DetailVisualTop() {
+export default function DetailVisualTop(props) {
+  console.log(props.getMovieData, props.movieData);
+
   return (
     <div>
       <div>
