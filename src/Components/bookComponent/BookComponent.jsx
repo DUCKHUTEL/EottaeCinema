@@ -49,6 +49,7 @@ function BookComponent({point}) {
               </div>
             </div>
           </div> 
+          <BookMoviesContainer setStep={setStep}/>
           <BookTimeMoviesContainer setStep={setStep}/>
         </section>
       </div>
