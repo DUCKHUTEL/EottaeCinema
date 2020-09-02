@@ -12,9 +12,7 @@ export function BookMoviesContainer(props) {
         },
         [dispatch]
     );
-
-    const allTitles = "";
     const selectedTitle = useSelector((state) => state.selectData.title);
 
-    return <BookMoviesComponent />;
+    return <BookMoviesComponent selectTitle={selectTitle} selectedTitle={selectedTitle}/>;
 }
