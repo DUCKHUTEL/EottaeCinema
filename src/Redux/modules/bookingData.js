@@ -7,9 +7,10 @@ const initState = {
 
 const {start, success, fail} = createActions(
   {
-    success : (selectedBookData) => ({selectedBookData})
+    SUCCESS : (bookingData) => ({bookingData})
   },
   "START",
+  "FAIL",
   {
     prefix:'bookingData'
   }
@@ -23,6 +24,9 @@ const bookingData = handleActions(
     SUCCESS:(state,action) =>({
       bookingData: action.payload.bookingData
     }),
+    FAIL: ()=>({
+      bookingData:[]
+    })
   },
   initState,
   {
@@ -40,10 +44,12 @@ export const getBookingDataAction = (bookingId)=>({
 });
 
 function* startGetBookingDataSaga(action){
-  const bookId = action.payload.bookId;
-  yield put(start);
+  const bookId = action.payload.bookingId;
+  yield put(start());
   const movieData = yield select( state =>(state.theaters.selectedMoiveData))
-  const bookingData = movieData.filter(movie=>movie.bookId === bookId)
+  const bookingData = movieData.filter(movie=>(movie.bookId === +bookId));
+  console.log(bookingData, movieData)
+  if(bookingData.length === 0) return yield put(fail())
   yield put(success(bookingData))
 }
 export function* bookingSaga(){

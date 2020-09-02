@@ -1,5 +1,5 @@
 import {createActions, handleActions} from 'redux-actions';
-import {put,call,takeLatest} from 'redux-saga/effects';
+import {put,call,takeLatest, delay} from 'redux-saga/effects';
 import theaterService from '../../Services/theaterService';
 import deepmerge from "deepmerge";
 const initState={
@@ -93,6 +93,8 @@ function* startGetSelectDataSaga(action) {
     const selectedTheaters = selectedMoiveData.map(data =>({
       [data.locationName]:data.theaterLocation
     }))
+
+    yield delay(2000);
 
     yield put(success(selectedTheaters,selectedMoiveData,movieDataForBookBtn));
   }catch(error){
