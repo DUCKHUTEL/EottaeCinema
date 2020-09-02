@@ -9,12 +9,10 @@
         @include layout;
         display: flex;
         .main_nav {
-            position: static;
             margin: auto;
             display: flex;
             transform: translate(15%);
             .book {
-                position: static;
                 @include main-header-nav-noicon;
                 width: 90px;
                 // position: relative;

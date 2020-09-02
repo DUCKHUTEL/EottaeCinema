@@ -6,6 +6,7 @@ import { BookMoviesContainer } from '../../Containers/BookMoviesContainer';
 import { BookTimeMoviesContainer } from '../../Containers/BookTimeMoviesContainer';
 import { useState } from 'react';
 import { useCallback } from 'react';
+import { LoadingContainer } from '../../Containers/LoadingContainer';
 
 function BookComponent({point}) {
   const [select,setSelect] = useState('all');
@@ -53,6 +54,7 @@ function BookComponent({point}) {
           <BookTimeMoviesContainer setStep={setStep}/>
         </section>
       </div>
+      <LoadingContainer/>
     </main>
   );
 };

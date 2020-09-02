@@ -41,8 +41,6 @@ li{
     }
   }
   .theaterTitle.active{
-    position: relative;
-
     >a{
       background-color: #fff;
       
@@ -51,7 +49,6 @@ li{
         background-image: url("../../images/icon/check.png");
         width: 18px;
         height: 14px;
-        top: 12px;
         right: 55%;
         content: "";
       }

@@ -58,6 +58,20 @@ dl, dd{
       padding: 0 20px;
       overflow: auto;
       margin-bottom:20px ;
+
+      .notice{
+        margin-top: 120px;
+        padding-top: 50px;
+        text-align: center;
+        background-image: url("../../images/icon/film.png");
+        background-repeat: no-repeat;
+        background-position: center 0;
+        p{
+          font-size: 15px;
+          line-height: 1.5rem;
+          font-weight: bold;
+        }
+      }
       .BookTitleArea{
         margin-top: 30px;
         &>div>span{
