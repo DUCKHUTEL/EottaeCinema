@@ -2,12 +2,14 @@ import { connectRouter } from "connected-react-router";
 import { combineReducers } from "redux";
 import selectData from "./select";
 import theaters from "./resTheater";
-import movices from "./movies";
+import movies from "./movies";
+import bookingData from "./bookingData";
 const reducer = (history) =>
     combineReducers({
         selectData,
         theaters,
-        movices,
+        movies,
+        bookingData,
         router: connectRouter(history),
     });
 export default reducer;

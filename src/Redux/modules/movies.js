@@ -27,15 +27,15 @@ const movies = handleActions(
             movies: [],
             error: null,
         }),
-        SUCCESS: (action) => ({
+        SUCCESS: (state,action) => ({
             loading: false,
             movies: action.payload.movies,
             error: null,
         }),
-        FAIL: (action) => ({
+        FAIL: (state,action) => ({
             loading: false,
             movies: [],
-            error: action.error,
+            error: action.payload.error,
         }),
     },
     initialState,
