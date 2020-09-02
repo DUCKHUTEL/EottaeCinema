@@ -1,6 +1,6 @@
 // @flow
 import React, { useCallback } from "react";
-import BookMoviesComponent from "../Components/bookMoviesComponent/BookMoviesComponent";
+import BookMoviesComponent from "../Components/bookMoviesComponent/BookmoviesComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectTitleAction } from "../Redux/modules/select";
 export function BookMoviesContainer(props) {
@@ -14,5 +14,10 @@ export function BookMoviesContainer(props) {
     );
     const selectedTitle = useSelector((state) => state.selectData.title);
 
-    return <BookMoviesComponent selectTitle={selectTitle} selectedTitle={selectedTitle}/>;
+    return (
+        <BookMoviesComponent
+            selectTitle={selectTitle}
+            selectedTitle={selectedTitle}
+        />
+    );
 }

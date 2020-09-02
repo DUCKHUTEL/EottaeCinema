@@ -1,123 +1,160 @@
 @import "../../commonVariables";
 
-nav {
-    @include layout;
-    display: flex;
-    .main_nav {
-        margin: auto;
+.bg {
+    position: relative;
+    width: 100vw;
+    border: 2px solid yellowgreen;
+
+    nav {
+        @include layout;
         display: flex;
-        transform: translate(15%);
-        .book {
-            @include main-header-nav-noicon;
-            width: 90px;
-            position: relative;
-            a {
-                font-size: 14px;
-                color: inherit;
+        .main_nav {
+            position: static;
+            margin: auto;
+            display: flex;
+            transform: translate(15%);
+            .book {
+                position: static;
+                @include main-header-nav-noicon;
+                width: 90px;
+                // position: relative;
+
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                a::after {
+                    // @include main-header-nav-border-right;
+                }
+
+                ul {
+                    background-color: pink;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        & a {
+                            display: block;
+                            background-color: skyblue;
+                            height: 38px;
+                            line-height: 38px;
+                            padding-right: 8px;
+                        }
+                    }
+                }
+
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
+                }
             }
-            a::after {
+
+            .movie {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    display: none;
+                }
+            }
+            .movie::after {
                 @include main-header-nav-border-right;
             }
-            ul {
-                display: none;
+            .cinema {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    display: none;
+                }
             }
-        }
+            .cinema::after {
+                @include main-header-nav-border-right;
+            }
 
-        .movie {
-            @include main-header-nav-noicon;
-            width: 90px;
-            position: relative;
-            a {
-                font-size: 14px;
-                color: inherit;
+            .event {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    display: none;
+                }
             }
-            ul {
-                display: none;
+            .event::after {
+                @include main-header-nav-border-right;
             }
-        }
-        .movie::after {
-            @include main-header-nav-border-right;
-        }
-        .cinema {
-            @include main-header-nav-noicon;
-            width: 90px;
-            position: relative;
-            a {
-                font-size: 14px;
-                color: inherit;
-            }
-            ul {
-                display: none;
-            }
-        }
-        .cinema::after {
-            @include main-header-nav-border-right;
-        }
 
-        .event {
-            @include main-header-nav-noicon;
-            width: 90px;
-            position: relative;
-            a {
-                font-size: 14px;
-                color: inherit;
-            }
-            ul {
-                display: none;
+            .store {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    display: none;
+                }
             }
         }
-        .event::after {
-            @include main-header-nav-border-right;
-        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            width: 180px;
 
-        .store {
-            @include main-header-nav-noicon;
-            width: 90px;
-            position: relative;
-            a {
-                font-size: 14px;
-                color: inherit;
+            li {
+                @include main-header-nav-noicon;
+                a {
+                    font-size: 12px;
+                    @include main-header-icon;
+                }
             }
-            ul {
-                display: none;
-            }
-        }
-    }
-    .menu {
-        display: flex;
-        justify-content: space-between;
-        width: 180px;
 
-        li {
-            @include main-header-nav-noicon;
-            a {
-                font-size: 12px;
-                @include main-header-icon;
+            .my {
+                a {
+                    text-align: right;
+                    background-image: url(../../images/icon/nav_side_my_wht.png);
+                }
             }
-        }
+            .reservation {
+                a {
+                    background-image: url(../../images/icon/nav_side_reserve_wht.png);
+                }
+            }
 
-        .my {
-            a {
-                text-align: right;
-                background-image: url(../../images/icon/nav_side_my_wht.png);
-            }
-        }
-        .reservation {
-            a {
-                background-image: url(../../images/icon/nav_side_reserve_wht.png);
-            }
-        }
-
-        .burger-bar {
-            button {
-                border-style: none;
-                width: 20px;
-                background-color: transparent;
-                background-image: url(../../images/icon/nav_side_all_wht.png);
-                background-repeat: no-repeat;
-                background-position: 0 center;
-                text-indent: -999px;
-                overflow: hidden;
+            .burger-bar {
+                button {
+                    border-style: none;
+                    width: 20px;
+                    background-color: transparent;
+                    background-image: url(../../images/icon/nav_side_all_wht.png);
+                    background-repeat: no-repeat;
+                    background-position: 0 center;
+                    text-indent: -999px;
+                    overflow: hidden;
+                }
             }
         }
     }
