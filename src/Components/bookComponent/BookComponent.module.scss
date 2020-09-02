@@ -6,12 +6,9 @@ a:hover, a:active {
 ul{
   margin: 0;
 }
-*{
-  box-sizing: border-box;
-}
 .main{
   width: 100%;
-  height: 990px;
+  height: 960px;
   background-color: #444;
   padding: 50px 0 70px;
   .BookContents{
@@ -48,7 +45,10 @@ ul{
         cursor: default
       }
     }
-    section{
+    section.notNow{
+      display: none;
+    }
+    section.nowStep{
       display: flex;
       .theater{
         h3{
@@ -64,7 +64,6 @@ ul{
         .divide{
           position: relative;
           width: 350px;
-          height: 815px;
           padding-top: 61px;
           &>div{
             width: 100%;

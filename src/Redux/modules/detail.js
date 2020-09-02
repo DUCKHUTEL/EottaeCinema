@@ -66,7 +66,7 @@ export default function reducer(state = initialState, action) {
     case GET_SUCCESS:
       return {
         loading: false,
-        movieData: action.movieData,
+        movieData: action.payload.movieData,
         error: null,
       };
 

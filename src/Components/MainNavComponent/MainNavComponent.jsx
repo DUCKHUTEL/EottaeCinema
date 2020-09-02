@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./MainNavComponent.module.scss";
+import { Link } from "react-router-dom";
 
 export default function MainNavComponent() {
     return (
         <nav>
             <ul className={styles["main_nav"]}>
                 <li className={styles["book"]}>
-                    <a href="/">예매</a>
+                    {/* <a href="/">예매</a> */}
+                    <Link to="/ticketing">예매</Link>
                     <ul>
                         <li>예매하기</li>
                         <li>상영시간표</li>

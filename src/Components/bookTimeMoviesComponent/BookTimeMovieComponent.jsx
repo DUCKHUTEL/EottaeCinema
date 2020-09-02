@@ -1,17 +1,28 @@
 import React, { useState, useRef, useCallback } from 'react';
 import styles from "./BookTimeMovuesComponent.module.scss"
-function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, selectedDate}) {
+import 'moment/locale/ko'
+import moment from 'moment';  
+import  OwlCarouselComponent  from '../OwlCarouselComponent/OwlCarouselComponent';
+
+
+function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate}) {
+  moment.locale('ko');
   const [filtertBy,setfilter] = useState("전체");
   const filterItems = useRef(["전체","스페셜관","Atoms","13시 이후","19시 이후","심야"]);
+
   const doSortMovie = useCallback(e=>{
     setfilter(e.target.id);
   },[])
-
+  const selectBookData = useCallback((e)=>{
+    console.log(e.currentTarget.id)
+  },[])
   return (
     <div className={styles.BookTimeMovie}>
-      <h3>{selectedDate}</h3>
+      <h3>{selectedDate==="2020-08-24" ? `${selectedDate} (오늘)`: `${selectedDate} (${moment(selectedDate).format("dddd")})`}</h3>
       <div className={styles.timeMovieContents}>
-        <div></div>
+        <div className={styles.dateSelector}>
+          <OwlCarouselComponent selectDate={selectDate}/>
+        </div>
         <ul className={styles.filtertBy} onClick={doSortMovie}>
           {filterItems.current.map(item => (
           <li key={item} id={item} className={item === filtertBy ? ([styles.active, styles.filterItem].join(' ')):styles.filterItem}>
@@ -29,16 +40,15 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
                   if(filtertBy === "스페셜관" ||filtertBy === "Atoms" ) return false
                 });
                 if (movie.length === 0) return;
-
                 return (
-                <div className={styles.BookTitleArea}>
+                <div className={styles.BookTitleArea} key={i}>
                   <div>
                     <span className={styles[`ageCut${movie[0].ageCut}`]}>{movie[0].ageCut === 0 ? "전체":movie[0].ageCut}</span>{movie[0].movieTitle}
                   </div>
                   <p>2D</p>
                   <ul className={styles.BookBtnContainer}>
-                    {movie.map(willBtnData =>(
-                      <li>
+                    {movie.map((willBtnData,idx) =>(
+                      <li key={willBtnData.bookId} id={willBtnData.bookId} onClick={selectBookData}>
                           <a role="button" className={styles.bookBtn}>
                             <dl>
                               <dt className={styles.a11yHidden}>상영시간</dt>
@@ -55,12 +65,14 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn,resMovies, sele
                       </li>
                     ))}
                   </ul>
-                </div>)
-                })
+                </div>
+                )
               }
+            )
+          }
         </article>
       </div>
     </div>
   );
 };
-export default BookTimeMovieComponent
+export default React.memo(BookTimeMovieComponent)

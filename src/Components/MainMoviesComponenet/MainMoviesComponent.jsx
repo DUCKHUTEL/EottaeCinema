@@ -1,7 +1,13 @@
 import React from "react";
 import styles from "./MainMoviesComponent.module.scss";
 
-export default function MainMoviesComponent() {
+export default function MainMoviesComponent({ movies, getMovies }) {
+    React.useEffect(() => {
+        getMovies();
+    }, [getMovies]);
+
+    console.log(movies);
+
     return (
         <main className={styles["movies-info"]}>
             <div className={styles["standard-time"]}>08.29 19:15기준</div>

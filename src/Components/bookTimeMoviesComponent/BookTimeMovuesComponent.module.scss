@@ -2,7 +2,7 @@
   position: absolute;
   width: 1px;
   height: 1px;
-  clip: rect(0, 0);
+  clip: rect(0,0,0, 0);
   clip-path: polygon(0, 0);
   overflow: hidden;
   text-indent: -9999px;
@@ -11,6 +11,7 @@ dl, dd{
   margin: 0;
 }
 .BookTimeMovie{
+  width: 500px;
   h3{
     padding-top: 16px;
     text-align: center;
@@ -24,7 +25,15 @@ dl, dd{
   .timeMovieContents{
     width: 100%;
     height: 815px;
-
+    .dateSelector{
+      height: 75px;
+      margin: 22px 20px 10px;
+      .owl-carousel{
+        padding: 0 20px;
+        cursor: pointer;
+      }
+    }
+    
     .filtertBy{
       display: flex;
       width: 100%;
@@ -45,8 +54,10 @@ dl, dd{
     }
 
     article{
-      height: 752px;
+      height: 630px;
       padding: 0 20px;
+      overflow: auto;
+      margin-bottom:20px ;
       .BookTitleArea{
         margin-top: 30px;
         &>div>span{
@@ -83,6 +94,7 @@ dl, dd{
           li{
             width: 22%;
             margin-right: 4px;
+            margin-bottom: 5px;
             .bookBtn{
               display: block;
               position: relative;
