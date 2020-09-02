@@ -45,7 +45,10 @@ ul{
         cursor: default
       }
     }
-    section{
+    section.notNow{
+      display: none;
+    }
+    section.nowStep{
       display: flex;
       .theater{
         h3{

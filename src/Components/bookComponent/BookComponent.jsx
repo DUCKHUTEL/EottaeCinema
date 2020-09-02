@@ -12,26 +12,30 @@ function BookComponent({point}) {
   const clickTheater = useCallback( e=>{
     if(!e.target.matches("button"))return
     setSelect(e.target.id);
+  },[]);
+  const [steps,setStep] = useState("1");
+  const changeStep = useCallback((e)=>{
+    setStep(e.target.id)
   },[])
   return (
     <main className={styles.main}>
       <div className={styles.BookContents}>
         <h2 className={styles.a11yHidden}>예매페이지</h2>
-        <ul className={styles.steps}>
-          <li className={styles.active}>
-            <a href="#">01<br/>상영시간</a>
+        <ul className={styles.steps} onClick={changeStep}>
+          <li className={steps==="1"? styles.active : styles.disable}>
+            <a href="#" id="1">01<br/>상영시간</a>
           </li>
-          <li className={styles.disable}>
-            <a href="#">02<br/>인원좌석</a>
+          <li className={steps==="2"? styles.active : styles.disable}>
+            <a href="#" id="2">02<br/>인원좌석</a>
           </li>
-          <li className={styles.disable}>
-            <a href="#">03<br/>결제</a>
+          <li className={steps==="3"? styles.active : styles.disable}>
+            <a href="#" id="3">03<br/>결제</a>
           </li>
-          <li className={styles.disable}>
-            <a href="#">04<br/>결제완료</a>
+          <li className={steps==="4"? styles.active : styles.disable}>
+            <a href="#" id="4">04<br/>결제완료</a>
           </li>
         </ul>
-        <section>
+        <section className={steps==="1"? styles.nowStep : styles.notNow}>
           <div className={styles.theater}>
             <h3>{point==="없음"?"영화관":point}</h3>
             <div className={styles.divide} onClick={clickTheater}>
@@ -45,7 +49,7 @@ function BookComponent({point}) {
               </div>
             </div>
           </div> 
-          <BookTimeMoviesContainer/>
+          <BookTimeMoviesContainer setStep={setStep}/>
         </section>
       </div>
     </main>

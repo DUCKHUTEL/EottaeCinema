@@ -13,7 +13,9 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate})
   const doSortMovie = useCallback(e=>{
     setfilter(e.target.id);
   },[])
-
+  const selectBookData = useCallback((e)=>{
+    console.log(e.currentTarget.id)
+  },[])
   return (
     <div className={styles.BookTimeMovie}>
       <h3>{selectedDate==="2020-08-24" ? `${selectedDate} (오늘)`: `${selectedDate} (${moment(selectedDate).format("dddd")})`}</h3>
@@ -46,7 +48,7 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate})
                   <p>2D</p>
                   <ul className={styles.BookBtnContainer}>
                     {movie.map((willBtnData,idx) =>(
-                      <li key={idx}>
+                      <li key={willBtnData.bookId} id={willBtnData.bookId} onClick={selectBookData}>
                           <a role="button" className={styles.bookBtn}>
                             <dl>
                               <dt className={styles.a11yHidden}>상영시간</dt>
@@ -63,9 +65,11 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate})
                       </li>
                     ))}
                   </ul>
-                </div>)
-                })
+                </div>
+                )
               }
+            )
+          }
         </article>
       </div>
     </div>
