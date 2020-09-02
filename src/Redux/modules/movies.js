@@ -35,7 +35,7 @@ const movies = handleActions(
         FAIL: (action) => ({
             loading: false,
             movies: [],
-            error: action.error,
+            error: action.payload.error,
         }),
     },
     initialState,
