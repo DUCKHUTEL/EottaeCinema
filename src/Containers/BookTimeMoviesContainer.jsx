@@ -10,12 +10,12 @@ export function BookTimeMoviesContainer(props) {
     dispatch(setSelectDateAction(selectedDate))
   },[dispatch]);
   const selectedDate = useSelector(state=> state.selectData.date);
-  const resMoives = useSelector(state=> state.theaters.selectedMoiveData);
+  // const resMoives = useSelector(state=> state.theaters.selectedMoiveData);
   const movieDataForBookBtn = useSelector(state=> state.theaters.movieDataForBookBtn);
+  
   return (
     <BookTimeMovieComponent
       selectDate={selectDate}
-      resMovies = {resMoives}
       selectedDate={selectedDate}
       movieDataForBookBtn={movieDataForBookBtn}
     />

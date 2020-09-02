@@ -80,20 +80,20 @@ function* startGetSelectDataSaga(action) {
   const {date,title,point} = action.payload;
   try {
     yield put(start());
-    let movieDataForBookBtn;
+   
     
     const selectedMoiveData = yield call(theaterService.getTheater,date,title,point);
+    
     const setMovies = [deepmerge.all(selectedMoiveData.map(data => ({
       [data.movieTitle]:[data]  
     })))];
 
-    setMovies.forEach(item =>{
-      movieDataForBookBtn =  Object.keys(item).map( i => ({[i]:item[i]}))
-    })
+    const movieDataForBookBtn = setMovies.map(item=>Object.keys(item).map( i => ({[i]:item[i]})))[0];
 
     const selectedTheaters = selectedMoiveData.map(data =>({
       [data.locationName]:data.theaterLocation
     }))
+
     yield put(success(selectedTheaters,selectedMoiveData,movieDataForBookBtn));
   }catch(error){
     console.log(error)

@@ -2,12 +2,8 @@
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
 import styles from "./AlltheaterPointComponent.module.scss"
 
-export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,point}) {
+function AllTheaterPointComponent({allTheater,resTheater,selectPoint,point,resMovies}) {
 
-	useEffect(()=>{
-		console.log("1");
-	},[resTheater])
-	
 	const [active,setActive] = useState(point!=="없음"?point:"서울");
 	const [clickedPoint,setPoint] = useState("");
 
@@ -18,7 +14,6 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
 
 	const selectTheater = useCallback(e=>{
 		selectPoint(e.target.id);
-		console.log(e.target.id)
 		setPoint(e.target.id)
 	},[])
 
@@ -45,7 +40,7 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
           		<ul onClick={selectTheater}>
             		{allT[location].map(point => (
 			      		<li key={point}>
-              		<a href="#" id={point} className={clickedPoint === point ? ([styles.activePoint, styles.point].join(' ')) : styles.point}>{point}</a>
+              		<a href="#" id={point} className={clickedPoint === point ? ([styles.activePoint, styles.point].join(' ')) : styles.point}>{point} ({resMovies.filter(movie => movie.theaterLocation===point).length})</a>
 								</li>))}
 							</ul>
 						</li>)
@@ -53,3 +48,5 @@ export function AllTheaterPointComponent({allTheater,resTheater,selectPoint,poin
 			</ul>
   );
 };
+
+export default React.memo(AllTheaterPointComponent)
