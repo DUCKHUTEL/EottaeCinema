@@ -35,11 +35,13 @@ const failGetMovieData = (err) => {
 };
 
 function* getMovieSaga() {
-  yield put(startGetMovieData);
+  yield put(startGetMovieData());
   try {
     const movieData = yield call(detailService.getMovieData);
-    yield put(successGetMovieData(movieData));
     console.log("movieData", movieData);
+    const movie = movieData.data.Data[0].Result[0];
+    console.log("movie", movie);
+    yield put(successGetMovieData(movieData));
   } catch (err) {
     yield put(failGetMovieData(err));
   }
@@ -67,7 +69,7 @@ export default function reducer(state = initialState, action) {
     case GET_SUCCESS:
       return {
         loading: false,
-        movieData: action.payload.movieData,
+        movieData: action.movieData,
         error: null,
       };
 

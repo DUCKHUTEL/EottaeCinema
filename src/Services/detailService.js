@@ -6,8 +6,8 @@ const MOVIE_API_URL =
 export default class detailService {
   static async getMovieData() {
     const res = await axios.get(`${MOVIE_API_URL}오케이 마담`);
-    console.log(res);
 
-    return res.data;
+    console.log(res.data.Data[0].Result[0]);
+    return res.data.Data[0].Result[0];
   }
 }
