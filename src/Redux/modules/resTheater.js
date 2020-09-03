@@ -94,8 +94,6 @@ function* startGetSelectDataSaga(action) {
       [data.locationName]:data.theaterLocation
     }))
 
-    yield delay(2000);
-
     yield put(success(selectedTheaters,selectedMoiveData,movieDataForBookBtn));
   }catch(error){
     console.log(error)

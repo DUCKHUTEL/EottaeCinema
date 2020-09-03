@@ -5,9 +5,8 @@ import { BookPotalComponent } from '../Components/BookPotal/BookPotalComponent';
 
 export function BookPotalContainer() {
   const bookingData = useSelector(state=> state.bookingData.bookingData);
-  
   return ReactDom.createPortal(
-    <BookPotalComponent bookingData={bookingData}/>,
+    <BookPotalComponent bookingData={bookingData[0]}/>,
     document.getElementById("bookPotal")
   );
 };

@@ -8,6 +8,7 @@ import  OwlCarouselComponent  from '../OwlCarouselComponent/OwlCarouselComponent
 function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, bookData}) {
   moment.locale('ko');
   const [filtertBy,setfilter] = useState("전체");
+  const [Booking,setMind] = useState(false);
   const filterItems = useRef(["전체","스페셜관","Atoms","13시 이후","19시 이후","심야"]);
 
   const doSortMovie = useCallback(e=>{
