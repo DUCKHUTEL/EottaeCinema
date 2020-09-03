@@ -3,6 +3,7 @@ import styles from "./BookTimeMovuesComponent.module.scss"
 import 'moment/locale/ko'
 import moment from 'moment';  
 import  OwlCarouselComponent  from '../OwlCarouselComponent/OwlCarouselComponent';
+import { BookPotalContainer } from '../../Containers/BookPotalContainer';
 
 
 function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, bookData}) {
@@ -16,6 +17,7 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, 
   },[])
   const selectBookData = useCallback((e)=>{
     bookData(e.currentTarget.id);
+    setMind(true)
   },[]);
   return (
     <div className={styles.BookTimeMovie}>
@@ -76,6 +78,7 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, 
             )
           }
         </article>
+        {Booking?<BookPotalContainer setMind={setMind}/>:<></>}
       </div>
     </div>
   );
