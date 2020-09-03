@@ -14,7 +14,7 @@ function App() {
         <Switch>
           <Route path="/detail" component={DetailPage} />
           <Route exact path="/" component={Mainpage} />
-          <Route path="/ticketing" component={BookPage} />
+          <Route exact path="/ticketing" component={BookPage} />
         </Switch>
       </ConnectedRouter>
     </ErrorBoundary>
