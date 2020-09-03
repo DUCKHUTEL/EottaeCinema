@@ -6,8 +6,38 @@ const MOVIE_API_URL =
 export default class detailService {
   static async getMovieData() {
     const res = await axios.get(`${MOVIE_API_URL}오케이 마담`);
+    // const needData = await {
+    //   id: res.data.Data[0].Result[0].movieSeq,
+    //   title: res.data.KMAQuery,
+    //   poster: res.data.Data[0].Result[0].posters.split("|")[0],
+    //   rating: res.data.Data[0].Result[0].substring(0, 2),
+    //   genre: res.data.Data[0].Result[0].genre,
+    //   nation: res.data.Data[0].Result[0].nation,
+    //   rlsDate: res.data.Data[0].Result[0].reqRlsDate,
+    //   runtime: res.data.Data[0].Result[0].runtime,
+    //   director: res.data.Data[0].Result[0].directors.director[0].directorNm,
+    //   actors: res.data.Data[0].Result[0].actors.actor.map(
+    //     (actordata) => actordata.actorNm
+    //   ),
+    //   synopsys: res.data.Data[0].Result[0].plots.plot[0].plotText,
+    //   stlls: res.data.Data[0].Result[0].stlls.split("|"),
+    // };
 
-    console.log(res.data.Data[0].Result[0]);
-    return res.data.Data[0].Result[0];
+    return await {
+      id: res.data.Data[0].Result[0].movieSeq,
+      title: res.data.KMAQuery,
+      poster: res.data.Data[0].Result[0].posters.split("|")[0],
+      rating: res.data.Data[0].Result[0].rating.substring(0, 2),
+      genre: res.data.Data[0].Result[0].genre,
+      nation: res.data.Data[0].Result[0].nation,
+      rlsDate: res.data.Data[0].Result[0].repRlsDate,
+      runtime: res.data.Data[0].Result[0].runtime,
+      director: res.data.Data[0].Result[0].directors.director[0].directorNm,
+      actors: res.data.Data[0].Result[0].actors.actor.map(
+        (actordata) => actordata.actorNm
+      ),
+      synopsys: res.data.Data[0].Result[0].plots.plot[0].plotText,
+      stlls: res.data.Data[0].Result[0].stlls.split("|"),
+    };
   }
 }
