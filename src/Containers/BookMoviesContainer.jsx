@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectTitleAction } from "../Redux/modules/select";
 import { Redirect } from "react-router-dom";
 import { push } from "connected-react-router";
-export function BookMoviesContainer() {
+export default function BookMoviesContainer() {
     const moviesData = useSelector((state) => state.movies.movies);
 
     const dispatch = useDispatch();
