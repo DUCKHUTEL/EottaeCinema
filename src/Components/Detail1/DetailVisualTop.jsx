@@ -24,9 +24,9 @@ export default function DetailVisualTop({ movieData, getMovieData }) {
         autoplaySpeed={500}
       >
         {stllsURLArray === undefined ||
-          stllsURLArray.map((url) => {
+          stllsURLArray.map((url, index) => {
             return (
-              <div className="item">
+              <div className="item" key={index}>
                 <img src={`${url}`} alt="poster" />
               </div>
             );
