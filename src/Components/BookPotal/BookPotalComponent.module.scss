@@ -75,6 +75,19 @@
         .ageCut0{
           background-color: green;
         }
+        span:nth-child(2){
+          font-size: 14px;
+          text-decoration: underline;
+        }
+        .age12{
+          color: skyblue;
+        }
+        .age15{
+          color: #FFC134;
+        }
+        .age0{
+          color: green;
+        }
       }
       .warning{
         padding: 0 20px;

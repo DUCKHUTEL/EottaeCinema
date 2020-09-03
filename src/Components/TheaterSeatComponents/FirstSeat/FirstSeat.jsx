@@ -11,10 +11,10 @@ function FirstSeat({bookedSeat, type}) {
   return (
     <div className={styles[type]}>
       <div className={styles.seatBox}>
-        {row.map((ro,roIdx) => (<ul>
+        {row.map((ro,roIdx) => (<ul key={roIdx}>
           <li>{ro}</li>
           {col.map((co,coIdx) => (
-            <li className={
+            <li key={coIdx} className={
               ((roIdx+1)%2 && blockA.includes((coIdx+1)+""))?
               ([styles.block, styles.seat].join(' ')):
               (!((roIdx+1)%2)&& blockB.includes((coIdx+1)+""))?

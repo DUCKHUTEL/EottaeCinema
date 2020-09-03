@@ -1,5 +1,5 @@
 // @flow
-import React, { useMemo, useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState } from 'react';
 import styles from "./AlltheaterPointComponent.module.scss"
 
 function AllTheaterPointComponent({allTheater,resTheater,selectPoint,point,resMovies}) {
@@ -10,12 +10,12 @@ function AllTheaterPointComponent({allTheater,resTheater,selectPoint,point,resMo
 	const localTabChange = useCallback((e)=>{
 		if(!e.target.matches("#locationTitle"))return;
 		setActive(e.target.parentNode.id);
-	},[])
+	},[setActive])
 
 	const selectTheater = useCallback(e=>{
 		selectPoint(e.target.id);
 		setPoint(e.target.id)
-	},[])
+	},[selectPoint,setPoint])
 
   return (
 			<ul className={styles.pointList} onClick={localTabChange}>
