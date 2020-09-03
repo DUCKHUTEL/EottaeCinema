@@ -6,6 +6,7 @@ function BookMoviesComponent({selectTitle,selectedTitle,moviesData}) {
   const changeSort = useCallback(e=> {
     setSort(e.target.value)
   },[setSort]);
+  
   const selectingMoive = useCallback( e=> {
     if(e.target.matches("span")){
       selectTitle(e.target.parentNode.dataset.title)
@@ -13,9 +14,11 @@ function BookMoviesComponent({selectTitle,selectedTitle,moviesData}) {
     }
     selectTitle(e.target.dataset.title)
   },[selectTitle])
+
   const selectingMoivePoster = useCallback( e=> {
     selectTitle(e.currentTarget.dataset.title)
   },[selectTitle])
+
   return (
     <div className={styles.bookMovies}>
       <h3>{selectedTitle==="없음"?"영화 선택":selectedTitle}</h3>
