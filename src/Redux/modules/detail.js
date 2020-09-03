@@ -1,6 +1,5 @@
 import detailService from "../../Services/detailService";
 import { put, call, takeEvery } from "redux-saga/effects";
-import { createActions, handleActions, createAction } from "redux-actions";
 
 const initialState = {
   loading: false,
@@ -38,9 +37,6 @@ function* getMovieSaga() {
   yield put(startGetMovieData());
   try {
     const movieData = yield call(detailService.getMovieData);
-    console.log("movieData", movieData);
-    const movie = movieData.data.Data[0].Result[0];
-    console.log("movie", movie);
     yield put(successGetMovieData(movieData));
   } catch (err) {
     yield put(failGetMovieData(err));
