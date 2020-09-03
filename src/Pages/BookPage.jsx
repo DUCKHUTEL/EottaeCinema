@@ -1,13 +1,14 @@
 // @flow
 import React from "react";
 import { BookContainer } from "../Containers/BookContainer";
-import MainHeaderComponent from "../Components/MainHeaderComponent/MainHeaderComponent";
-import MainHeaderContaniner from "../Containers/MianHeaderContaniner";
+import MainHeaderComponentBlack from "../Components/MainHeaderComponent/MainHeaderComponentBlack";
+import MainFooterComponent from "../Components/MainFooterComponent/MainFooterComponent";
 export function BookPage() {
     return (
         <>
-            <MainHeaderContaniner />
+            <MainHeaderComponentBlack />
             <BookContainer />
+            <MainFooterComponent />
         </>
     );
 }

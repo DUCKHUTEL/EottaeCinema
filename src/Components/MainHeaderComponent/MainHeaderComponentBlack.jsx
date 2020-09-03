@@ -6,7 +6,7 @@ import styles from "./MainHeaderComponent.module.scss";
 //1. scroll
 //2. click
 //3. usememo
-export default function MainHeaderComponent() {
+export default function MainHeaderComponentBlack() {
     const useScroll = (e) => {
         console.log(e);
         const dom = useRef();
@@ -40,7 +40,7 @@ export default function MainHeaderComponent() {
     // };
 
     return (
-        <header className={styles["header-main"]} onScroll={useScroll}>
+        <header className={styles["header"]} onScroll={useScroll}>
             <section className={styles["header-section"]}>
                 <h1>
                     <a className="a11yHidden" href="http://localhost:3000/">

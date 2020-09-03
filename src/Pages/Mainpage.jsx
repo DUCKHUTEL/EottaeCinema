@@ -4,12 +4,11 @@ import MainFooterComponent from "../Components/MainFooterComponent/MainFooterCom
 import MainWallpaperComponent from "../Components/MainWallpapterComponent/MainWallpaperComponent";
 import MainSubsectionComponent from "../Components/MainSubsectionComponent/MainSubsectionComponent";
 import MainMoviesContainer from "../Containers/MainMoviesContainer";
-import MainHeaderContaniner from "../Containers/MianHeaderContaniner";
 
-export default function Mainpage(props) {
+export default function Mainpage() {
     return (
         <>
-            <MainHeaderContaniner path={props.match.path} />
+            <MainHeaderComponent />
             <MainWallpaperComponent />
             <MainMoviesContainer />
             <MainSubsectionComponent />
