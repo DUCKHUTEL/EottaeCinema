@@ -1,10 +1,15 @@
 @import "../../commonVariables";
 
-.header * {
+header * {
     font-family: "Open Sans", sans-serif;
 }
 
-.header {
+//className = header-main
+.header-main * {
+    color: #{$main-whtie};
+}
+
+.header-main {
     padding: 0;
     width: 100%;
     height: 194px;
@@ -47,6 +52,7 @@
                 a {
                     background-image: url(../../images/icon/gnb_facebook_wht.png);
                     @include main-header-icon;
+                    color: #{$main-whtie};
                 }
             }
             .youtube {
@@ -55,6 +61,7 @@
                 a {
                     background-image: url(../../images/icon/gnb_youtube_wht.png);
                     @include main-header-icon;
+                    color: #{$main-whtie};
                 }
             }
             //all
@@ -76,18 +83,106 @@
 
             .memership {
                 @include main-header-icon;
+                color: #{$main-whtie};
             }
 
             .customer {
                 @include main-header-icon;
+                color: #{$main-whtie};
             }
 
             .login_logout {
                 @include main-header-icon;
+                color: #{$main-whtie};
             }
             //all
             li {
                 opacity: 0.4;
+            }
+        }
+    }
+}
+
+//classNanme = header
+.header * {
+    color: black;
+}
+
+.header {
+    padding: 0;
+    width: 100%;
+    height: 194px;
+    // 타 page로 export시 relaive로 변경.
+    position: relative;
+    z-index: 100;
+
+    section {
+        @include layout;
+        position: relative;
+        height: 70px;
+        border-bottom: 1px solid #{$main-border-bottom};
+        h1 {
+            width: 219px;
+            height: 37px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            a {
+                width: 219px;
+                height: 37px;
+                font-size: 24px;
+                background-image: url(../../images/common/logo.png);
+            }
+        }
+        .sns {
+            position: absolute;
+            left: 0;
+            padding-top: 40px;
+            display: inline;
+            font-size: 12px;
+
+            .facebook {
+                display: inline;
+                a {
+                    background-image: url(../../images/icon-black/gnb_facebook.png);
+                    @include main-header-icon;
+                    color: #{$main-background-black};
+                }
+            }
+            .youtube {
+                display: inline;
+                padding-left: 8px;
+                a {
+                    background-image: url(../../images/icon-black/gnb_youtube.png);
+                    @include main-header-icon;
+                    color: #{$main-background-black};
+                }
+            }
+        }
+        .personal {
+            position: absolute;
+            right: 0;
+            padding-top: 40px;
+            display: inline;
+            font-size: 12px;
+            li {
+                display: inline;
+            }
+
+            .memership {
+                @include main-header-icon;
+                color: #{$main-background-black};
+            }
+
+            .customer {
+                @include main-header-icon;
+                color: #{$main-background-black};
+            }
+
+            .login_logout {
+                @include main-header-icon;
+                color: #{$main-background-black};
             }
         }
     }
