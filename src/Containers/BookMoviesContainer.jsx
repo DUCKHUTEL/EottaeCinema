@@ -1,6 +1,6 @@
 // @flow
 import React, { useCallback } from "react";
-import BookMoviesComponent from "../Components/bookMoviesComponent/BookMoviesComponent";
+import BookMoviesComponent from "../Components/MainMoviesComponenet/MainMoviesComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectTitleAction } from "../Redux/modules/select";
 import { Redirect } from "react-router-dom";

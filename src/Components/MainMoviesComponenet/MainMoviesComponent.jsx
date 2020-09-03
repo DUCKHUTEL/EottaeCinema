@@ -6,6 +6,7 @@ export default function MainMoviesComponent({ movies, getMovies }) {
         getMovies();
     }, [getMovies]);
 
+    console.log(getMovies);
     return (
         <main className={styles["movies-info"]}>
             <div className={styles["standard-time"]}>08.29 19:15기준</div>
