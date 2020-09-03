@@ -4,7 +4,7 @@ import BookMoviesComponent from "../Components/bookMoviesComponent/BookMoviesCom
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectTitleAction } from "../Redux/modules/select";
 import { push } from "connected-react-router";
-export function BookMoviesContainer() {
+function BookMoviesContainer() {
     const moviesData = useSelector((state) => state.movies.movies);
 
     const dispatch = useDispatch();
@@ -28,3 +28,4 @@ export function BookMoviesContainer() {
         />
     );
 }
+export default React.memo(BookMoviesContainer);

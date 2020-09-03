@@ -2,7 +2,7 @@
 import React from 'react';
 import styles from './BookComponent.module.scss';
 import { AllTheaterPointContainer } from '../../Containers/AllTheaterPointContainer';
-import { BookMoviesContainer } from '../../Containers/BookMoviesContainer';
+import  BookMoviesContainer  from '../../Containers/BookMoviesContainer';
 import { BookTimeMoviesContainer } from '../../Containers/BookTimeMoviesContainer';
 import { useState } from 'react';
 import { useCallback } from 'react';

@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./MainMoviesComponent.module.scss";
 
-export default function MainMoviesComponent({ movies, getMovies }) {
+export default function MainMoviesComponent({ getMovies }) {
+    console.log(getMovies);
     React.useEffect(() => {
         getMovies();
     }, [getMovies]);
