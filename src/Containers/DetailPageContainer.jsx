@@ -21,7 +21,7 @@ export default function DetailPageContainer() {
   console.log("movieData", movieData);
   return (
     <>
-      <DetailVisualTop movieData={movieData} />
+      <DetailVisualTop movieData={movieData} getMovieData={getMovieData} />
       <DetailContent />
       <DetailInfo />
     </>
