@@ -3,19 +3,22 @@ import styles from "./BookTimeMovuesComponent.module.scss"
 import 'moment/locale/ko'
 import moment from 'moment';  
 import  OwlCarouselComponent  from '../OwlCarouselComponent/OwlCarouselComponent';
+import BookPotalContainer  from '../../Containers/BookPotalContainer';
 
 
-function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate}) {
+function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, bookData}) {
   moment.locale('ko');
   const [filtertBy,setfilter] = useState("전체");
+  const [Booking,setMind] = useState(false);
   const filterItems = useRef(["전체","스페셜관","Atoms","13시 이후","19시 이후","심야"]);
 
   const doSortMovie = useCallback(e=>{
     setfilter(e.target.id);
   },[])
   const selectBookData = useCallback((e)=>{
-    console.log(e.currentTarget.id)
-  },[])
+    bookData(e.currentTarget.id);
+    setMind(true)
+  },[]);
   return (
     <div className={styles.BookTimeMovie}>
       <h3>{selectedDate==="2020-08-24" ? `${selectedDate} (오늘)`: `${selectedDate} (${moment(selectedDate).format("dddd")})`}</h3>
@@ -31,7 +34,11 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate})
           ))}
         </ul>
         <article>
-          {movieDataForBookBtn.map((movies,i) => {
+          {movieDataForBookBtn.length ===0 ?(<div className={styles.notice}>
+            <p>조회되는 정보가 없어요오~</p>
+            <p>조건을 변경해 주세여!</p>
+            <p></p>
+          </div>):movieDataForBookBtn.map((movies,i) => {
                 const movie = movies[Object.keys(movies)[0]].filter(movies => {
                   if(filtertBy === "전체") return true
                   if(filtertBy === "13시 이후") return movies.movieTime.split(":").join("") >= 133000
@@ -71,6 +78,7 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate})
             )
           }
         </article>
+        {Booking?<BookPotalContainer setMind={setMind}/>:<></>}
       </div>
     </div>
   );

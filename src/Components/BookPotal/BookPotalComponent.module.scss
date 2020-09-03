@@ -1,0 +1,122 @@
+.bookModal{
+  position: fixed;
+  z-index: 1;
+  top: -5%;
+  left: 25%;
+  margin-top: 256px;
+  margin-left: 250px;
+  width: 500px;
+  .a11yHidden{
+    overflow: hidden; position: absolute; clip: rect(0 0 0 0);
+  }
+  .ModalHead{
+    padding-top: 18px;
+    position: relative;
+    height: 54px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    background-color: #666;
+    font-size: 18px;
+    >button{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 20px;
+      height: 20px;
+      font-size: 18px;
+    }
+  }
+  .ModalBody{
+    background-color: #fff;
+    padding: 20px;
+    .leftSeat{
+      padding-bottom: 20px;
+      text-align: center;
+      font-size: 16px;
+      .canBookCnt{
+        font-size: 22px;
+        font-weight: bold;
+      }
+      .allSeatCnt{
+        font-size: 12px;
+      }
+    }
+    .screen{
+      text-align: center;
+      font-size: 22px;
+      color: #ccc;
+      letter-spacing: 10px;
+      margin-bottom: 20px;
+    }
+    .ageInfo{
+      >P{
+        text-align: center;
+        margin-bottom: 10px;
+        span[class*="ageCut"]{
+          display: inline-block;
+          width: 26px;
+          height: 26px;
+          margin-right: 5px;
+          border-radius: 13px;
+          font-size: 12px;
+          color: #fff;
+          text-align: center;
+          font-weight: bold;
+          vertical-align: middle;
+          padding-top: 5px;
+        }
+        .ageCut12{
+          background-color: skyblue;
+        }
+        .ageCut15{
+          background-color: #FFC134;
+        }
+        .ageCut0{
+          background-color: green;
+        }
+        span:nth-child(2){
+          font-size: 14px;
+          text-decoration: underline;
+        }
+        .age12{
+          color: skyblue;
+        }
+        .age15{
+          color: #FFC134;
+        }
+        .age0{
+          color: green;
+        }
+      }
+      .warning{
+        padding: 0 20px;
+      }
+    }
+    .btnBox{
+      display: flex;
+      justify-content: center;
+      margin: 30px 0 20px;
+      >button{
+        min-width: 160px;
+        margin: 0 20px;
+        height: 40px;
+        line-height: 38px;
+        padding: 0 18px;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #ffffff !important;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .closeBtn{
+        border: 1px solid #414141;
+        background-color: #414141;
+      };
+      .selectSeat{
+        border: 1px solid #FF243E;
+        background-color: #FF243E;
+      }
+    }
+  }
+}

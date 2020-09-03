@@ -2,21 +2,27 @@
 import React from 'react';
 import styles from './BookComponent.module.scss';
 import { AllTheaterPointContainer } from '../../Containers/AllTheaterPointContainer';
-import { BookMoviesContainer } from '../../Containers/BookMoviesContainer';
+import  BookMoviesContainer  from '../../Containers/BookMoviesContainer';
 import { BookTimeMoviesContainer } from '../../Containers/BookTimeMoviesContainer';
 import { useState } from 'react';
 import { useCallback } from 'react';
+import { LoadingContainer } from '../../Containers/LoadingContainer';
 
 function BookComponent({point}) {
+
   const [select,setSelect] = useState('all');
+
   const clickTheater = useCallback( e=>{
     if(!e.target.matches("button"))return
     setSelect(e.target.id);
-  },[]);
+  },[setSelect]);
+
   const [steps,setStep] = useState("1");
+
   const changeStep = useCallback((e)=>{
     setStep(e.target.id)
-  },[])
+  },[setStep])
+
   return (
     <main className={styles.main}>
       <div className={styles.BookContents}>
@@ -53,6 +59,7 @@ function BookComponent({point}) {
           <BookTimeMoviesContainer setStep={setStep}/>
         </section>
       </div>
+      <LoadingContainer/>
     </main>
   );
 };
