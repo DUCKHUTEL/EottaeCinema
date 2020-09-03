@@ -3,7 +3,7 @@ import styles from "./BookTimeMovuesComponent.module.scss"
 import 'moment/locale/ko'
 import moment from 'moment';  
 import  OwlCarouselComponent  from '../OwlCarouselComponent/OwlCarouselComponent';
-import { BookPotalContainer } from '../../Containers/BookPotalContainer';
+import BookPotalContainer  from '../../Containers/BookPotalContainer';
 
 
 function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, bookData}) {

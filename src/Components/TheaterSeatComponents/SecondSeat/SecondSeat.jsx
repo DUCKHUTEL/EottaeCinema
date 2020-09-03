@@ -8,10 +8,10 @@ function SecondSeat({bookedSeat, type}) {
   return (
     <div className={styles[type]}>
       <div className={styles.seatBox}>
-        {row.map((ro,roIdx) => (<ul>
+        {row.map((ro,roIdx) => (<ul  key={roIdx}>
           <li>{ro}</li>
           {col.map((co,coIdx) => (
-            <li className={(roIdx+1)%2&&(coIdx+1)%2?
+            <li key={coIdx}  className={(roIdx+1)%2&&(coIdx+1)%2?
               ([styles.block, styles.seat].join(' ')):
               !((roIdx+1)%2)&&!((coIdx+1)%2)?
               ([styles.block, styles.seat].join(' ')): 

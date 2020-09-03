@@ -4,12 +4,12 @@ import styles from "./BookPotalComponent.module.scss"
 import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
 import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
-export function BookPotalComponent({bookingData,setMind}) {
+function BookPotalComponent({bookingData,setMind}) {
   const close = useCallback(()=>{
     setMind(false)
   },[setMind])
   return(
-      <div className={styles.bookModal}>
+      <div className={styles.bookModal} onClick={(e)=>{console.log(e.target)}}>
         <h3 className={styles.a11yHidden}>영화예매알림</h3>
         <div className={styles.ModalHead}>
           {bookingData.movieTime.slice(0,5)}~{bookingData.movieEndTime.slice(0,5)}({bookingData.stage}관)
@@ -28,7 +28,9 @@ export function BookPotalComponent({bookingData,setMind}) {
           <div className={styles.ageInfo}>
             <p>
               <span className={styles[`ageCut${bookingData.ageCut}`]}>{bookingData.ageCut === 0 ? "전체":bookingData.ageCut}</span>
-              본 영화는 <span>{bookingData.ageCut===0?"전체":`${bookingData.ageCut}세 이상 `}관람가</span> 영화입니다.
+              본 영화는 
+              <span className={styles[`age${bookingData.ageCut}`]}>{bookingData.ageCut===0?"전체":`${bookingData.ageCut}세 이상 `}관람가</span> 
+              영화입니다.
             </p>
             {bookingData.ageCut===0?
               "":
@@ -45,3 +47,5 @@ export function BookPotalComponent({bookingData,setMind}) {
       </div>
   );
 };
+
+export default React.memo(BookPotalComponent);
