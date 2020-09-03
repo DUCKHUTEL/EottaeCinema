@@ -36,7 +36,6 @@ $red: #ff243e;
 
 //header
 @mixin main-header-icon {
-    color: #{$main-whtie};
     height: 14px;
     line-height: 14px;
     background-repeat: no-repeat;
@@ -45,13 +44,11 @@ $red: #ff243e;
 }
 
 @mixin main-header-noicon {
-    color: #{$main-whtie};
     height: 14px;
     line-height: 14px;
 }
 
 @mixin main-header-nav-noicon {
-    color: #{$main-whtie};
     height: 40px;
     text-align: center;
     line-height: 40px;

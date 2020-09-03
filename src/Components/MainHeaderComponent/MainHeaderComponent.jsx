@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useCallback, useEffect } from "react";
 import MainNavComponent from "../MainNavComponent/MainNavComponent";
 import styles from "./MainHeaderComponent.module.scss";
 
@@ -6,10 +6,47 @@ import styles from "./MainHeaderComponent.module.scss";
 //1. scroll
 //2. click
 //3. usememo
-export default function MainHeaderComponent() {
+export default function MainHeaderComponent(props) {
+    const path = props.path;
+
+    const useScroll = (e) => {
+        console.log(e);
+        const dom = useRef();
+    };
+
+    // useEffect(() => {
+    //     window.addEventListener("scroll", useScroll);
+    // });
+
+    // const useScroll = () => {
+    //     const dom = useRef();
+
+    //         const handleScroll = useCallback(([entry]) => {
+
+    //             const {current} = dom;
+
+    //             if(entry.isIntersecting){
+    //                 current.style.display = 'none';
+    //             }
+
+    //     }, []);
+
+    //     // useEffect(()=>{
+    //     //     let observer;
+    //     //     const { current } = dom;
+
+    //     //     if (current){
+
+    //     //     }
+    //     // })
+    // };
+
     return (
-        <header className={styles["header"]}>
-            <section>
+        <header
+            className={styles[path ? "header-main" : "header"]}
+            onScroll={useScroll}
+        >
+            <section className={styles["header-section"]}>
                 <h1>
                     <a className="a11yHidden" href="http://localhost:3000/">
                         EotteaCinema

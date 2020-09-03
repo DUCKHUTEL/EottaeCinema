@@ -248,7 +248,7 @@ export default function MainNavComponent() {
                         <a href="/">마이</a>
                     </li>
                     <li className={styles["reservation"]}>
-                        <a href="/">바로예매</a>
+                        <Link to="/ticketing">바로예매</Link>
                     </li>
                     <li className={styles["burger-bar"]}>
                         <button>네비게이션바 입니다</button>

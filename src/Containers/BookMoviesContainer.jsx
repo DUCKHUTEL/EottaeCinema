@@ -18,7 +18,7 @@ export function BookMoviesContainer(props) {
     );
     const selectedTitle = useSelector((state) => state.selectData.title);
     if (moviesData.length === 0) {
-        console.log("!1");
+        // console.log("!1");
         dispatch(push("/"));
     }
 

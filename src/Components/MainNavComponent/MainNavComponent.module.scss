@@ -8,6 +8,7 @@
     nav {
         @include layout;
         display: flex;
+        border: 3px solid tomato;
         .main_nav {
             margin: auto;
             display: flex;
@@ -27,9 +28,8 @@
 
                 ul {
                     background-color: pink;
-                    width: 100%;
+                    width: 100vw;
                     position: absolute;
-                    top: 0;
                     left: 0;
                     display: none;
 
@@ -38,12 +38,12 @@
                     }
 
                     li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
                         & a {
-                            display: block;
-                            background-color: skyblue;
-                            height: 38px;
-                            line-height: 38px;
-                            padding-right: 8px;
                         }
                     }
                 }
@@ -67,6 +67,26 @@
                 }
                 ul {
                     display: none;
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
                 }
             }
             .movie::after {
@@ -81,7 +101,32 @@
                     color: inherit;
                 }
                 ul {
+                    background-color: pink;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
                     display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
                 }
             }
             .cinema::after {
@@ -97,7 +142,32 @@
                     color: inherit;
                 }
                 ul {
+                    background-color: pink;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
                     display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
                 }
             }
             .event::after {
@@ -113,7 +183,33 @@
                     color: inherit;
                 }
                 ul {
+                    background-color: pink;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
                     display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
                 }
             }
         }
