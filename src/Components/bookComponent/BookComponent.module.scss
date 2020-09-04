@@ -45,6 +45,12 @@ ul{
       .disable a{
         cursor: default
       }
+      .done a{
+        border-color: #333;
+        color: #fff;
+        border-bottom-color: #666;
+        background-color: #333;
+      }
     }
     section.notNow{
       display: none;
