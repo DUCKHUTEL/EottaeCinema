@@ -2,7 +2,11 @@ import React from "react";
 import styles from "./DetailInfo.module.scss";
 import Scrollbars from "react-custom-scrollbars";
 
-export default function DetailInfo() {
+export default function DetailInfo({ movieAPIData, moviesDBData }) {
+  const APIData = movieAPIData;
+  const DBData = moviesDBData;
+
+  console.log(APIData, DBData);
   return (
     <div className={styles.info}>
       <div className={styles["movie-info1"]}>
@@ -22,24 +26,7 @@ export default function DetailInfo() {
                     autoHideDuration={200}
                   >
                     <div className={styles["synopsys-inner"]}>
-                      ㅇ
-                      <br />
-                      <br />
-                      ㅇㅇㅇㅇㅇ
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      ㅇㅇㅇㅇㅇㅇㅇ
-                      <br />
+                      {APIData === undefined || APIData.synopsys}
                     </div>
                   </Scrollbars>
                 </div>
