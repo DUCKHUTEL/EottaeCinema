@@ -34,7 +34,56 @@
       li:nth-child(13){
         margin-right: 15px;;
       }
+    }
+  }
+}
+.select{
+  width: 100%;
+  padding: 0 20px;
+  // height: 638px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  .seatBox{
+    padding-top: 60px;
+    background-color: #000;
+    ul{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      .seat{
+        cursor: pointer;
+        border-radius: 7px 7px 2px 0px;
+        background-color: #fff;
+        width: 21px;
+        height: 16px;
+        text-align: center;
+        margin-right: 5px;
+        a{
+          font-size: 10px;
+          cursor: inherit;
+        }
+      }
+      .block{
+        cursor: default;
+        background: #58240d;
+        opacity: 0.5;
+      }
+      .booked{
+        cursor: default;
+        background: #7c7c7c;
+      }
+      li:nth-child(1){
+        color: #fff;
+        margin-right: 40px;
+      }
+      li:nth-child(3){
+        margin-right: 25px;;
+      }
+      li:nth-child(13){
+        margin-right: 25px;;
+      }
     }
   }
 }
