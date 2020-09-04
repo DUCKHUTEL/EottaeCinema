@@ -32,7 +32,7 @@ export default function MainNavComponent() {
                     <li className={styles["cinema"]}>
                         <a href="/">영화관</a>
                         <ul>
-                            <li>
+                            <li className={styles["cinema-1"]}>
                                 스페셜관
                                 <ul>
                                     <li>홈</li>
@@ -47,7 +47,7 @@ export default function MainNavComponent() {
                                     <li>씨네컴포트(리클라이너)</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-2"]}>
                                 서울
                                 <ul>
                                     <li>가산디지털</li>
@@ -78,7 +78,7 @@ export default function MainNavComponent() {
                                     <li>황학</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-3"]}>
                                 경기/인천
                                 <ul>
                                     <li>검단</li>
@@ -126,7 +126,7 @@ export default function MainNavComponent() {
                                     <li>향남</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-4"]}>
                                 충청/대전
                                 <ul>
                                     <li>대전(백화점)</li>
@@ -141,7 +141,7 @@ export default function MainNavComponent() {
                                     <li>충주</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-5"]}>
                                 전라/광주
                                 <ul>
                                     <li>광주(백화점)</li>
@@ -155,7 +155,7 @@ export default function MainNavComponent() {
                                     <li>충장로</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-6"]}>
                                 경북/대구
                                 <ul>
                                     <li>경산</li>
@@ -176,7 +176,7 @@ export default function MainNavComponent() {
                                     <li>프리미엄칠곡</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-7"]}>
                                 경남/부산/울산
                                 <ul>
                                     <li>거창</li>
@@ -203,7 +203,7 @@ export default function MainNavComponent() {
                                     <li>프리미엄해운대(장산역)</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-8"]}>
                                 강원
                                 <ul>
                                     <li>남원주</li>
@@ -212,7 +212,7 @@ export default function MainNavComponent() {
                                     <li>춘천</li>
                                 </ul>
                             </li>
-                            <li>
+                            <li className={styles["cinema-9"]}>
                                 제주
                                 <ul>
                                     <li>서귀포</li>

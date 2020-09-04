@@ -1,0 +1,83 @@
+.info {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+  padding-top: 80px;
+
+  .movie-info1 {
+    button {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      border-bottom: 2px solid #111;
+      height: 50px;
+      font-size: 15px;
+      line-height: 50px;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .tab-icon {
+      overflow: inherit;
+      position: relative;
+      width: auto;
+      height: auto;
+
+      .movie-tab-info1 {
+        overflow: hidden;
+        margin: 0 0 45px 0;
+
+        .left-con {
+          float: left;
+          width: 490px;
+
+          strong {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 15px;
+          }
+
+          .synopsys-wrap {
+            position: relative;
+            overflow: visible;
+            height: 115px;
+            touch-action: pinch-zoom;
+
+            .synopsys-box {
+              position: relative;
+              overflow: hidden;
+              height: 100%;
+              max-width: 100%;
+              outline: none;
+              direction: 1tr;
+
+              .synopsys-inner {
+                position: relative;
+                top: 0;
+                left: 0;
+                overflow: hidden;
+                width: auto;
+                height: auto;
+              }
+            }
+          }
+        }
+
+        .right-con {
+          float: left;
+          width: 480px;
+
+          strong {
+            display: block;
+            margin-bottom: 20px;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.none {
+  display: none;
+}

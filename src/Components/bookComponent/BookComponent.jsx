@@ -1,32 +1,17 @@
-// @flow
 import React from "react";
 import styles from "./BookComponent.module.scss";
-import { AllTheaterPointContainer } from "../../Containers/AllTheaterPointContainer";
 import BookMoviesContainer from "../../Containers/BookMoviesContainer";
-import { BookTimeMoviesContainer } from "../../Containers/BookTimeMoviesContainer";
+import BookTimeMoviesContainer from "../../Containers/BookTimeMoviesContainer";
 import { useState } from "react";
 import { useCallback } from "react";
 import { LoadingContainer } from "../../Containers/LoadingContainer";
+import BookTheaterContainer from "../../Containers/BookTheaterContainer";
 
-function BookComponent({ point }) {
-    const [select, setSelect] = useState("all");
-
-    const clickTheater = useCallback(
-        (e) => {
-            if (!e.target.matches("button")) return;
-            setSelect(e.target.id);
-        },
-        [setSelect]
-    );
-
+function BookComponent() {
     const [steps, setStep] = useState("1");
-
-    const changeStep = useCallback(
-        (e) => {
-            setStep(e.target.id);
-        },
-        [setStep]
-    );
+    const changeStep = useCallback((e) => {
+        setStep(e.target.id);
+    }, []);
 
     return (
         <main className={styles.main}>
@@ -81,36 +66,8 @@ function BookComponent({ point }) {
                 <section
                     className={steps === "1" ? styles.nowStep : styles.notNow}
                 >
-                    <div className={styles.theater}>
-                        <h3>{point === "없음" ? "영화관" : point}</h3>
-                        <div className={styles.divide} onClick={clickTheater}>
-                            <div
-                                className={
-                                    select === "all"
-                                        ? styles.clicked
-                                        : styles.disable
-                                }
-                            >
-                                <button className={styles.all} id="all">
-                                    전체
-                                </button>
-                                <AllTheaterPointContainer />
-                            </div>
-                            <div
-                                className={
-                                    select === "special"
-                                        ? styles.clicked
-                                        : styles.disable
-                                }
-                            >
-                                <button className={styles.special} id="special">
-                                    스페셜관
-                                </button>
-                                <AllTheaterPointContainer />
-                            </div>
-                        </div>
-                    </div>
-                    <BookMoviesContainer setStep={setStep} />
+                    <BookTheaterContainer />
+                    <BookMoviesContainer />
                     <BookTimeMoviesContainer setStep={setStep} />
                 </section>
             </div>

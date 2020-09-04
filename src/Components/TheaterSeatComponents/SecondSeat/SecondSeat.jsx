@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import styles from "./SecondSeat.module.scss"
 function SecondSeat({bookedSeat, type}) {

@@ -1,5 +1,3 @@
-// @flow
-
 import  React, { useRef, useState } from 'react';
 import styles from "../bookTimeMoviesComponent/BookTimeMovuesComponent.module.scss"
 import OwlCarousel from 'react-owl-carousel';  

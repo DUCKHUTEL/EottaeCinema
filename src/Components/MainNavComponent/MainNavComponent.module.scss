@@ -1,215 +1,172 @@
 @import "../../commonVariables";
 
+@mixin nav-title-hover {
+    border-bottom: 2px solid #{$red};
+    transition: all 0.5s;
+}
+
+@mixin nav-title {
+    background-color: #{$main-nav-background-black};
+    opacity: 0.8;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    display: none;
+    justify-content: center;
+}
+
+@mixin nav-title-item {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    padding-right: 1%;
+    padding-left: 1%;
+    font-size: 12px;
+    & a {
+        font-size: 12px;
+    }
+}
 .bg {
     position: relative;
     width: 100vw;
-    border: 2px solid yellowgreen;
 
     nav {
         @include layout;
         display: flex;
-        border: 3px solid tomato;
         .main_nav {
             margin: auto;
             display: flex;
-            transform: translate(15%);
-            .book {
+            padding-left: 15%;
+            padding-top: 1%;
+            .book,
+            .movie,
+            .event,
+            .store {
                 @include main-header-nav-noicon;
                 width: 90px;
-                // position: relative;
+
+                &:hover {
+                    @include nav-title-hover;
+                }
+
+                &:hover ul {
+                    display: flex;
+                }
 
                 a {
                     font-size: 14px;
                     color: inherit;
                 }
                 a::after {
-                    // @include main-header-nav-border-right;
+                    @include main-header-nav-border-right;
                 }
 
                 ul {
-                    background-color: pink;
-                    width: 100vw;
-                    position: absolute;
-                    left: 0;
-                    display: none;
-
-                    &:hover {
-                        display: flex;
-                    }
+                    @include nav-title;
 
                     li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
-                        }
+                        @include nav-title-item;
                     }
-                }
-
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
-
-                &:hover > ul {
-                    display: flex;
                 }
             }
 
-            .movie {
-                @include main-header-nav-noicon;
-                width: 90px;
-                position: relative;
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                ul {
-                    display: none;
-                    &:hover {
-                        display: flex;
-                    }
-
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
-                        }
-                    }
-                }
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
-
-                &:hover > ul {
-                    display: flex;
-                }
-            }
-            .movie::after {
-                @include main-header-nav-border-right;
-            }
             .cinema {
                 @include main-header-nav-noicon;
                 width: 90px;
-                position: relative;
+
+                &:hover {
+                    @include nav-title-hover;
+                }
+
+                &:hover ul {
+                    display: flex;
+                }
+
                 a {
                     font-size: 14px;
                     color: inherit;
                 }
+                a::after {
+                    @include main-header-nav-border-right;
+                }
+
                 ul {
-                    background-color: pink;
-                    width: 100%;
-                    position: absolute;
-                    left: 0;
-                    display: none;
+                    @include nav-title;
 
-                    &:hover {
-                        display: flex;
-                    }
+                    .cinema-1 {
+                        @include nav-title-item;
+                        // display: none;
+                        &:hover ul {
+                            display: flex;
+                        }
 
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
+                        ul {
+                            display: none;
+                            @include nav-title-item;
                         }
                     }
-                }
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
 
-                &:hover > ul {
-                    display: flex;
-                }
-            }
-            .cinema::after {
-                @include main-header-nav-border-right;
-            }
+                    .cinema-2 {
+                        @include nav-title-item;
 
-            .event {
-                @include main-header-nav-noicon;
-                width: 90px;
-                position: relative;
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                ul {
-                    background-color: pink;
-                    width: 100%;
-                    position: absolute;
-                    left: 0;
-                    display: none;
-
-                    &:hover {
-                        display: flex;
-                    }
-
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
+                        ul {
+                            display: none;
                         }
                     }
-                }
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
 
-                &:hover > ul {
-                    display: flex;
-                }
-            }
-            .event::after {
-                @include main-header-nav-border-right;
-            }
+                    .cinema-3 {
+                        @include nav-title-item;
 
-            .store {
-                @include main-header-nav-noicon;
-                width: 90px;
-                position: relative;
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                ul {
-                    background-color: pink;
-                    width: 100%;
-                    position: absolute;
-                    left: 0;
-                    display: none;
-
-                    &:hover {
-                        display: flex;
-                    }
-
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
+                        ul {
+                            display: none;
                         }
                     }
-                }
 
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
+                    .cinema-4 {
+                        @include nav-title-item;
 
-                &:hover > ul {
-                    display: flex;
+                        ul {
+                            display: none;
+                        }
+                    }
+                    .cinema-5 {
+                        @include nav-title-item;
+
+                        ul {
+                            display: none;
+                        }
+                    }
+
+                    .cinema-6 {
+                        @include nav-title-item;
+
+                        ul {
+                            display: none;
+                        }
+                    }
+                    .cinema-7 {
+                        @include nav-title-item;
+
+                        ul {
+                            display: none;
+                        }
+                    }
+
+                    .cinema-8 {
+                        @include nav-title-item;
+
+                        ul {
+                            display: none;
+                        }
+                    }
+
+                    .cinema-9 {
+                        @include nav-title-item;
+
+                        ul {
+                            display: none;
+                        }
+                    }
                 }
             }
         }

@@ -1,9 +1,9 @@
-// @flow
 import React, { useCallback } from "react";
 import BookMoviesComponent from "../Components/bookMoviesComponent/BookMoviesComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectTitleAction } from "../Redux/modules/select";
 import { push } from "connected-react-router";
+
 function BookMoviesContainer() {
     const moviesData = useSelector((state) => state.movies.movies);
 
@@ -28,4 +28,5 @@ function BookMoviesContainer() {
         />
     );
 }
+
 export default React.memo(BookMoviesContainer);

@@ -4,10 +4,11 @@ function BookMoviesComponent({selectTitle,selectedTitle,moviesData}) {
   const [sort,setSort] = useState("movieBookPer");
   const [show,setShow] = useState("hamberger");
   const changeSort = useCallback(e=> {
-    setSort(e.target.value)
-  },[setSort]);
+    setSort(e.target.value);
+  },[]);
   
   const selectingMoive = useCallback( e=> {
+    e.preventDefault();
     if(e.target.matches("span")){
       selectTitle(e.target.parentNode.dataset.title)
       return
@@ -16,6 +17,7 @@ function BookMoviesComponent({selectTitle,selectedTitle,moviesData}) {
   },[selectTitle])
 
   const selectingMoivePoster = useCallback( e=> {
+    e.preventDefault();
     selectTitle(e.currentTarget.dataset.title)
   },[selectTitle])
 
@@ -37,7 +39,7 @@ function BookMoviesComponent({selectTitle,selectedTitle,moviesData}) {
         <ul className={show === "hamberger" ? ([styles.active, styles.hambergerLi].join(' ')):styles.hambergerLi} onClick={selectingMoive}>
           {moviesData.sort((a, b) => (a[sort] > b[sort] ? -1 : (a[sort] < b[sort] ? 1 : 0))).map((movie,idx) =>(
             <li key={idx} className={selectedTitle===movie.movieTitle?([styles.active, styles.movieLi].join(' ')) : styles.movieLi}>
-              <a data-title={movie.movieTitle}>
+              <a href="#" data-title={movie.movieTitle}>
                 <span className={styles[`ageCut${movie.ageCut}`]}>{movie.ageCut === 0 ? "전체":movie.ageCut}</span>
                 <span className={styles.movieTitle}>{movie.movieTitle}</span>
               </a>
@@ -47,7 +49,7 @@ function BookMoviesComponent({selectTitle,selectedTitle,moviesData}) {
         <ul className={show === "poster" ? ([styles.active, styles.posterLi].join(' ')):styles.posterLi}>
           {moviesData.sort((a, b) => (a[sort] > b[sort] ? -1 : (a[sort] < b[sort] ? 1 : 0))).map((movie,idx)=>(
             <li key={movie.movieId} className={selectedTitle===movie.movieTitle?([styles.active, styles.movieLi].join(' ')) : styles.movieLi}>
-              <a data-title={movie.movieTitle}  onClick={selectingMoivePoster}>
+              <a data-title={movie.movieTitle} href="#" onClick={selectingMoivePoster}>
                 <img src={movie.moviePoster} alt={movie.movieTitle+"포스터"}/>
                 <p>{idx+1}</p>
                 <div className={styles.info}>
