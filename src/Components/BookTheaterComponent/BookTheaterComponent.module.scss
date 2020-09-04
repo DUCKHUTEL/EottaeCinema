@@ -1,0 +1,43 @@
+.theater{
+  h3{
+    padding-top: 16px;
+    text-align: center;
+    margin: 0;
+    width: 350px;
+    height: 55px;
+    background-color: #000;
+    color: #fff;
+    font-size: 20px;
+  }
+  .divide{
+    position: relative;
+    width: 350px;
+    padding-top: 61px;
+    &>div{
+      width: 100%;
+      height: 100%;
+      >button{
+        position: absolute;
+        background-color: #fff;
+        border: 0;
+        border-bottom: 1px solid #777;
+        width: 50%;
+        height: 60px;
+        top: 0;
+        cursor: pointer;
+      }
+      .all{
+        cursor: pointer;
+        left: 0;
+      }
+      .special{
+        left: 50%;
+      }
+    }
+    .clicked button{
+      border-bottom: 2px solid #000;
+    }
+
+  }
+  
+}

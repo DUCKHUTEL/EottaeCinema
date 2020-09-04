@@ -1,13 +1,17 @@
-// @flow
 import React, { useCallback } from 'react';
 import styles from "./BookPotalComponent.module.scss"
 import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
 import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
-function BookPotalComponent({bookingData,setMind}) {
+function BookPotalComponent({bookingData,setMind,setStep}) {
   const close = useCallback(()=>{
-    setMind(false)
-  },[setMind])
+    setMind(false);
+  },[setMind]);
+
+  const goSelectSeat = useCallback(()=>{
+    setStep("2");
+    setMind(false);
+  },[])
   return(
       <div className={styles.bookModal} onClick={(e)=>{console.log(e.target)}}>
         <h3 className={styles.a11yHidden}>영화예매알림</h3>
@@ -41,7 +45,7 @@ function BookPotalComponent({bookingData,setMind}) {
           </div>
           <div className={styles.btnBox}>
             <button className={styles.closeBtn} onClick={close}>취소</button>
-            <button className={styles.selectSeat}> 인원/좌석 선택</button>
+            <button className={styles.selectSeat} onClick={goSelectSeat}> 인원/좌석 선택</button>
           </div>
         </div>
       </div>

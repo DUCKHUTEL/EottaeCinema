@@ -1,4 +1,3 @@
-// @flow
 import React, { useCallback } from "react";
 import BookMoviesComponent from "../Components/bookMoviesComponent/BookMoviesComponent"
 import { useDispatch, useSelector } from "react-redux";

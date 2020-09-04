@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import styles from './SixSeat.module.scss'
 function SixthSeat({bookedSeat, type}) {
@@ -11,7 +10,15 @@ function SixthSeat({bookedSeat, type}) {
         {row.map((ro,roIdx) => (<ul  key={roIdx}>
           <li>{ro}</li>
           {col.map((co,coIdx) => (
-            <li key={coIdx}  className={(roIdx+1)%2&&(coIdx+1)%2?([styles.block, styles.seat].join(' ')):!((roIdx+1)%2)&&!((coIdx+1)%2)?([styles.block, styles.seat].join(' ')): bookedId.includes(`${ro}${co}`) ? ([styles.booked, styles.seat].join(' ')) : styles.seat}>
+            <li key={coIdx} 
+              className={(roIdx+1)%2&&(coIdx+1)%2?
+              ([styles.block, styles.seat].join(' ')):
+              !((roIdx+1)%2)&&!((coIdx+1)%2)?
+              ([styles.block, styles.seat].join(' ')): 
+              bookedId.includes(`${ro}${co}`) ? 
+              ([styles.booked, styles.seat].join(' ')) : 
+              styles.seat}
+            >
               <a href="#" data-seat={`${ro}${co}`}>{co}</a>
             </li>
           ))}

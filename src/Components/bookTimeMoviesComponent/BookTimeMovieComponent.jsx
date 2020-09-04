@@ -6,7 +6,7 @@ import  OwlCarouselComponent  from '../OwlCarouselComponent/OwlCarouselComponent
 import BookPotalContainer  from '../../Containers/BookPotalContainer';
 
 
-function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, bookData}) {
+function BookTimeMovieComponent({ setStep, selectDate, movieDataForBookBtn, selectedDate, bookData}) {
   moment.locale('ko');
   const [filtertBy,setfilter] = useState("전체");
   const [Booking,setMind] = useState(false);
@@ -78,7 +78,7 @@ function BookTimeMovieComponent({selectDate, movieDataForBookBtn, selectedDate, 
             )
           }
         </article>
-        {Booking?<BookPotalContainer setMind={setMind}/>:<></>}
+        {Booking?<BookPotalContainer setStep={setStep} setMind={setMind}/>:<></>}
       </div>
     </div>
   );

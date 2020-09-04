@@ -1,4 +1,3 @@
-// @flow
 import React, { useCallback, useState } from 'react';
 import styles from "./AlltheaterPointComponent.module.scss"
 
@@ -8,14 +7,17 @@ function AllTheaterPointComponent({allTheater,resTheater,selectPoint,point,resMo
 	const [clickedPoint,setPoint] = useState("");
 
 	const localTabChange = useCallback((e)=>{
+		e.preventDefault();
 		if(!e.target.matches("#locationTitle"))return;
 		setActive(e.target.parentNode.id);
-	},[setActive])
+	},[])
 
 	const selectTheater = useCallback(e=>{
+		if(!e.target.matches("a"))return;
+		e.preventDefault();
 		selectPoint(e.target.id);
 		setPoint(e.target.id)
-	},[selectPoint,setPoint])
+	},[])
 
   return (
 			<ul className={styles.pointList} onClick={localTabChange}>
@@ -34,8 +36,11 @@ function AllTheaterPointComponent({allTheater,resTheater,selectPoint,point,resMo
 						 	active === location ? ([styles.active, styles.theaterTitle].join(' ')) : styles.theaterTitle
 						 }>
           		<a id="locationTitle" href="#">{location} (
-              		{point==="없음"&&resTheater.length === 0? allT[location].length : resTheater.filter(resT => (allT[location].includes(resT[location]))).length}
-									)
+									{point==="없음"&&resTheater.length === 0? 
+										allT[location].length : 
+										resTheater.filter(resT => (allT[location].includes(resT[location]))).length
+									}
+								)
           		</a>
           		<ul onClick={selectTheater}>
             		{allT[location].map(point => (

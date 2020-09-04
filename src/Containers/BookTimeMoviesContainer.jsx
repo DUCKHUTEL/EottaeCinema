@@ -1,10 +1,9 @@
-// @flow
 import React, { useCallback } from 'react';
 import BookTimeMovieComponent from '../Components/bookTimeMoviesComponent/BookTimeMovieComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectDateAction } from '../Redux/modules/select';
 import { getBookingDataAction } from '../Redux/modules/bookingData';
-export function BookTimeMoviesContainer({setStep}) {
+function BookTimeMoviesContainer({setStep}) {
 
   const dispatch= useDispatch();
 
@@ -20,6 +19,7 @@ export function BookTimeMoviesContainer({setStep}) {
   
   return (
     <BookTimeMovieComponent
+      setStep={setStep}
       selectDate={selectDate}
       selectedDate={selectedDate}
       movieDataForBookBtn={movieDataForBookBtn}
@@ -28,3 +28,5 @@ export function BookTimeMoviesContainer({setStep}) {
     />
   );
 };
+
+export default React.memo(BookTimeMoviesContainer)
