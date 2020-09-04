@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import  BookContainer  from "../Containers/BookContainer";
 import MainHeaderComponentBlack from "../Components/MainHeaderComponent/MainHeaderComponentBlack";
