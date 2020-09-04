@@ -1,0 +1,255 @@
+@import "../../commonVariables";
+
+.bg {
+    position: relative;
+    width: 100vw;
+    border: 2px solid yellowgreen;
+
+    nav {
+        @include layout;
+        display: flex;
+        border: 3px solid tomato;
+        .main_nav {
+            margin: auto;
+            display: flex;
+            transform: translate(15%);
+            .book {
+                @include main-header-nav-noicon;
+                width: 90px;
+                // position: relative;
+
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                a::after {
+                    // @include main-header-nav-border-right;
+                }
+
+                ul {
+                    background-color: pink;
+                    width: 100vw;
+                    position: absolute;
+                    left: 0;
+                    display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
+                }
+            }
+
+            .movie {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    display: none;
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
+                }
+            }
+            .movie::after {
+                @include main-header-nav-border-right;
+            }
+            .cinema {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    background-color: pink;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
+                }
+            }
+            .cinema::after {
+                @include main-header-nav-border-right;
+            }
+
+            .event {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    background-color: pink;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
+                }
+            }
+            .event::after {
+                @include main-header-nav-border-right;
+            }
+
+            .store {
+                @include main-header-nav-noicon;
+                width: 90px;
+                position: relative;
+                a {
+                    font-size: 14px;
+                    color: inherit;
+                }
+                ul {
+                    background-color: pink;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    display: none;
+
+                    &:hover {
+                        display: flex;
+                    }
+
+                    li {
+                        display: block;
+                        background-color: skyblue;
+                        height: 38px;
+                        line-height: 38px;
+                        padding-right: 8px;
+                        & a {
+                        }
+                    }
+                }
+
+                &:hover {
+                    border-bottom: 2px solid #{$red};
+                }
+
+                &:hover > ul {
+                    display: flex;
+                }
+            }
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            width: 180px;
+
+            li {
+                @include main-header-nav-noicon;
+                a {
+                    font-size: 12px;
+                    @include main-header-icon;
+                }
+            }
+
+            .my {
+                a {
+                    text-align: right;
+                    background-image: url(../../images/icon/nav_side_my_wht.png);
+                }
+            }
+            .reservation {
+                a {
+                    background-image: url(../../images/icon/nav_side_reserve_wht.png);
+                }
+            }
+
+            .burger-bar {
+                button {
+                    border-style: none;
+                    width: 20px;
+                    background-color: transparent;
+                    background-image: url(../../images/icon/nav_side_all_wht.png);
+                    background-repeat: no-repeat;
+                    background-position: 0 center;
+                    text-indent: -999px;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}

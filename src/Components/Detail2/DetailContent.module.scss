@@ -1,0 +1,212 @@
+@mixin flex-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin a11y-hidden {
+  background-color: blue;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: polygon(0 0, 0 0, 0 0);
+}
+
+em {
+  font-style: normal;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+.content {
+  width: 980px;
+  margin: 0 auto;
+  margin-top: 70px;
+
+  .a11y-hidden {
+    @include a11y-hidden;
+  }
+
+  .detail-wrap {
+    position: relative;
+    min-height: 240px;
+    padding-left: 245px;
+    margin-bottom: 15px;
+
+    .poster {
+      position: absolute;
+      top: -66px;
+      left: 0;
+      width: 205px;
+      height: 305px;
+      z-index: 1;
+      background-color: aqua;
+    }
+
+    .title-info {
+      margin-bottom: 20px;
+      font-size: 15px;
+
+      span {
+        display: inline-block;
+        background-color: yellow;
+        width: 36px;
+        height: 36px;
+        margin: -3px 4px 0 0;
+        line-height: 36px;
+        vertical-align: top;
+        border-radius: 50%;
+        text-align: center;
+      }
+
+      strong {
+        font-size: 26px;
+        font-weight: bold;
+      }
+    }
+
+    .detail-info1 {
+      overflow: hidden;
+      padding-bottom: 17px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      border-bottom: 1px solid #ddd;
+
+      .sub-info {
+        float: left;
+        margin-right: 25px;
+
+        em {
+          margin-right: 10px;
+        }
+
+        strong {
+          display: inline-block;
+          font-size: 20px;
+
+          em {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin: -2px 3px 0 0;
+            background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/star_14.png")
+              no-repeat 0 0;
+            text-indent: -9999em;
+            overflow: hidden;
+          }
+        }
+      }
+    }
+
+    .detail-info2 {
+      margin-bottom: 17px;
+      font-size: 13px;
+
+      .sub-info1 {
+        margin-top: 0;
+
+        em {
+          margin-right: 10px;
+        }
+        strong {
+          em {
+            color: #666;
+          }
+
+          .sub-info1-before {
+            position: relative;
+            padding-left: 15px;
+          }
+
+          .sub-info1-before::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 5px;
+            left: 0;
+            width: 1px;
+            height: 9px;
+            background-color: #ddd;
+          }
+        }
+      }
+
+      .sub-info2 {
+        margin-top: 11px;
+
+        em {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .spacial-hall-info {
+      width: 400px;
+
+      span {
+        display: inline-block;
+        min-width: 82px;
+        padding: 0 5px;
+        margin-bottom: 10px;
+        text-align: center;
+
+        img {
+          height: 20px;
+        }
+      }
+    }
+
+    .movie-detail-aside-menu {
+      @include flex-layout();
+      position: absolute;
+      bottom: 27px;
+      right: 0;
+
+      div {
+        float: left;
+        margin-left: 32px;
+
+        .share {
+          display: block;
+          position: relative;
+          width: 28px;
+          height: 28px;
+          padding: 0 10px;
+          background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/ic_share.png")
+            no-repeat 50% 0;
+          border: 0;
+        }
+
+        .heart {
+          display: block;
+          position: relative;
+          width: 28px;
+          height: 28px;
+          padding-left: 10px;
+          background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/heart_bdr_26_off.png")
+            no-repeat 50% 0;
+          border: 0;
+        }
+
+        .book {
+          display: inline-block;
+          min-width: 170px;
+          height: 52px;
+          padding: 0 24px;
+          border: 1px solid #ff243e;
+          border-radius: 52px;
+          background-color: #ff243e;
+          font-size: 18px;
+          line-height: 50px;
+          vertical-align: middle;
+          color: #f7f7f7;
+        }
+      }
+    }
+  }
+}
+
+.movie-info2 {
+  display: none;
+}

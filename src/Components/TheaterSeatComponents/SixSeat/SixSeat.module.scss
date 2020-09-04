@@ -1,0 +1,39 @@
+.miniMap{
+  width: 100%;
+  padding: 15px 0;
+  margin: 15px 0;
+  position: relative;
+  .seatBox{
+    background-color: #fff;
+    ul{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      .seat{
+        width: 4px;
+        height: 4px;
+        margin-right: 3px;
+        background-color: #ccc;
+        a{
+          font-size: 0;
+        }
+      }
+      .block{
+        background-color: #000;
+      }
+      .booked{
+        background-color: #000;
+      }
+      
+      li:nth-child(1){
+        display: none;
+      }
+      li:nth-child(3){
+        margin-right: 15px;;
+      }
+      li:nth-child(13){
+        margin-right: 15px;;
+      }
+    }
+  }
+}
