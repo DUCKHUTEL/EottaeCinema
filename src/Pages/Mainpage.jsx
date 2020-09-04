@@ -3,7 +3,7 @@ import MainHeaderComponent from "../Components/MainHeaderComponent/MainHeaderCom
 import MainFooterComponent from "../Components/MainFooterComponent/MainFooterComponent";
 import MainWallpaperComponent from "../Components/MainWallpapterComponent/MainWallpaperComponent";
 import MainSubsectionComponent from "../Components/MainSubsectionComponent/MainSubsectionComponent";
-import MainMoviesContainer from "../Containers/BookMoviesContainer";
+import MainMoviesContainer from "../Containers/MainMoviesContainer";
 
 export default function Mainpage() {
     return (

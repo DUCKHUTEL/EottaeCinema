@@ -1,11 +1,10 @@
 // @flow
 import React, { useCallback } from "react";
-import BookMoviesComponent from "../Components/MainMoviesComponenet/MainMoviesComponent";
+import BookMoviesComponent from "../Components/bookMoviesComponent/BookMoviesComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectTitleAction } from "../Redux/modules/select";
-import { Redirect } from "react-router-dom";
 import { push } from "connected-react-router";
-export default function BookMoviesContainer() {
+function BookMoviesContainer() {
     const moviesData = useSelector((state) => state.movies.movies);
 
     const dispatch = useDispatch();
@@ -29,3 +28,4 @@ export default function BookMoviesContainer() {
         />
     );
 }
+export default React.memo(BookMoviesContainer);
