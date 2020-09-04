@@ -1,4 +1,3 @@
-// @flow
 import * as React from 'react';
 
 export function ScreeningMoviesContainer(props) {
@@ -7,4 +6,4 @@ export function ScreeningMoviesContainer(props) {
       <h2></h2>
     </div>
   );
-};
+}
