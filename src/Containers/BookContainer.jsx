@@ -1,7 +1,7 @@
 // @flow
-import React from "react";
-import BookComponent from "../Components/bookComponent/BookComponent";
+import React from 'react';
+import BookComponent from '../Components/bookComponent/BookComponent';
 function BookContainer() {
-    return <BookComponent  />;
+  return <BookComponent />;
 }
-export default React.memo(BookContainer)
+export default React.memo(BookContainer);

@@ -72,7 +72,47 @@
     .btnBox{
       display: flex;
       width: 825px;
-      margin-top: 36px;
+      li:not(:first-child){
+        margin-left: 20px;
+      }
+      li{
+        display: flex;
+        align-items: center;
+        >span{
+          font-size: 13px;
+          font-weight: bold;
+          margin-right: 8px;
+        }
+        >div{
+          width: 100px;
+          height: 40px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          display: flex;
+          button{
+            width: 30px;
+            height: 40px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          .plus{
+            background-image: url("../../images/icon/plus_12.png");
+          }
+          >span{
+            display:inline-block;
+            text-align: center;
+            padding-top: 13px;
+            height: 40px;
+            width: 40px;
+            font-size: 13px;
+            font-weight: bold;
+          }
+          .minus{
+
+            background-image: url("../../images/icon/minus_12.png");
+          }
+        }
+      }
     }
   }
   .selectSection{
