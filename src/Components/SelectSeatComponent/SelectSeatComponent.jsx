@@ -4,62 +4,100 @@ import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
 import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
 import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import moment from 'moment';
+import { useEffect } from 'react';
 
-function SelectSeatComponent({ setStep, movies, bookingData }) {
+function SelectSeatComponent({ setStep, steps, movies, bookingData }) {
   moment.locale('ko');
-  const [adult, setAdultCnt] = useState(0);
-  const [junior, setJunior] = useState(0);
-  const [senior, setSenior] = useState(0);
-  const [handicaped, setHandicapedCnt] = useState(0);
-  const [peopleCnt, setPeopleCnt] = useState(0);
+
+  const [ppc, setppc] = useState({
+    adult: 0,
+    junior: 0,
+    senior: 0,
+    handicaped: 0,
+    all: 0,
+  });
   const [clickedSeat, clickSeat] = useState([]);
+  useEffect(() => {
+    setppc((state) => ({
+      adult: 0,
+      junior: 0,
+      senior: 0,
+      handicaped: 0,
+      all: 0,
+    }));
+  }, [steps]);
   const setBookPeopleCnt = useCallback((e) => {
     if (!e.target.matches('button')) return;
     if (e.target.parentNode.id === 'adult') {
       if (e.target.id === 'plus') {
-        setAdultCnt((state) => state + 1);
-        setPeopleCnt((state) => state + 1);
-      } else if (adult === 0) {
+        setppc((state) => ({
+          ...state,
+          adult: state.adult + 1,
+          all: state.all + 1,
+        }));
+      } else if (ppc.adult === 0) {
         return;
       } else {
-        setAdultCnt((state) => state - 1);
-        setPeopleCnt((state) => state - 1);
+        setppc((state) => ({
+          ...state,
+          adult: state.adult - 1,
+          all: state.all - 1,
+        }));
       }
     }
     if (e.target.parentNode.id === 'junior') {
       if (e.target.id === 'plus') {
-        setJunior((state) => state + 1);
-        setPeopleCnt((state) => state + 1);
-      } else if (junior === 0) {
+        setppc((state) => ({
+          ...state,
+          junior: state.junior + 1,
+          all: state.all + 1,
+        }));
+      } else if (ppc.junior === 0) {
         return;
       } else {
-        setJunior((state) => state - 1);
-        setPeopleCnt((state) => state - 1);
+        setppc((state) => ({
+          ...state,
+          junior: state.junior - 1,
+          all: state.all - 1,
+        }));
       }
     }
     if (e.target.parentNode.id === 'senior') {
       if (e.target.id === 'plus') {
-        setSenior((state) => state + 1);
-        setPeopleCnt((state) => state + 1);
-      } else if (senior === 0) {
+        setppc((state) => ({
+          ...state,
+          senior: state.senior + 1,
+          all: state.all + 1,
+        }));
+      } else if (ppc.senior === 0) {
         return;
       } else {
-        setSenior((state) => state - 1);
-        setPeopleCnt((state) => state - 1);
+        setppc((state) => ({
+          ...state,
+          senior: state.senior - 1,
+          all: state.all - 1,
+        }));
       }
     }
     if (e.target.parentNode.id === 'handicaped') {
       if (e.target.id === 'plus') {
-        setHandicapedCnt((state) => state + 1);
-        setPeopleCnt((state) => state + 1);
-      } else if (handicaped === 0) {
+        setppc((state) => ({
+          ...state,
+          handicaped: state.handicaped + 1,
+          all: state.all + 1,
+        }));
+      } else if (ppc.handicaped === 0) {
         return;
       } else {
-        setHandicapedCnt((state) => state - 1);
-        setPeopleCnt((state) => state - 1);
+        setppc((state) => ({
+          ...state,
+          handicaped: state.handicaped - 1,
+          all: state.all - 1,
+        }));
       }
     }
   });
+
   return bookingData === undefined ? (
     <></>
   ) : (
@@ -107,7 +145,7 @@ function SelectSeatComponent({ setStep, movies, bookingData }) {
             <span>성인</span>
             <div id="adult">
               <button id="minus" className={styles.minus}></button>
-              <span>{adult}</span>
+              <span>{ppc.adult}</span>
               <button id="plus" className={styles.plus}></button>
             </div>
           </li>
@@ -115,7 +153,7 @@ function SelectSeatComponent({ setStep, movies, bookingData }) {
             <span>청소년</span>
             <div id="junior">
               <button id="minus" className={styles.minus}></button>
-              <span>{junior}</span>
+              <span>{ppc.junior}</span>
               <button id="plus" className={styles.plus}></button>
             </div>
           </li>
@@ -123,7 +161,7 @@ function SelectSeatComponent({ setStep, movies, bookingData }) {
             <span>시니어</span>
             <div id="senior">
               <button id="minus" className={styles.minus}></button>
-              <span>{senior}</span>
+              <span>{ppc.senior}</span>
               <button id="plus" className={styles.plus}></button>
             </div>
           </li>
@@ -131,7 +169,7 @@ function SelectSeatComponent({ setStep, movies, bookingData }) {
             <span>장애인</span>
             <div id="handicaped">
               <button id="minus" className={styles.minus}></button>
-              <span>{handicaped}</span>
+              <span>{ppc.handicaped}</span>
               <button id="plus" className={styles.plus}></button>
             </div>
           </li>
@@ -145,7 +183,7 @@ function SelectSeatComponent({ setStep, movies, bookingData }) {
             bookedSeat={bookingData.bookedSeat}
             clickedSeat={clickedSeat}
             clickSeat={clickSeat}
-            peopleCnt={peopleCnt}
+            peopleCnt={ppc.all}
             type="select"
           />
         ) : bookingData.stage === '6' ? (
@@ -153,7 +191,7 @@ function SelectSeatComponent({ setStep, movies, bookingData }) {
             bookedSeat={bookingData.bookedSeat}
             clickedSeat={clickedSeat}
             clickSeat={clickSeat}
-            peopleCnt={peopleCnt}
+            peopleCnt={ppc.all}
             type="select"
           />
         ) : (
@@ -161,7 +199,7 @@ function SelectSeatComponent({ setStep, movies, bookingData }) {
             bookedSeat={bookingData.bookedSeat}
             clickedSeat={clickedSeat}
             clickSeat={clickSeat}
-            peopleCnt={peopleCnt}
+            peopleCnt={ppc.all}
             type="select"
           />
         )}

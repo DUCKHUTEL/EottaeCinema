@@ -29,6 +29,7 @@ function SecondSeat({
   useEffect(() => {
     clickSeat([]);
   }, [peopleCnt]);
+
   const choicSeat = useCallback((e) => {
     e.preventDefault();
     if (!e.target.matches('a') || peopleCnt === 0) return;
