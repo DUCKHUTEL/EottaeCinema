@@ -91,6 +91,9 @@
   }
   .full.seatBox{
     ul{
+      .seat{
+        background-color: inherit;
+      }
       li{
         a{
           background-image: url("../../../images/icon/seat_no_select.png");
