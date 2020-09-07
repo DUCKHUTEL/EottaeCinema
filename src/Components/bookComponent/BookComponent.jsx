@@ -8,8 +8,8 @@ import { LoadingContainer } from '../../Containers/LoadingContainer';
 import BookTheaterContainer from '../../Containers/BookTheaterContainer';
 import SelectSeatContainer from '../../Containers/SelectSeatContainer';
 
-function BookComponent() {
-  const [steps, setStep] = useState(1);
+function BookComponent({ passedStep }) {
+  const [steps, setStep] = useState(passedStep === 0 ? 1 : passedStep);
 
   const changeStep = useCallback((e) => {
     e.preventDefault();
