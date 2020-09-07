@@ -15,12 +15,15 @@ function MainMoviesComponent({ movies, getMovies }) {
     getMovies();
   }, []);
 
-  const clickRight = (e) => {
-    if (slideInfo.count > 5) return;
+  const clickRight = () => {
+    if (slideInfo.count >= 5) return;
     setSlideInfo((state) => ({
       ...state,
       count: state.count + 1,
-      print: { transform: `translate3d(${-198 * state.count + 1}px, 0, 0)` },
+    }));
+    setSlideInfo((state) => ({
+      ...state,
+      print: { transform: `translate3d(${-198 * state.count}px, 0, 0)` },
     }));
   };
 
@@ -29,7 +32,10 @@ function MainMoviesComponent({ movies, getMovies }) {
     setSlideInfo((state) => ({
       ...state,
       count: state.count - 1,
-      print: { transform: `translate3d(${-198 * state.count - 1}px, 0, 0)` },
+    }));
+    setSlideInfo((state) => ({
+      ...state,
+      print: { transform: `translate3d(${-198 * state.count}px, 0, 0)` },
     }));
   };
 
