@@ -3,7 +3,7 @@ import MainFooterComponent from '../Components/MainFooterComponent/MainFooterCom
 import ScheduleContainer from '../Containers/ScheduleContainer';
 import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
 export function SchedulePage() {
-  const index = 4;
+  const index = 5;
   return (
     <>
       <MainHeaderComponent path={[index]} />

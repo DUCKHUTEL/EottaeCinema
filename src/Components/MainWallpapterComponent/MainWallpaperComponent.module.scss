@@ -2,10 +2,12 @@
   position: relative;
   z-index: 0;
   height: 774px;
-  width: 100%;
+  width: 100vw;
+  background-color: black;
+
   .img-1 {
     height: 774px;
-    width: 100%;
+    width: 100vw;
     position: relative;
     z-index: 1;
     background-color: black;

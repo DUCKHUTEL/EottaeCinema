@@ -6,10 +6,9 @@ export default function MainWallpaperComponent() {
   return (
     <section className={styles['wallpaper']}>
       <OwlCarousel
-        className="owl-theme top-visual-box"
+        className={styles['owl-them']}
         items={1}
         loop
-        margin={10}
         nav
         autoplay
         autoplayTimeout={2000}
