@@ -11,7 +11,7 @@ function BookContainer() {
 
   const path = useSelector((state) => state.router.location.state);
   const passedStep = path === undefined ? 0 : path.step;
-  resetSelect();
+  // resetSelect();
 
   return <BookComponent passedStep={passedStep} />;
 }

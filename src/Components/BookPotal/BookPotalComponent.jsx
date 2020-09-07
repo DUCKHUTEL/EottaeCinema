@@ -17,6 +17,7 @@ function BookPotalComponent({ bookingData, setMind, setStep }) {
     }
     setMind(false);
   }, []);
+
   return (
     <div
       className={styles.bookModal}

@@ -1,255 +1,338 @@
-@import "../../commonVariables";
+@import '../../commonVariables';
 
-.bg {
-    position: relative;
-    width: 100vw;
-    border: 2px solid yellowgreen;
+@mixin nav-title-hover {
+  border-bottom: 2px solid #{$red};
+  transition: all 0.5s;
+}
 
-    nav {
-        @include layout;
-        display: flex;
-        border: 3px solid tomato;
-        .main_nav {
-            margin: auto;
-            display: flex;
-            transform: translate(15%);
-            .book {
-                @include main-header-nav-noicon;
-                width: 90px;
-                // position: relative;
+@mixin nav-title {
+  background-color: #{$main-nav-background-black};
+  opacity: 0.9;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  display: none;
+  justify-content: center;
+}
 
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                a::after {
-                    // @include main-header-nav-border-right;
-                }
+@mixin nav-title-item {
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  padding-right: 1%;
+  padding-left: 1%;
+  font-size: 12px;
+  & a {
+    font-size: 12px;
+  }
+}
 
-                ul {
-                    background-color: pink;
-                    width: 100vw;
-                    position: absolute;
-                    left: 0;
-                    display: none;
+@mixin nav-cinema-line {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30%;
+  padding-right: 30%;
+}
 
-                    &:hover {
-                        display: flex;
-                    }
+@mixin nav-cinema-item {
+  display: block;
+  padding-top: 1%;
+  padding-right: 8px;
+  font-size: 12px;
+  & a {
+    font-size: 12px;
+  }
+}
 
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
-                        }
-                    }
-                }
+//className nav-black
 
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
+.nav-black * {
+  color: white;
+}
 
-                &:hover > ul {
-                    display: flex;
-                }
-            }
+.nav-black {
+  position: relative;
+  width: 100vw;
 
-            .movie {
-                @include main-header-nav-noicon;
-                width: 90px;
-                position: relative;
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                ul {
-                    display: none;
-                    &:hover {
-                        display: flex;
-                    }
+  nav {
+    @include layout;
+    display: flex;
+    .main_nav {
+      margin: auto;
+      display: flex;
+      padding-left: 15%;
+      padding-top: 1%;
+      .book,
+      .movie,
+      .event,
+      .store {
+        @include main-header-nav-noicon;
+        width: 90px;
 
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
-                        }
-                    }
-                }
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
-
-                &:hover > ul {
-                    display: flex;
-                }
-            }
-            .movie::after {
-                @include main-header-nav-border-right;
-            }
-            .cinema {
-                @include main-header-nav-noicon;
-                width: 90px;
-                position: relative;
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                ul {
-                    background-color: pink;
-                    width: 100%;
-                    position: absolute;
-                    left: 0;
-                    display: none;
-
-                    &:hover {
-                        display: flex;
-                    }
-
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
-                        }
-                    }
-                }
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
-
-                &:hover > ul {
-                    display: flex;
-                }
-            }
-            .cinema::after {
-                @include main-header-nav-border-right;
-            }
-
-            .event {
-                @include main-header-nav-noicon;
-                width: 90px;
-                position: relative;
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                ul {
-                    background-color: pink;
-                    width: 100%;
-                    position: absolute;
-                    left: 0;
-                    display: none;
-
-                    &:hover {
-                        display: flex;
-                    }
-
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
-                        }
-                    }
-                }
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
-
-                &:hover > ul {
-                    display: flex;
-                }
-            }
-            .event::after {
-                @include main-header-nav-border-right;
-            }
-
-            .store {
-                @include main-header-nav-noicon;
-                width: 90px;
-                position: relative;
-                a {
-                    font-size: 14px;
-                    color: inherit;
-                }
-                ul {
-                    background-color: pink;
-                    width: 100%;
-                    position: absolute;
-                    left: 0;
-                    display: none;
-
-                    &:hover {
-                        display: flex;
-                    }
-
-                    li {
-                        display: block;
-                        background-color: skyblue;
-                        height: 38px;
-                        line-height: 38px;
-                        padding-right: 8px;
-                        & a {
-                        }
-                    }
-                }
-
-                &:hover {
-                    border-bottom: 2px solid #{$red};
-                }
-
-                &:hover > ul {
-                    display: flex;
-                }
-            }
+        &:hover {
+          @include nav-title-hover;
         }
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            width: 180px;
 
-            li {
-                @include main-header-nav-noicon;
-                a {
-                    font-size: 12px;
-                    @include main-header-icon;
-                }
-            }
-
-            .my {
-                a {
-                    text-align: right;
-                    background-image: url(../../images/icon/nav_side_my_wht.png);
-                }
-            }
-            .reservation {
-                a {
-                    background-image: url(../../images/icon/nav_side_reserve_wht.png);
-                }
-            }
-
-            .burger-bar {
-                button {
-                    border-style: none;
-                    width: 20px;
-                    background-color: transparent;
-                    background-image: url(../../images/icon/nav_side_all_wht.png);
-                    background-repeat: no-repeat;
-                    background-position: 0 center;
-                    text-indent: -999px;
-                    overflow: hidden;
-                }
-            }
+        &:hover ul {
+          display: flex;
         }
+
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+          li {
+            @include nav-title-item;
+          }
+        }
+      }
+
+      .cinema {
+        @include main-header-nav-noicon;
+        width: 90px;
+
+        &:hover {
+          @include nav-title-hover;
+        }
+
+        &:hover ul {
+          display: flex;
+        }
+
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+
+          li {
+          }
+          .cinema-1,
+          .cinema-2,
+          .cinema-3,
+          .cinema-4,
+          .cinema-5,
+          .cinema-6,
+          .cinema-7,
+          .cinema-8,
+          .cinema-9 {
+            @include nav-title-item;
+            &:hover ul {
+              display: flex;
+            }
+
+            ul {
+              @include nav-cinema-line;
+              display: none;
+              justify-content: center;
+              flex-wrap: wrap;
+              background-color: black;
+              li {
+                @include nav-cinema-item;
+                padding-left: 1%;
+              }
+            }
+          }
+        }
+      }
     }
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      width: 180px;
+
+      li {
+        @include main-header-nav-noicon;
+        a {
+          font-size: 12px;
+          @include main-header-icon;
+        }
+      }
+
+      .my {
+        a {
+          text-align: right;
+          background-image: url(../../images/icon/nav_side_my_wht.png);
+        }
+      }
+      .reservation {
+        a {
+          background-image: url(../../images/icon/nav_side_reserve_wht.png);
+        }
+      }
+
+      .burger-bar {
+        button {
+          border-style: none;
+          width: 20px;
+          background-color: transparent;
+          background-image: url(../../images/icon/nav_side_all_wht.png);
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          text-indent: -999px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+//className: nav-white
+
+.nav-white * {
+  color: black;
+}
+
+.nav-white {
+  position: relative;
+  width: 100vw;
+
+  nav {
+    @include layout;
+    display: flex;
+    .main_nav {
+      margin: auto;
+      display: flex;
+      padding-left: 15%;
+      padding-top: 1%;
+      .book,
+      .movie,
+      .event,
+      .store {
+        @include main-header-nav-noicon;
+        width: 90px;
+
+        &:hover {
+          @include nav-title-hover;
+        }
+
+        &:hover ul {
+          display: flex;
+        }
+
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+          background: white;
+          li {
+            @include nav-title-item;
+          }
+        }
+      }
+
+      .cinema {
+        @include main-header-nav-noicon;
+        width: 90px;
+
+        &:hover {
+          @include nav-title-hover;
+        }
+
+        &:hover ul {
+          display: flex;
+        }
+
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+          background: white;
+
+          li {
+            color: white;
+          }
+          .cinema-1,
+          .cinema-2,
+          .cinema-3,
+          .cinema-4,
+          .cinema-5,
+          .cinema-6,
+          .cinema-7,
+          .cinema-8,
+          .cinema-9 {
+            @include nav-title-item;
+            color: black;
+            &:hover ul {
+              display: flex;
+            }
+
+            ul {
+              @include nav-cinema-line;
+              display: none;
+              justify-content: center;
+              flex-wrap: wrap;
+              background-color: black;
+              li {
+                @include nav-cinema-item;
+                padding-left: 1%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      width: 180px;
+
+      li {
+        @include main-header-nav-noicon;
+        a {
+          font-size: 12px;
+          @include main-header-icon;
+        }
+      }
+
+      .my {
+        a {
+          text-align: right;
+          background-image: url(../../images/icon/nav_side_my_wht.png);
+        }
+      }
+      .reservation {
+        a {
+          background-image: url(../../images/icon/nav_side_reserve_wht.png);
+        }
+      }
+
+      .burger-bar {
+        button {
+          border-style: none;
+          width: 20px;
+          background-color: transparent;
+          background-image: url(../../images/icon/nav_side_all_wht.png);
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          text-indent: -999px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
 }

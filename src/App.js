@@ -14,6 +14,7 @@ function App() {
       <ConnectedRouter history={history}>
         <Switch>
           <Route path="/detail" component={DetailPage} />
+          {/* <Route path="/detail" component={DetailPage} /> */}
           <Route exact path="/" component={Mainpage} />
           <Route exact path="/ticketing" component={BookPage} />
           <Route exact path="/schedule" component={SchedulePage} />
