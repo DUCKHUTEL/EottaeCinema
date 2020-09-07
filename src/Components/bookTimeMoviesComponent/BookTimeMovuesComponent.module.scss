@@ -10,13 +10,20 @@
 dl, dd{
   margin: 0;
 }
+
 .BookTimeMovie{
   width: 500px;
+  &.schduleBookTimeMoive{
+    width: 100%;
+    h3{
+      color: #000;
+      background-color: #e2e2e2;
+    }
+  }
   h3{
     padding-top: 16px;
     text-align: center;
     margin: 0;
-    width: 500px;
     height: 55px;
     background-color: #000;
     color: #fff;
@@ -28,10 +35,7 @@ dl, dd{
     .dateSelector{
       height: 75px;
       margin: 22px 20px 10px;
-      .owl-carousel{
-        padding: 0 20px;
-        cursor: pointer;
-      }
+
     }
     
     .filtertBy{

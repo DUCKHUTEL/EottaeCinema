@@ -30,7 +30,13 @@ function SixthSeat({
   }, [peopleCnt]);
   const choicSeat = useCallback((e) => {
     e.preventDefault();
-    if (!e.target.matches('a') || peopleCnt === 0) return;
+    if (
+      !e.target.matches('a') ||
+      peopleCnt === 0 ||
+      e.target.parentNode.className.indexOf('block') !== -1 ||
+      e.target.parentNode.className.indexOf('booked') !== -1
+    )
+      return;
     const seatData = e.target.dataset.seat;
 
     if (clickedSeat.includes(seatData)) {
