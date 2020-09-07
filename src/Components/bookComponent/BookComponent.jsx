@@ -81,7 +81,7 @@ function BookComponent() {
           <BookTimeMoviesContainer setStep={setStep} />
         </section>
         <section className={steps === 2 ? styles.nowStep : styles.notNow}>
-          <SelectSeatContainer setStep={setStep} />
+          <SelectSeatContainer setStep={setStep} steps={steps} />
         </section>
       </div>
       <LoadingContainer />

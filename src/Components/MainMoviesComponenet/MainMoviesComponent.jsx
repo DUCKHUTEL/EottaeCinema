@@ -1,124 +1,99 @@
-import React from "react";
-import styles from "./MainMoviesComponent.module.scss";
+import React from 'react';
+import styles from './MainMoviesComponent.module.scss';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import DetailContent from '../Detail2/DetailContent';
 
-function MainMoviesComponent() {
+function MainMoviesComponent({ movies, getMovies }) {
+  const [slideInfo, setSlideInfo] = useState({
+    count: 0,
+    print: { transform: `translate3d(${-198 * 0}px, 0, 0)` },
+  });
 
-    return (
-        <main className={styles["movies-info"]}>
-            <div className={styles["standard-time"]}>08.29 19:15기준</div>
-            <ul>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>1</figcaption>
-                    </figure>
-                    <table>
-                        <caption></caption>
-                        <thead>
-                            <tr>
-                                <th colSpan="3">다만 악에서 구원하소서</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>예매율</td>
-                                <td>별점</td>
-                                <td>하트</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>2</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>3</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>4</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>5</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>6</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>7</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>8</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>9</figcaption>
-                    </figure>
-                </li>
-                <li>
-                    <figure>
-                        <img
-                            src="https://caching.lottecinema.co.kr//Media/MovieFile/MovieImg/202007/16023_101_1.jpg"
-                            alt="다만 악에서 구원하소서"
-                        ></img>
-                        <figcaption>10</figcaption>
-                    </figure>
-                </li>
-            </ul>
+  useEffect(() => {
+    getMovies();
+  }, []);
 
-            <nav>
-                <button className={styles["left"]}>이전</button>
-                <button className={styles["right"]}>이후</button>
+  const clickRight = (e) => {
+    if (slideInfo.count > 5) return;
+    setSlideInfo((state) => ({
+      ...state,
+      count: state.count + 1,
+      print: { transform: `translate3d(${-198 * state.count + 1}px, 0, 0)` },
+    }));
+  };
+
+  const clickLeft = () => {
+    if (slideInfo.count < 0) return;
+    setSlideInfo((state) => ({
+      ...state,
+      count: state.count - 1,
+      print: { transform: `translate3d(${-198 * state.count - 1}px, 0, 0)` },
+    }));
+  };
+
+  return (
+    <main className={styles['movies-info']}>
+      <div className={styles['standard-time']}>08.29 19:15기준</div>
+      <ul>
+        {movies.map((movie, i) => (
+          <li key={i} style={slideInfo.print}>
+            <figure>
+              <img src={movie.moviePoster} alt={movie.movieTitle}></img>
+              <figcaption>{movie.movieId}</figcaption>
+            </figure>
+            <table>
+              <caption></caption>
+              <thead>
+                <tr>
+                  <th colSpan="3">{movie.movieTitle}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{movie.movieBookPer}%</td>
+                  <td>{movie.moviePoing}</td>
+                  <td>하트</td>
+                </tr>
+              </tbody>
+            </table>
+            <nav className={styles['slide-button']}>
+              <div>
+                <button className={styles['button-1']}>
+                  <Link to="/ticketing">예매하기</Link>
+                </button>
+                <button
+                  className={styles['button-2']}
+                  onClick={() => <DetailContent title={movie.movieTitle} />}
+                >
+                  <Link
+                    onClick={() => <DetailContent title={movie.movieTitle} />}
+                    to={'/detail?title=' + movie.movieTitle}
+                  >
+                    상세정보
+                  </Link>
+                </button>
+              </div>
             </nav>
-        </main>
-    );
+          </li>
+        ))}
+      </ul>
+
+      <nav>
+        {slideInfo.count > 0 ? (
+          <button className={styles['left']} onClick={clickLeft}>
+            이전
+          </button>
+        ) : (
+          ''
+        )}
+
+        <button className={styles['right']} onClick={clickRight}>
+          이후
+        </button>
+      </nav>
+    </main>
+  );
 }
-export default React.memo(MainMoviesComponent) 
+export default React.memo(MainMoviesComponent);

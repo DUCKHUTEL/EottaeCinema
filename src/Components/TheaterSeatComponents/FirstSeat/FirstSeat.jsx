@@ -1,8 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styles from './FirstSeat.module.scss';
-function FirstSeat({ bookedSeat, type }) {
+function FirstSeat({
+  bookedSeat,
+  type,
+  peopleCnt = 0,
+  clickedSeat = [],
+  clickSeat = () => {},
+}) {
   const bookedId = bookedSeat.split(';');
-  console.log(bookedId);
   const row = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
   const col = [
     '1',
@@ -26,10 +31,35 @@ function FirstSeat({ bookedSeat, type }) {
   const blockA = ['1', '3', '4', '6', '8', '10', '12', '15', '17'];
   const blockB = ['2', '5', '7', '9', '11', '13', '14', '16'];
 
-  const choicSeat = useCallback(() => {});
+  useEffect(() => {
+    clickSeat([]);
+  }, [peopleCnt]);
+  const choicSeat = useCallback((e) => {
+    e.preventDefault();
+    if (!e.target.matches('a') || peopleCnt === 0) return;
+    const seatData = e.target.dataset.seat;
+
+    if (clickedSeat.includes(seatData)) {
+      const idx = clickedSeat.indexOf(seatData);
+      const copy = [...clickedSeat];
+      copy.splice(idx, 1);
+      clickSeat(copy);
+      return;
+    }
+
+    clickSeat((state) => [...state, seatData]);
+  });
+
   return (
     <div className={styles[type]}>
-      <div className={styles.seatBox}>
+      <div
+        className={
+          peopleCnt !== 0 && peopleCnt === clickedSeat.length
+            ? [styles.full, styles.seatBox].join(' ')
+            : styles.seatBox
+        }
+        onClick={choicSeat}
+      >
         {row.map((ro, roIdx) => (
           <ul key={roIdx}>
             <li>{ro.toUpperCase()}</li>
@@ -43,6 +73,10 @@ function FirstSeat({ bookedSeat, type }) {
                     ? [styles.block, styles.seat].join(' ')
                     : bookedId.includes(`${ro}${co}`)
                     ? [styles.booked, styles.seat].join(' ')
+                    : peopleCnt === 0 || peopleCnt < clickedSeat.length
+                    ? styles.seat
+                    : clickedSeat.includes(`${ro}${co}`)
+                    ? [styles.clicked, styles.seat].join(' ')
                     : styles.seat
                 }
               >

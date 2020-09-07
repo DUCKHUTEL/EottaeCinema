@@ -2,7 +2,7 @@ import React from 'react';
 import SelectSeatComponent from '../Components/SelectSeatComponent/SelectSeatComponent';
 import { useSelector } from 'react-redux';
 
-function SelectSeatContainer({ setStep }) {
+function SelectSeatContainer({ setStep, steps }) {
   const movies = useSelector((state) => state.movies.movies);
   const bookingData = useSelector((state) => state.bookingData.bookingData);
 
@@ -11,6 +11,7 @@ function SelectSeatContainer({ setStep }) {
       setStep={setStep}
       movies={movies}
       bookingData={bookingData[0]}
+      steps={steps}
     />
   );
 }
