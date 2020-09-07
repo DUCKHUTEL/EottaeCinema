@@ -1,6 +1,5 @@
 import React from 'react';
 import BookContainer from '../Containers/BookContainer';
-// import MainHeaderComponentBlack from '../Components/MainHeaderComponent/MainHeaderComponentBlack';
 import MainFooterComponent from '../Components/MainFooterComponent/MainFooterComponent';
 import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
 export function BookPage() {

@@ -7,6 +7,12 @@
   position: relative;
   background-color: #{$main-background-black};
 
+  .standard-time {
+    display: inline;
+    position: absolute;
+    top: -8%;
+    right: 20%;
+  }
   ul {
     display: flex;
     @include layout;
@@ -15,6 +21,10 @@
     //전체 적용
     // 개별 적용
     li {
+      &:hover nav {
+        display: block;
+      }
+
       transform: translate3d(calc(-198px * 0), 0, 0);
       transition: all 0.2s;
       margin-right: 15px;
@@ -45,6 +55,7 @@
       }
 
       nav {
+        display: none;
         background-color: rgba(0, 0, 0, 0.7);
         position: absolute;
         top: 0;
@@ -52,22 +63,30 @@
         height: 75%;
 
         .button-1 {
-          position: absolute;
-          top: 25%;
-          left: 25%;
           a {
-            width: 100%;
-            padding: 10% 5% 10% 5%;
+            position: absolute;
+            top: 180%;
+            left: 38%;
+            width: 150px;
+            height: 34px;
+            line-height: 34px;
+            font-size: 14px;
+            border: 2px solid white;
+            border-radius: 5px;
           }
         }
 
         .button-2 {
-          position: absolute;
-          top: 50%;
-          left: 25%;
           a {
-            width: 100%;
-            border: 1px solid orangered;
+            position: absolute;
+            top: 280%;
+            left: 38%;
+            width: 150px;
+            height: 34px;
+            line-height: 34px;
+            font-size: 14px;
+            border: 2px solid white;
+            border-radius: 5px;
           }
         }
       }
@@ -82,14 +101,12 @@
     }
 
     .left {
-      top: 50%;
-      transform: translate3d(0, -100%, 0);
-      left: 400px;
+      top: 30%;
+      left: 21%;
     }
     .right {
-      top: 50%;
-      transform: translate3d(0, -100%, 0);
-      right: 400px;
+      top: 30%;
+      right: 21%;
     }
   }
 }

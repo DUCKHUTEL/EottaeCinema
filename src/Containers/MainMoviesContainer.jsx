@@ -9,7 +9,7 @@ function MainMoviesContainer() {
   const getMovies = React.useCallback(() => {
     dispatch(startGetMoviesActionCreator());
   }, [dispatch]);
-  //   getMovies();
+  getMovies();
   const movies = useSelector((state) => state.movies.movies);
 
   return <MainMoviesComponent movies={movies} getMovies={getMovies} />;

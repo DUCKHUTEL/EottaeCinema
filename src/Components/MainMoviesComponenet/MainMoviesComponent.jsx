@@ -3,12 +3,12 @@ import styles from './MainMoviesComponent.module.scss';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import DetailContent from '../Detail2/DetailContent';
 
 function MainMoviesComponent({ movies, getMovies }) {
-  const [count, setcount] = useState(0);
-  const num = 198 * count;
-  const [print, setprint] = useState({
-    transform: `translate3d(${num}px, 0, 0)`,
+  const [slideInfo, setSlideInfo] = useState({
+    count: 0,
+    print: { transform: `translate3d(${-198 * 0}px, 0, 0)` },
   });
 
   useEffect(() => {
@@ -16,25 +16,29 @@ function MainMoviesComponent({ movies, getMovies }) {
   }, []);
 
   const clickRight = (e) => {
-    if (count > 5) return;
-    setcount(count + 1);
-    console.log(count);
-    const num = count * -198;
-    setprint({ transform: `translate3d(${num}px, 0, 0)` });
+    if (slideInfo.count > 5) return;
+    setSlideInfo((state) => ({
+      ...state,
+      count: state.count + 1,
+      print: { transform: `translate3d(${-198 * state.count + 1}px, 0, 0)` },
+    }));
   };
 
   const clickLeft = () => {
-    if (count <= 0) return;
-    setcount(count - 1);
-    const num = count * -198;
-    setprint({ transform: `translate3d(${num}px, 0, 0)` });
+    if (slideInfo.count < 0) return;
+    setSlideInfo((state) => ({
+      ...state,
+      count: state.count - 1,
+      print: { transform: `translate3d(${-198 * state.count - 1}px, 0, 0)` },
+    }));
   };
+
   return (
     <main className={styles['movies-info']}>
       <div className={styles['standard-time']}>08.29 19:15기준</div>
       <ul>
         {movies.map((movie, i) => (
-          <li key={i} style={print}>
+          <li key={i} style={slideInfo.print}>
             <figure>
               <img src={movie.moviePoster} alt={movie.movieTitle}></img>
               <figcaption>{movie.movieId}</figcaption>
@@ -54,13 +58,21 @@ function MainMoviesComponent({ movies, getMovies }) {
                 </tr>
               </tbody>
             </table>
-            <nav>
+            <nav className={styles['slide-button']}>
               <div>
                 <button className={styles['button-1']}>
                   <Link to="/ticketing">예매하기</Link>
                 </button>
-                <button className={styles['button-2']}>
-                  <Link to="/detail">상세정보</Link>
+                <button
+                  className={styles['button-2']}
+                  onClick={() => <DetailContent title={movie.movieTitle} />}
+                >
+                  <Link
+                    onClick={() => <DetailContent title={movie.movieTitle} />}
+                    to={'/detail?title=' + movie.movieTitle}
+                  >
+                    상세정보
+                  </Link>
                 </button>
               </div>
             </nav>
@@ -69,7 +81,7 @@ function MainMoviesComponent({ movies, getMovies }) {
       </ul>
 
       <nav>
-        {count > 0 ? (
+        {slideInfo.count > 0 ? (
           <button className={styles['left']} onClick={clickLeft}>
             이전
           </button>
