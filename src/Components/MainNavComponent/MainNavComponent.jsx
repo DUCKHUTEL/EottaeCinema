@@ -15,7 +15,9 @@ export default function MainNavComponent(props) {
               <li>
                 <Link to="/ticketing">예매하기</Link>
               </li>
-              <li>상영시간표</li>
+              <li>
+                <Link to="/schedule">상영시간표</Link>
+              </li>
               <li>할인안내</li>
             </ul>
           </li>
