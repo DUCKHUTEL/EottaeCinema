@@ -4,7 +4,13 @@ import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
 import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
 import { history } from '../../Redux/create';
-function BookPotalComponent({ bookingData, setMind, setStep }) {
+function BookPotalComponent({
+  bookingData,
+  setMind,
+  setStep,
+  selectTitle,
+  selectPoint,
+}) {
   const close = useCallback(() => {
     setMind(false);
   }, [setMind]);
@@ -14,6 +20,7 @@ function BookPotalComponent({ bookingData, setMind, setStep }) {
       setStep(2);
     } else {
       history.push('/ticketing', { step: 2 });
+      console.log(bookingData);
     }
     setMind(false);
   }, []);

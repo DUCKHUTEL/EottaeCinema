@@ -7,6 +7,7 @@ import styles from './MainHeaderComponent.module.scss';
 //2. click
 //3. usememo
 export default function MainHeaderComponent(props) {
+  console.log(props);
   const [index, path] = props.path;
   const useScroll = (e) => {
     console.log(e);

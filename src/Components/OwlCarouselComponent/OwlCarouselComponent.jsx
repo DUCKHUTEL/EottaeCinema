@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-// import styles from "../bookTimeMoviesComponent/BookTimeMovuesComponent.module.scss"
+import React, { useRef } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -8,7 +7,7 @@ import 'moment/locale/ko';
 import moment from 'moment';
 import { useEffect } from 'react';
 
-function OwlCarouselComponent({ selectDate, type }) {
+function OwlCarouselComponent({ selectDate, from, type }) {
   const showDate = useRef([
     '2020-08-24',
     '2020-08-25',
@@ -27,13 +26,14 @@ function OwlCarouselComponent({ selectDate, type }) {
   ]);
   const firstCheck = useRef(null);
   useEffect(() => {
-    firstCheck.current.checked = true;
-    console.log(firstCheck);
-    console.log(firstCheck.current.checked);
+    firstCheck.current.dataset.showdate === '2020-08-24'
+      ? (firstCheck.current.checked = true)
+      : (firstCheck.current.checked = false);
+    console.log(firstCheck, firstCheck.current.dataset);
   }, []);
   return (
     <OwlCarousel
-      items={type ? 14 : 8}
+      items={from ? 14 : 8}
       dots={false}
       nav={true}
       className={'owl-carousel'}
@@ -52,7 +52,7 @@ function OwlCarouselComponent({ selectDate, type }) {
             <input
               className="a11yHidden"
               type="radio"
-              name={`date`}
+              name={`date${type ? type : ''}`}
               data-showdate={date}
               ref={idx === 0 ? firstCheck : null}
               onChange={(e) => {
