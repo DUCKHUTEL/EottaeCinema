@@ -7,7 +7,7 @@ import {
   setSelectPointAction,
 } from '../Redux/modules/select';
 
-function BookPotalContainer({ setMind, setStep, from }) {
+function BookPotalContainer({ setMind, setStep, from, type }) {
   const dispatch = useDispatch();
   const bookingData = useSelector((state) => state.bookingData.bookingData);
 
@@ -33,6 +33,7 @@ function BookPotalContainer({ setMind, setStep, from }) {
       selectTitle={selectTitle}
       selectPoint={selectPoint}
       from={from}
+      type={type}
     />,
     document.getElementById('bookPotal'),
   );

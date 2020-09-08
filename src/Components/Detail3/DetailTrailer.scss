@@ -1,0 +1,42 @@
+.movie-tab-info2 {
+  position: relative;
+  margin-bottom: 60px;
+
+  .trailer-text {
+    font-size: 15px;
+    margin-bottom: -20px;
+  }
+
+  .trailer-slider-wrap {
+    padding-top: 37px;
+
+    .owl-carousel{
+      .item {
+        img {
+          height: 220px;
+        }
+
+        .trailer-title {
+          margin-top: 15px;
+          width: 100%;
+          font-size: 13px;
+          text-align: center;
+        }
+      }
+
+      .owl-prev, .owl-next {
+        position: absolute;
+        top: -55px;
+        width: 30px;
+      }
+
+      .owl-prev {
+        left: 930px;
+      }
+
+      .owl-next {
+        right: -10px;
+      }
+    }
+  }
+}
