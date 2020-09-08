@@ -2,17 +2,19 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectPointAction } from '../Redux/modules/select';
 import AllTheaterPointComponent from '../Components/AllTheaterPointComponent/AllTheaterPointComponent';
-function AllTheaterPointContainer({point}) {
-  
-  const dispatch =useDispatch();
+function AllTheaterPointContainer({ point, from }) {
+  const dispatch = useDispatch();
 
-  const selectPoint = useCallback(selectPoint => {
-    dispatch(setSelectPointAction(selectPoint));
-  },[dispatch]);
+  const selectPoint = useCallback(
+    (selectPoint) => {
+      dispatch(setSelectPointAction(selectPoint));
+    },
+    [dispatch],
+  );
 
-  const allTheater = useSelector(state => state.theaters.theaters);
-  const resTheater = useSelector(state=> state.theaters.selectedTheaters); 
-  const resMovies = useSelector(state=> state.theaters.selectedMoiveData);
+  const allTheater = useSelector((state) => state.theaters.theaters);
+  const resTheater = useSelector((state) => state.theaters.selectedTheaters);
+  const resMovies = useSelector((state) => state.theaters.selectedMoiveData);
   return (
     <AllTheaterPointComponent
       allTheater={allTheater}
@@ -20,8 +22,9 @@ function AllTheaterPointContainer({point}) {
       selectPoint={selectPoint}
       point={point}
       resMovies={resMovies}
+      from={from}
     />
   );
-};
+}
 
-export default React.memo(AllTheaterPointContainer)
+export default React.memo(AllTheaterPointContainer);
