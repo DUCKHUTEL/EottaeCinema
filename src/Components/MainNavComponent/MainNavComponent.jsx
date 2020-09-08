@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './MainNavComponent.module.scss';
 import { Link } from 'react-router-dom';
 
-export default function MainNavComponent(props) {
+function MainNavComponent(props) {
   const path = props.path;
   return (
     <div className={path ? styles['nav-black'] : styles['nav-white']}>
@@ -261,3 +261,5 @@ export default function MainNavComponent(props) {
     </div>
   );
 }
+
+export default React.memo(MainNavComponent);
