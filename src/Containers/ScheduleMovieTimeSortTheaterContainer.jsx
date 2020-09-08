@@ -24,7 +24,6 @@ function ScheduleMovieTimeSortTheaterContainer({ setStep }) {
   const movieDataSetTheater = useSelector(
     (state) => state.theaters.movieDataSetTheater,
   );
-  console.log(movieDataSetTheater);
 
   return (
     <ScheduleMovieTimeSortTheaterComponent

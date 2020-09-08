@@ -2,7 +2,6 @@ import React, { useState, useRef, useCallback } from 'react';
 import styles from './ScheduleMovieTimeSortTheaterComponent.module.scss';
 import 'moment/locale/ko';
 import moment from 'moment';
-
 import OwlCarouselComponent from '../OwlCarouselComponent/OwlCarouselComponent';
 import BookPotalContainer from '../../Containers/BookPotalContainer';
 
@@ -18,7 +17,7 @@ function ScheduleMovieTimeSortTheaterComponent({
   moment.locale('ko');
   const [filtertBy, setfilter] = useState('서울');
   const [Booking, setMind] = useState(false);
-
+  console.log('1');
   const doSortMovie = useCallback((e) => {
     setfilter(e.target.id);
   }, []);
