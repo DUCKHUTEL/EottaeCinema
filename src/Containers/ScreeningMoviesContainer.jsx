@@ -6,4 +6,4 @@ export function ScreeningMoviesContainer(props) {
       <h2></h2>
     </div>
   );
-};
+}

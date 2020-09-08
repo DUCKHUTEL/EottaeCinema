@@ -5,7 +5,7 @@
   padding-top: 80px;
 
   .movie-info1 {
-    button {
+    .movie-info1-button {
       position: absolute;
       top: 0;
       width: 50%;
@@ -74,6 +74,7 @@
           }
         }
       }
+      
     }
   }
 }

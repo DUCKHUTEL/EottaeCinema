@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectTitleAction } from '../Redux/modules/select';
 import { push } from 'connected-react-router';
-import BookMoviesComponent from '../Components/bookMoviesComponent/BookmoviesComponent';
+import BookMoviesComponent from '../Components/bookMoviesComponent/BookMoviesComponent';
 function BookMoviesContainer({ from }) {
   const moviesData = useSelector((state) => state.movies.movies);
 
