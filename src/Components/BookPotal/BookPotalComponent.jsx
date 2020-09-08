@@ -10,6 +10,7 @@ function BookPotalComponent({
   setStep,
   selectTitle,
   selectPoint,
+  type,
 }) {
   const close = useCallback(() => {
     setMind(false);
@@ -18,6 +19,9 @@ function BookPotalComponent({
   const goSelectSeat = useCallback(() => {
     if (setStep !== undefined) {
       setStep(2);
+    } else if (type) {
+      history.push('/ticketing', { step: 2 });
+      selectPoint(bookingData.theaterLocation);
     } else {
       history.push('/ticketing', { step: 2 });
       console.log(bookingData);
