@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
-import BookTimeMovieComponent from '../Components/bookTimeMoviesComponent/BookTimeMovieComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectDateAction } from '../Redux/modules/select';
 import { getBookingDataAction } from '../Redux/modules/bookingData';
-function BookTimeMoviesContainer({ setStep, from, type }) {
+import ScheduleMovieTimeSortTheaterComponent from '../Components/ScheduleMovieTimeSortTheaterComponent/ScheduleMovieTimeSortTheaterComponent';
+function ScheduleMovieTimeSortTheaterContainer({ setStep }) {
   const dispatch = useDispatch();
 
   const selectDate = useCallback(
@@ -18,22 +18,24 @@ function BookTimeMoviesContainer({ setStep, from, type }) {
   });
 
   const selectedDate = useSelector((state) => state.selectData.date);
+  const selectedTitle = useSelector((state) => state.selectData.title);
+  const theatersData = useSelector((state) => state.theaters.theaters);
 
-  const movieDataForBookBtn = useSelector(
-    (state) => state.theaters.movieDataForBookBtn,
+  const movieDataSetTheater = useSelector(
+    (state) => state.theaters.movieDataSetTheater,
   );
 
   return (
-    <BookTimeMovieComponent
+    <ScheduleMovieTimeSortTheaterComponent
       selectDate={selectDate}
       selectedDate={selectedDate}
-      movieDataForBookBtn={movieDataForBookBtn}
       setStep={setStep}
       bookData={bookData}
-      from={from}
-      type={type}
+      theatersData={theatersData}
+      selectedTitle={selectedTitle}
+      movieDataSetTheater={movieDataSetTheater}
     />
   );
 }
 
-export default React.memo(BookTimeMoviesContainer);
+export default React.memo(ScheduleMovieTimeSortTheaterContainer);

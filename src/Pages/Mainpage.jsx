@@ -11,7 +11,7 @@ export default function Mainpage(props) {
     <>
       <MainHeaderComponent path={[index, props.match.path]} />
       <MainWallpaperComponent />
-      {/* <MainMoviesContainer /> */}
+      <MainMoviesContainer />
       <MainSubsectionComponent />
       <MainFooterComponent />
     </>

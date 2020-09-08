@@ -8,8 +8,8 @@ import styles from './MainHeaderComponent.module.scss';
 //3. usememo
 
 function MainHeaderComponent(props) {
-  console.log(props.path);
   const [index, path] = props.path;
+
   const useScroll = (e) => {
     console.log(e);
     const dom = useRef();
@@ -81,7 +81,7 @@ function MainHeaderComponent(props) {
           <li className={styles['login_logout']}>로그아웃</li>
         </ul>
       </section>
-      <MainNavComponent />
+      <MainNavComponent path={path} />
     </header>
   );
 }

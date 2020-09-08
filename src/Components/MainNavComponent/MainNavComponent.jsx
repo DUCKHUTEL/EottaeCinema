@@ -9,7 +9,6 @@ function MainNavComponent(props) {
       <nav>
         <ul className={styles['main_nav']}>
           <li className={styles['book']}>
-            {/* <a href="/">예매</a> */}
             <Link to="/ticketing">예매</Link>
             <ul>
               <li>
