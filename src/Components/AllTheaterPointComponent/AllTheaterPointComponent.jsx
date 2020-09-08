@@ -9,7 +9,14 @@ function AllTheaterPointComponent({
   resMovies,
   from,
 }) {
-  const [active, setActive] = useState(point !== '없음' ? point : '서울');
+  const [active, setActive] = useState(
+    // point !== '없음' ? point : '서울'
+    allTheater.map((allT) => {
+      const location = Object.keys(allT)[0];
+      const res = allT[location].includes(point) ? location : '서울';
+      return res;
+    })[0],
+  );
   const [clickedPoint, setPoint] = useState(point !== '없음' ? point : '가양');
 
   useEffect(() => {
