@@ -2,14 +2,13 @@ import React from 'react';
 import styles from './MainNavComponent.module.scss';
 import { Link } from 'react-router-dom';
 
-export default function MainNavComponent(props) {
+function MainNavComponent(props) {
   const path = props.path;
   return (
     <div className={path ? styles['nav-black'] : styles['nav-white']}>
       <nav>
         <ul className={styles['main_nav']}>
           <li className={styles['book']}>
-            {/* <a href="/">예매</a> */}
             <Link to="/ticketing">예매</Link>
             <ul>
               <li>
@@ -261,3 +260,5 @@ export default function MainNavComponent(props) {
     </div>
   );
 }
+
+export default React.memo(MainNavComponent);

@@ -1,8 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import styles from './BookMoviesComponent.module.scss';
-function BookmoviesComponent({ selectTitle, selectedTitle, moviesData }) {
+import { useEffect } from 'react';
+function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
   const [sort, setSort] = useState('movieBookPer');
   const [show, setShow] = useState('hamberger');
+
+  useEffect(() => {
+    if (from === undefined) {
+      if (selectedTitle === '없음') selectTitle('테넷');
+    }
+  }, []);
+
   const changeSort = useCallback((e) => {
     setSort(e.target.value);
   }, []);
@@ -10,6 +18,7 @@ function BookmoviesComponent({ selectTitle, selectedTitle, moviesData }) {
   const selectingMoive = useCallback(
     (e) => {
       e.preventDefault();
+      if (!e.target.matches('span') && !e.target.matches('a')) return;
       if (e.target.matches('span')) {
         selectTitle(e.target.parentNode.dataset.title);
         return;

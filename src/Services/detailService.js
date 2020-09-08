@@ -4,8 +4,10 @@ const MOVIE_API_URL =
   "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=X98WT5556TJ6I705U2O4&title=";
 
 export default class detailService {
-  static async getMovieData() {
-    const res = await axios.get(`${MOVIE_API_URL}오케이 마담`);
+  static async getMovieData(title) {
+    console.log(title);
+    const res = await axios.get(`${MOVIE_API_URL}${title}`);
+    console.log("res", res);
     // const needData = await {
     //   id: res.data.Data[0].Result[0].movieSeq,
     //   title: res.data.KMAQuery,

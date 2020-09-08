@@ -1,0 +1,33 @@
+.video-background {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  right: 0;
+  text-align: center;
+  padding-top: 10%;
+
+  .video {
+    border: 20px solid white;
+    border-radius: 5px;
+
+    .close-btn {
+      position: absolute;
+      left: 30%;
+      background-color: red;
+      width: 30px;
+      height: 30px;
+
+      div {
+      }
+    }
+  }
+}
+
+// body {
+//   overflow: hidden;
+//   position: fixed;
+// }

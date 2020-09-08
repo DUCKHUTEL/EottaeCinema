@@ -33,19 +33,21 @@ const failGetMovieData = (err) => {
   };
 };
 
-function* getMovieSaga() {
+function* getMovieSaga(action) {
+  const { title } = action;
   yield put(startGetMovieData());
   try {
-    const movieData = yield call(detailService.getMovieData);
+    const movieData = yield call(detailService.getMovieData, title);
     yield put(successGetMovieData(movieData));
   } catch (err) {
     yield put(failGetMovieData(err));
   }
 }
 const GET_MOVIE_SAGA = "GET_MOVIE_SAGA";
-export const getMovieDataSagaActionCreator = () => {
+export const getMovieDataSagaActionCreator = (title) => {
   return {
     type: GET_MOVIE_SAGA,
+    title,
   };
 };
 
