@@ -3,7 +3,6 @@ import AllTheaterPointContainer from '../../Containers/AllTheaterPointContainer'
 import styles from './BookTheaterComponent.module.scss';
 function BookTheaterComponent({ point }) {
   const [select, setSelect] = useState('all');
-
   const clickTheater = useCallback((e) => {
     if (!e.target.matches('button')) return;
     setSelect(e.target.id);

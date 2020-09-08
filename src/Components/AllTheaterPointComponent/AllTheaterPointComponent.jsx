@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import styles from './AlltheaterPointComponent.module.scss';
 
 function AllTheaterPointComponent({
@@ -7,9 +7,16 @@ function AllTheaterPointComponent({
   selectPoint,
   point,
   resMovies,
+  from,
 }) {
   const [active, setActive] = useState(point !== '없음' ? point : '서울');
-  const [clickedPoint, setPoint] = useState('');
+  const [clickedPoint, setPoint] = useState(point !== '없음' ? point : '가양');
+
+  useEffect(() => {
+    if (point === '없음') {
+      selectPoint('가양');
+    }
+  }, [point]);
 
   const localTabChange = useCallback((e) => {
     e.preventDefault();
@@ -25,7 +32,12 @@ function AllTheaterPointComponent({
   }, []);
 
   return (
-    <ul className={styles.pointList} onClick={localTabChange}>
+    <ul
+      className={
+        from ? [styles.schedule, styles.pointList].join(' ') : styles.pointList
+      }
+      onClick={localTabChange}
+    >
       <li
         id="my영화관"
         className={
@@ -74,7 +86,7 @@ function AllTheaterPointComponent({
                     href="#"
                     id={point}
                     className={
-                      clickedPoint === point
+                      point === clickedPoint
                         ? [styles.activePoint, styles.point].join(' ')
                         : styles.point
                     }

@@ -57,6 +57,9 @@
         text-align: center;
         margin-right: 5px;
         a{
+          display: inline-block;
+          width: 100%;
+          height: 100%;
           cursor: inherit;
           font-size: 10px;
         }
@@ -70,6 +73,12 @@
         cursor: default;
         background: #7c7c7c;
       }
+      .clicked{
+        background: #FF243E;
+        a{
+          color: #fff;
+        }
+      }
       li:nth-child(1){
         color: #fff;
         margin-right: 40px;
@@ -79,6 +88,25 @@
       }
       li:nth-child(13){
         margin-right: 25px;;
+      }
+    }
+  }
+  .full.seatBox{
+    ul{
+      .seat{
+        background-color: inherit;
+      }
+      li{
+        a{
+          background-image: url("../../../images/icon/seat_no_select.png");
+        }
+      }
+      .clicked{
+        background: #FF243E;
+        a{
+          color: #fff;
+          background-image:none
+        }
       }
     }
   }

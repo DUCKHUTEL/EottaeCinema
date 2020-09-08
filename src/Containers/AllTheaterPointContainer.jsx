@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelectPointAction } from '../Redux/modules/select';
 import AllTheaterPointComponent from '../Components/AllTheaterPointComponent/AllTheaterPointComponent';
-function AllTheaterPointContainer({ point }) {
+function AllTheaterPointContainer({ point, from }) {
   const dispatch = useDispatch();
 
   const selectPoint = useCallback(
@@ -22,6 +22,7 @@ function AllTheaterPointContainer({ point }) {
       selectPoint={selectPoint}
       point={point}
       resMovies={resMovies}
+      from={from}
     />
   );
 }

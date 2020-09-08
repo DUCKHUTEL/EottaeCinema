@@ -1,3 +1,7 @@
+.owl-carousel{
+  padding: 0 20px;
+  cursor: pointer;
+}
 .owl-nav > button{
   width: 37px;
   height: 39px;
@@ -38,7 +42,7 @@ margin-right: -15px;
 }
 .item .dateLabel input:checked+.showDate{
   color: #fff;
-  background-color: #000000;
+  background-color: #000;
 }
 .item .dateLabel .showDate{
   display: block;

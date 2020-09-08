@@ -3,15 +3,28 @@ import styles from './BookPotalComponent.module.scss';
 import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
 import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
-function BookPotalComponent({ bookingData, setMind, setStep }) {
+import { history } from '../../Redux/create';
+function BookPotalComponent({
+  bookingData,
+  setMind,
+  setStep,
+  selectTitle,
+  selectPoint,
+}) {
   const close = useCallback(() => {
     setMind(false);
   }, [setMind]);
 
   const goSelectSeat = useCallback(() => {
-    setStep(2);
+    if (setStep !== undefined) {
+      setStep(2);
+    } else {
+      history.push('/ticketing', { step: 2 });
+      console.log(bookingData);
+    }
     setMind(false);
   }, []);
+
   return (
     <div
       className={styles.bookModal}

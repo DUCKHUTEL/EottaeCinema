@@ -3,9 +3,9 @@ import DetailVisualTop from '../Components/Detail1/DetailVisualTop';
 import DetailContent from '../Components/Detail2/DetailContent';
 import DetailInfo from '../Components/Detail3/DetailInfo';
 import { getMovieDataSagaActionCreator } from '../Redux/modules/detail';
-import { startGetMoviesActionCreator } from '../Redux/modules/movies';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { startGetMoviesActionCreator } from '../Redux/modules/movies';
 
 export default function DetailPageContainer() {
   const movieAPIData = useSelector((state) => state.detail.movieData);
@@ -30,7 +30,6 @@ export default function DetailPageContainer() {
     getMoviesDBData();
   }, []);
 
-  console.log('movieData', movieAPIData);
   return (
     <>
       <DetailVisualTop

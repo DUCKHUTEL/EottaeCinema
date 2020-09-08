@@ -1,106 +1,149 @@
-import {createActions, handleActions} from 'redux-actions';
-import {put,call,takeLatest, delay} from 'redux-saga/effects';
+import { createActions, handleActions } from 'redux-actions';
+import { put, call, takeLatest, delay } from 'redux-saga/effects';
 import theaterService from '../../Services/theaterService';
-import deepmerge from "deepmerge";
-const initState={
+import deepmerge from 'deepmerge';
+const initState = {
   loading: false,
-  theaters:[
-    {"서울":["가양","수유","영등포"]},
-    {"경기/인천":["검단","부평"]},
-    {"충청/대전":["서산","아산터미널"]},
-    {"전라/광주":["광주(백화점)","전주(백화점)"]},
-    {"경북/대구":["동성로","포항"]},
-    {"경남/부산/울산":["대영","센텀시티"]},
-    {"강원":["동해","춘천"]},
-    {"제주":["서귀포","제주심화지구"]},
+  theaters: [
+    { 서울: ['가양', '수유', '영등포'] },
+    { '경기/인천': ['검단', '부평'] },
+    { '충청/대전': ['서산', '아산터미널'] },
+    { '전라/광주': ['광주(백화점)', '전주(백화점)'] },
+    { '경북/대구': ['동성로', '포항'] },
+    { '경남/부산/울산': ['대영', '센텀시티'] },
+    { 강원: ['동해', '춘천'] },
+    { 제주: ['서귀포', '제주심화지구'] },
   ],
-  selectedTheaters:[],
-  selectedMoiveData:[],
-  movieDataForBookBtn:[],
-  error:null
-}
+  selectedTheaters: [],
+  selectedMoiveData: [],
+  movieDataForBookBtn: [],
+  movieDataSetTheater: [],
+  error: null,
+};
 
-const {start, success, fail} = createActions(
+const { start, success, fail } = createActions(
   {
-    SUCCESS: (selectedTheaters,selectedMoiveData,movieDataForBookBtn) => ({selectedTheaters,selectedMoiveData,movieDataForBookBtn})
+    SUCCESS: (
+      selectedTheaters,
+      selectedMoiveData,
+      movieDataForBookBtn,
+      movieDataSetTheater,
+    ) => ({
+      selectedTheaters,
+      selectedMoiveData,
+      movieDataForBookBtn,
+      movieDataSetTheater,
+    }),
   },
-  "START",
-  "FAIL",
+  'START',
+  'FAIL',
   {
-    prefix:'theatersStore'
-  }
-)
+    prefix: 'theatersStore',
+  },
+);
 
-const theaters = handleActions({
+const theaters = handleActions(
+  {
     START: (state) => ({
-      loading:true, 
+      loading: true,
       theaters: state.theaters,
       selectedTheaters: [],
-      selectedMoiveData:[],
-      movieDataForBookBtn:[],
-      error:null
+      selectedMoiveData: [],
+      movieDataForBookBtn: [],
+      movieDataSetTheater: [],
+      error: null,
     }),
-    SUCCESS: (state,action) => ({
-      loading:false, 
+    SUCCESS: (state, action) => ({
+      loading: false,
       theaters: state.theaters,
       selectedTheaters: action.payload.selectedTheaters,
-      selectedMoiveData:action.payload.selectedMoiveData,
-      movieDataForBookBtn:action.payload.movieDataForBookBtn,
-      error:null
+      selectedMoiveData: action.payload.selectedMoiveData,
+      movieDataForBookBtn: action.payload.movieDataForBookBtn,
+      movieDataSetTheater: action.payload.movieDataSetTheater,
+      error: null,
     }),
-    FAIL: (state,action) => ({
-      loading:false, 
+    FAIL: (state, action) => ({
+      loading: false,
       theaters: state.theaters,
       selectedTheaters: [],
-      selectedMoiveData:[],
-      movieDataForBookBtn:[],
-      error: action.payload.error
-    })
+      selectedMoiveData: [],
+      movieDataForBookBtn: [],
+      movieDataSetTheater: [],
+      error: action.payload.error,
+    }),
   },
   initState,
   {
-    prefix:'theatersStore'
-  }
-)
+    prefix: 'theatersStore',
+  },
+);
 
 export default theaters;
 
-const GET_SELECET_DATA_SAGA_START = "GET_SELECET_DATA_SAGA_START";
+const GET_SELECET_DATA_SAGA_START = 'GET_SELECET_DATA_SAGA_START';
 
-export const getSelecetDataAction = (date,title,point)=>({
+export const getSelecetDataAction = (date, title, point) => ({
   type: GET_SELECET_DATA_SAGA_START,
   payload: {
     date,
     title,
-    point
-  }
+    point,
+  },
 });
 
 function* startGetSelectDataSaga(action) {
-  const {date,title,point} = action.payload;
+  const { date, title, point } = action.payload;
   try {
     yield put(start());
-   
-    
-    const selectedMoiveData = yield call(theaterService.getTheater,date,title,point);
-    
-    const setMovies = [deepmerge.all(selectedMoiveData.map(data => ({
-      [data.movieTitle]:[data]  
-    })))];
 
-    const movieDataForBookBtn = setMovies.map(item=>Object.keys(item).map( i => ({[i]:item[i]})))[0];
+    const selectedMoiveData = yield call(
+      theaterService.getTheater,
+      date,
+      title,
+      point,
+    );
 
-    const selectedTheaters = selectedMoiveData.map(data =>({
-      [data.locationName]:data.theaterLocation
-    }))
+    const setMovies = [
+      deepmerge.all(
+        selectedMoiveData.map((data) => ({
+          [data.movieTitle]: [data],
+        })),
+      ),
+    ];
 
-    yield put(success(selectedTheaters,selectedMoiveData,movieDataForBookBtn));
-  }catch(error){
-    console.log(error)
-    yield put(fail(error))
+    const movieDataForBookBtn = setMovies.map((item) =>
+      Object.keys(item).map((i) => ({ [i]: item[i] })),
+    )[0];
+
+    const setMoviesForTheater = [
+      deepmerge.all(
+        selectedMoiveData.map((data) => ({
+          [data.theaterLocation]: [data],
+        })),
+      ),
+    ];
+
+    const movieDataSetTheater = setMoviesForTheater.map((item) =>
+      Object.keys(item).map((i) => ({ [i]: item[i] })),
+    )[0];
+
+    const selectedTheaters = selectedMoiveData.map((data) => ({
+      [data.locationName]: data.theaterLocation,
+    }));
+
+    yield put(
+      success(
+        selectedTheaters,
+        selectedMoiveData,
+        movieDataForBookBtn,
+        movieDataSetTheater,
+      ),
+    );
+  } catch (error) {
+    yield put(fail(error));
   }
 }
 
-export function* theaterSaga(){
-  yield takeLatest(GET_SELECET_DATA_SAGA_START,startGetSelectDataSaga)
+export function* theaterSaga() {
+  yield takeLatest(GET_SELECET_DATA_SAGA_START, startGetSelectDataSaga);
 }

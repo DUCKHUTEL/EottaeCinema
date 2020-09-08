@@ -7,9 +7,10 @@ import { useCallback } from 'react';
 import { LoadingContainer } from '../../Containers/LoadingContainer';
 import BookTheaterContainer from '../../Containers/BookTheaterContainer';
 import SelectSeatContainer from '../../Containers/SelectSeatContainer';
+import { useEffect } from 'react';
 
-function BookComponent() {
-  const [steps, setStep] = useState(1);
+function BookComponent({ passedStep, resetSelect }) {
+  const [steps, setStep] = useState(passedStep === 0 ? 1 : passedStep);
 
   const changeStep = useCallback((e) => {
     e.preventDefault();
@@ -21,7 +22,7 @@ function BookComponent() {
     <main className={styles.main}>
       <div className={styles.BookContents}>
         <h2 className={styles.a11yHidden}>예매페이지</h2>
-        <ul className={styles.steps} onClick={changeStep}>
+        <ul className={styles.steps} onClick={(e) => changeStep(e)}>
           <li
             className={
               steps === 1
@@ -81,7 +82,7 @@ function BookComponent() {
           <BookTimeMoviesContainer setStep={setStep} />
         </section>
         <section className={steps === 2 ? styles.nowStep : styles.notNow}>
-          <SelectSeatContainer setStep={setStep} />
+          <SelectSeatContainer setStep={setStep} steps={steps} />
         </section>
       </div>
       <LoadingContainer />

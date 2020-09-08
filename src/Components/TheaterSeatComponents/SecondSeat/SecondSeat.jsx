@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import styles from './SecondSeat.module.scss';
-function SecondSeat({ bookedSeat, type }) {
+function SecondSeat({
+  bookedSeat,
+  type,
+  peopleCnt = 0,
+  clickedSeat = [],
+  clickSeat = () => {},
+}) {
   const bookedId = bookedSeat.split(';');
   const row = ['a', 'b', 'c', 'd', 'e', 'f'];
   const col = [
@@ -19,12 +25,48 @@ function SecondSeat({ bookedSeat, type }) {
     '13',
     '14',
   ];
+
+  useEffect(() => {
+    clickSeat([]);
+  }, [peopleCnt]);
+
+  const choicSeat = useCallback((e) => {
+    e.preventDefault();
+    console.log(e.target.parentNode.className);
+    console.log(e.target.parentNode.matches('.block'));
+    if (
+      !e.target.matches('a') ||
+      peopleCnt === 0 ||
+      e.target.parentNode.className.indexOf('block') !== -1 ||
+      e.target.parentNode.className.indexOf('booked') !== -1
+    )
+      return;
+    const seatData = e.target.dataset.seat;
+
+    if (clickedSeat.includes(seatData)) {
+      const idx = clickedSeat.indexOf(seatData);
+      const copy = [...clickedSeat];
+      copy.splice(idx, 1);
+      clickSeat(copy);
+      return;
+    }
+
+    clickSeat((state) => [...state, seatData]);
+  });
+
   return (
     <div className={styles[type]}>
-      <div className={styles.seatBox}>
+      <div
+        className={
+          peopleCnt !== 0 && peopleCnt === clickedSeat.length
+            ? [styles.full, styles.seatBox].join(' ')
+            : styles.seatBox
+        }
+        onClick={choicSeat}
+      >
         {row.map((ro, roIdx) => (
           <ul key={roIdx}>
-            <li>{ro}</li>
+            <li>{ro.toUpperCase()}</li>
             {col.map((co, coIdx) => (
               <li
                 key={coIdx}
@@ -35,6 +77,10 @@ function SecondSeat({ bookedSeat, type }) {
                     ? [styles.block, styles.seat].join(' ')
                     : bookedId.includes(`${ro}${co}`)
                     ? [styles.booked, styles.seat].join(' ')
+                    : peopleCnt === 0 || peopleCnt < clickedSeat.length
+                    ? styles.seat
+                    : clickedSeat.includes(`${ro}${co}`)
+                    ? [styles.clicked, styles.seat].join(' ')
                     : styles.seat
                 }
               >

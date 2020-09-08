@@ -1,0 +1,50 @@
+.ScheduleMain{
+  width: 100%;
+  height: 960px;
+  background-color: #444;
+  padding: 50px 0 70px;
+  .a11yHidden { overflow: hidden; position: absolute; clip: rect(0, 0, 0, 0)};
+  .ScheduleContentsBox{
+    margin: 0 auto;
+    width: 1200px;
+    height: 870px;
+    background-color: #fff;
+    .ScheduleContents{
+      position: relative;
+
+      section{
+        top: 0;
+        left: 0;
+        >button{
+          position: absolute;
+          top: 0;
+          width: 50%;
+          height: 50px;
+          color: #fff;
+        }
+        & .scheduleMovie{
+          right: 0;
+          background-color: #000;
+        }
+        & .scheduleTheater{
+          left: 0;
+          background-color: red;
+        }
+        & >div{
+          display: none;
+          padding-top: 50px;
+          // .scheduleTheaterBox{
+          //   position: relative;
+          //   width: 350px;
+          // }
+          // .scheduleTimeBox{
+          //   width: 850px;
+          // }
+        }
+        & >div.active {
+          display: flex;
+        }
+      }
+    }
+  }
+}
