@@ -1,39 +1,33 @@
 import React from 'react';
 import styles from './MainWallpaperComponent.module.scss';
 import OwlCarousel from 'react-owl-carousel';
+import MainVideoPortalContainer from '../../Containers/MainVideoPortalContainer';
 
-export default function MainWallpaperComponent() {
+function MainWallpaperComponent() {
   return (
     <section className={styles['wallpaper']}>
       <OwlCarousel
-        className="owl-theme top-visual-box"
+        className="top-visual-box"
         items={1}
+        mergeFit
         loop
-        margin={10}
         nav
         autoplay
         autoplayTimeout={2000}
         autoplaySpeed={500}
       >
         <div className={styles['img-1']}>
-          <button className={styles['play']}>영화 재생버튼</button>
+          {' '}
+          <MainVideoPortalContainer />
         </div>
-        <div className={styles['img-2']}>
-          <button className={styles['play']}>영화 재생버튼</button>
-        </div>
-        <div className={styles['img-3']}>
-          <button className={styles['play']}>영화 재생버튼</button>
-        </div>
-        <div className={styles['img-4']}>
-          <button className={styles['play']}>영화 재생버튼</button>
-        </div>
+        <div className={styles['img-2']}></div>
+        <div className={styles['img-3']}></div>
+        <div className={styles['img-4']}></div>
       </OwlCarousel>
 
-      <div className={styles['control']}>
-        {/* <div>
-          <button>영화 조종 버튼</button>
-        </div> */}
-      </div>
+      <div className={styles['control']}></div>
     </section>
   );
 }
+
+export default React.memo(MainWallpaperComponent);

@@ -6,6 +6,7 @@
 .movies-info {
   position: relative;
   background-color: #{$main-background-black};
+  z-index: 1;
 
   .standard-time {
     display: inline;

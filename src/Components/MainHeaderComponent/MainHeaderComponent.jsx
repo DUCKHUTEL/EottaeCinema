@@ -6,9 +6,10 @@ import styles from './MainHeaderComponent.module.scss';
 //1. scroll
 //2. click
 //3. usememo
-export default function MainHeaderComponent(props) {
-  console.log(props);
+
+function MainHeaderComponent(props) {
   const [index, path] = props.path;
+
   const useScroll = (e) => {
     console.log(e);
     const dom = useRef();
@@ -84,3 +85,4 @@ export default function MainHeaderComponent(props) {
     </header>
   );
 }
+export default MainHeaderComponent;
