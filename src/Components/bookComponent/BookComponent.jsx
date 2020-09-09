@@ -7,9 +7,8 @@ import { useCallback } from 'react';
 import { LoadingContainer } from '../../Containers/LoadingContainer';
 import BookTheaterContainer from '../../Containers/BookTheaterContainer';
 import SelectSeatContainer from '../../Containers/SelectSeatContainer';
-import { useEffect } from 'react';
 
-function BookComponent({ passedStep, resetSelect }) {
+function BookComponent({ passedStep }) {
   const [steps, setStep] = useState(passedStep === 0 ? 1 : passedStep);
 
   const changeStep = useCallback((e) => {
@@ -17,21 +16,17 @@ function BookComponent({ passedStep, resetSelect }) {
     if (steps < +e.target.id) return;
     setStep(+e.target.id);
   }, []);
-
+  const classMaker = useCallback((step) => {
+    if (step === 1) return styles.active;
+    if (step > 1) return styles.done;
+    return styles.disable;
+  }, []);
   return (
     <main className={styles.main}>
       <div className={styles.BookContents}>
         <h2 className={styles.a11yHidden}>예매페이지</h2>
         <ul className={styles.steps} onClick={(e) => changeStep(e)}>
-          <li
-            className={
-              steps === 1
-                ? styles.active
-                : steps > 1
-                ? styles.done
-                : styles.disable
-            }
-          >
+          <li className={classMaker(steps)}>
             <a href="#" id="1">
               01
               <br />

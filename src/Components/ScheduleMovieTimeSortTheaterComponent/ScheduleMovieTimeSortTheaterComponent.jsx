@@ -116,15 +116,13 @@ function ScheduleMovieTimeSortTheaterComponent({
             })
           )}
         </article>
-        {Booking ? (
+        {Booking ?? (
           <BookPotalContainer
             setStep={setStep}
             setMind={setMind}
             from="schedule"
             type="movieTime"
           />
-        ) : (
-          <></>
         )}
       </div>
     </div>

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
   const [sort, setSort] = useState('movieBookPer');
   const [show, setShow] = useState('hamberger');
-
+  console.log(from);
   useEffect(() => {
     if (from === undefined) {
       if (selectedTitle === '없음') selectTitle('테넷');
@@ -38,7 +38,9 @@ function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
 
   return (
     <div className={styles.bookMovies}>
-      <h3>{selectedTitle === '없음' ? '영화 선택' : selectedTitle}</h3>
+      <h3 className={from && styles.schedule}>
+        {selectedTitle === '없음' ? '영화 선택' : selectedTitle}
+      </h3>
       <div className={styles.bookMovieContents}>
         <div className={styles.bookMovieHeader}>
           <select

@@ -24,7 +24,12 @@
       .booked{
         background-color: #000;
       }
-      
+      .clicked{
+        background: #FF243E;
+        a{
+          color: #fff;
+        }
+      }
       li:nth-child(1){
         display: none;
       }

@@ -16,7 +16,9 @@ function SelectSeatComponent({ setStep, steps, movies, bookingData }) {
     handicaped: 0,
     all: 0,
   });
+
   const [clickedSeat, clickSeat] = useState([]);
+
   useEffect(() => {
     setppc((state) => ({
       adult: 0,
@@ -26,76 +28,96 @@ function SelectSeatComponent({ setStep, steps, movies, bookingData }) {
       all: 0,
     }));
   }, [steps]);
+
+  const sBPC = useCallback((e) => {
+    const clickAge = e.target.parentNode.id;
+    if (e.target.id === 'plus') {
+      setppc((state) => ({
+        ...state,
+        [clickAge]: state[clickAge] + 1,
+        all: state.all + 1,
+      }));
+    } else if (ppc[clickAge] === 0) {
+      return;
+    } else {
+      setppc((state) => ({
+        ...state,
+        [clickAge]: state[clickAge] - 1,
+        all: state.all - 1,
+      }));
+    }
+  });
   const setBookPeopleCnt = useCallback((e) => {
     if (!e.target.matches('button')) return;
-    if (e.target.parentNode.id === 'adult') {
-      if (e.target.id === 'plus') {
-        setppc((state) => ({
-          ...state,
-          adult: state.adult + 1,
-          all: state.all + 1,
-        }));
-      } else if (ppc.adult === 0) {
-        return;
-      } else {
-        setppc((state) => ({
-          ...state,
-          adult: state.adult - 1,
-          all: state.all - 1,
-        }));
-      }
-    }
-    if (e.target.parentNode.id === 'junior') {
-      if (e.target.id === 'plus') {
-        setppc((state) => ({
-          ...state,
-          junior: state.junior + 1,
-          all: state.all + 1,
-        }));
-      } else if (ppc.junior === 0) {
-        return;
-      } else {
-        setppc((state) => ({
-          ...state,
-          junior: state.junior - 1,
-          all: state.all - 1,
-        }));
-      }
-    }
-    if (e.target.parentNode.id === 'senior') {
-      if (e.target.id === 'plus') {
-        setppc((state) => ({
-          ...state,
-          senior: state.senior + 1,
-          all: state.all + 1,
-        }));
-      } else if (ppc.senior === 0) {
-        return;
-      } else {
-        setppc((state) => ({
-          ...state,
-          senior: state.senior - 1,
-          all: state.all - 1,
-        }));
-      }
-    }
-    if (e.target.parentNode.id === 'handicaped') {
-      if (e.target.id === 'plus') {
-        setppc((state) => ({
-          ...state,
-          handicaped: state.handicaped + 1,
-          all: state.all + 1,
-        }));
-      } else if (ppc.handicaped === 0) {
-        return;
-      } else {
-        setppc((state) => ({
-          ...state,
-          handicaped: state.handicaped - 1,
-          all: state.all - 1,
-        }));
-      }
-    }
+    sBPC(e);
+    // if (e.target.parentNode.id === 'adult') {
+    //   if (e.target.id === 'plus') {
+    //     setppc((state) => ({
+    //       ...state,
+    //       adult: state.adult + 1,
+    //       all: state.all + 1,
+    //     }));
+    //   } else if (ppc.adult === 0) {
+    //     return;
+    //   } else {
+    //     setppc((state) => ({
+    //       ...state,
+    //       adult: state.adult - 1,
+    //       all: state.all - 1,
+    //     }));
+    //   }
+    // }
+    // if (e.target.parentNode.id === 'junior') {
+    //   if (e.target.id === 'plus') {
+    //     setppc((state) => ({
+    //       ...state,
+    //       junior: state.junior + 1,
+    //       all: state.all + 1,
+    //     }));
+    //   } else if (ppc.junior === 0) {
+    //     return;
+    //   } else {
+    //     setppc((state) => ({
+    //       ...state,
+    //       junior: state.junior - 1,
+    //       all: state.all - 1,
+    //     }));
+    //   }
+    // }
+    // if (e.target.parentNode.id === 'senior') {
+    //   if (e.target.id === 'plus') {
+    //     setppc((state) => ({
+    //       ...state,
+    //       senior: state.senior + 1,
+    //       all: state.all + 1,
+    //     }));
+    //   } else if (ppc.senior === 0) {
+    //     return;
+    //   } else {
+    //     setppc((state) => ({
+    //       ...state,
+    //       senior: state.senior - 1,
+    //       all: state.all - 1,
+    //     }));
+    //   }
+    // }
+    // if (e.target.parentNode.id === 'handicaped') {
+    //   if (e.target.id === 'plus') {
+    //     setppc((state) => ({
+    //       ...state,
+    //       handicaped: state.handicaped + 1,
+    //       all: state.all + 1,
+    //     }));
+    //   } else if (ppc.handicaped === 0) {
+    //     return;
+    //   } else {
+    //     setppc((state) => ({
+    //       ...state,
+    //       handicaped: state.handicaped - 1,
+    //       all: state.all - 1,
+    //     }));
+    //   }
+    // }
   });
 
   return bookingData === undefined ? (
