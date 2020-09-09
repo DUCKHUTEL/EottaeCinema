@@ -20,29 +20,19 @@ dl, dd{
       color: #000;
       background-color: #e2e2e2;
     }
-    .timeMovieContents{
-      article {
-        .BookTitleArea{
-          .BookBtnContainer{
-            li{
-              width: 12%;
-            }
-          }
-        }
-    }
-  }
+  
   h3{
     padding-top: 16px;
     text-align: center;
     margin: 0;
     height: 55px;
-    background-color: #000;
-    color: #fff;
+    background-color: #e2e2e2;
+    color: #000;
     font-size: 20px;
   }
   .timeMovieContents{
     width: 100%;
-    height: 815px;
+    height: 705px;
     .dateSelector{
       height: 75px;
       margin: 22px 20px 10px;
@@ -89,6 +79,10 @@ dl, dd{
       }
       .BookTitleArea{
         margin-top: 30px;
+        &>div{
+          font-size: 15px;
+          font-weight: bold;
+        }
         &>div>span{
           display: inline-block;
           width: 22px;
@@ -107,21 +101,13 @@ dl, dd{
           font-size: 13px;
           font-weight: 600;
         }
-        .ageCut12{
-          background-color: skyblue;
-        }
-        .ageCut15{
-          background-color: #FFC134;
-        }
-        .ageCut0{
-          background-color: green;
-        }
+
         .BookBtnContainer{
           display: flex;
           flex-wrap: wrap;
           margin-bottom: 50px;
           li{
-            width: 22%;
+            width: 12%;
             margin-right: 4px;
             margin-bottom: 5px;
             .bookBtn{
