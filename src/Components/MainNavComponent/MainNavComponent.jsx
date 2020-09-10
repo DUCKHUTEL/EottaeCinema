@@ -21,10 +21,12 @@ function MainNavComponent(props) {
             </ul>
           </li>
           <li className={styles['movie']}>
-            <a href="/">영화</a>
+            <Link to="/movies">영화</Link>
             <ul>
               <li>홈</li>
-              <li>현재 상영작</li>
+              <li>
+                <Link to="/movies">현재 상영작</Link>
+              </li>
               <li>상영 예정작</li>
               <li>아르떼</li>
               <li>오페라</li>
