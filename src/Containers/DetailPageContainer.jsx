@@ -10,12 +10,15 @@ import { startGetMoviesActionCreator } from '../Redux/modules/movies';
 export default function DetailPageContainer() {
   const movieAPIData = useSelector((state) => state.detail.movieData);
   const moviesDBData = useSelector((state) => state.movies.movies);
+  const loading = useSelector((state) => state.detail.loading);
+
+  console.log('loading', loading);
   console.log('movieDBData', moviesDBData);
 
   const dispatch = useDispatch();
 
   const getMovieAPIData = React.useCallback(() => {
-    dispatch(getMovieDataSagaActionCreator('남매의 여름밤'));
+    dispatch(getMovieDataSagaActionCreator('테넷'));
   }, [dispatch]);
 
   const getMoviesDBData = React.useCallback(() => {
