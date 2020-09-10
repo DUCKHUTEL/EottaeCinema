@@ -16,16 +16,15 @@ function ScheduleMovieTimeSortTheaterComponent({
 }) {
   moment.locale('ko');
   const [filtertBy, setfilter] = useState('서울');
-
   const [Booking, setMind] = useState(false);
-
   const doSortMovie = useCallback((e) => {
     setfilter(e.target.id);
   }, []);
+  console.log(Booking);
 
   const selectBookData = useCallback((e) => {
-    bookData(e.currentTarget.id);
     setMind(true);
+    bookData(e.currentTarget.id);
   }, []);
 
   return (
@@ -116,7 +115,7 @@ function ScheduleMovieTimeSortTheaterComponent({
             })
           )}
         </article>
-        {Booking ?? (
+        {Booking && (
           <BookPotalContainer
             setStep={setStep}
             setMind={setMind}
