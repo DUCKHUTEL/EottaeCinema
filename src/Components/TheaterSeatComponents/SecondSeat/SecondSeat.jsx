@@ -26,14 +26,15 @@ function SecondSeat({
     '14',
   ];
 
+  console.log(clickedSeat);
+
   useEffect(() => {
     clickSeat([]);
   }, [peopleCnt]);
 
   const choicSeat = useCallback((e) => {
     e.preventDefault();
-    console.log(e.target.parentNode.className);
-    console.log(e.target.parentNode.matches('.block'));
+
     if (
       !e.target.matches('a') ||
       peopleCnt === 0 ||
@@ -41,6 +42,7 @@ function SecondSeat({
       e.target.parentNode.className.indexOf('booked') !== -1
     )
       return;
+
     const seatData = e.target.dataset.seat;
 
     if (clickedSeat.includes(seatData)) {
@@ -81,6 +83,8 @@ function SecondSeat({
                     ? styles.seat
                     : clickedSeat.includes(`${ro}${co}`)
                     ? [styles.clicked, styles.seat].join(' ')
+                    : peopleCnt === clickedSeat.length
+                    ? [styles.booked, styles.seat].join(' ')
                     : styles.seat
                 }
               >

@@ -3,7 +3,7 @@ import styles from './FirstSeat.module.scss';
 function FirstSeat({
   bookedSeat,
   type,
-  peopleCnt = 0,
+  peopleCnt,
   clickedSeat = [],
   clickSeat = () => {},
 }) {
@@ -34,6 +34,7 @@ function FirstSeat({
   useEffect(() => {
     clickSeat([]);
   }, [peopleCnt]);
+
   const choicSeat = useCallback((e) => {
     e.preventDefault();
     if (
@@ -83,6 +84,8 @@ function FirstSeat({
                     ? styles.seat
                     : clickedSeat.includes(`${ro}${co}`)
                     ? [styles.clicked, styles.seat].join(' ')
+                    : peopleCnt === clickedSeat.length
+                    ? [styles.booked, styles.seat].join(' ')
                     : styles.seat
                 }
               >
