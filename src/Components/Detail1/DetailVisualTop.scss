@@ -1,6 +1,10 @@
 .top-visual-box {
   position: relative;
 
+  .owl-carousel {
+    padding: 0;
+  }
+
   .item {
     height: 560px;
 
