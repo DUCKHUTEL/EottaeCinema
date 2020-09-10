@@ -22,7 +22,7 @@ em {
 .content {
   width: 980px;
   margin: 0 auto;
-  margin-top: 70px;
+  margin-top: 30px;
 
   .a11y-hidden {
     @include a11y-hidden;
@@ -41,7 +41,10 @@ em {
       width: 205px;
       height: 305px;
       z-index: 1;
-      background-color: aqua;
+
+      img {
+        border-radius: 4px;
+      }
     }
 
     .title-info {
