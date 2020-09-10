@@ -1,7 +1,7 @@
 .wallpaper {
   position: relative;
   z-index: 1;
-  width: 100vw;
+  width: 100%;
   background-color: black;
 
   .img-1,
@@ -9,7 +9,7 @@
   .img-3,
   .img-4 {
     height: 774px;
-    width: 100vw;
+    width: 100%;
     position: relative;
     z-index: 1;
     background-color: black;
@@ -53,4 +53,9 @@
       rgba(0, 0, 0, 1) 100%
     );
   }
+}
+
+.visible {
+  display: none;
+  background: white;
 }

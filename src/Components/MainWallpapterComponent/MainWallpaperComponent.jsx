@@ -2,8 +2,20 @@ import React from 'react';
 import styles from './MainWallpaperComponent.module.scss';
 import OwlCarousel from 'react-owl-carousel';
 import MainVideoPortalContainer from '../../Containers/MainVideoPortalContainer';
+import { useState } from 'react';
 
 function MainWallpaperComponent() {
+  const [images, setImage] = useState({
+    index: [1, 2, 3, 4],
+  });
+  const [modal, setModal] = useState({
+    clickEvent: false,
+  });
+
+  const click = () => {
+    setModal((state) => ({ ...state, clickEvent: !state.clickEvent }));
+  };
+
   return (
     <section className={styles['wallpaper']}>
       <OwlCarousel
@@ -13,18 +25,15 @@ function MainWallpaperComponent() {
         loop
         nav
         autoplay
-        autoplayTimeout={2000}
+        autoplayTimeout={3000}
         autoplaySpeed={500}
       >
-        <div className={styles['img-1']}>
-          {' '}
-          <MainVideoPortalContainer />
-        </div>
-        <div className={styles['img-2']}></div>
-        <div className={styles['img-3']}></div>
-        <div className={styles['img-4']}></div>
+        {images.index.map((index) => (
+          <div className={styles['img-' + index]} onClick={click}>
+            {modal.clickEvent && <MainVideoPortalContainer id={index} />}
+          </div>
+        ))}
       </OwlCarousel>
-
       <div className={styles['control']}></div>
     </section>
   );

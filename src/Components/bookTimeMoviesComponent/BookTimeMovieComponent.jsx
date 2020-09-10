@@ -137,10 +137,8 @@ function BookTimeMovieComponent({
             })
           )}
         </article>
-        {Booking ? (
+        {Booking && (
           <BookPotalContainer setStep={setStep} setMind={setMind} from={from} />
-        ) : (
-          <></>
         )}
       </div>
     </div>
