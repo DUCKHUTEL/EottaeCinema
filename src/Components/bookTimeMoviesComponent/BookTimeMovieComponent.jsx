@@ -9,9 +9,9 @@ function BookTimeMovieComponent({
   from,
   setStep,
   selectDate,
-  movieDataForBookBtn,
-  selectedDate,
   bookData,
+  selectedDate,
+  movieDataForBookBtn,
   type,
 }) {
   moment.locale('ko');
