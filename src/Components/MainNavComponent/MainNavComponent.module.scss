@@ -53,7 +53,7 @@
 
 .nav-black {
   position: relative;
-  width: 100vw;
+  width: 100%;
 
   nav {
     @include layout;
@@ -197,7 +197,7 @@
 
 .nav-white {
   position: relative;
-  width: 100vw;
+  width: 100%;
 
   nav {
     @include layout;
