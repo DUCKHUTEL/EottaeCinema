@@ -76,6 +76,8 @@ function SixthSeat({
                     ? styles.seat
                     : clickedSeat.includes(`${ro}${co}`)
                     ? [styles.clicked, styles.seat].join(' ')
+                    : peopleCnt === clickedSeat.length
+                    ? [styles.booked, styles.seat].join(' ')
                     : styles.seat
                 }
               >
