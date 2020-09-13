@@ -5,15 +5,26 @@ import MainVideoPortalContainer from '../../Containers/MainVideoPortalContainer'
 import { useState } from 'react';
 
 function MainWallpaperComponent() {
-  const [images, setImage] = useState({
-    index: [1, 2, 3, 4],
-  });
+  //리덕스 넣어서 코드 다시 짤 것
+  const [images, setImage] = useState([
+    { id: 1, title: '뮤턴트', src: 'images/wallpaper/Mutants_1920774.jpg' },
+    { id: 2, title: '테넷', src: 'images/wallpaper/Tenet_1920774.jpg' },
+    { id: 3, title: '아웃포스트', src: 'images/wallpaper/Outpost_1920774.jpg' },
+    {
+      id: 4,
+      title: '기기괴괴성형수',
+      src: 'images/wallpaper/BeautyWater_1920774.jpg',
+    },
+  ]);
   const [modal, setModal] = useState({
     clickEvent: false,
   });
 
-  const click = () => {
-    setModal((state) => ({ ...state, clickEvent: !state.clickEvent }));
+  const click = (e) => {
+    setModal((state) => ({
+      ...state,
+      clickEvent: !state.clickEvent,
+    }));
   };
 
   return (
@@ -28,10 +39,24 @@ function MainWallpaperComponent() {
         autoplayTimeout={3000}
         autoplaySpeed={500}
       >
-        {images.index.map((index) => (
-          <div className={styles['img-' + index]} onClick={click}>
-            {modal.clickEvent && <MainVideoPortalContainer id={index} />}
-          </div>
+        {images.map((images) => (
+          <a className={styles['images']}>
+            <img
+              src={images.src}
+              alt={images.title}
+              id={images.id}
+              onClick={click}
+            />
+            <button>
+              <img
+                onClick={click}
+                className={styles['play-button']}
+                src="images\icon\btn_main_visual_play.png"
+                alt="play-button"
+              />
+            </button>
+            {modal.clickEvent && <MainVideoPortalContainer id={1} />}
+          </a>
         ))}
       </OwlCarousel>
       <div className={styles['control']}></div>

@@ -1,5 +1,18 @@
 @import '../../commonVariables';
 
+//연령표기
+
+.age-all {
+  background-color: #5bc77e;
+  font-size: 8px;
+}
+.age-12 {
+  background-color: #4dd6ff;
+}
+.age-15 {
+  background-color: #ffc134;
+}
+
 .movies-info * {
   color: white;
 }
@@ -9,15 +22,21 @@
   z-index: 1;
 
   .standard-time {
-    display: inline;
-    position: absolute;
-    top: -8%;
-    right: 20%;
+    width: 980px;
+    margin: 0 auto;
+    text-align: end;
+    padding-bottom: 30px;
+    .time-item {
+      display: inline;
+      @include main-header-icon;
+      background-image: url(../../images/icon/time2.png);
+    }
   }
   ul {
     display: flex;
     @include layout;
     overflow: hidden;
+    position: relative;
 
     //전체 적용
     // 개별 적용
@@ -28,12 +47,25 @@
 
       transform: translate3d(calc(-198px * 0), 0, 0);
       transition: all 0.2s;
-      margin-right: 15px;
+      margin-right: 10px;
       position: relative;
-      figure {
+      .movie-poster {
         position: relative;
+        span {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          text-align: center;
+          font-weight: bold;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          border-radius: 50px;
+        }
         img {
           width: 184px;
+          height: 262px;
           border-radius: 5px;
         }
         figcaption {
@@ -53,9 +85,70 @@
         margin: 0 auto;
         padding-top: 10%;
         padding-bottom: 20%;
+        text-align: center;
+
+        .movie-title {
+          display: block;
+          text-align: center;
+          width: 184px;
+          height: 12px;
+          line-height: 12px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          // border: 3px solid red;
+          font-weight: bold;
+          margin-bottom: 6px;
+        }
+        .movie-info {
+          display: flex;
+          justify-content: center;
+          // border: 3px solid yellow;
+          .movie-per,
+          .movie-point,
+          .movie-hart {
+            font-size: 10px;
+            text-align: center;
+            font-weight: bold;
+            // border: 5px solid orangered;
+            margin-left: 10px;
+          }
+          .movie-per::after {
+            content: '';
+            display: inline-block;
+            height: 8px;
+            padding-left: 10px;
+            border-right: 1px solid white;
+          }
+
+          .movie-point {
+            background-image: url(../../images/icon/ic_star.png);
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            padding-left: 10px;
+          }
+
+          .movie-point::after {
+            content: '';
+            display: inline-block;
+            height: 8px;
+            padding-left: 10px;
+            border-right: 1px solid white;
+          }
+
+          .movie-hart {
+            height: 16px;
+            background-image: url(../../images/icon/heart_rnd_16_off.png);
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            padding-left: 15px;
+            text-indent: -999px;
+            overflow: hidden;
+          }
+        }
       }
 
-      nav {
+      .modal-button {
         display: none;
         background-color: rgba(0, 0, 0, 0.7);
         position: absolute;
@@ -66,8 +159,8 @@
         .button-1 {
           a {
             position: absolute;
-            top: 180%;
-            left: 38%;
+            top: 35%;
+            left: 10%;
             width: 150px;
             height: 34px;
             line-height: 34px;
@@ -80,8 +173,8 @@
         .button-2 {
           a {
             position: absolute;
-            top: 280%;
-            left: 38%;
+            top: 50%;
+            left: 10%;
             width: 150px;
             height: 34px;
             line-height: 34px;
@@ -94,20 +187,28 @@
     }
   }
 
-  nav {
+  .slide-button {
+    @include layout;
+    position: relative;
     button {
       position: absolute;
       width: 50px;
       height: 50px;
+      background-repeat: no-repeat;
+      background-position: 0 center;
+      text-indent: -999px;
+      overflow: hidden;
     }
 
     .left {
-      top: 30%;
-      left: 21%;
+      background-image: url(../../images/icon/arr_lf_19_wht.png);
+      top: -250px;
+      left: -70px;
     }
     .right {
-      top: 30%;
-      right: 21%;
+      background-image: url(../../images/icon/arr_rg_19_wht.png);
+      top: -250px;
+      right: -80px;
     }
   }
 }

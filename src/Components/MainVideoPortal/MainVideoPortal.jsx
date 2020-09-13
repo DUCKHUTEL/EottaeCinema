@@ -25,8 +25,10 @@ function MainVideoPotal(props) {
 
   const [matchMovie] = videos.filter((video) => video.id === index);
 
+  const click = () => {}; //?
+
   return (
-    <div className={styles['video-background']}>
+    <div className={styles['video-background']} onClick={click}>
       {
         <iframe
           title={matchMovie.title}
