@@ -4,9 +4,8 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailStillCut.scss';
 
-export default function DetailStillCut({ movieAPIData, moviesDBData }) {
+export default function DetailStillCut({ movieAPIData, DBData }) {
   const APIData = movieAPIData;
-  const DBData = moviesDBData;
 
   console.log(APIData, DBData);
   return (
