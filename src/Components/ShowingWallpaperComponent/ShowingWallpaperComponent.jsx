@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMemo } from 'react';
 import OwlCarousel from 'react-owl-carousel';
-import styles from './ShowingWallpaperComponent.module.scss';
+import styles from './showingWallpaperComponent.module.scss';
 
 //id를 10단위로 사용
 const wallpapers = [
