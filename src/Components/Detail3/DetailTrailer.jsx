@@ -4,9 +4,8 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailTrailer.scss';
 
-export default function DetailTrailer({ movieAPIData, moviesDBData }) {
+export default function DetailTrailer({ movieAPIData, DBData }) {
   const APIData = movieAPIData;
-  const DBData = moviesDBData;
 
   console.log(APIData, DBData);
 
@@ -35,6 +34,15 @@ export default function DetailTrailer({ movieAPIData, moviesDBData }) {
               );
             })}
         </OwlCarousel>
+        {/* <iframe
+          title="예고편"
+          width="920"
+          height="517.5"
+          src="https://www.youtube.com/embed/919GruRSZzE"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        /> */}
       </div>
     </div>
   );
