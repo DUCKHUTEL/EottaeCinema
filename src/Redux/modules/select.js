@@ -88,10 +88,6 @@ export const setSelectPointAction = (point) => ({
 
 function* resetSelectSaga() {
   yield put(reset());
-  // const title = yield select((state) => state.selectData.title);
-  // const date = yield select((state) => state.selectData.date);
-  // const point = yield select((state) => state.selectData.point);
-  // yield put(getSelecetDataAction(date, title, point));
 }
 
 function* setSelectTitleSaga(action) {

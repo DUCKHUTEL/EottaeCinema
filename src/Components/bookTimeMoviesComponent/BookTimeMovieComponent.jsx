@@ -100,7 +100,7 @@ function BookTimeMovieComponent({
                   </div>
                   <p>2D</p>
                   <ul className={styles.BookBtnContainer}>
-                    {movie.map((willBtnData, idx) => (
+                    {movie.map((willBtnData) => (
                       <li
                         key={willBtnData.bookId}
                         id={willBtnData.bookId}
@@ -120,8 +120,15 @@ function BookTimeMovieComponent({
                             </dd>
                             <dt className={styles.a11yHidden}>잔여석</dt>
                             <dd className={styles.seatData}>
-                              <span>{willBtnData.bookedSeatCnt}</span>/
-                              {willBtnData.allSeat}
+                              {willBtnData.bookedSeatCnt ===
+                              willBtnData.allSeat ? (
+                                <span>만석</span>
+                              ) : (
+                                <>
+                                  <span>{willBtnData.bookedSeatCnt}</span>/
+                                  {willBtnData.allSeat}
+                                </>
+                              )}
                             </dd>
                             <dt className={styles.a11yHidden}>상영관</dt>
                             <dd className={styles.stageData}>
