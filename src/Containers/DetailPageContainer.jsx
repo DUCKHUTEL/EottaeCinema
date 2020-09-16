@@ -33,6 +33,10 @@ export default function DetailPageContainer() {
     getMoviesDBData();
   }, []);
 
+  const DBData = moviesDBData.find(
+    (DBdata) => DBdata.movieTitle === movieAPIData.title,
+  );
+
   return (
     <>
       <DetailVisualTop
@@ -42,9 +46,10 @@ export default function DetailPageContainer() {
       <DetailContent
         movieAPIData={movieAPIData}
         moviesDBData={moviesDBData}
+        DBData={DBData}
         getMoviesDBData={getMoviesDBData}
       />
-      <DetailInfo movieAPIData={movieAPIData} moviesDBData={moviesDBData} />
+      <DetailInfo movieAPIData={movieAPIData} DBData={DBData} />
     </>
   );
 }
