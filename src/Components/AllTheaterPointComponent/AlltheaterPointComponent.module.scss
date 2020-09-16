@@ -48,7 +48,7 @@ li{
       
       &::after{
         position: absolute;
-        background-image: url("../../images/icon/check.png");
+        background-image: url("/images/icon/check.png");
         width: 18px;
         height: 14px;
         right: 55%;
@@ -67,7 +67,7 @@ li{
           color: red;
           &::after{
             position: absolute;
-            background-image: url("../../images/icon/check.png");
+            background-image: url("/images/icon/check.png");
             width: 18px;
             height: 14px;
             top: 12px;
