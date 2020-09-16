@@ -2,30 +2,33 @@ import React from 'react';
 import styles from './MainWallpaperComponent.module.scss';
 import OwlCarousel from 'react-owl-carousel';
 import MainVideoPortalContainer from '../../Containers/MainVideoPortalContainer';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+
+const images = [
+  { id: 1, title: '뮤턴트', src: 'images/wallpaper/Mutants_1920774.jpg' },
+  { id: 2, title: '테넷', src: 'images/wallpaper/Tenet_1920774.jpg' },
+  { id: 3, title: '아웃포스트', src: 'images/wallpaper/Outpost_1920774.jpg' },
+  {
+    id: 4,
+    title: '기기괴괴성형수',
+    src: 'images/wallpaper/BeautyWater_1920774.jpg',
+  },
+];
 
 function MainWallpaperComponent() {
-  //리덕스 넣어서 코드 다시 짤 것
-  const [images, setImage] = useState([
-    { id: 1, title: '뮤턴트', src: 'images/wallpaper/Mutants_1920774.jpg' },
-    { id: 2, title: '테넷', src: 'images/wallpaper/Tenet_1920774.jpg' },
-    { id: 3, title: '아웃포스트', src: 'images/wallpaper/Outpost_1920774.jpg' },
-    {
-      id: 4,
-      title: '기기괴괴성형수',
-      src: 'images/wallpaper/BeautyWater_1920774.jpg',
-    },
-  ]);
   const [modal, setModal] = useState({
     clickEvent: false,
+    videoId: 0,
   });
 
-  const click = (e) => {
+  const click = useCallback((e) => {
+    const index = e.target.id;
     setModal((state) => ({
       ...state,
       clickEvent: !state.clickEvent,
+      videoId: index,
     }));
-  };
+  }, []);
 
   return (
     <section className={styles['wallpaper']}>
@@ -55,7 +58,12 @@ function MainWallpaperComponent() {
                 alt="play-button"
               />
             </button>
-            {modal.clickEvent && <MainVideoPortalContainer id={1} />}
+            {modal.clickEvent && (
+              <MainVideoPortalContainer
+                id={modal.videoId}
+                setModal={setModal}
+              />
+            )}
           </a>
         ))}
       </OwlCarousel>

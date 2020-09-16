@@ -12,13 +12,13 @@ function ShowingMovieComponent() {
 
   const nowClick = useCallback(() => {
     setMovieInfo(() => [...movies]);
-  }, []);
+  }, [movieInfo]);
 
   const preClick = useCallback(() => {
     setMovieInfo(() => [
-      movies.filter((movie) => console.log(movie.movieOpenDate.split('-'))),
+      movies.filter((movie) => console.log(new Date(movie.movieOpenDate))),
     ]);
-  }, []);
+  }, [movieInfo]);
 
   const appearAge = useCallback((age) => {
     if (age < 1) return styles['age-all'];
