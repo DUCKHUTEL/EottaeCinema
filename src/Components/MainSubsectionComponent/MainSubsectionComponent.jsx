@@ -4,7 +4,7 @@ import styles from './MainSubsectionComponent.module.scss';
 function MainSubsectionComponent() {
   return (
     <section className={styles['sub-section']}>
-      <h2>롯데시네마 정보</h2>
+      <h2 className="a11yHidden">롯데시네마 정보</h2>
       <article className={styles['special']}>
         <header>
           <h3>스페셜관</h3>
@@ -37,7 +37,7 @@ function MainSubsectionComponent() {
         </ul>
       </article>
       <article className={styles['info']}>
-        <h3>안내</h3>
+        <h3 className="a11yHidden">안내</h3>
         <ul>
           <li className={styles['info-1']}></li>
           <li className={styles['info-2']}></li>

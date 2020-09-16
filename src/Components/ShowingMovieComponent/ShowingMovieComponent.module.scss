@@ -1,5 +1,15 @@
 @import '../../commonVariables';
 
+.age-all {
+  background-color: #5bc77e;
+  font-size: 8px;
+}
+.age-12 {
+  background-color: #4dd6ff;
+}
+.age-15 {
+  background-color: #ffc134;
+}
 .movies-info * {
   color: white;
 }
@@ -14,6 +24,24 @@
 
   .nav {
     display: flex;
+    justify-content: space-between;
+
+    .nav-1 {
+      border: 1px solid red;
+      justify-content: start;
+      li {
+        border: 1px solid yellowgreen;
+      }
+    }
+
+    .nav-2 {
+      border: 1px solid red;
+      justify-content: flex-end;
+
+      li {
+        border: 1px solid yellowgreen;
+      }
+    }
   }
 
   ul {
@@ -21,7 +49,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     @include layout;
-    border: 2px solid orangered;
     li {
       &:hover nav {
         display: block;
@@ -29,10 +56,23 @@
 
       transition: all 0.2s;
       position: relative;
-      figure {
+      .movie-poster {
         position: relative;
+        span {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          text-align: center;
+          font-weight: bold;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          border-radius: 50px;
+        }
         img {
           width: 184px;
+          height: 262px;
           border-radius: 5px;
         }
         figcaption {
@@ -50,15 +90,70 @@
       .table * {
         color: black;
       }
-      .table {
+      table {
         margin: 0 auto;
-        .title {
+        padding-top: 10%;
+        padding-bottom: 20%;
+        text-align: center;
+
+        .movie-title {
+          display: block;
           text-align: center;
-          width: 180px;
-          line-height: 14px;
+          width: 184px;
+          height: 12px;
+          line-height: 12px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          // border: 3px solid red;
+          font-weight: bold;
+          margin-bottom: 6px;
         }
-        tr {
-          text-align: center;
+        .movie-info {
+          display: flex;
+          justify-content: center;
+          // border: 3px solid yellow;
+          .movie-per,
+          .movie-point,
+          .movie-hart {
+            font-size: 10px;
+            text-align: center;
+            font-weight: bold;
+            // border: 5px solid orangered;
+            margin-left: 10px;
+          }
+          .movie-per::after {
+            content: '';
+            display: inline-block;
+            height: 8px;
+            padding-left: 10px;
+            border-right: 1px solid black;
+          }
+
+          .movie-point {
+            background-image: url(../../images/icon/ic_star.png);
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            padding-left: 10px;
+          }
+
+          .movie-point::after {
+            content: '';
+            display: inline-block;
+            height: 8px;
+            padding-left: 10px;
+            border-right: 1px solid white;
+          }
+
+          .movie-hart {
+            height: 16px;
+            background-image: url(../../images/icon/heart_rnd_16_off.png);
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            padding-left: 15px;
+            text-indent: -999px;
+            overflow: hidden;
+          }
         }
       }
 
