@@ -13,7 +13,6 @@ import UserService from '../../Services/userService';
 const prefix = 'EOTTAECINEMA/authSignIn';
 
 //action
-//순서로 들어가는게 아니라 이름 다르게 들어가면 안 될 것 같은데
 const { start, checkid, success, fail } = createActions(
   {
     SUCCESS: (nickName, token) => ({ nickName, token }),
@@ -56,8 +55,8 @@ const reducer = handleActions(
       loading: false,
       //일단은 true를 쓰고 나중에 바꿀 것
       id: true,
-      token: action.payload.nickName.accessToken,
-      nickName: action.payload.nickName.nickName,
+      token: action.payload.token,
+      nickName: action.payload.nickName,
       error: null,
     }),
 
@@ -91,7 +90,7 @@ function* startSignInSaga(action) {
       id,
       password,
     );
-    yield put(success({ nickName, accessToken }));
+    yield put(success(nickName, accessToken));
   } catch (error) {
     yield put(fail(error));
   }
