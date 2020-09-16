@@ -382,8 +382,8 @@ button {
   height: 1px;
   clip: rect(0, 0);
   clip-path: polygon(0, 0);
+  text-indent: 999px;
   overflow: hidden;
-  text-indent: -9999px;
 }
 
 .clearfix::after {

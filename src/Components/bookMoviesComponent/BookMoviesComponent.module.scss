@@ -48,18 +48,18 @@
         }
         .hambergerBtn{
           margin-right: 10px;
-          background-image: url("../../images/icon/btn_list_view_txt.png");
+          background-image: url("/images/icon/btn_list_view_txt.png");
         }
         .active.hambergerBtn{
-          background-image: url("../../images/icon/btn_list_view_txt_on.png");
+          background-image: url("/images/icon/btn_list_view_txt_on.png");
         }
 
         .active.posterBtn{
-          background-image: url("../../images/icon/btn_list_view_thm_on.png");
+          background-image: url("/images/icon/btn_list_view_thm_on.png");
           
         }
         .posterBtn{
-          background-image: url("../../images/icon/btn_list_view_thm.png");
+          background-image: url("/images/icon/btn_list_view_thm.png");
         }
       }
     }
@@ -116,7 +116,7 @@
           border: 2px solid #000;
           &::after{
             position: absolute;
-            background-image: url("../../images/icon/check.png");
+            background-image: url("/images/icon/check.png");
             width: 18px;
             height: 14px;
             top: 23px;
@@ -201,7 +201,7 @@
           border: 2px solid #000;
           &::after{
             position: absolute;
-            background-image: url("../../images/icon/check.png");
+            background-image: url("/images/icon/check.png");
             width: 18px;
             height: 14px;
             top: 15px;
