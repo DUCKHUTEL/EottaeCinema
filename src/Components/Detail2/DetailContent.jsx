@@ -1,24 +1,19 @@
 import React from 'react';
 import styles from './DetailContent.module.scss';
 
-export default function DetailContent({
-  movieAPIData,
-  moviesDBData,
-  getMovieAPIData,
-  getMoviesDBData,
-}) {
+export default function DetailContent({ movieAPIData, DBData }) {
   // React.useEffect(() => {
   //   getMovieAPIData();
   // }, []);
 
-  React.useEffect(() => {
-    getMoviesDBData();
-  }, []);
+  // React.useEffect(() => {
+  //   getMoviesDBData();
+  // }, []);
 
   const APIData = movieAPIData;
-  const DBData = moviesDBData.find(
-    (DBdata) => DBdata.movieTitle === APIData.title,
-  );
+  // const DBData = moviesDBData.find(
+  //   (DBdata) => DBdata.movieTitle === APIData.title,
+  // );
 
   console.log(movieAPIData.actors);
 
@@ -34,7 +29,7 @@ export default function DetailContent({
         </div>
         <div className={styles['title-info']}>
           <span>{APIData === undefined || APIData.rating}</span>
-          <strong>{APIData === undefined || APIData.title}</strong>
+          <strong>{DBData === undefined || DBData.movieTitle}</strong>
         </div>
         <ul className={styles['detail-info1']}>
           <li className={styles['sub-info']}>
@@ -47,12 +42,18 @@ export default function DetailContent({
             </strong>
           </li>
           <li className={styles['sub-info']}>
-            <em>예매율 3위</em>
+            <em>예매율 {DBData === undefined || DBData.movieBookRank}위</em>
             <strong>{DBData === undefined || DBData.movieBookPer}%</strong>
           </li>
           <li className={styles['sub-info']}>
             <em>누적 관객수</em>
-            <strong>4,231,329명</strong>
+            <strong>
+              {DBData === undefined ||
+                DBData.movieCumAud
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+              명
+            </strong>
           </li>
         </ul>
         <ul className={styles['detail-info2']}>
