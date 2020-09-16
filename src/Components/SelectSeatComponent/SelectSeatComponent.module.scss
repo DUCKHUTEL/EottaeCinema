@@ -96,7 +96,7 @@
             background-position: center;
           }
           .plus{
-            background-image: url("../../images/icon/plus_12.png");
+            background-image: url("/images/icon/plus_12.png");
           }
           >span{
             display:inline-block;
@@ -109,7 +109,7 @@
           }
           .minus{
 
-            background-image: url("../../images/icon/minus_12.png");
+            background-image: url("/images/icon/minus_12.png");
           }
         }
       }
@@ -164,7 +164,7 @@
       .lpay{    
         vertical-align: text-bottom;
         display: inline-block;
-        background-image: url("../../images/icon/txt_lpay_48_new.png");
+        background-image: url("/images/icon/txt_lpay_48_new.png");
         width: 48px;
         height: 16px;
       }
