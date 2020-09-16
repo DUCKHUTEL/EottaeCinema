@@ -1,44 +1,27 @@
+.wallpaper * {
+  padding: 0;
+}
+
 .wallpaper {
   position: relative;
   z-index: 1;
   width: 100%;
   background-color: black;
 
-  .img-1,
-  .img-2,
-  .img-3,
-  .img-4 {
-    height: 774px;
-    width: 100%;
-    position: relative;
-    z-index: 1;
-    background-color: black;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    // button {
-    //   color: white;
-    //   position: absolute;
-    //   top: 100%;
-    //   right: 80%;
-    //   z-index: 2;
-    //   width: 100px;
-    //   height: 100px;
-    //   background-color: red;
-    // }
-  }
-
-  .img-1 {
-    background-image: url(../../images/wallpaper/Mutants_1920774.jpg);
-  }
-  .img-2 {
-    background-image: url(../../images/wallpaper/Tenet_1920774.jpg);
-  }
-  .img-3 {
-    background-image: url(../../images/wallpaper/Outpost_1920774.jpg);
-  }
-  .img-4 {
-    background-image: url(../../images/wallpaper/BeautyWater_1920774.jpg);
+  // .images::after {
+  //   background-image: url(/public/images/icon/btn_main_visual_play.png);
+  //   width: 30px;
+  //   height: 30px;
+  //   position: absolute;
+  //   z-index: 50;
+  //   border-radius: 5px solid red;
+  // }
+  .play-button {
+    width: 60px !important;
+    position: absolute;
+    z-index: 50;
+    top: 46%;
+    left: 50%;
   }
   .control {
     width: 100%;
