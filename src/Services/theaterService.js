@@ -6,7 +6,6 @@ export default class theaterService {
     const res = await Axios.get(
       `${url}?date=${date}&title=${title}&point=${point}`,
     );
-    console.log(title);
     return res.data.sort((a, b) =>
       a['movieTime'] > b['movieTime']
         ? 1

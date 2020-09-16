@@ -7,15 +7,19 @@ import { useCallback } from 'react';
 import { LoadingContainer } from '../../Containers/LoadingContainer';
 import BookTheaterContainer from '../../Containers/BookTheaterContainer';
 import SelectSeatContainer from '../../Containers/SelectSeatContainer';
+import PayContiner from '../../Containers/PayContiner';
 
 function BookComponent({ passedStep }) {
   const [steps, setStep] = useState(passedStep === 0 ? 1 : passedStep);
 
-  const changeStep = useCallback((e) => {
-    e.preventDefault();
-    if (steps < +e.target.id) return;
-    setStep(+e.target.id);
-  }, []);
+  const changeStep = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (steps < +e.target.id) return;
+      setStep((state) => +e.target.id);
+    },
+    [steps],
+  );
   const classMaker = useCallback((step) => {
     if (step === 1) return styles.active;
     if (step > 1) return styles.done;
@@ -45,7 +49,7 @@ function BookComponent({ passedStep }) {
             <a href="#" id="2">
               02
               <br />
-              인원좌석
+              인원/좌석
             </a>
           </li>
           <li
@@ -79,6 +83,12 @@ function BookComponent({ passedStep }) {
         <section className={steps === 2 ? styles.nowStep : styles.notNow}>
           <SelectSeatContainer setStep={setStep} steps={steps} />
         </section>
+        <section className={steps === 3 ? styles.nowStep : styles.notNow}>
+          <PayContiner setStep={setStep} />
+        </section>
+        <section
+          className={steps === 4 ? styles.nowStep : styles.notNow}
+        ></section>
       </div>
       <LoadingContainer />
     </main>
