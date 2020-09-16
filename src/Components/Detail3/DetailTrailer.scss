@@ -1,0 +1,62 @@
+.movie-tab-info2 {
+  position: relative;
+  margin-bottom: 60px;
+
+  .trailer-text {
+    font-size: 15px;
+    margin-bottom: -20px;
+  }
+
+  .trailer-slider-wrap {
+    padding-top: 37px;
+
+    .owl-carousel{
+      padding: 0;
+
+      .item {
+        position: relative;
+
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          width: 49px;
+          height: 54px;
+          background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/main/btn_main_visual_play.png") no-repeat;
+          margin: -40px 0 0 -20px;
+          padding: 0;
+          // font: 0/0 a;
+          border: 0;
+          z-index: 1;
+          background-color: rgba(255, 255, 255, 0);
+        }
+        img {
+          height: 200px;
+        }
+
+        .trailer-title {
+          margin-top: 10px;
+          width: 100%;
+          font-size: 13px;
+          text-align: center;
+        }
+      }
+
+      .owl-prev, .owl-next {
+        position: absolute;
+        top: -55px;
+        width: 30px;
+      }
+
+      .owl-prev {
+        left: 930px;
+      }
+
+      .owl-next {
+        right: -10px;
+      }
+    }
+  }
+}

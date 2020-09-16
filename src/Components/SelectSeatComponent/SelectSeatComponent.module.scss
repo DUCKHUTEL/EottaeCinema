@@ -1,0 +1,177 @@
+.selectSeat{
+  width: 1202px;
+  h3{
+    height: 55px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    padding-top: 20px;
+  }
+  .bookData{
+    height: 117px;
+    background-color: #fff;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    .bookingMovieData{
+      display: flex;
+      width: 270px;
+      .moviePoster{
+        width: 46px;
+        height: 65px;
+        margin-right: 20px;
+        img{
+          width: 100%;
+        }
+      }
+      .movieInfo{
+        font-size: 11px;
+        .ageTitle{
+          margin: 5px 0 5px;
+          >span[class*="ageCut"]{
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            margin-right: 5px;
+            border-radius: 13px;
+            font-size: 12px;
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            vertical-align: middle;
+            padding-top: 5px;
+            &.ageCut12{
+              background-color: skyblue;
+            }
+            &.ageCut15{
+              background-color: #FFC134;
+            }
+            &.ageCut0{
+              background-color: green;
+            }
+
+          } 
+          .title{
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+        .time{
+          margin-bottom: 5px;
+          .startTime::before{
+            content: "|";
+            margin: 0 5px;
+          }
+        }
+        .stage{
+          margin-bottom: 5px;
+        }
+      }
+    }
+    .btnBox{
+      display: flex;
+      width: 825px;
+      li:not(:first-child){
+        margin-left: 20px;
+      }
+      li{
+        display: flex;
+        align-items: center;
+        >span{
+          font-size: 13px;
+          font-weight: bold;
+          margin-right: 8px;
+        }
+        >div{
+          width: 100px;
+          height: 40px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          display: flex;
+          button{
+            width: 30px;
+            height: 40px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+          .plus{
+            background-image: url("/images/icon/plus_12.png");
+          }
+          >span{
+            display:inline-block;
+            text-align: center;
+            padding-top: 13px;
+            height: 40px;
+            width: 40px;
+            font-size: 13px;
+            font-weight: bold;
+          }
+          .minus{
+
+            background-image: url("/images/icon/minus_12.png");
+          }
+        }
+      }
+    }
+  }
+  .selectSection{
+    height: 638px;
+    padding: 0 15px;
+    background-color: #000;
+    p{
+      color: #fff;
+      padding: 15px 0 25px;
+      text-align: center;
+    }
+    .screen{
+      padding: 10px 0;
+      text-align: center;
+      font-size: 16px;
+      letter-spacing: 15px;
+      margin: 0 0 30px;
+      background: #6E6E6E;
+      color: #fff;
+    }
+  }
+  .checkOut{
+    background-color: #888;
+    height: 60px;
+    display:flex;
+    justify-content: space-between;
+    font-size: 15px;
+    .costBox{
+      color: #FFF;
+      padding: 16px 0 0 30px;
+      font-size: 15px;
+      .cost{
+        color: #FFF;
+        font-weight: bold;
+        font-size: 25px;
+      }
+    }
+    .justBuy{
+      background-color: red;
+      font-size: 15px;
+      color: #fff;
+      width: 180px;
+      height: 100%;
+      line-height: 60px;;
+    }
+    .lpayBuy{
+      background-color: #fff;
+      font-size: 15px;
+      .lpay{    
+        vertical-align: text-bottom;
+        display: inline-block;
+        background-image: url("/images/icon/txt_lpay_48_new.png");
+        width: 48px;
+        height: 16px;
+      }
+      line-height: 60px;;
+      width: 180px;
+      height: 100%;
+
+    }
+  }
+}

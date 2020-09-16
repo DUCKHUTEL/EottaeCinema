@@ -1,3 +1,7 @@
+.owl-carousel{
+  padding: 0 20px;
+  cursor: pointer;
+}
 .owl-nav > button{
   width: 37px;
   height: 39px;
@@ -5,13 +9,13 @@
   top: 15px;
 }
 .owl-prev{
-background: url("../../images/icon/arr_lf_11.png") no-repeat center center !important;
+background: url("/images/icon/arr_lf_11.png") no-repeat center center !important;
 left: 0;
 margin-left: -15px;
 }
 
 .owl-next{
-background: url("../../images/icon/arr_rg_11.png") no-repeat center center !important;
+background: url("/images/icon/arr_rg_11.png") no-repeat center center !important;
 right: 0;
 margin-right: -15px;
 }
@@ -38,7 +42,7 @@ margin-right: -15px;
 }
 .item .dateLabel input:checked+.showDate{
   color: #fff;
-  background-color: #000000;
+  background-color: #000;
 }
 .item .dateLabel .showDate{
   display: block;

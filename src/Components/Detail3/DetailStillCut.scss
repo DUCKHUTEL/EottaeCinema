@@ -1,0 +1,96 @@
+.movie-tab-info3 {
+  position: relative;
+  margin-bottom: 60px;
+
+  .still-cut-text {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+
+  .poster-wrap {
+
+    .owl-carousel{
+      padding: 0 40px;
+      
+      .owl-stage-outer {
+
+        .item {
+          img {
+            height: 133px;
+          }
+        }
+      }
+
+      .owl-prev, .owl-next {
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 133px;
+        margin: 0;
+        border: 1px solid #CCC;
+      }
+
+      .owl-prev {
+        left: 0;
+      }
+
+      .owl-next {
+        right: 0;
+      }
+    }
+
+  }
+
+  .still-cut-wrap {
+    position: relative;
+    margin-top: 20px;
+
+    .owl-carousel{
+      padding: 0;
+      
+      .owl-stage-outer {
+        width: 980px;
+        background-color: #222;
+
+        .item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+  
+          img {
+            width: 760px;
+            height: 560px;
+          }
+        }
+      }
+
+      .owl-prev, .owl-next {
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 560px;
+        margin: 0;
+        // border: 1px solid #CCC;
+      }
+
+      .owl-prev {
+        left: 21px;
+        background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/arr_lf_31_wht.png")
+          no-repeat center center !important;
+      }
+  
+      .owl-next {
+        right: 21px;
+        background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/arr_rg_31_wht.png")
+          no-repeat center center !important;
+      }
+
+      .owl-dots {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        bottom: 10px;
+      }
+    }
+  }
+}

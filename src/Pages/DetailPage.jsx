@@ -1,14 +1,15 @@
-import React from "react";
-import DetailPageContainer from "../Containers/DetailPageContainer";
-import MainFooterComponent from "../Components/MainFooterComponent/MainFooterComponent";
-import MainHeaderComponentBlack from "../Components/MainHeaderComponent/MainHeaderComponentBlack";
+import React from 'react';
+import DetailPageContainer from '../Containers/DetailPageContainer';
+import MainFooterComponent from '../Components/MainFooterComponent/MainFooterComponent';
+import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
 
 export default function DetailPage() {
-    return (
-        <>
-            <MainHeaderComponentBlack />
-            <DetailPageContainer />
-            <MainFooterComponent />
-        </>
-    );
+  const index = 3;
+  return (
+    <>
+      <MainHeaderComponent path={[index]} />
+      <DetailPageContainer />
+      <MainFooterComponent />
+    </>
+  );
 }

@@ -7,11 +7,14 @@ li{
 }
 .pointList{
   position: absolute;
-  top: 63px;
+  top: 61px;
   left: 0;
   width: 100%;
   height: 752px;
   background-color: #f3f3f3;
+  &.schedule{
+    top: 55px;
+  }
   .theaterTitle{
     >a{
       display: inline-block;
@@ -45,7 +48,7 @@ li{
       
       &::after{
         position: absolute;
-        background-image: url("../../images/icon/check.png");
+        background-image: url("/images/icon/check.png");
         width: 18px;
         height: 14px;
         right: 55%;
@@ -64,7 +67,7 @@ li{
           color: red;
           &::after{
             position: absolute;
-            background-image: url("../../images/icon/check.png");
+            background-image: url("/images/icon/check.png");
             width: 18px;
             height: 14px;
             top: 12px;

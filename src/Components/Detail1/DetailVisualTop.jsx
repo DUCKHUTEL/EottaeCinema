@@ -5,11 +5,11 @@ import "./DetailVisualTop.scss";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 
-export default function DetailVisualTop({ movieData, getMovieData }) {
+export default function DetailVisualTop({ movieAPIData, getMovieAPIData }) {
   React.useEffect(() => {
-    getMovieData();
-  }, [getMovieData]);
-  const stllsURLArray = movieData.stlls;
+    getMovieAPIData();
+  }, [getMovieAPIData]);
+  const stllsURLArray = movieAPIData.stlls;
 
   return (
     <div className={styles["top-visual-wrap"]}>
