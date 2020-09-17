@@ -5,6 +5,7 @@ const PAR_SIGNUP = 'signUp';
 const PAR_CHECKNIC = 'checkRedunNickName';
 const PAR_CHECKID = 'checkRedunId';
 const PAR_SIGNIN = 'signIn';
+const PAR_CHECKTOKEN = 'checkToken';
 
 export default class UserService {
   static async SignUp(nickName, id, password) {
@@ -37,5 +38,11 @@ export default class UserService {
       password,
     });
     return response.data;
+  }
+  static async CheckToken(token) {
+    const response = await axios.get(
+      `${API_URL}${PAR_CHECKTOKEN}?token=${token}`,
+    );
+    return { tokenState: true };
   }
 }
