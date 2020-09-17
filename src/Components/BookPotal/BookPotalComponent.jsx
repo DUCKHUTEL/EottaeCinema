@@ -17,6 +17,10 @@ function BookPotalComponent({
   }, [setMind]);
 
   const goSelectSeat = useCallback(() => {
+    if (!localStorage.getItem('user')) {
+      setMind(false);
+      return;
+    }
     if (setStep !== undefined) {
       setStep((state) => 2);
     } else if (type) {
