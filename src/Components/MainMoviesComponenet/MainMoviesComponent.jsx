@@ -3,7 +3,7 @@ import styles from './MainMoviesComponent.module.scss';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import DetailContent from '../Detail2/DetailContent';
+import DetailContent from '../DetailContentComponent/DetailContent';
 import { useCallback } from 'react';
 
 function MainMoviesComponent({ movies, getMovies }) {
