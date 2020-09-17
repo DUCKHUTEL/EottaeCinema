@@ -40,9 +40,10 @@ export default class UserService {
     return response.data;
   }
   static async CheckToken(token) {
-    const response = await axios.get(
-      `${API_URL}${PAR_CHECKTOKEN}?token=${token}`,
-    );
-    return { tokenState: true };
+    const response = await axios.get(`${API_URL}${PAR_CHECKTOKEN}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    return response.data;
   }
 }
