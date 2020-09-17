@@ -6,10 +6,12 @@ import movies from './movies';
 import bookingData from './bookingData';
 import detail from './detail';
 import authSignIn from './authSignIn';
+import board from './board';
 
 const reducer = (history) =>
   combineReducers({
     authSignIn,
+    board,
     detail,
     selectData,
     theaters,
