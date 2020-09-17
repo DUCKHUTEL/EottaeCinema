@@ -15,24 +15,24 @@ function PayBookDataComponent({
   return (
     bookingData && (
       <article className={styles.payBookDataBox}>
-        <h3>예매정보</h3>
+        <h4>예매정보</h4>
         {movies
           .filter((movie) => movie.movieTitle === bookingData.movieTitle)
           .map((bookedMovie) => (
-            <div className={styles.posterBox}>
+            <div className={styles.posterBox} key={bookedMovie.movieTitle}>
               <img
                 className={styles.poster}
                 src={bookedMovie.moviePoster}
                 alt={bookedMovie.movieTitle + '포스터'}
               ></img>
-              <h4 className={styles.bookedMovieTitle}>
+              <h5 className={styles.bookedMovieTitle}>
                 <span className={styles[`ageCut${bookedMovie.ageCut}`]}>
                   {bookedMovie.ageCut === 0 ? '전체' : bookedMovie.ageCut}
                 </span>
                 <span className={styles.movieTitle}>
                   {bookedMovie.movieTitle}
                 </span>
-              </h4>
+              </h5>
               <p>
                 <span>일시</span>
                 <span>

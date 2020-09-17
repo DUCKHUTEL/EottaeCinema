@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import SignInPortal from '../Components/SignInPortal/SigInPortal';
+import SignInForm from '../Components/Login/SigInForm';
 import {
   checkIdSagaActionCreator,
   startSignInSagaActionCreator,
 } from '../Redux/modules/authSignIn';
 
-function SignInPotalContaniner() {
+function SignInPotalContaniner(setLoginModal) {
   const nickName = useSelector((state) => state.authSignIn.nickName);
   const token = useSelector((state) => state.authSignIn.token);
   const reportId = useSelector((state) => state.authSignIn.id);
@@ -27,11 +27,12 @@ function SignInPotalContaniner() {
   );
 
   return ReactDOM.createPortal(
-    <SignInPortal
+    <SignInForm
       login={login}
       reportId={reportId}
       nickName={nickName}
       token={token}
+      setLoginModal={setLoginModal}
       // DataId={DataId}
     />,
     document.querySelector('#SignPotal'),

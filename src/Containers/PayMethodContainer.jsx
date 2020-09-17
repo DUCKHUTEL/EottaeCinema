@@ -1,3 +1,6 @@
 import React from 'react';
-function PayMethodContainer() {}
+import PayMethodComponent from '../Components/PayMethodComponent/PayMethodComponent';
+function PayMethodContainer() {
+  return <PayMethodComponent />;
+}
 export default React.memo(PayMethodContainer);
