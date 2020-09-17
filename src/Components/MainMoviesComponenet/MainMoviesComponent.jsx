@@ -5,12 +5,15 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DetailContent from '../Detail2/DetailContent';
 import { useCallback } from 'react';
+import { history } from '../../Redux/create';
 
 function MainMoviesComponent({ movies, getMovies }) {
   const [slideInfo, setSlideInfo] = useState({
     count: 0,
     print: { transform: `translate3d(${-198 * 0}px, 0, 0)` },
   });
+
+  const [nowMovieTitle, setnowMovieTitle] = useState('');
 
   useEffect(() => {
     getMovies();
@@ -45,6 +48,11 @@ function MainMoviesComponent({ movies, getMovies }) {
     if (age === 12) return styles['age-12'];
     if (age === 15) return styles['age-15'];
   }, []);
+
+  function detailRouter(e) {
+    const title = e.target.id;
+    history.push('/detail', { title: title });
+  }
 
   return (
     <main className={styles['movies-info']}>
@@ -85,14 +93,8 @@ function MainMoviesComponent({ movies, getMovies }) {
                 <button className={styles['button-1']}>
                   <Link to="/ticketing">예매하기</Link>
                 </button>
-                <button
-                  className={styles['button-2']}
-                  onClick={() => <DetailContent title={movie.movieTitle} />}
-                >
-                  <Link
-                    onClick={() => <DetailContent title={movie.movieTitle} />}
-                    to={'/detail?title=' + movie.movieTitle}
-                  >
+                <button className={styles['button-2']} id={movie.movieTitle}>
+                  <Link onClick={detailRouter} id={movie.movieTitle}>
                     상세정보
                   </Link>
                 </button>

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styles from './DetailContent.module.scss';
 
 export default function DetailContent({ movieAPIData, DBData }) {
+  const title = useSelector((state) => console.log(state.router.location));
   // React.useEffect(() => {
   //   getMovieAPIData();
   // }, []);

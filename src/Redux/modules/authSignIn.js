@@ -14,7 +14,7 @@ import TokenService from '../../Services/tokenService';
 const prefix = 'EOTTAECINEMA/authSignIn';
 
 //action
-const { start, checkid, success, fail } = createActions(
+const { start, checkid, success, fail, checkToken } = createActions(
   {
     SUCCESS: (nickName, token) => ({ nickName, token }),
     CHECKID: (id) => ({ id }),
