@@ -18,7 +18,7 @@ function MainHeaderComponent(props) {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (!user) return;
-    if (UserService.CheckToken(user.accessToken).tokenState) return;
+    if (!UserService.CheckToken(user.accessToken).tokenState) return;
     TokenService.delete();
   }, []);
 
