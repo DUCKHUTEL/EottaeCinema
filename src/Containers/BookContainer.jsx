@@ -16,7 +16,6 @@ function BookContainer() {
 
   if (passedStep === 0) {
     resetSelect();
-    console.log('북 컨테이너');
   }
 
   return <BookComponent passedStep={passedStep} />;
