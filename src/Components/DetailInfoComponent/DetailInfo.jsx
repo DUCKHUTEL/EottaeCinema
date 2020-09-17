@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './DetailInfo.module.scss';
 import Scrollbars from 'react-custom-scrollbars';
-import DetailTrailer from './DetailTrailer';
-import DetailStillCut from './DetailStillCut';
-import DetailPeople from './DetailPeople';
-import DetailGenderAge from './DetailGenderAge';
-import DetailReview from './DetailReview';
+import DetailTrailer from '../DetailTrailerComponent/DetailTrailer';
+import DetailStillCut from '../DetailStillCutComponent/DetailStillCut';
+import DetailPeople from '../DetailPeopleComponent/DetailPeople';
+import DetailGenderAge from '../DetailGenderAgeComponent/DetailGenderAge';
+import DetailReviewContainer from '../../Containers/DetailReviewContainer';
 
 export default function DetailInfo({ movieAPIData, DBData }) {
   const [infoState, setInfoState] = React.useState('movie');
@@ -60,7 +60,10 @@ export default function DetailInfo({ movieAPIData, DBData }) {
           </div>
         )}
       </li>
-      <DetailReview infoState={infoState} reviewInfoClick={reviewInfoClick} />
+      <DetailReviewContainer
+        infoState={infoState}
+        reviewInfoClick={reviewInfoClick}
+      />
     </ul>
   );
 }
