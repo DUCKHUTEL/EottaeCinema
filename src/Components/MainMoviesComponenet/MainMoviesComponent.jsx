@@ -13,6 +13,8 @@ function MainMoviesComponent({ movies, getMovies }) {
     print: { transform: `translate3d(${-198 * 0}px, 0, 0)` },
   });
 
+  const [nowMovieTitle, setnowMovieTitle] = useState('');
+
   useEffect(() => {
     getMovies();
   }, []);
@@ -46,10 +48,6 @@ function MainMoviesComponent({ movies, getMovies }) {
     if (age === 12) return styles['age-12'];
     if (age === 15) return styles['age-15'];
   }, []);
-
-  // const goDetailPage = useCallback(() => {
-  //   history.push('/detail', { title: movieTitle });
-  // }, []);
 
   return (
     <main className={styles['movies-info']}>

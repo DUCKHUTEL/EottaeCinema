@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './DetailContent.module.scss';
 
 export default function DetailContent({ movieAPIData, DBData, title }) {
-  console.log('title', title);
+  console.log('받은 title', title);
   // React.useEffect(() => {
   //   getMovieAPIData();
   // }, []);

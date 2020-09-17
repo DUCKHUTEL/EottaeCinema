@@ -1,6 +1,9 @@
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useCallback, useEffect, useState } from 'react';
 import MainNavComponent from '../MainNavComponent/MainNavComponent';
 import styles from './MainHeaderComponent.module.scss';
+import UserService from '../../Services/userService';
+import TokenService from '../../Services/tokenService';
+import SignInPotalContainer from '../../Containers/SignInPotalContainer';
 
 //-event
 //1. scroll
@@ -9,44 +12,28 @@ import styles from './MainHeaderComponent.module.scss';
 
 function MainHeaderComponent(props) {
   const [index, path] = props.path;
+  const [token, setToken] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
-  const useScroll = (e) => {
-    console.log(e);
-    const dom = useRef();
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) return;
+    if (!UserService.CheckToken(user.accessToken).tokenState) return;
+    TokenService.delete();
+  }, []);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user) return;
+    setToken(true);
+  }, []);
+
+  const login = () => {
+    setLoginModal((state) => !state);
   };
 
-  // useEffect(() => {
-  //     window.addEventListener("scroll", useScroll);
-  // });
-
-  // const useScroll = () => {
-  //     const dom = useRef();
-
-  //         const handleScroll = useCallback(([entry]) => {
-
-  //             const {current} = dom;
-
-  //             if(entry.isIntersecting){
-  //                 current.style.display = 'none';
-  //             }
-
-  //     }, []);
-
-  //     // useEffect(()=>{
-  //     //     let observer;
-  //     //     const { current } = dom;
-
-  //     //     if (current){
-
-  //     //     }
-  //     // })
-  // };
-
   return (
-    <header
-      className={path ? styles['header-black'] : styles['header-white']}
-      onScroll={useScroll}
-    >
+    <header className={path ? styles['header-black'] : styles['header-white']}>
       <section className={styles['header-section']}>
         <h1>
           <a className="a11yHidden" href="http://localhost:3000/">
@@ -78,10 +65,13 @@ function MainHeaderComponent(props) {
         <ul className={styles['personal']}>
           <li className={styles['memership']}>멤버십</li>
           <li className={styles['customer']}>고객센터</li>
-          <li className={styles['login_logout']}>로그아웃</li>
+          <li className={styles['login_logout']}>
+            <button onClick={login}>{token ? '로그아웃' : '로그인'}</button>
+          </li>
         </ul>
       </section>
       <MainNavComponent path={path} />
+      {loginModal && <SignInPotalContainer setLoginModal={setLoginModal} />}
     </header>
   );
 }
