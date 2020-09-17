@@ -2,12 +2,14 @@
   width: 300px;
   height: 100%;
   border-right:1px solid #ddd;
-  h3{
+  h4{
     margin: 0;
     background-color: #000;
     height: 55px;
     color: #fff;
     font-size: 18px;
+    padding-top: 20px;
+    text-align: center;
   }
   .posterBox{
     padding: 30px 30px 18px;
@@ -41,6 +43,7 @@
         }
       }
       .movieTitle{
+        line-height: 1.5;
         font-weight: bold;
         font-size: 18px;
         vertical-align: middle;

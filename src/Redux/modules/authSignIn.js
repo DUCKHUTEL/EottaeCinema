@@ -9,6 +9,7 @@ import {
 } from 'redux-saga/effects';
 import { createActions, handleActions, createAction } from 'redux-actions';
 import UserService from '../../Services/userService';
+import TokenService from '../../Services/tokenService';
 
 const prefix = 'EOTTAECINEMA/authSignIn';
 
@@ -27,7 +28,7 @@ const { start, checkid, success, fail } = createActions(
 const initialState = {
   loading: false,
   error: null,
-  id: false,
+  id: null,
   nickName: null,
   token: null,
 };
@@ -35,16 +36,16 @@ const initialState = {
 //reducer
 const reducer = handleActions(
   {
-    START: () => ({
+    START: (state) => ({
       loading: true,
       error: null,
-      id: false,
+      id: state.id,
       nickName: null,
       token: null,
     }),
 
     CHECKID: (state, action) => ({
-      loading: true,
+      loading: false,
       error: null,
       id: action.payload.id,
       nickName: null,
@@ -53,8 +54,7 @@ const reducer = handleActions(
 
     SUCCESS: (state, action) => ({
       loading: false,
-      //일단은 true를 쓰고 나중에 바꿀 것
-      id: true,
+      id: state.id,
       token: action.payload.token,
       nickName: action.payload.nickName,
       error: null,
@@ -75,11 +75,16 @@ const reducer = handleActions(
 export default reducer;
 
 const START_SIGNIN_SAGA = `${prefix}/START_SIGNIN_SAGA`;
+const CHECK_ID_SAGA = `${prefix}/CHECK_ID_SAGA`;
 
 export const startSignInSagaActionCreator = createAction(
   START_SIGNIN_SAGA,
   (id, password) => ({ id, password }),
 );
+
+export const checkIdSagaActionCreator = createAction(CHECK_ID_SAGA, (id) => ({
+  id,
+}));
 
 function* startSignInSaga(action) {
   const { id, password } = action.payload;
@@ -90,12 +95,24 @@ function* startSignInSaga(action) {
       id,
       password,
     );
+    TokenService.save({ nickName, accessToken });
     yield put(success(nickName, accessToken));
   } catch (error) {
     yield put(fail(error));
   }
 }
 
+function* checkID(action) {
+  const id = action.payload.id;
+  try {
+    const _id = yield call(UserService.CheckId, id);
+    yield put(checkid(_id));
+  } catch (error) {
+    yield put(fail(error));
+  }
+}
+
 export function* SignInSaga() {
+  yield takeEvery(CHECK_ID_SAGA, checkID);
   yield takeEvery(START_SIGNIN_SAGA, startSignInSaga);
 }
