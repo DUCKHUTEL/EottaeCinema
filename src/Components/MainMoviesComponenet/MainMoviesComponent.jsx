@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DetailContent from '../DetailContentComponent/DetailContent';
 import { useCallback } from 'react';
+import { history } from '../../Redux/create';
 
 function MainMoviesComponent({ movies, getMovies }) {
   const [slideInfo, setSlideInfo] = useState({
@@ -45,6 +46,10 @@ function MainMoviesComponent({ movies, getMovies }) {
     if (age === 12) return styles['age-12'];
     if (age === 15) return styles['age-15'];
   }, []);
+
+  // const goDetailPage = useCallback(() => {
+  //   history.push('/detail', { title: movieTitle });
+  // }, []);
 
   return (
     <main className={styles['movies-info']}>
@@ -87,7 +92,9 @@ function MainMoviesComponent({ movies, getMovies }) {
                 </button>
                 <button
                   className={styles['button-2']}
-                  onClick={() => <DetailContent title={movie.movieTitle} />}
+                  onClick={() => {
+                    history.push('/detail', { selectTitle: movie.movieTitle });
+                  }}
                 >
                   <Link
                     onClick={() => <DetailContent title={movie.movieTitle} />}
