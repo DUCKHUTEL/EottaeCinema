@@ -1,9 +1,8 @@
-import React from "react";
-import styles from "./DetailVisualTop.module.scss";
-import OwlCarousel from "react-owl-carousel";
-import "./DetailVisualTop.scss";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+import React from 'react';
+import OwlCarousel from 'react-owl-carousel';
+import './DetailVisualTop.scss';
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 export default function DetailVisualTop({ movieAPIData, getMovieAPIData }) {
   React.useEffect(() => {
@@ -12,7 +11,7 @@ export default function DetailVisualTop({ movieAPIData, getMovieAPIData }) {
   const stllsURLArray = movieAPIData.stlls;
 
   return (
-    <div className={styles["top-visual-wrap"]}>
+    <div className="top-visual-wrap">
       <OwlCarousel
         className="owl-theme top-visual-box"
         items={1}

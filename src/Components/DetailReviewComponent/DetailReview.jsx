@@ -3,7 +3,7 @@ import styles from './DetailReview.module.scss';
 import boardService from '../../Services/boardService';
 
 export default function DetailReview({ infoState, reviewInfoClick }) {
-  const reviewData = boardService.getReviewOnTimeData();
+  const reviewData = boardService.getReviewsOnTime('테넷', 1);
   console.log('reviewData', reviewData);
   return (
     <li className={styles['movie-info2']}>

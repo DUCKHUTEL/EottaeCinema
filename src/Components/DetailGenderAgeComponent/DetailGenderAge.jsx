@@ -54,7 +54,7 @@ export default function DetailGenderAge({ DBData }) {
                   : { height: `${DBData.movieRate10}%` }
               }
             >
-              <span class={styles.bar}></span>
+              <span className={styles.bar}></span>
               <strong>
                 {DBData === undefined ? 0 : DBData.movieRate10}
                 <span>%</span>
@@ -69,7 +69,7 @@ export default function DetailGenderAge({ DBData }) {
                   : { height: `${DBData.movieRate20}%` }
               }
             >
-              <span class={styles.bar}></span>
+              <span className={styles.bar}></span>
               <strong>
                 {DBData === undefined ? 0 : DBData.movieRate20}
                 <span>%</span>

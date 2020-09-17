@@ -1,7 +1,7 @@
 import React from 'react';
-import DetailVisualTop from '../Components/Detail1/DetailVisualTop';
-import DetailContent from '../Components/Detail2/DetailContent';
-import DetailInfo from '../Components/Detail3/DetailInfo';
+import DetailVisualTop from '../Components/DetailVisualTopComponent/DetailVisualTop';
+import DetailContent from '../Components/DetailContentComponent/DetailContent';
+import DetailInfo from '../Components/DetailInfoComponent/DetailInfo';
 import { getMovieDataSagaActionCreator } from '../Redux/modules/detail';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -23,7 +23,7 @@ export default function DetailPageContainer() {
 
   const getMoviesDBData = React.useCallback(() => {
     dispatch(startGetMoviesActionCreator());
-  });
+  }, [dispatch]);
 
   useEffect(() => {
     getMovieAPIData();
@@ -45,11 +45,14 @@ export default function DetailPageContainer() {
       />
       <DetailContent
         movieAPIData={movieAPIData}
-        moviesDBData={moviesDBData}
         DBData={DBData}
         getMoviesDBData={getMoviesDBData}
       />
-      <DetailInfo movieAPIData={movieAPIData} DBData={DBData} />
+      <DetailInfo
+        movieAPIData={movieAPIData}
+        DBData={DBData}
+        getMoviesDBData={getMoviesDBData}
+      />
     </>
   );
 }

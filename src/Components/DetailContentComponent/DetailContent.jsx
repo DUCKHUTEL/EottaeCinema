@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './DetailContent.module.scss';
 
-export default function DetailContent({ movieAPIData, DBData }) {
+export default function DetailContent({ movieAPIData, DBData, title }) {
+  console.log('title', title);
   // React.useEffect(() => {
   //   getMovieAPIData();
   // }, []);
