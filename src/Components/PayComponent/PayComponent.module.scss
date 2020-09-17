@@ -1,9 +1,12 @@
-.a11yhidden{
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  clip: rect(0,0,0, 0);
-  clip-path: polygon(0, 0);
-  overflow: hidden;
-  text-indent: -9999px;
+.payBox{
+  display: flex;
+  .a11yhidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0,0,0, 0);
+    clip-path: polygon(0, 0);
+    overflow: hidden;
+    text-indent: -9999px;
+  }
 }
