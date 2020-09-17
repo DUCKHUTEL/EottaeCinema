@@ -8,18 +8,20 @@ import { useEffect } from 'react';
 import { startGetMoviesActionCreator } from '../Redux/modules/movies';
 
 export default function DetailPageContainer() {
+  const selectedMovie = useSelector((state) => state.router.location.state);
   const movieAPIData = useSelector((state) => state.detail.movieData);
   const moviesDBData = useSelector((state) => state.movies.movies);
   const loading = useSelector((state) => state.detail.loading);
 
+  console.log('selectedMovie', selectedMovie.selectTitle);
   console.log('loading', loading);
   console.log('movieDBData', moviesDBData);
 
   const dispatch = useDispatch();
 
   const getMovieAPIData = React.useCallback(() => {
-    dispatch(getMovieDataSagaActionCreator('테넷'));
-  }, [dispatch]);
+    dispatch(getMovieDataSagaActionCreator(selectedMovie.selectTitle));
+  }, []);
 
   const getMoviesDBData = React.useCallback(() => {
     dispatch(startGetMoviesActionCreator());
@@ -34,7 +36,7 @@ export default function DetailPageContainer() {
   }, []);
 
   const DBData = moviesDBData.find(
-    (DBdata) => DBdata.movieTitle === movieAPIData.title,
+    (DBdata) => DBdata.movieTitle === selectedMovie.selectTitle,
   );
 
   return (
