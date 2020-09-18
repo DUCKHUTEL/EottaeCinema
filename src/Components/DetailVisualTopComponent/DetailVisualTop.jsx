@@ -4,12 +4,7 @@ import './DetailVisualTop.scss';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
-export default function DetailVisualTop({ movieAPIData, getMovieAPIData }) {
-  React.useEffect(() => {
-    getMovieAPIData();
-  }, [getMovieAPIData]);
-  const stllsURLArray = movieAPIData.stlls;
-
+export default function DetailVisualTop({ DBData }) {
   return (
     <div className="top-visual-wrap">
       <OwlCarousel
@@ -22,11 +17,17 @@ export default function DetailVisualTop({ movieAPIData, getMovieAPIData }) {
         autoplayTimeout={3000}
         autoplaySpeed={500}
       >
-        {stllsURLArray === undefined ||
-          stllsURLArray.map((url, index) => {
+        {DBData === undefined ||
+          DBData.movieStillCut.split(';').map((url, i) => {
             return (
-              <div className="item" key={index}>
-                <img src={`${url}`} alt="poster" />
+              <div className="item" key={i}>
+                <img
+                  src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
+                    1,
+                    url.length - 1,
+                  )}`}
+                  alt={`트레일러${i}`}
+                />
               </div>
             );
           })}
