@@ -13,8 +13,6 @@ function MainMoviesComponent({ movies, getMovies }) {
     print: { transform: `translate3d(${-198 * 0}px, 0, 0)` },
   });
 
-  const [nowMovieTitle, setnowMovieTitle] = useState('');
-
   useEffect(() => {
     getMovies();
   }, []);
@@ -91,7 +89,7 @@ function MainMoviesComponent({ movies, getMovies }) {
                 <button
                   className={styles['button-2']}
                   onClick={() => {
-                    history.push('/detail', { selectTitle: movie.movieTitle });
+                    history.push('/detail', movie.movieTitle);
                   }}
                 >
                   <Link
