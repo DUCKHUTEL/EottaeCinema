@@ -75,6 +75,7 @@ const startAddReview = () => {
 };
 
 const successAddReview = (reviews) => {
+  console.log('successAddReview', reviews);
   return {
     type: ADD_SUCCESS,
     reviews,
@@ -151,6 +152,7 @@ const failClickLikeOfReview = (err) => {
 function* getReviewsSaga(action) {
   const { movie, count } = action.payload;
   yield put(startGetReviews());
+  console.log('saga', movie);
 
   try {
     const reviews = yield call(boardService.getReviewsOnTime, movie, count);
@@ -174,8 +176,10 @@ function* getReviewsByLikesSaga(action) {
 }
 
 function* addReviewSaga(action) {
-  const { movie, starPoint, content, nickName } = action.payload;
+  const { movie, starPoint, content } = action.payload;
   const token = yield select((state) => state.authSignIn.token);
+  const nickName = yield select((state) => state.authSignIn.nickName);
+  console.log(movie, starPoint, content, token, nickName);
   yield put(startAddReview());
 
   try {
@@ -187,7 +191,9 @@ function* addReviewSaga(action) {
       content,
       nickName,
     );
-    const reviews = yield call(boardService.getReviewOnTime, movie, 1);
+    const reviews = yield call(boardService.getReviewsOnTime, movie, 1);
+    console.log('reviews', reviews);
+
     yield put(successAddReview(reviews));
   } catch (err) {
     yield put(failAddReview(err));
@@ -201,7 +207,7 @@ function* patchReviewSaga(action) {
 
   try {
     yield call(boardService.editReview, token, id, starPoint, content);
-    const reviews = yield call(boardService.getReviewOnTime, movie, 1);
+    const reviews = yield call(boardService.getReviewsOnTime, movie, 1);
     yield put(successPatchReview(reviews));
   } catch (err) {
     yield put(failPatchReview(err));
@@ -259,18 +265,12 @@ export const getReviewsByLikesSagaActionCreator = (movie, count) => ({
   },
 });
 
-export const addReviewSagaActionCreator = (
-  movie,
-  starPoint,
-  content,
-  nickName,
-) => ({
+export const addReviewSagaActionCreator = (movie, starPoint, content) => ({
   type: ADD_REVIEW_SAGA,
   payload: {
     movie,
     starPoint,
     content,
-    nickName,
   },
 });
 
