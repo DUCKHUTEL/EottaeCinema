@@ -8,6 +8,7 @@ import { LoadingContainer } from '../../Containers/LoadingContainer';
 import BookTheaterContainer from '../../Containers/BookTheaterContainer';
 import SelectSeatContainer from '../../Containers/SelectSeatContainer';
 import PayContiner from '../../Containers/PayContiner';
+import CheckContianer from '../../Containers/CheckContianer';
 
 function BookComponent({ passedStep }) {
   const [steps, setStep] = useState(passedStep === 0 ? 1 : passedStep);
@@ -86,9 +87,9 @@ function BookComponent({ passedStep }) {
         <section className={steps === 3 ? styles.nowStep : styles.notNow}>
           <PayContiner setStep={setStep} />
         </section>
-        <section
-          className={steps === 4 ? styles.nowStep : styles.notNow}
-        ></section>
+        <section className={steps === 4 ? styles.nowStep : styles.notNow}>
+          <CheckContianer />
+        </section>
       </div>
       <LoadingContainer />
     </main>

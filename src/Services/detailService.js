@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// const MOVIE_API_URL =
-//   'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=X98WT5556TJ6I705U2O4&title=';
-
 const MOVIE_API_URL =
   'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=17NY1ZR61M5AG3S48QR8&title=';
 
