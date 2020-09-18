@@ -7,12 +7,15 @@
   clip-path: polygon(0 0, 0 0, 0 0);
 }
 
+.info *{
+  font-family: "Noto Sans KR", "Roboto", "san-serif";
+}
+
 .info {
   position: relative;
   width: 980px;
   margin: 0 auto;
   padding-top: 80px;
-  font-family: 'Noto Sans KR', 'Roboto', 'sans-serif' !important;
 
   .movie-info1 {
     .movie-info1-button {
