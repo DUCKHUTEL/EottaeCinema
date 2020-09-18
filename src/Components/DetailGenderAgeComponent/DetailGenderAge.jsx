@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './DetailGenderAge.module.scss';
 
 export default function DetailGenderAge({ DBData }) {
-  console.log('gender', DBData);
-
   return (
     <div className={styles['right-con']}>
       <strong>관람 선호도</strong>
@@ -47,7 +45,17 @@ export default function DetailGenderAge({ DBData }) {
           <dl>
             <dt className={styles.gen10}>10대</dt>
             <dd
-              className={`${styles.gen10}`}
+              className={`${styles.gen10} ${
+                DBData === undefined ||
+                Math.max(
+                  DBData.movieRate10,
+                  DBData.movieRate20,
+                  DBData.movieRate30,
+                  DBData.movieRate40,
+                ) === DBData.movieRate10
+                  ? styles.top
+                  : ''
+              }`}
               style={
                 DBData === undefined
                   ? { height: 0 }
@@ -62,7 +70,17 @@ export default function DetailGenderAge({ DBData }) {
             </dd>
             <dt className={styles.gen20}>20대</dt>
             <dd
-              className={`${styles.gen20} ${styles.top}`}
+              className={`${styles.gen20} ${
+                DBData === undefined ||
+                Math.max(
+                  DBData.movieRate10,
+                  DBData.movieRate20,
+                  DBData.movieRate30,
+                  DBData.movieRate40,
+                ) === DBData.movieRate20
+                  ? styles.top
+                  : ''
+              }`}
               style={
                 DBData === undefined
                   ? { height: 0 }
@@ -77,7 +95,17 @@ export default function DetailGenderAge({ DBData }) {
             </dd>
             <dt className={styles.gen30}>30대</dt>
             <dd
-              className={`${styles.gen30}`}
+              className={`${styles.gen30} ${
+                DBData === undefined ||
+                Math.max(
+                  DBData.movieRate10,
+                  DBData.movieRate20,
+                  DBData.movieRate30,
+                  DBData.movieRate40,
+                ) === DBData.movieRate30
+                  ? styles.top
+                  : ''
+              }`}
               style={
                 DBData === undefined
                   ? { height: 0 }
@@ -92,7 +120,17 @@ export default function DetailGenderAge({ DBData }) {
             </dd>
             <dt className={styles.gen40}>40대</dt>
             <dd
-              className={`${styles.gen40}`}
+              className={`${styles.gen40} ${
+                DBData === undefined ||
+                Math.max(
+                  DBData.movieRate10,
+                  DBData.movieRate20,
+                  DBData.movieRate30,
+                  DBData.movieRate40,
+                ) === DBData.movieRate40
+                  ? styles.top
+                  : ''
+              }`}
               style={
                 DBData === undefined
                   ? { height: 0 }
