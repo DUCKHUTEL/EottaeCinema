@@ -15,14 +15,6 @@ export default class boardService {
       `${REVIEW_URL}${GET_ON_TIME}?movie=${movie}&count=${count}`,
     );
 
-    console.log(
-      'reviewOnTime',
-      `${REVIEW_URL}${GET_ON_TIME}?movie=${movie}&count=${count}`,
-      res.data,
-      movie,
-      count,
-    );
-
     return res.data;
   }
 
@@ -31,12 +23,11 @@ export default class boardService {
       `${REVIEW_URL}${GET_ON_FAVOR}?movie=${movie}&count=${count}`,
     );
 
-    console.log('reviewOnFavor', res.data);
-
     return res.data;
   }
 
   static async addReview(token, movie, starPoint, content, nickName) {
+    console.log(token, movie, starPoint, content, nickName);
     const res = await axios.post(
       `${REVIEW_URL}${ADD_REVIEW}`,
       { movie, starPoint, content, nickName },
