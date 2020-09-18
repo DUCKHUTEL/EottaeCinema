@@ -4,14 +4,13 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailTrailer.scss';
 
-export default function DetailTrailer({ movieAPIData, DBData }) {
-  const APIData = movieAPIData;
-
-  console.log(APIData, DBData);
-
+function DetailTrailer({ DBData }) {
   return (
     <div className="movie-tab-info2">
-      <div className="trailer-text">트레일러 ()</div>
+      <div className="trailer-text">
+        트레일러 (
+        {DBData === undefined || DBData.movieTrailerImg.split(';').length})
+      </div>
       <div className="trailer-slider-wrap">
         <OwlCarousel
           className="owl-theme owl-carousel"
@@ -20,16 +19,27 @@ export default function DetailTrailer({ movieAPIData, DBData }) {
           nav
           dots={false}
         >
-          {APIData.stlls === undefined ||
-            APIData.stlls.map((url, index) => {
+          {DBData === undefined ||
+            DBData.movieTrailerImg.split(';').map((url, i) => {
               return (
-                <div className="item" key={index}>
-                  {/* <a href="#"> */}
-                  <img src={`${url}`} alt="poster" />
+                <div className="item" key={i}>
+                  <img
+                    src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
+                      1,
+                      url.length - 1,
+                    )}`}
+                    alt={`트레일러${i}`}
+                  />
                   <div className="trailer-title">
-                    <strong>1차 예고편</strong>
+                    <strong>
+                      {DBData.movieTrailerText
+                        .split(';')
+                        [i].substring(
+                          1,
+                          DBData.movieTrailerText.split(';')[i].length - 1,
+                        )}
+                    </strong>
                   </div>
-                  {/* </a> */}
                 </div>
               );
             })}
@@ -47,3 +57,5 @@ export default function DetailTrailer({ movieAPIData, DBData }) {
     </div>
   );
 }
+
+export default React.memo(DetailTrailer);
