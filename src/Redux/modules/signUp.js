@@ -3,7 +3,6 @@ import { createActions, handleActions, createAction } from 'redux-actions';
 import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
 import userEvent from '@testing-library/user-event';
-import { NULL } from 'node-sass';
 
 const prefix = 'EOTTAECINEMA/SIGNUP';
 
