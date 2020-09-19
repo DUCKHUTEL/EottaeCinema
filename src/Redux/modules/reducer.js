@@ -5,11 +5,13 @@ import theaters from './resTheater';
 import movies from './movies';
 import bookingData from './bookingData';
 import detail from './detail';
-import authSignIn from './authSignIn';
+import signIn from './signIn';
+import signUp from './signUp';
 
 const reducer = (history) =>
   combineReducers({
-    authSignIn,
+    signUp,
+    signIn,
     detail,
     selectData,
     theaters,

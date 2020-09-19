@@ -4,9 +4,11 @@ import { selectDataSaga } from '../modules/select';
 import { moviesSaga } from '../modules/movies';
 import { bookingSaga } from '../modules/bookingData';
 import { movieDataSaga } from '../modules/detail';
-import { SignInSaga } from '../modules/authSignIn';
+import { SignInSaga } from '../modules/signIn';
+import { SignUpSaga } from '../modules/signUp';
 export default function* rootSaga() {
   yield all([
+    SignUpSaga(),
     SignInSaga(),
     theaterSaga(),
     selectDataSaga(),

@@ -21,10 +21,10 @@ export default class UserService {
   }
 
   static async CheckNickName(nickName) {
-    const response = await axios.get(`${API_URL}${PAR_CHECKNIC}`, {
-      nickName,
-    });
-    console.log(response.data);
+    const response = await axios.get(
+      `${API_URL}${PAR_CHECKNIC}?nickName=${nickName}`,
+    );
+    return { result: response.data, nickname: nickName };
   }
 
   static async CheckId(id) {

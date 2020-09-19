@@ -3,7 +3,9 @@ import MainNavComponent from '../MainNavComponent/MainNavComponent';
 import styles from './MainHeaderComponent.module.scss';
 import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
-import SignInPotalContainer from '../../Containers/SignInPotalContainer';
+// import LogInModalPortal from '../Login/LogInModalPortal';
+import LogInModalContainer from '../../Containers/LogInModalContainer';
+import LogInModalPortal from '../Login/LogInModalPortal';
 
 //-event
 //1. scroll
@@ -71,7 +73,7 @@ function MainHeaderComponent(props) {
         </ul>
       </section>
       <MainNavComponent path={path} />
-      {loginModal && <SignInPotalContainer setLoginModal={setLoginModal} />}
+      {loginModal && <LogInModalContainer setLoginModal={setLoginModal} />}
     </header>
   );
 }

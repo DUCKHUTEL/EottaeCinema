@@ -11,7 +11,7 @@ import { createActions, handleActions, createAction } from 'redux-actions';
 import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
 
-const prefix = 'EOTTAECINEMA/authSignIn';
+const prefix = 'EOTTAECINEMA/LOUGIN';
 
 //action
 const { start, checkid, success, fail, checkToken } = createActions(
