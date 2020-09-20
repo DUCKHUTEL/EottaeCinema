@@ -13,7 +13,11 @@ export default function DetailContent({ APIData, DBData }) {
           )}
         </div>
         <div className={styles['title-info']}>
-          <span className={styles.rating}>
+          <span
+            className={`${styles.rating} ${
+              styles[`rating${APIData === undefined || APIData.rating}`]
+            }`}
+          >
             {APIData === undefined || APIData.rating}
           </span>
           <span className={styles.title}>
