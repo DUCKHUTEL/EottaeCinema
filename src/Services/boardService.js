@@ -7,7 +7,7 @@ const GET_ON_FAVOR = 'boardOnFavor';
 const ADD_REVIEW = 'appBoard';
 const PATCH_REVIEW = 'patchBoard';
 const DELETE_REVIEW = 'deleteBoard';
-const LIKE_REVIEW = 'patchStar';
+const LIKE_REVIEW = 'like';
 
 export default class boardService {
   static async getReviewsOnTime(movie, count) {
@@ -27,7 +27,6 @@ export default class boardService {
   }
 
   static async addReview(token, movie, starPoint, content, nickName) {
-    console.log(token, movie, starPoint, content, nickName);
     const res = await axios.post(
       `${REVIEW_URL}${ADD_REVIEW}`,
       { movie, starPoint, content, nickName },
@@ -48,19 +47,22 @@ export default class boardService {
   }
 
   static async deleteReview(token, id) {
-    const res = await axios.delete(
-      `${REVIEW_URL}${DELETE_REVIEW}`,
-      { id },
-      { headers: { Authorization: `Bearer ${token}` } },
-    );
+    const res = await axios({
+      url: `${REVIEW_URL}${DELETE_REVIEW}`,
+      method: 'delete',
+      data: { id },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     return res.data;
   }
 
-  static async clickLikeReview(token, id, status) {
-    const res = await axios.patch(
+  static async clickLikeReview(token, id, nickName) {
+    const res = await axios.post(
       `${REVIEW_URL}${LIKE_REVIEW}`,
-      { id, status },
+      { id, nickName },
       { headers: { Authorization: `Bearer ${token}` } },
     );
 
