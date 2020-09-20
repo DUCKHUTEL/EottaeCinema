@@ -4,6 +4,7 @@ import { put, call, select, takeEvery, takeLatest } from 'redux-saga/effects';
 const initialState = {
   loading: false,
   reviews: [],
+  count: 1,
   error: null,
 };
 
@@ -28,136 +29,98 @@ const CLICK_LIKE_START = `${prefix}/CLICK_LIKE_START`;
 const CLICK_LIKE_SUCCESS = `${prefix}/CLICK_LIKE_SUCCESS`;
 const CLICK_LIKE_FAIL = `${prefix}/CLICK_LIKE_FAIL`;
 
-const startGetReviews = () => {
-  return {
-    type: GET_START,
-  };
-};
+const startGetReviews = () => ({
+  type: GET_START,
+});
 
-const successGetReviews = (reviews) => {
-  return {
-    type: GET_SUCCESS,
-    reviews,
-  };
-};
+const successGetReviews = (reviews, count) => ({
+  type: GET_SUCCESS,
+  reviews,
+  count,
+});
 
-const failGetReviews = (err) => {
-  return {
-    type: GET_FAIL,
-    err,
-  };
-};
+const failGetReviews = (err) => ({
+  type: GET_FAIL,
+  err,
+});
 
-const startGetReviewsByLikes = () => {
-  return {
-    type: GET_BY_LIKES_START,
-  };
-};
+const startGetReviewsByLikes = () => ({
+  type: GET_BY_LIKES_START,
+});
 
-const successGetReviewsByLikes = (reviews) => {
-  return {
-    type: GET_BY_LIKES_SUCCESS,
-    reviews,
-  };
-};
+const successGetReviewsByLikes = (reviews) => ({
+  type: GET_BY_LIKES_SUCCESS,
+  reviews,
+});
 
-const failGetReviewsByLikes = (err) => {
-  return {
-    type: GET_BY_LIKES_FAIL,
-    err,
-  };
-};
+const failGetReviewsByLikes = (err) => ({
+  type: GET_BY_LIKES_FAIL,
+  err,
+});
 
-const startAddReview = () => {
-  return {
-    type: ADD_START,
-  };
-};
+const startAddReview = () => ({
+  type: ADD_START,
+});
 
-const successAddReview = (reviews) => {
-  console.log('successAddReview', reviews);
-  return {
-    type: ADD_SUCCESS,
-    reviews,
-  };
-};
+const successAddReview = (reviews) => ({
+  type: ADD_SUCCESS,
+  reviews,
+});
 
-const failAddReview = (err) => {
-  return {
-    type: ADD_FAIL,
-    err,
-  };
-};
+const failAddReview = (err) => ({
+  type: ADD_FAIL,
+  err,
+});
 
-const startPatchReview = () => {
-  return {
-    type: PATCH_START,
-  };
-};
+const startPatchReview = () => ({
+  type: PATCH_START,
+});
 
-const successPatchReview = (reviews) => {
-  return {
-    type: PATCH_SUCCESS,
-    reviews,
-  };
-};
+const successPatchReview = (reviews) => ({
+  type: PATCH_SUCCESS,
+  reviews,
+});
 
-const failPatchReview = (err) => {
-  return {
-    type: PATCH_FAIL,
-    err,
-  };
-};
+const failPatchReview = (err) => ({
+  type: PATCH_FAIL,
+  err,
+});
 
-const startDeleteReview = () => {
-  return {
-    type: DELETE_START,
-  };
-};
+const startDeleteReview = () => ({
+  type: DELETE_START,
+});
 
-const successDeleteReview = (reviews) => {
-  return {
-    type: DELETE_SUCCESS,
-    reviews,
-  };
-};
+const successDeleteReview = (reviews) => ({
+  type: DELETE_SUCCESS,
+  reviews,
+});
 
-const failDeleteReview = (err) => {
-  return {
-    type: DELETE_FAIL,
-    err,
-  };
-};
+const failDeleteReview = (err) => ({
+  type: DELETE_FAIL,
+  err,
+});
 
-const startClickLikeOfReview = () => {
-  return {
-    type: CLICK_LIKE_START,
-  };
-};
+const startClickLikeOfReview = () => ({
+  type: CLICK_LIKE_START,
+});
 
-const successClickLikeOfReview = (reviews) => {
-  return {
-    type: CLICK_LIKE_SUCCESS,
-    reviews,
-  };
-};
+const successClickLikeOfReview = (reviews) => ({
+  type: CLICK_LIKE_SUCCESS,
+  reviews,
+});
 
-const failClickLikeOfReview = (err) => {
-  return {
-    type: CLICK_LIKE_FAIL,
-    err,
-  };
-};
+const failClickLikeOfReview = (err) => ({
+  type: CLICK_LIKE_FAIL,
+  err,
+});
 
 function* getReviewsSaga(action) {
   const { movie, count } = action.payload;
   yield put(startGetReviews());
-  console.log('saga', movie);
 
   try {
     const reviews = yield call(boardService.getReviewsOnTime, movie, count);
-    console.log('board reviews', movie, count, reviews);
-    yield put(successGetReviews(reviews));
+    yield put(successGetReviews(reviews, count));
   } catch (err) {
     yield put(failGetReviews(err));
   }
@@ -176,10 +139,9 @@ function* getReviewsByLikesSaga(action) {
 }
 
 function* addReviewSaga(action) {
-  const { movie, starPoint, content } = action.payload;
+  const { movie, count, starPoint, content } = action.payload;
   const token = yield select((state) => state.authSignIn.token);
   const nickName = yield select((state) => state.authSignIn.nickName);
-  console.log(movie, starPoint, content, token, nickName);
   yield put(startAddReview());
 
   try {
@@ -191,7 +153,7 @@ function* addReviewSaga(action) {
       content,
       nickName,
     );
-    const reviews = yield call(boardService.getReviewsOnTime, movie, 1);
+    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
     console.log('reviews', reviews);
 
     yield put(successAddReview(reviews));
@@ -201,13 +163,13 @@ function* addReviewSaga(action) {
 }
 
 function* patchReviewSaga(action) {
-  const { movie, id, starPoint, content } = action.payload;
+  const { movie, count, id, starPoint, content } = action.payload;
   const token = yield select((state) => state.authSignIn.token);
   yield put(startPatchReview());
 
   try {
     yield call(boardService.editReview, token, id, starPoint, content);
-    const reviews = yield call(boardService.getReviewsOnTime, movie, 1);
+    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
     yield put(successPatchReview(reviews));
   } catch (err) {
     yield put(failPatchReview(err));
@@ -215,13 +177,13 @@ function* patchReviewSaga(action) {
 }
 
 function* deleteReviewSaga(action) {
-  const { movie, id } = action.payload;
+  const { movie, count, id } = action.payload;
   const token = yield select((state) => state.authSignIn.token);
   yield put(startDeleteReview());
 
   try {
     yield call(boardService.deleteReview, token, id);
-    const reviews = yield call(boardService.getReviewOnTime, movie, 1);
+    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
     yield put(successDeleteReview(reviews));
   } catch (err) {
     yield put(failDeleteReview(err));
@@ -229,13 +191,14 @@ function* deleteReviewSaga(action) {
 }
 
 function* clickLikeReviewSaga(action) {
-  const { movie, id, status } = action.payload;
+  const { movie, count, id } = action.payload;
   const token = yield select((state) => state.authSignIn.token);
+  const nickName = yield select((state) => state.authSignIn.nickName);
   yield put(startClickLikeOfReview());
 
   try {
-    yield call(boardService.clickLikeReview, token, id, status);
-    const reviews = yield call(boardService.getReviewOnTime, movie, 1);
+    yield call(boardService.clickLikeReview, token, id, nickName);
+    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
     yield put(successClickLikeOfReview(reviews));
   } catch (err) {
     yield put(failClickLikeOfReview(err));
@@ -265,10 +228,16 @@ export const getReviewsByLikesSagaActionCreator = (movie, count) => ({
   },
 });
 
-export const addReviewSagaActionCreator = (movie, starPoint, content) => ({
+export const addReviewSagaActionCreator = (
+  movie,
+  count,
+  starPoint,
+  content,
+) => ({
   type: ADD_REVIEW_SAGA,
   payload: {
     movie,
+    count,
     starPoint,
     content,
   },
@@ -276,33 +245,36 @@ export const addReviewSagaActionCreator = (movie, starPoint, content) => ({
 
 export const patchReviewSagaActionCreator = (
   movie,
+  count,
   id,
   starPoint,
   content,
 ) => ({
-  type: ADD_REVIEW_SAGA,
+  type: PATCH_REVIEW_SAGA,
   payload: {
     movie,
+    count,
     id,
     starPoint,
     content,
   },
 });
 
-export const deleteReviewSagaActionCreator = (movie, id) => ({
+export const deleteReviewSagaActionCreator = (movie, count, id) => ({
   type: DELETE_REVIEW_SAGA,
   payload: {
     movie,
+    count,
     id,
   },
 });
 
-export const clickLikeReviewSagaActionCreatoer = (movie, id, status) => ({
+export const clickLikeReviewSagaActionCreator = (movie, count, id) => ({
   type: CLICK_LIKE_REVIEW_SAGA,
   payload: {
     movie,
+    count,
     id,
-    status,
   },
 });
 
@@ -312,7 +284,7 @@ export function* reviewsSaga() {
   yield takeLatest(ADD_REVIEW_SAGA, addReviewSaga);
   yield takeLatest(PATCH_REVIEW_SAGA, patchReviewSaga);
   yield takeLatest(DELETE_REVIEW_SAGA, deleteReviewSaga);
-  yield takeLatest(CLICK_LIKE_REVIEW_SAGA, clickLikeReviewSaga);
+  yield takeEvery(CLICK_LIKE_REVIEW_SAGA, clickLikeReviewSaga);
 }
 
 export default function reducer(state = initialState, action) {
