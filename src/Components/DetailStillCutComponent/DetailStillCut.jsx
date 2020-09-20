@@ -4,10 +4,13 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailStillCut.scss';
 import { Link, Route } from 'react-router-dom';
-import { history } from '../../Redux/create';
 
 export default function DetailStillCut({ DBData }) {
-  console.log(history);
+  // React.useEffect((e) => {
+  //   console.log(e);
+  //   // e.preventDefault();
+  // }, []);
+  const click = (e) => e.preventDefault();
   return (
     <div className="movie-tab-info3">
       <div className="still-cut-text">
@@ -34,7 +37,15 @@ export default function DetailStillCut({ DBData }) {
                   id={`hashStillCut_${i}`}
                   data-hash={`#hashStillCut_${i}`}
                 >
-                  <Link to={`#hashStillCut-${i + 1}`}>
+                  <Link
+                    to={{
+                      pathname: 'detail',
+                      search: `?title=${DBData.movieTitle}`,
+                      hash: `#hashStillCut_${i}`,
+                      state: DBData.movieTitle,
+                    }}
+                    onClick={click}
+                  >
                     <img
                       src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
                         1,
@@ -52,8 +63,7 @@ export default function DetailStillCut({ DBData }) {
         <OwlCarousel
           className="owl-theme"
           items={1}
-          l
-          oop
+          loop
           margin={20}
           nav
           dots
