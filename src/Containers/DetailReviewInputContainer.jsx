@@ -1,18 +1,18 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import DetailReviewInput from '../Components/DetailReviewInputComponent/DetailReviewInput';
 import { addReviewSagaActionCreator } from '../Redux/modules/board';
 
-export default function DetailReviewInputContainer({ selectedMovie }) {
+export default function DetailReviewInputContainer({ selectedMovie, count }) {
   const dispatch = useDispatch();
 
   const addReview = React.useCallback(
     (starPoint, content) => {
-      dispatch(addReviewSagaActionCreator(selectedMovie, starPoint, content));
-      console.log(selectedMovie, starPoint, content);
+      dispatch(
+        addReviewSagaActionCreator(selectedMovie, count, starPoint, content),
+      );
     },
-    [dispatch, selectedMovie],
+    [dispatch, selectedMovie, count],
   );
 
   return <DetailReviewInput addReview={addReview} />;
