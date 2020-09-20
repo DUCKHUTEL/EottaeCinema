@@ -12,7 +12,6 @@ export default function DetailPageContainer() {
   const selectedMovie = useSelector((state) => state.router.location.state);
   const movieAPIData = useSelector((state) => state.detail.movieData);
   const moviesDBData = useSelector((state) => state.movies.movies);
-  // const loading = useSelector((state) => state.detail.loading);
 
   const dispatch = useDispatch();
 
@@ -29,9 +28,9 @@ export default function DetailPageContainer() {
     getMoviesDBData();
   }, [getMovieAPIData, getMoviesDBData]);
 
-  if (selectedMovie === undefined) {
-    return <Redirect to="/" />;
-  }
+  // if (selectedMovie === undefined) {
+  //   return <Redirect to="/" />;
+  // }
 
   const DBData = moviesDBData.find(
     (DBdata) => DBdata.movieTitle === selectedMovie,
