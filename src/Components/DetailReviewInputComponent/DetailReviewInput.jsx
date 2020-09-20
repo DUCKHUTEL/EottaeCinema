@@ -5,7 +5,6 @@ export default function DetailReviewInput({ addReview }) {
   const [character, setCharacter] = React.useState(0);
   const [starPoint, setStarPoint] = React.useState(10);
   const contentRef = React.createRef(null);
-  console.log(starPoint);
 
   const getByte = React.useCallback((str) => {
     return str

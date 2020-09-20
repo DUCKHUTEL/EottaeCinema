@@ -1,7 +1,20 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styles from './DetailReviewsList.module.scss';
+import ReviewLikeButton from './Buttons/ReviewLikeButton';
+import ReviewEditButton from './Buttons/ReviewEditBotton';
+import ReviewDeleteButton from './Buttons/ReviewDeleteButton';
 
-export default function DetailReviewsList({ reviewsData, nickName }) {
+export default function DetailReviewsList({
+  order,
+  count,
+  reviewsData,
+  countIncrement,
+  latestClick,
+  byLikeClick,
+}) {
+  const nickName = useSelector((state) => state.authSignIn.nickName);
+
   const imogiImg = React.useCallback((star) => {
     if (star > 8) return 1;
     if (star > 6) return 2;
@@ -18,18 +31,28 @@ export default function DetailReviewsList({ reviewsData, nickName }) {
         </div>
         <ul className={styles['sort-list']}>
           <li>
-            <button>최신순</button>
+            <button
+              className={order === 'LATEST' ? styles.active : ''}
+              onClick={latestClick}
+            >
+              최신순
+            </button>
           </li>
           <li>
-            <button>공감순</button>
+            <button
+              className={order === 'BY_LIKES' ? styles.active : ''}
+              onClick={byLikeClick}
+            >
+              공감순
+            </button>
           </li>
         </ul>
       </div>
       <ul className={styles['review-list-con']}>
         {reviewsData === undefined ||
-          reviewsData.datas.map((review, i) => {
+          reviewsData.datas.map((review) => {
             return (
-              <li key={i}>
+              <li key={review.id}>
                 <span className={styles['img-info']}>
                   <img
                     src={`https://www.lottecinema.co.kr/NLCHS/Content/images/customer/ic_survey_0${imogiImg(
@@ -57,27 +80,40 @@ export default function DetailReviewsList({ reviewsData, nickName }) {
                     5,
                     7,
                   )}.${review['updated_at'].substring(8, 10)}`}</span>
-                  <button>
-                    <em>
-                      <span className="a11yHidden">좋아요</span>
-                    </em>
-                    <span>{review.favorit}</span>
-                  </button>
+                  <ReviewLikeButton
+                    movie={review.movie}
+                    count={count}
+                    id={review.id}
+                    favorit={review.favorit}
+                    like={review.whoLikeThis}
+                  />
                 </div>
                 {nickName === null || nickName !== review.user || (
                   <div className={styles.private}>
-                    <button className={styles.edit}>수정</button>
+                    <ReviewEditButton
+                      movie={review.movie}
+                      count={count}
+                      id={review.id}
+                      starPoint={review.star}
+                      content={review.content}
+                    />
                     <span>|</span>
-                    <button>삭제</button>
+                    <ReviewDeleteButton
+                      movie={review.movie}
+                      count={count}
+                      id={review.id}
+                    />
                   </div>
                 )}
               </li>
             );
           })}
       </ul>
-      <button className={styles['review-list-more']}>
-        <span>펼쳐보기</span>
-      </button>
+      {count * 10 < reviewsData.total && (
+        <button className={styles['review-list-more']} onClick={countIncrement}>
+          <span>펼쳐보기</span>
+        </button>
+      )}
     </div>
   );
 }
