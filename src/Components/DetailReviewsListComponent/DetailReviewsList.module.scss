@@ -40,6 +40,10 @@
           border-radius: 50%;
           vertical-align: middle;
         }
+
+        .active::before {
+          background-color: #ff7787;
+        }
       }
     }
   }
@@ -125,13 +129,13 @@
           color: #666;
         }
 
-        button {
+        .like {
           line-height: 24px;
           padding: 5px;
           background: none;
           border: none;
 
-          em {
+          .good {
             display: inline-block;
             width: 20px;
             height: 20px;
@@ -139,6 +143,10 @@
             overflow: hidden;
             text-indent: -9999px;
             background: url('https://www.lottecinema.co.kr/NLCHS/Content/images/icon/ic_review_good.png') no-repeat center center;
+          }
+
+          .good-on {
+            background: url('https://www.lottecinema.co.kr/NLCHS/Content/images/icon/ic_review_good_on.png') no-repeat center center;
           }
 
           span {
