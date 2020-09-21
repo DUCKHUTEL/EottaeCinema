@@ -4,7 +4,7 @@ import { clickLikeReviewSagaActionCreator } from '../../../Redux/modules/board';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function ReviewLikeButton({ movie, count, id, favorit, like }) {
-  const nickName = useSelector((state) => state.authSignIn.nickName);
+  const nickName = JSON.parse(localStorage.user).nickName;
   const [status, setStatus] = React.useState(false);
   const dispatch = useDispatch();
 

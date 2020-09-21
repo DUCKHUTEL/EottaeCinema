@@ -13,7 +13,7 @@ export default function DetailReviewsList({
   latestClick,
   byLikeClick,
 }) {
-  const nickName = useSelector((state) => state.authSignIn.nickName);
+  const nickName = JSON.parse(localStorage.user).nickName;
 
   const imogiImg = React.useCallback((star) => {
     if (star > 8) return 1;
