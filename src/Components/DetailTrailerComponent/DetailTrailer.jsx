@@ -9,8 +9,6 @@ function DetailTrailer({ DBData }) {
   const [state, setState] = React.useState('none');
   const [id, setId] = React.useState('none');
 
-  console.log(id);
-
   const click = (e) => {
     setState('active');
     setId(e.target.id);
