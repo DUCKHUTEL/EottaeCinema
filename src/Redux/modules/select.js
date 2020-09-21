@@ -87,6 +87,7 @@ export const setSelectPointAction = (point) => ({
 });
 
 function* resetSelectSaga() {
+  console.log('!');
   yield put(reset());
 }
 
