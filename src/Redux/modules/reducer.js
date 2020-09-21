@@ -7,9 +7,11 @@ import bookingData from './bookingData';
 import detail from './detail';
 import signIn from './signIn';
 import signUp from './signUp';
+import auth from './auth';
 
 const reducer = (history) =>
   combineReducers({
+    auth,
     signUp,
     signIn,
     detail,

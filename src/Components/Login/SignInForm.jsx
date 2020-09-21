@@ -1,21 +1,27 @@
-import React, { useCallback, useRef, useState } from 'react';
-import styles from './SignInForm.module.scss';
-import { Formik, Form, useField } from 'formik';
+import React, { useCallback, useRef, useState, useEffect } from 'react';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import CustomTextInput from '../LogInUtility/CustomTextInput';
+import './Form.scss';
 
-function SignInForm({ login, checkId, nickName, token, setLoginModal }) {
-  const [_login, setLogin] = useState(true);
+function SignInForm({ login, token, setLoginModal, setComponetState }) {
+  const [message, setMaessage] = useState('');
 
-  const onSubmit = useCallback(async (values, { setSubmitting }) => {
+  const onSubmit = useCallback((values, { setSubmitting }) => {
     const { id, password } = values;
-    if (id === '' || password === '') return;
-    await login(id, password);
-
-    console.log(token);
-    token ? setLoginModal.setLoginModal((state) => !state) : setLogin(false);
+    login(id, password);
   }, []);
 
+  const changeSignUp = useCallback(() => {
+    console.log(setComponetState);
+    setComponetState((state) => !state);
+  }, []);
+
+  useEffect(() => {
+    if (token === null) return;
+    if (!token) setMaessage('로그인에 실패하셨습니다.');
+    if (token) setLoginModal((state) => !state);
+  }, [token]);
   return (
     <Formik
       initialValues={{
@@ -37,25 +43,34 @@ function SignInForm({ login, checkId, nickName, token, setLoginModal }) {
       onSubmit={onSubmit}
     >
       {(isSubmitting, errors) => (
-        <Form className={styles['signIn-form']}>
+        <Form className="login-Modal-form">
           <h2>로그인</h2>
-          <div>{!_login && <div>'로그인에 실패하셨습니다'</div>}</div>
-          <CustomTextInput
-            label="id"
-            name="id"
-            type="text"
-            placeholder="이메일"
-          />
-          <CustomTextInput
-            label="password"
-            name="password"
-            type="password"
-            placeholder="비밀번호"
-          />
-          <button type="submit" className="login-btn">
-            로그인 버튼
+          {message === '' ? null : (
+            <div className="error-massage">{message}</div>
+          )}
+          <section>
+            <CustomTextInput
+              label="id"
+              name="id"
+              type="text"
+              placeholder="이메일"
+            />
+          </section>
+          <section>
+            <CustomTextInput
+              label="password"
+              name="password"
+              type="password"
+              placeholder="비밀번호"
+            />
+          </section>
+          <button type="submit" className="sign-btn">
+            로그인
           </button>
-          <button>회원가입 버튼</button>
+          <button className="signUp-btn" onClick={changeSignUp}>
+            롯데시네마 회원이 아니신가요?
+            <br /> 지금 회원가입하세요!
+          </button>
         </Form>
       )}
     </Formik>
