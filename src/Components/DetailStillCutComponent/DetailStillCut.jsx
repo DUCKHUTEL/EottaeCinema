@@ -31,7 +31,7 @@ export default function DetailStillCut({ DBData }) {
                   className="item"
                   key={i}
                   id={`hashStillCut_${i}`}
-                  data-hash={`#hashStillCut_${i}`}
+                  // data-hash={`#hashStillCut_${i}`}
                 >
                   <img
                     src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
@@ -62,7 +62,7 @@ export default function DetailStillCut({ DBData }) {
                 <div
                   className="item"
                   key={i}
-                  data-hash={`#hashStillCut_${i + 1}`}
+                  // data-hash={`#hashStillCut_${i + 1}`}
                 >
                   {/* <Route path={`/hashStillCut_${i}`}> */}
                   <img
