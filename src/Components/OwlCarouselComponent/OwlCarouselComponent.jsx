@@ -29,7 +29,6 @@ function OwlCarouselComponent({ selectDate, from, type }) {
     firstCheck.current.dataset.showdate === '2020-08-24'
       ? (firstCheck.current.checked = true)
       : (firstCheck.current.checked = false);
-    console.log(firstCheck, firstCheck.current.dataset);
   }, []);
   return (
     <OwlCarousel
