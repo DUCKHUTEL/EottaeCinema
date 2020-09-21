@@ -3,8 +3,7 @@ import axios from 'axios';
 // const MOVIE_API_URL =
 //   'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=X98WT5556TJ6I705U2O4&title=';
 
-const MOVIE_API_URL =
-  'http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp?collection=kmdb_new2&ServiceKey=17NY1ZR61M5AG3S48QR8&title=';
+const MOVIE_API_URL = 'https://eottae-cinema.herokuapp.com/detail?title=';
 
 export default class detailService {
   static async getMovieData(title) {
@@ -12,8 +11,6 @@ export default class detailService {
       title = '시크릿 가든 비밀의 화원';
     }
     const res = await axios.get(`${MOVIE_API_URL}${title}`);
-
-    console.log('res', res);
 
     return {
       id: res.data.Data[0].Result[0].movieSeq,
