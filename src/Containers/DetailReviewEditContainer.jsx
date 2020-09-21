@@ -9,6 +9,7 @@ export default function DetailReviewEditContainer({
   id,
   starPoint,
   content,
+  order,
   setState,
 }) {
   const dispatch = useDispatch();
@@ -16,10 +17,17 @@ export default function DetailReviewEditContainer({
   const editReview = React.useCallback(
     (movie, starPoint, content) => {
       dispatch(
-        patchReviewSagaActionCreator(movie, count, id, starPoint, content),
+        patchReviewSagaActionCreator(
+          movie,
+          count,
+          id,
+          starPoint,
+          content,
+          order,
+        ),
       );
     },
-    [dispatch, count, id],
+    [dispatch, count, id, order],
   );
 
   return (

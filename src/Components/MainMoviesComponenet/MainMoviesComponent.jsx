@@ -7,7 +7,7 @@ import DetailContent from '../DetailContentComponent/DetailContent';
 import { useCallback } from 'react';
 import { history } from '../../Redux/create';
 
-function MainMoviesComponent({ movies, getMovies }) {
+function MainMoviesComponent({ movies, selectTitle, getMovies }) {
   const [slideInfo, setSlideInfo] = useState({
     count: 0,
     print: { transform: `translate3d(${-198 * 0}px, 0, 0)` },
@@ -47,6 +47,18 @@ function MainMoviesComponent({ movies, getMovies }) {
     if (age === 15) return styles['age-15'];
   }, []);
 
+  function detailRouter(e) {
+    const title = e.target.id;
+    history.push('/detail', { title: title });
+  }
+
+  function BookRouter(e) {
+    e.preventDefault();
+    const title = e.target.id;
+    selectTitle(title);
+    history.push('/ticketing', { title: title });
+  }
+
   return (
     <main className={styles['movies-info']}>
       <div className={styles['standard-time']}>
@@ -83,8 +95,10 @@ function MainMoviesComponent({ movies, getMovies }) {
             </table>
             <nav className={styles['modal-button']}>
               <div>
-                <button className={styles['button-1']}>
-                  <Link to="/ticketing">예매하기</Link>
+                <button className={styles['button-1']} id={movie.movieTitle}>
+                  <Link onClick={BookRouter} id={movie.movieTitle}>
+                    예매하기
+                  </Link>
                 </button>
                 <button
                   className={styles['button-2']}
@@ -92,12 +106,7 @@ function MainMoviesComponent({ movies, getMovies }) {
                     history.push('/detail', movie.movieTitle);
                   }}
                 >
-                  <Link
-                    onClick={() => <DetailContent title={movie.movieTitle} />}
-                    to={'/detail?title=' + movie.movieTitle}
-                  >
-                    상세정보
-                  </Link>
+                  상세정보
                 </button>
               </div>
             </nav>

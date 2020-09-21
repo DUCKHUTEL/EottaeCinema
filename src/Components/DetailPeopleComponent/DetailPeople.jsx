@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './DetailPeople.module.scss';
 
 export default function DetailPeople({ loading, APIData, DBData }) {
+  console.log(DBData);
   return (
     <div className={styles['movie-people-box']}>
       <div className={styles['movie-people-text']}>감독 및 배우</div>
@@ -22,9 +23,9 @@ export default function DetailPeople({ loading, APIData, DBData }) {
             </div>
             <div className={styles['people-info-box']}>
               <div className={styles['people-inner']}>
-                <span className={styles['people-name']}>{`${
-                  DBData === undefined || DBData.movieDirector
-                }`}</span>
+                <span className={styles['people-name']}>
+                  {DBData === undefined || DBData.movieDirector}
+                </span>
                 <span className={styles['people-cast-name']}>감독</span>
               </div>
             </div>
@@ -39,12 +40,14 @@ export default function DetailPeople({ loading, APIData, DBData }) {
                         /"/gi,
                         '',
                       )}`}
-                      alt="배우"
+                      alt={`출연배우${index + 1}`}
                     />
                   </div>
                   <div className={styles['people-info-box']}>
                     <div className={styles['people-inner']}>
-                      {/* <span className={styles['people-name']}>{loading === true && APIData.actors[index]}</span> */}
+                      <span className={styles['people-name']}>
+                        {APIData.length === 0 || APIData.actors[index]}
+                      </span>
                       <span className={styles['people-cast-name']}>
                         {DBData === undefined ||
                           (DBData === null &&

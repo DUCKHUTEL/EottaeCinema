@@ -5,37 +5,45 @@ import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
 import LogInModalContainer from '../../Containers/LogInModalContainer';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { success } from '../../Redux/modules/logModal';
 
-function MainHeaderComponent(props) {
-  const [index, path] = props.path;
-  const [token, setToken] = useState(false);
+function MainHeaderComponent({
+  path,
+  logModal,
+  controlLogModal,
+  deleteToken,
+  loginToken,
+}) {
+  const [token, setToken] = useState(null);
 
-  const dispatch = useDispatch();
-  const logModal = useSelector((state) => state.logModal.modal);
-  const controlLogModal = () => {
-    dispatch(success());
-  };
-
+  //1. When accessing the site, make sure it is a valid token.
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) return;
-    if (!UserService.CheckToken(user.accessToken).tokenState) return;
+    if (!user) {
+      setToken(false);
+      return;
+    }
+    if (!UserService.CheckToken(user.accessToken).tokenState) {
+      setToken(true);
+      return;
+    }
     TokenService.delete();
   }, []);
 
+  //2. Handles login and logout according to the changed state.
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (!user) return;
-    setToken(true);
-  }, []);
+    if (loginToken) setToken(true);
+    if (!loginToken) {
+      setToken(false);
+    }
+  }, [loginToken]);
 
   const login = () => {
     controlLogModal();
   };
 
-  const logout = () => {};
+  const logout = () => {
+    deleteToken();
+  };
 
   return (
     <header className={path ? styles['header-black'] : styles['header-white']}>

@@ -63,6 +63,7 @@ export default function DetailReviewContainer({
       selectedMovie={selectedMovie}
       order={order}
       count={count}
+      setOrder={setOrder}
       reviewsData={reviewsData}
       countIncrement={countIncrement}
       latestClick={latestClick}

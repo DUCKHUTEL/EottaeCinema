@@ -13,8 +13,7 @@ function SignInForm({ login, token, setComponetState, controlLogModal }) {
   }, []);
 
   const changeSignUp = useCallback(() => {
-    console.log(setComponetState);
-    setComponetState();
+    setComponetState(true);
   }, [setComponetState]);
 
   useEffect(() => {

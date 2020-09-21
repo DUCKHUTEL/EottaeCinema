@@ -11,13 +11,12 @@ function BookContainer() {
   }, [useDispatch]);
 
   const path = useSelector((state) => state.router.location.state);
-
-  const passedStep = path === undefined ? 0 : path.step;
+  const passedStep = path === undefined ? 0 : path;
+  const step = path === undefined ? 0 : path.step ? path.step : 0;
 
   if (passedStep === 0) {
     resetSelect();
   }
-
-  return <BookComponent passedStep={passedStep} />;
+  return <BookComponent passedStep={step} />;
 }
 export default React.memo(BookContainer);

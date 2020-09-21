@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './DetailReviewInput.module.scss';
 
-export default function DetailReviewInput({ addReview }) {
+export default function DetailReviewInput({ addReview, setOrder }) {
   const [character, setCharacter] = React.useState(0);
   const [starPoint, setStarPoint] = React.useState(10);
   const contentRef = React.createRef(null);
@@ -24,10 +24,12 @@ export default function DetailReviewInput({ addReview }) {
     setStarPoint,
   ]);
 
-  const click = React.useCallback(async () => {
+  const click = React.useCallback(() => {
     const content = contentRef.current.value;
     addReview(starPoint, content);
-  }, [addReview, contentRef, starPoint]);
+    setOrder('LATEST');
+    contentRef.current.value = '';
+  }, [addReview, contentRef, starPoint, setOrder]);
 
   return (
     <div className={styles['review-box']}>

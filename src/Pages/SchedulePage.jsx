@@ -1,12 +1,12 @@
 import React from 'react';
-import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
 import MainFooterComponent from '../Components/MainFooterComponent/MainFooterComponent';
 import ScheduleContainer from '../Containers/ScheduleContainer';
+import MainHeaderContainer from '../Containers/MainHeaderContainer';
 export function SchedulePage() {
-  const index = 5;
+  const key = 5;
   return (
     <>
-      <MainHeaderComponent path={[index]} />
+      <MainHeaderContainer key={key} />
       <ScheduleContainer />
       <MainFooterComponent />
     </>

@@ -8,6 +8,7 @@ export default function ReviewEditButton({
   id,
   starPoint,
   content,
+  order,
 }) {
   const [state, setState] = React.useState('none');
 
@@ -27,6 +28,7 @@ export default function ReviewEditButton({
           id={id}
           starPoint={starPoint}
           content={content}
+          order={order}
           setState={setState}
         />
       )}
