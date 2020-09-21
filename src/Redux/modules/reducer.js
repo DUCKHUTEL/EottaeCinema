@@ -6,11 +6,15 @@ import movies from './movies';
 import bookingData from './bookingData';
 import checkBookData from './checkBookData';
 import detail from './detail';
-import authSignIn from './authSignIn';
+import signIn from './signIn';
+import signUp from './signUp';
+import auth from './auth';
 
 const reducer = (history) =>
   combineReducers({
-    authSignIn,
+    auth,
+    signUp,
+    signIn,
     detail,
     selectData,
     theaters,
