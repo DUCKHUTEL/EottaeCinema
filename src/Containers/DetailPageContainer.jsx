@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DetailVisualTop from '../Components/DetailVisualTopComponent/DetailVisualTop';
 import DetailContent from '../Components/DetailContentComponent/DetailContent';
 import DetailInfo from '../Components/DetailInfoComponent/DetailInfo';
@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { startGetMoviesActionCreator } from '../Redux/modules/movies';
 import { Redirect } from 'react-router-dom';
+import { setSelectTitleAction } from '../Redux/modules/select';
 
 export default function DetailPageContainer() {
   const selectedMovie = useSelector((state) => state.router.location.state);
@@ -32,6 +33,12 @@ export default function DetailPageContainer() {
   // if (selectedMovie === undefined) {
   //   return <Redirect to="/" />;
   // }
+  const selectTitle = useCallback(
+    (selectedTitle) => {
+      dispatch(setSelectTitleAction(selectedTitle));
+    },
+    [dispatch],
+  );
 
   const DBData = moviesDBData.find(
     (DBdata) => DBdata.movieTitle === selectedMovie,
@@ -44,6 +51,7 @@ export default function DetailPageContainer() {
         APIData={movieAPIData}
         DBData={DBData}
         getMoviesDBData={getMoviesDBData}
+        selectTitle={selectTitle}
       />
       <DetailInfo
         loading={loading}

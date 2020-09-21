@@ -1,7 +1,14 @@
 import React from 'react';
 import styles from './DetailContent.module.scss';
+import { history } from '../../Redux/create';
 
-export default function DetailContent({ APIData, DBData }) {
+export default function DetailContent({ APIData, DBData, selectTitle }) {
+  function BookRouter(e) {
+    e.preventDefault();
+    const title = e.target.id;
+    selectTitle(title);
+    history.push('/ticketing', { title: title });
+  }
   return (
     <div className={styles.content}>
       <h2 className={styles['a11y-hidden']}>영화</h2>
@@ -129,7 +136,13 @@ export default function DetailContent({ APIData, DBData }) {
             </button>
           </div>
           <div>
-            <button className={styles.book}>예매하기</button>
+            <button
+              className={styles.book}
+              onClick={BookRouter}
+              id={DBData === undefined || DBData.movieTitle}
+            >
+              예매하기
+            </button>
           </div>
         </div>
       </div>

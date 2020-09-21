@@ -8,12 +8,17 @@ function LogInModalContainer() {
   const logModal = useSelector((state) => state.logModal.modal);
 
   const dispatch = useDispatch();
-
+  const path = useSelector((state) => state.router.location.pathname);
+  console.log(path);
   const controlLogModal = () => {
     dispatch(success());
   };
   return ReactDOM.createPortal(
-    <LogInModalPortal controlLogModal={controlLogModal} logModal={logModal} />,
+    <LogInModalPortal
+      controlLogModal={controlLogModal}
+      path={path}
+      logModal={logModal}
+    />,
     document.querySelector('#logInModal'),
   );
 }
