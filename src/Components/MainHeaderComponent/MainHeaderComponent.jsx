@@ -6,11 +6,7 @@ import TokenService from '../../Services/tokenService';
 // import LogInModalPortal from '../Login/LogInModalPortal';
 import LogInModalContainer from '../../Containers/LogInModalContainer';
 import LogInModalPortal from '../Login/LogInModalPortal';
-
-//-event
-//1. scroll
-//2. click
-//3. usememo
+import { Link } from 'react-router-dom';
 
 function MainHeaderComponent(props) {
   const [index, path] = props.path;
@@ -34,13 +30,15 @@ function MainHeaderComponent(props) {
     setLoginModal((state) => !state);
   };
 
+  const logout = () => {};
+
   return (
     <header className={path ? styles['header-black'] : styles['header-white']}>
       <section className={styles['header-section']}>
         <h1>
-          <a className="a11yHidden" href="http://localhost:3000/">
+          <Link className="a11yHidden" to="/">
             EotteaCinema
-          </a>
+          </Link>
         </h1>
         <ul className={styles['sns']}>
           <li className={styles['facebook']}>
@@ -68,7 +66,11 @@ function MainHeaderComponent(props) {
           <li className={styles['memership']}>멤버십</li>
           <li className={styles['customer']}>고객센터</li>
           <li className={styles['login_logout']}>
-            <button onClick={login}>{token ? '로그아웃' : '로그인'}</button>
+            {token ? (
+              <button onClick={logout}>로그아웃</button>
+            ) : (
+              <button onClick={login}>로그인</button>
+            )}
           </li>
         </ul>
       </section>

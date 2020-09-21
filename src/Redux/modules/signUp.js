@@ -2,17 +2,14 @@ import { takeEvery, put, call, takeLeading, select } from 'redux-saga/effects';
 import { createActions, handleActions, createAction } from 'redux-actions';
 import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
-import userEvent from '@testing-library/user-event';
+import { logsuccess } from '../modules/signIn';
 
 const prefix = 'EOTTAECINEMA/SIGNUP';
 
 //action
-const { start, success, fail, checknick, checkid, password } = createActions(
+const { start, success, fail } = createActions(
   {
-    SUCCESS: (state) => state,
-    CHECKNICK: (result, nickname) => ({ result, nickname }),
-    CHECKID: (result, id) => ({ result, id }),
-    PASSWORD: (password) => password,
+    SUCCESS: (status) => status,
     FAIL: (error) => error,
   },
 
@@ -25,85 +22,28 @@ const { start, success, fail, checknick, checkid, password } = createActions(
 const initialState = {
   loading: false,
   error: null,
-  checkNick: { result: false, nickname: '' },
-  checkId: { result: false, id: '' },
-  password: 0,
-  state: false,
+  status: false,
 };
 
 //reducer
 const reducer = handleActions(
   {
-    START: () => ({
+    START: (state) => ({
       loading: true,
       error: null,
-      checkNick: { result: false, nickname: '' },
-      checkId: { result: false, id: '' },
-      password: 0,
-      state: false,
+      status: false,
     }),
 
     SUCCESS: (state, action) => ({
       loading: false,
       error: null,
-      checkNick: {
-        result: state.checkNick.result,
-        nickname: state.checkNick.nickname,
-      },
-      checkId: { result: state.checkId.result, id: state.checkId.id },
-      password: state.password,
-      state: action.payload.state,
+      status: action.payload,
     }),
+
     FAIL: (state, action) => ({
       loading: false,
       error: action.payload,
-      checkNick: { result: false, nickname: '' },
-      checkId: { result: false, id: '' },
-      password: 0,
-      state: false,
-    }),
-    CHECKNICK: (state, action) => ({
-      loading: false,
-      error: null,
-      checkNick: {
-        result: action.payload.result,
-        nickname: action.payload.nickname,
-      },
-      checkId: {
-        result: state.checkId.result,
-        id: state.checkId.id,
-      },
-      password: state.password,
-      state: false,
-    }),
-    CHECKID: (state, action) => ({
-      loading: false,
-      error: null,
-      checkNick: {
-        result: state.checkNick.result,
-        nickname: state.checkNick.nickname,
-      },
-      checkId: {
-        result: action.payload.result,
-        id: action.payload.id,
-      },
-      password: state.password,
-      state: false,
-    }),
-
-    PASSWORD: (state, action) => ({
-      loading: false,
-      error: null,
-      checkNick: {
-        result: state.checkNick.result,
-        nickname: state.checkNick.nickname,
-      },
-      checkId: {
-        result: state.checkId.result,
-        id: state.checkId.id,
-      },
-      password: action.payload.password,
-      state: state.state,
+      status: false,
     }),
   },
   initialState,
@@ -113,33 +53,38 @@ const reducer = handleActions(
 export default reducer;
 
 const START_SIGNUP_SAGA = `${prefix}/START_SIGNUP_SAGA`;
-const CHECK_NICK_SAGA = `${prefix}/CHECK_NICK_SAGA`;
 
 export const startSignUpSagaActionCreator = createAction(
   START_SIGNUP_SAGA,
-  () => ({}),
+  (nickname, id, password) => ({ nickname, id, password }),
 );
 
-export const checkNickSagaActionCreator = createAction(
-  CHECK_NICK_SAGA,
-  (nickname) => nickname,
-);
-
-function* checkNickSaga(action) {
-  const _nickname = action.payload;
+function* startSignUpSaga(action) {
+  const _nickname = action.payload.nickname;
+  const _id = action.payload.id;
+  const _password = action.payload.password;
   try {
-    const { result, nickname } = yield call(
-      UserService.CheckNickName,
+    const signUpStatus = yield call(
+      UserService.SignUp,
       _nickname,
+      _id,
+      _password,
     );
-    console.log(result, nickname);
-    console.log(checknick);
-    yield put(checknick(result, nickname));
+    yield put(success(signUpStatus));
+    if (!signUpStatus) return;
+    const { nickName, accessToken } = yield call(
+      UserService.SignIn,
+      _id,
+      _password,
+    );
+    yield TokenService.save({ nickName, accessToken });
+    yield put(logsuccess(nickName, accessToken));
   } catch (error) {
+    console.log(error);
     yield put(fail(error));
   }
 }
 
 export function* SignUpSaga() {
-  yield takeEvery(CHECK_NICK_SAGA, checkNickSaga);
+  yield takeEvery(START_SIGNUP_SAGA, startSignUpSaga);
 }

@@ -37,7 +37,8 @@ header * {
         width: 219px;
         height: 37px;
         font-size: 24px;
-        background-image: url(../../images/common/logo_wht.png);
+        background-image: url(/images/common/logo_wht.png);
+        background-repeat: no-repeat;
       }
     }
     .sns {
@@ -132,7 +133,8 @@ header * {
         width: 219px;
         height: 37px;
         font-size: 24px;
-        background-image: url(../../images/common/logo.png);
+        background-image: url(/images/common/logo_black.png);
+        background-repeat: no-repeat;
       }
     }
     .sns {
