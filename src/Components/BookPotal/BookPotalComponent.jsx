@@ -11,6 +11,7 @@ function BookPotalComponent({
   selectTitle,
   selectPoint,
   type,
+  login,
 }) {
   const close = useCallback(() => {
     setMind(false);
@@ -19,6 +20,7 @@ function BookPotalComponent({
   const goSelectSeat = useCallback(() => {
     if (!localStorage.getItem('user')) {
       setMind(false);
+      login();
       return;
     }
     if (setStep !== undefined) {
