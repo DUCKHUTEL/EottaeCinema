@@ -4,18 +4,24 @@ import selectData from './select';
 import theaters from './resTheater';
 import movies from './movies';
 import bookingData from './bookingData';
+import checkBookData from './checkBookData';
 import detail from './detail';
-import authSignIn from './authSignIn';
+import signIn from './signIn';
+import signUp from './signUp';
+import auth from './auth';
 import board from './board';
 
 const reducer = (history) =>
   combineReducers({
-    authSignIn,
+    auth,
+    signUp,
+    signIn,
     board,
     detail,
     selectData,
     theaters,
     movies,
+    checkBookData,
     bookingData,
     router: connectRouter(history),
   });

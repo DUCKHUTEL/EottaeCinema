@@ -4,6 +4,7 @@ import 'moment/locale/ko';
 import moment from 'moment';
 import OwlCarouselComponent from '../OwlCarouselComponent/OwlCarouselComponent';
 import BookPotalContainer from '../../Containers/BookPotalContainer';
+import ScheduleMovieTimeSortTheaterResultComponent from '../ScheduleMovieTimeSortTheaterResultComponent/ScheduleMovieTimeSortTheaterResultComponent';
 
 function ScheduleMovieTimeSortTheaterComponent({
   setStep,
@@ -59,7 +60,13 @@ function ScheduleMovieTimeSortTheaterComponent({
               </li>
             ))}
         </ul>
-        <article>
+        <ScheduleMovieTimeSortTheaterResultComponent
+          selectedTitle={selectedTitle}
+          movieDataSetTheater={movieDataSetTheater}
+          selectBookData={selectBookData}
+          filtertBy={filtertBy}
+        />
+        {/* <article>
           {selectedTitle === '없음' ? (
             <></>
           ) : movieDataSetTheater.length === 0 ? (
@@ -114,7 +121,7 @@ function ScheduleMovieTimeSortTheaterComponent({
               );
             })
           )}
-        </article>
+        </article> */}
         {Booking && (
           <BookPotalContainer
             setStep={setStep}

@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import styles from './BookMoviesComponent.module.scss';
 import { useEffect } from 'react';
+import BookMoviesListComponent from '../BookMoviesListComponent/BookMoviesListComponent';
+import BookMoviesPosterComponent from '../BookMoviesPosterComponent/BookMoviesPosterComponent';
 function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
   const [sort, setSort] = useState('movieBookPer');
   const [show, setShow] = useState('hamberger');
@@ -85,7 +87,7 @@ function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
           }
           onClick={selectingMoive}
         >
-          {moviesData
+          {/* {moviesData
             .sort((a, b) =>
               a[sort] > b[sort] ? -1 : a[sort] < b[sort] ? 1 : 0,
             )
@@ -105,7 +107,12 @@ function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
                   <span className={styles.movieTitle}>{movie.movieTitle}</span>
                 </a>
               </li>
-            ))}
+            ))} */}
+          <BookMoviesListComponent
+            moviesData={moviesData}
+            sort={sort}
+            selectedTitle={selectedTitle}
+          />
         </ul>
         <ul
           className={
@@ -114,7 +121,13 @@ function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
               : styles.posterLi
           }
         >
-          {moviesData
+          <BookMoviesPosterComponent
+            moviesData={moviesData}
+            sort={sort}
+            selectedTitle={selectedTitle}
+            selectingMoivePoster={selectingMoivePoster}
+          />
+          {/* {moviesData
             .sort((a, b) =>
               a[sort] > b[sort] ? -1 : a[sort] < b[sort] ? 1 : 0,
             )
@@ -162,7 +175,7 @@ function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
                   </div>
                 </a>
               </li>
-            ))}
+            ))} */}
         </ul>
       </div>
     </div>

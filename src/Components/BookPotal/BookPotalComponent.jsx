@@ -28,7 +28,6 @@ function BookPotalComponent({
       selectPoint(bookingData.theaterLocation);
     } else {
       history.push('/ticketing', { step: 2 });
-      console.log(bookingData);
     }
     setMind(false);
   }, []);

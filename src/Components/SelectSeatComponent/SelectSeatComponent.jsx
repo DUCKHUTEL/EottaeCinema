@@ -5,6 +5,7 @@ import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
 import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import moment from 'moment';
 import { useEffect } from 'react';
+import PayBookDataStageComponent from '../PayBookDataStageComponent/PayBookDataStageComponent';
 
 function SelectSeatComponent({
   setStep,
@@ -146,7 +147,15 @@ function SelectSeatComponent({
         <div className={styles.selectSection}>
           <p>- 좌석 선택 후 결제하기 버튼을 클릭하세요</p>
           <div className={styles.screen}>SCREEN</div>
-          {bookingData.stage === '1' ? (
+          <PayBookDataStageComponent
+            stage={bookingData.stage}
+            bookedSeat={bookingData.bookedSeat}
+            clickedSeat={clickedSeat}
+            peopleCnt={ppc.all}
+            clickSeat={clickSeat}
+            type="select"
+          />
+          {/* {bookingData.stage === '1' ? (
             <FirstSeat
               bookedSeat={bookingData.bookedSeat}
               clickedSeat={clickedSeat}
@@ -170,7 +179,7 @@ function SelectSeatComponent({
               peopleCnt={ppc.all}
               type="select"
             />
-          )}
+          )} */}
         </div>
         <div className={styles.checkOut}>
           <div className={styles.costBox}>

@@ -1,19 +1,9 @@
 import React from 'react';
 import { useCallback } from 'react';
 import styles from './PayingComponent.module.scss';
-function PayingComponent({
-  setStep,
-  bookingPeople,
-  bookingData,
-  pay,
-  bookingSeat,
-}) {
+function PayingComponent({ setStep, bookingPeople, pay }) {
   const justPay = useCallback((e) => {
-    const { nickName, accessToken } = JSON.parse(localStorage.getItem('user'));
-    const { bookId, bookedSeat } = bookingData;
-    const selecetedSeat = bookingSeat.join(';');
-    const newBookedSeat = bookedSeat + ';' + selecetedSeat;
-    pay(bookId, newBookedSeat, selecetedSeat, nickName, accessToken);
+    // pay();
     setStep(4);
   });
   return (

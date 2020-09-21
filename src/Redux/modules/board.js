@@ -1,5 +1,5 @@
 import boardService from '../../Services/boardService';
-import { put, call, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { put, call, takeEvery, takeLatest } from 'redux-saga/effects';
 
 const initialState = {
   loading: false,
@@ -140,8 +140,8 @@ function* getReviewsByLikesSaga(action) {
 
 function* addReviewSaga(action) {
   const { movie, count, starPoint, content } = action.payload;
-  const token = yield select((state) => state.authSignIn.token);
-  const nickName = yield select((state) => state.authSignIn.nickName);
+  const token = JSON.parse(localStorage.user).accessToken;
+  const nickName = JSON.parse(localStorage.user).nickName;
   yield put(startAddReview());
 
   try {
@@ -164,7 +164,7 @@ function* addReviewSaga(action) {
 
 function* patchReviewSaga(action) {
   const { movie, count, id, starPoint, content } = action.payload;
-  const token = yield select((state) => state.authSignIn.token);
+  const token = JSON.parse(localStorage.user).accessToken;
   yield put(startPatchReview());
 
   try {
@@ -178,7 +178,7 @@ function* patchReviewSaga(action) {
 
 function* deleteReviewSaga(action) {
   const { movie, count, id } = action.payload;
-  const token = yield select((state) => state.authSignIn.token);
+  const token = JSON.parse(localStorage.user).accessToken;
   yield put(startDeleteReview());
 
   try {
@@ -192,8 +192,8 @@ function* deleteReviewSaga(action) {
 
 function* clickLikeReviewSaga(action) {
   const { movie, count, id } = action.payload;
-  const token = yield select((state) => state.authSignIn.token);
-  const nickName = yield select((state) => state.authSignIn.nickName);
+  const token = JSON.parse(localStorage.user).accessToken;
+  const nickName = JSON.parse(localStorage.user).nickName;
   yield put(startClickLikeOfReview());
 
   try {
