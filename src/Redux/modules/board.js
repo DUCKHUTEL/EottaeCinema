@@ -154,7 +154,6 @@ function* addReviewSaga(action) {
       nickName,
     );
     const reviews = yield call(boardService.getReviewsOnTime, movie, count);
-    console.log('reviews', reviews);
 
     yield put(successAddReview(reviews));
   } catch (err) {
