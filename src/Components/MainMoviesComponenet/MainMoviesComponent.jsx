@@ -3,7 +3,7 @@ import styles from './MainMoviesComponent.module.scss';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import DetailContent from '../Detail2/DetailContent';
+import DetailContent from '../DetailContentComponent/DetailContent';
 import { useCallback } from 'react';
 import { history } from '../../Redux/create';
 
@@ -12,8 +12,6 @@ function MainMoviesComponent({ movies, selectTitle, getMovies }) {
     count: 0,
     print: { transform: `translate3d(${-198 * 0}px, 0, 0)` },
   });
-
-  const [nowMovieTitle, setnowMovieTitle] = useState('');
 
   useEffect(() => {
     getMovies();
@@ -102,8 +100,16 @@ function MainMoviesComponent({ movies, selectTitle, getMovies }) {
                     예매하기
                   </Link>
                 </button>
-                <button className={styles['button-2']} id={movie.movieTitle}>
-                  <Link onClick={detailRouter} id={movie.movieTitle}>
+                <button
+                  className={styles['button-2']}
+                  onClick={() => {
+                    history.push('/detail', movie.movieTitle);
+                  }}
+                >
+                  <Link
+                    onClick={() => <DetailContent title={movie.movieTitle} />}
+                    to={'/detail?title=' + movie.movieTitle}
+                  >
                     상세정보
                   </Link>
                 </button>

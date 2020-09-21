@@ -33,12 +33,7 @@ function BookPotalComponent({
   }, []);
 
   return (
-    <div
-      className={styles.bookModal}
-      onClick={(e) => {
-        console.log(e.target);
-      }}
-    >
+    <div className={styles.bookModal}>
       <h3 className={styles.a11yHidden}>영화예매알림</h3>
       <div className={styles.ModalHead}>
         {bookingData.movieTime.slice(0, 5)}~

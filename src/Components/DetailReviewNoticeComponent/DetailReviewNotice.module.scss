@@ -1,0 +1,41 @@
+.list-notice-box {
+  margin-top: 60px;
+  padding: 30px 25px;
+  line-height: 17px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+
+  .list-title {
+    display: block;
+    margin-bottom: 17px;
+    padding-left: 20px;
+    padding-bottom: 7px;
+    line-height: 17px;
+    border-bottom: 1px solid #dedede;
+    background: url('https://www.lottecinema.co.kr/NLCHS/Content/images/icon/caution_16.png') no-repeat 0 2px;
+    background-position: 0 0;
+    font-size: 15px;
+    color: #000;
+  }
+
+  ul {
+    li {
+      letter-spacing: -.5px;
+      line-height: 1.4;
+      margin: 0 0 5px 8px;
+      text-indent: -8px;
+      color: #333;
+    }
+
+    li::before {
+      content: "";
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      margin: 8px 5px 0 0;
+      border-radius: 50%;
+      vertical-align: top;
+      background-color: #666;
+    }
+  }
+}

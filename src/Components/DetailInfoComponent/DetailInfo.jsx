@@ -1,14 +1,23 @@
 import React from 'react';
 import styles from './DetailInfo.module.scss';
 import Scrollbars from 'react-custom-scrollbars';
-import DetailTrailer from './DetailTrailer';
-import DetailStillCut from './DetailStillCut';
-import DetailPeople from './DetailPeople';
-import DetailGenderAge from './DetailGenderAge';
-import DetailReview from './DetailReview';
+import DetailGenderAge from '../DetailGenderAgeComponent/DetailGenderAge';
+import DetailTrailer from '../DetailTrailerComponent/DetailTrailer';
+import DetailStillCut from '../DetailStillCutComponent/DetailStillCut';
+import DetailPeople from '../DetailPeopleComponent/DetailPeople';
+import DetailReviewContainer from '../../Containers/DetailReviewContainer';
 
-export default function DetailInfo({ movieAPIData, DBData }) {
+export default function DetailInfo({
+  loading,
+  APIData,
+  DBData,
+  getMoviesDBData,
+  selectedMovie,
+}) {
   const [infoState, setInfoState] = React.useState('movie');
+  React.useEffect(() => {
+    getMoviesDBData();
+  }, [getMoviesDBData]);
 
   function movieInfoClick() {
     setInfoState('movie');
@@ -18,9 +27,6 @@ export default function DetailInfo({ movieAPIData, DBData }) {
     setInfoState('review');
   }
 
-  const APIData = movieAPIData;
-
-  console.log(APIData, DBData);
   return (
     <ul className={styles.info}>
       <li className={styles['movie-info1']}>
@@ -46,7 +52,7 @@ export default function DetailInfo({ movieAPIData, DBData }) {
                       autoHideDuration={200}
                     >
                       <div className={styles['synopsys-inner']}>
-                        {APIData === undefined || APIData.synopsys}
+                        {APIData.synopsys === undefined || APIData.synopsys}
                       </div>
                     </Scrollbars>
                   </div>
@@ -54,13 +60,19 @@ export default function DetailInfo({ movieAPIData, DBData }) {
               </div>
               <DetailGenderAge DBData={DBData} />
             </div>
-            <DetailTrailer movieAPIData={movieAPIData} DBData={DBData} />
-            <DetailStillCut movieAPIData={movieAPIData} DBData={DBData} />
-            <DetailPeople movieAPIData={movieAPIData} DBData={DBData} />
+            <DetailTrailer APIData={APIData} DBData={DBData} />
+            <DetailStillCut APIData={APIData} DBData={DBData} />
+            <DetailPeople loading={loading} APIData={APIData} DBData={DBData} />
           </div>
         )}
       </li>
-      <DetailReview infoState={infoState} reviewInfoClick={reviewInfoClick} />
+      <DetailReviewContainer
+        infoState={infoState}
+        reviewInfoClick={reviewInfoClick}
+        DBData={DBData}
+        getMoviesDBData={getMoviesDBData}
+        selectedMovie={selectedMovie}
+      />
     </ul>
   );
 }
