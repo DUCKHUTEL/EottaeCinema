@@ -3,13 +3,8 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailStillCut.scss';
-import { Link, Route } from 'react-router-dom';
 
 export default function DetailStillCut({ DBData }) {
-  // React.useEffect((e) => {
-  //   console.log(e);
-  //   // e.preventDefault();
-  // }, []);
   // const click = (e) => e.preventDefault();
 
   return (
