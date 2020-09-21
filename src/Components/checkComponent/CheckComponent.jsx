@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './CheckComponent.module.scss';
 import 'moment/locale/ko';
 import moment from 'moment';
+import { history } from '../../Redux/create';
 
 function CheckComponent({
   checkData,
@@ -10,6 +11,9 @@ function CheckComponent({
   bookingData,
   bookingPeople,
 }) {
+  const goMain = useCallback((e) => {
+    history.push('/');
+  }, []);
   const { nickName, bookId } = checkData;
   return (
     checkData &&
@@ -115,6 +119,7 @@ function CheckComponent({
             사용 할 수 있습니다.
           </li>
         </ul>
+        <button onClick={goMain}>홈으로 돌아가기</button>
       </article>
     )
   );
