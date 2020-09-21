@@ -1,0 +1,195 @@
+.review-list-box {
+  .review-list-top {
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 14px;
+
+    .review-total {
+      float: left;
+      font-size: 15px;
+
+      em {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+
+    ul {
+      float: right;
+      overflow: hidden;
+
+      li {
+        float: left;
+        margin-left: 20px;
+
+        button {
+          display: block;
+          position: relative;
+          color: #666;
+          font-size: 15px;
+          padding: 0;
+        }
+
+        button::before {
+          content: "";
+          display: inline-block;
+          width: 7px;
+          height: 7px;
+          margin: -2px 8px 0 0;
+          background-color: #ddd;
+          border-radius: 50%;
+          vertical-align: middle;
+        }
+
+        .active::before {
+          background-color: #ff7787;
+        }
+      }
+    }
+  }
+  
+  .review-list-con {
+    li:first-child {
+      border-color: #ccc
+    }
+
+    li {
+      position: relative;
+      padding: 20px 0 15px 68px;
+      border-top: 1px solid #eee;
+
+      .img-info {
+        display: block;
+        position: absolute;
+        top: 15px;
+        left: 10px;
+        overflow: hidden;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+
+        img {
+          width: 100%;
+          vertical-align: top;
+        }
+      }
+
+      .review-con-top {
+        margin-bottom: 12px;
+
+        .name {
+          position: relative;
+          padding-right: 11px;
+          margin-right: 9px;
+          font-size: 12px;
+        }
+
+        .name::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 3px;
+          right: 0;
+          width: 1px;
+          height: 12px;
+          background-color: #EEEEEE;
+        }
+
+        .review-list-score-box {
+          font-size: 14px;
+          margin-right: 11px;
+
+          .star {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin: -1px 3px 0 0;
+            background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/star_14.png") no-repeat 0 0;
+            text-indent: -9999px;
+            overflow: hidden;
+          }
+
+          .score {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: bold;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      .review-con-info {
+        margin-bottom: 11px;
+        font-size: 13px;
+      }
+
+      .review-con-bottom {
+        .date {
+          font-size: 11px;
+          color: #666;
+        }
+
+        .like {
+          line-height: 24px;
+          padding: 5px;
+          background: none;
+          border: none;
+
+          .good {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: top;
+            overflow: hidden;
+            text-indent: -9999px;
+            background: url('https://www.lottecinema.co.kr/NLCHS/Content/images/icon/ic_review_good.png') no-repeat center center;
+          }
+
+          .good-on {
+            background: url('https://www.lottecinema.co.kr/NLCHS/Content/images/icon/ic_review_good_on.png') no-repeat center center;
+          }
+
+          span {
+            font-size: 12px;
+            line-height: 24px;
+          }
+        }
+      }
+
+      .private {
+        position: absolute;
+        top: 20px;
+        right: 3px;
+
+        button {
+          border: 0;
+          color: #555;
+          background-color: #fff;
+        }
+
+        .edit:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 3px;
+          right: 0;
+          width: 1px;
+          height: 12px;
+          background-color: #EEEEEE;
+        }
+      }
+    }
+  }
+
+  .review-list-more {
+    width: 100%;
+    padding: 8px 0;
+    border: 1px solid #ECECEC;
+    background-color: #ffffff;
+
+    span {
+      padding-right: 20px;
+      background: url('https://www.lottecinema.co.kr/NLCHS/Content/images/icon/arr_dw_9.png') no-repeat right center;
+    }
+  }
+}

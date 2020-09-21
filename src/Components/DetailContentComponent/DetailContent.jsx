@@ -1,24 +1,7 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styles from './DetailContent.module.scss';
 
-export default function DetailContent({ movieAPIData, DBData }) {
-  const title = useSelector((state) => console.log(state.router.location));
-  // React.useEffect(() => {
-  //   getMovieAPIData();
-  // }, []);
-
-  // React.useEffect(() => {
-  //   getMoviesDBData();
-  // }, []);
-
-  const APIData = movieAPIData;
-  // const DBData = moviesDBData.find(
-  //   (DBdata) => DBdata.movieTitle === APIData.title,
-  // );
-
-  console.log(movieAPIData.actors);
-
+export default function DetailContent({ APIData, DBData }) {
   return (
     <div className={styles.content}>
       <h2 className={styles['a11y-hidden']}>영화</h2>
@@ -30,45 +13,57 @@ export default function DetailContent({ movieAPIData, DBData }) {
           )}
         </div>
         <div className={styles['title-info']}>
-          <span>{APIData === undefined || APIData.rating}</span>
-          <strong>{DBData === undefined || DBData.movieTitle}</strong>
+          <span
+            className={`${styles.rating} ${
+              styles[`rating${APIData === undefined || APIData.rating}`]
+            }`}
+          >
+            {APIData === undefined || APIData.rating}
+          </span>
+          <span className={styles.title}>
+            {DBData === undefined || DBData.movieTitle}
+          </span>
         </div>
         <ul className={styles['detail-info1']}>
           <li className={styles['sub-info']}>
             <em>관람객 평점</em>
-            <strong>
+            <span>
               <em>
-                <span className={styles['a11y-hidden']}>평점</span>
+                <span className={styles.poing}>
+                  <span className={styles['a11y-hidden']}>평점</span>
+                </span>
               </em>
-              <strong>{DBData === undefined || DBData.moviePoing}</strong>
-            </strong>
+              <span>{DBData === undefined || DBData.moviePoing}</span>
+            </span>
           </li>
           <li className={styles['sub-info']}>
             <em>예매율 {DBData === undefined || DBData.movieBookRank}위</em>
-            <strong>{DBData === undefined || DBData.movieBookPer}%</strong>
+            <span>{DBData === undefined || DBData.movieBookPer}%</span>
           </li>
           <li className={styles['sub-info']}>
             <em>누적 관객수</em>
-            <strong>
+            <span>
               {DBData === undefined ||
                 DBData.movieCumAud
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
               명
-            </strong>
+            </span>
           </li>
         </ul>
         <ul className={styles['detail-info2']}>
           <li className={styles['sub-info1']}>
             <em>장르</em>
-            <strong>
+            <span>
               <em>
                 {APIData.genre === undefined ||
                   APIData.genre.split(',').join(', ')}{' '}
-                / {APIData === undefined || APIData.nation}
+                /{' '}
+                {APIData.nation === undefined ||
+                  APIData.nation.split(',').join(', ')}
               </em>
               <em className={styles['sub-info1-before']}>
-                {APIData === undefined ||
+                {APIData.rlsDate === undefined ||
                   (APIData.rlsDate + '').substring(0, 4) +
                     '.' +
                     (APIData.rlsDate + '').substring(4, 6) +
@@ -79,22 +74,27 @@ export default function DetailContent({ movieAPIData, DBData }) {
               <em className={styles['sub-info1-before']}>
                 {APIData === undefined || APIData.runtime}분
               </em>
-            </strong>
+            </span>
           </li>
           <li className={styles['sub-info2']}>
             <em>감독</em>
-            <strong>{APIData === undefined || APIData.director}</strong>
+            <span className={styles.people}>
+              {APIData === undefined || APIData.director}
+            </span>
           </li>
           <li className={styles['sub-info2']}>
             <em>출연</em>
-            <strong>
-              {APIData.actors === undefined ||
-                APIData.actors[0] +
-                  ', ' +
-                  APIData.actors[1] +
-                  ', ' +
-                  APIData.actors[2]}
-            </strong>
+            <span>
+              {APIData.actors === undefined || (
+                <>
+                  <span className={styles.people}>{APIData.actors[0]}</span>
+                  ,&nbsp;
+                  <span className={styles.people}>{APIData.actors[1]}</span>
+                  ,&nbsp;
+                  <span className={styles.people}>{APIData.actors[2]}</span>
+                </>
+              )}
+            </span>
           </li>
         </ul>
         <div className={styles['spacial-hall-info']}>

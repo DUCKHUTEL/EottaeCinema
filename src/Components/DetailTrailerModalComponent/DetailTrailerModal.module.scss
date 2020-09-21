@@ -1,0 +1,53 @@
+.trailer-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .trailer-modal-inner {
+    position: relative;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    width: 1060px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    padding: 40px 40px;
+    border-radius: 5px;
+
+    .close {
+      position: absolute;
+      top: 0;
+      right: 12px;
+      width: 25px;
+      height: 25px;
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:before, &:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 25px;
+        width: 3px;
+        background-color: #333;
+      }
+  
+      &::before {
+        transform: rotate(45deg);
+      }
+  
+      &::after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

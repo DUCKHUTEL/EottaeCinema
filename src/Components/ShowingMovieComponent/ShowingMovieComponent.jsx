@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './ShowingMovieComponent.module.scss';
-import DetailContent from '../Detail2/DetailContent';
+import DetailContent from '../DetailContentComponent/DetailContent';
 
 function ShowingMovieComponent() {
   const movies = useSelector((state) => state.movies.movies);
