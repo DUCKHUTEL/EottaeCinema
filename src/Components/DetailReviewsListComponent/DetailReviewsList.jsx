@@ -12,8 +12,6 @@ export default function DetailReviewsList({
   latestClick,
   byLikeClick,
 }) {
-  // const nickName = JSON.parse(localStorage.user).nickName;
-
   const imogiImg = React.useCallback((star) => {
     if (star > 8) return 1;
     if (star > 6) return 2;
@@ -83,6 +81,7 @@ export default function DetailReviewsList({
                     movie={review.movie}
                     count={count}
                     id={review.id}
+                    order={order}
                     favorit={review.favorit}
                     like={review.whoLikeThis}
                     nickName={
@@ -100,12 +99,14 @@ export default function DetailReviewsList({
                         id={review.id}
                         starPoint={review.star}
                         content={review.content}
+                        order={order}
                       />
                       <span>|</span>
                       <ReviewDeleteButton
                         movie={review.movie}
                         count={count}
                         id={review.id}
+                        order={order}
                       />
                     </div>
                   )}
