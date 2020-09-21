@@ -9,9 +9,11 @@ import detail from './detail';
 import signIn from './signIn';
 import signUp from './signUp';
 import auth from './auth';
+import logModal from './logModal';
 
 const reducer = (history) =>
   combineReducers({
+    logModal,
     auth,
     signUp,
     signIn,

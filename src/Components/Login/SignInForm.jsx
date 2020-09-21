@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import CustomTextInput from '../LogInUtility/CustomTextInput';
 import './Form.scss';
 
-function SignInForm({ login, token, setLoginModal, setComponetState }) {
+function SignInForm({ login, token, setComponetState, controlLogModal }) {
   const [message, setMaessage] = useState('');
 
   const onSubmit = useCallback((values, { setSubmitting }) => {
@@ -14,13 +14,13 @@ function SignInForm({ login, token, setLoginModal, setComponetState }) {
 
   const changeSignUp = useCallback(() => {
     console.log(setComponetState);
-    setComponetState((state) => !state);
-  }, []);
+    setComponetState();
+  }, [setComponetState]);
 
   useEffect(() => {
     if (token === null) return;
     if (!token) setMaessage('로그인에 실패하셨습니다.');
-    if (token) setLoginModal((state) => !state);
+    if (token) controlLogModal((state) => !state);
   }, [token]);
   return (
     <Formik
