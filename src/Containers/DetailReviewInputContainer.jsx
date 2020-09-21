@@ -3,7 +3,11 @@ import { useDispatch } from 'react-redux';
 import DetailReviewInput from '../Components/DetailReviewInputComponent/DetailReviewInput';
 import { addReviewSagaActionCreator } from '../Redux/modules/board';
 
-export default function DetailReviewInputContainer({ selectedMovie, count }) {
+export default function DetailReviewInputContainer({
+  selectedMovie,
+  count,
+  setOrder,
+}) {
   const dispatch = useDispatch();
 
   const addReview = React.useCallback(
@@ -15,5 +19,5 @@ export default function DetailReviewInputContainer({ selectedMovie, count }) {
     [dispatch, selectedMovie, count],
   );
 
-  return <DetailReviewInput addReview={addReview} />;
+  return <DetailReviewInput addReview={addReview} setOrder={setOrder} />;
 }

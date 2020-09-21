@@ -7,6 +7,7 @@ export default function ReviewLikeButton({
   movie,
   count,
   id,
+  order,
   favorit,
   like,
   nickName,
@@ -16,9 +17,9 @@ export default function ReviewLikeButton({
 
   const likeReview = React.useCallback(
     (id) => {
-      dispatch(clickLikeReviewSagaActionCreator(movie, count, id));
+      dispatch(clickLikeReviewSagaActionCreator(movie, count, id, order));
     },
-    [dispatch, movie, count],
+    [dispatch, movie, count, order],
   );
 
   const click = () => {
