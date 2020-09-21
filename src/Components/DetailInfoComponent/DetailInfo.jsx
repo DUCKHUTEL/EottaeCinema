@@ -8,6 +8,7 @@ import DetailPeople from '../DetailPeopleComponent/DetailPeople';
 import DetailReviewContainer from '../../Containers/DetailReviewContainer';
 
 export default function DetailInfo({
+  loading,
   APIData,
   DBData,
   getMoviesDBData,
@@ -61,7 +62,7 @@ export default function DetailInfo({
             </div>
             <DetailTrailer APIData={APIData} DBData={DBData} />
             <DetailStillCut APIData={APIData} DBData={DBData} />
-            <DetailPeople APIData={APIData} DBData={DBData} />
+            <DetailPeople loading={loading} APIData={APIData} DBData={DBData} />
           </div>
         )}
       </li>

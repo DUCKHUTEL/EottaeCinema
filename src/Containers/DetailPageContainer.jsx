@@ -12,6 +12,7 @@ export default function DetailPageContainer() {
   const selectedMovie = useSelector((state) => state.router.location.state);
   const movieAPIData = useSelector((state) => state.detail.movieData);
   const moviesDBData = useSelector((state) => state.movies.movies);
+  const loading = useSelector((state) => state.detail.loading);
 
   const dispatch = useDispatch();
 
@@ -45,6 +46,7 @@ export default function DetailPageContainer() {
         getMoviesDBData={getMoviesDBData}
       />
       <DetailInfo
+        loading={loading}
         APIData={movieAPIData}
         DBData={DBData}
         getMoviesDBData={getMoviesDBData}
