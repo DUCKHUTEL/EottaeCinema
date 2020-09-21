@@ -92,12 +92,7 @@ function MainMoviesComponent({ movies, getMovies }) {
                     history.push('/detail', movie.movieTitle);
                   }}
                 >
-                  <Link
-                    onClick={() => <DetailContent title={movie.movieTitle} />}
-                    to={'/detail?title=' + movie.movieTitle}
-                  >
-                    상세정보
-                  </Link>
+                  상세정보
                 </button>
               </div>
             </nav>
