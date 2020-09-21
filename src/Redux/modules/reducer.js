@@ -4,6 +4,7 @@ import selectData from './select';
 import theaters from './resTheater';
 import movies from './movies';
 import bookingData from './bookingData';
+import checkBookData from './checkBookData';
 import detail from './detail';
 import signIn from './signIn';
 import signUp from './signUp';
@@ -18,6 +19,7 @@ const reducer = (history) =>
     selectData,
     theaters,
     movies,
+    checkBookData,
     bookingData,
     router: connectRouter(history),
   });
