@@ -1,0 +1,26 @@
+.movie-info2 {
+  .movie-info2-button {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    border-bottom: 1px solid #DDD;
+    height: 50px;
+    line-height: 50px;
+    color: #000;
+    cursor: pointer;
+
+    span {
+      font-size: 15px;
+      color: #7F7F7F;
+    }
+  }
+
+  .info-active {
+    border-bottom: 2px solid #111;
+
+    span{
+      color: #000;
+    }
+  }
+}

@@ -9,12 +9,14 @@ import detail from './detail';
 import signIn from './signIn';
 import signUp from './signUp';
 import auth from './auth';
+import board from './board';
 
 const reducer = (history) =>
   combineReducers({
     auth,
     signUp,
     signIn,
+    board,
     detail,
     selectData,
     theaters,

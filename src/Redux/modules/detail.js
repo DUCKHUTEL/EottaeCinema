@@ -1,5 +1,5 @@
-import detailService from "../../Services/detailService";
-import { put, call, takeEvery } from "redux-saga/effects";
+import detailService from '../../Services/detailService';
+import { put, call, takeEvery } from 'redux-saga/effects';
 
 const initialState = {
   loading: false,
@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 };
 
-const prefix = "EOTTAECINEMA/detail";
+const prefix = 'EOTTAECINEMA/detail';
 
 const GET_START = `${prefix}/GET_START`;
 const GET_SUCCESS = `${prefix}/GET_SUCCESS`;
@@ -36,6 +36,7 @@ const failGetMovieData = (err) => {
 function* getMovieSaga(action) {
   const { title } = action;
   yield put(startGetMovieData());
+
   try {
     const movieData = yield call(detailService.getMovieData, title);
     yield put(successGetMovieData(movieData));
@@ -43,13 +44,13 @@ function* getMovieSaga(action) {
     yield put(failGetMovieData(err));
   }
 }
-const GET_MOVIE_SAGA = "GET_MOVIE_SAGA";
-export const getMovieDataSagaActionCreator = (title) => {
-  return {
-    type: GET_MOVIE_SAGA,
-    title,
-  };
-};
+
+const GET_MOVIE_SAGA = 'GET_MOVIE_SAGA';
+
+export const getMovieDataSagaActionCreator = (title) => ({
+  type: GET_MOVIE_SAGA,
+  title,
+});
 
 export function* movieDataSaga() {
   yield takeEvery(GET_MOVIE_SAGA, getMovieSaga);
