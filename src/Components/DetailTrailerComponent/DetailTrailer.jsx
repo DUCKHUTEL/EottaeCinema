@@ -3,8 +3,19 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailTrailer.scss';
+import DetailTrailerModal from '../DetailTrailerModalComponent/DetailTrailerModal';
 
 function DetailTrailer({ DBData }) {
+  const [state, setState] = React.useState('none');
+  const [id, setId] = React.useState('none');
+
+  console.log(id);
+
+  const click = (e) => {
+    setState('active');
+    setId(e.target.id);
+  };
+
   return (
     <div className="movie-tab-info2">
       <div className="trailer-text">
@@ -23,37 +34,41 @@ function DetailTrailer({ DBData }) {
             DBData.movieTrailerImg.split(';').map((url, i) => {
               return (
                 <div className="item" key={i}>
-                  <img
-                    src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
-                      1,
-                      url.length - 1,
-                    )}`}
-                    alt={`트레일러${i}`}
-                  />
+                  <div
+                    className="trailer-button"
+                    role="button"
+                    id={DBData.movieTrailerURL.replace(/"/gi, '').split(';')[i]}
+                    onClick={click}
+                  >
+                    <img
+                      src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
+                        1,
+                        url.length - 1,
+                      )}`}
+                      alt={`트레일러${i}`}
+                      id={
+                        DBData.movieTrailerURL.replace(/"/gi, '').split(';')[i]
+                      }
+                    />
+                  </div>
                   <div className="trailer-title">
-                    <strong>
+                    <span className="trailer-title-text">
                       {DBData.movieTrailerText
                         .split(';')
                         [i].substring(
                           1,
                           DBData.movieTrailerText.split(';')[i].length - 1,
                         )}
-                    </strong>
+                    </span>
                   </div>
                 </div>
               );
             })}
         </OwlCarousel>
-        {/* <iframe
-          title="예고편"
-          width="920"
-          height="517.5"
-          src="https://www.youtube.com/embed/919GruRSZzE"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        /> */}
       </div>
+      {state === 'active' && (
+        <DetailTrailerModal URL={id} setState={setState} />
+      )}
     </div>
   );
 }
