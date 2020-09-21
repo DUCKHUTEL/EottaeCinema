@@ -24,9 +24,10 @@ export default function DetailReviewInput({ addReview }) {
     setStarPoint,
   ]);
 
-  const click = React.useCallback(async () => {
+  const click = React.useCallback(() => {
     const content = contentRef.current.value;
     addReview(starPoint, content);
+    contentRef.current.value = '';
   }, [addReview, contentRef, starPoint]);
 
   return (

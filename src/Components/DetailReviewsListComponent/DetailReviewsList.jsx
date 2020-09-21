@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styles from './DetailReviewsList.module.scss';
 import ReviewLikeButton from './Buttons/ReviewLikeButton';
 import ReviewEditButton from './Buttons/ReviewEditBotton';
@@ -13,8 +12,7 @@ export default function DetailReviewsList({
   latestClick,
   byLikeClick,
 }) {
-  console.log(reviewsData);
-  const nickName = JSON.parse(localStorage.user).nickName;
+  // const nickName = JSON.parse(localStorage.user).nickName;
 
   const imogiImg = React.useCallback((star) => {
     if (star > 8) return 1;
@@ -87,25 +85,30 @@ export default function DetailReviewsList({
                     id={review.id}
                     favorit={review.favorit}
                     like={review.whoLikeThis}
+                    nickName={
+                      localStorage.user === undefined ||
+                      JSON.parse(localStorage.user).nickName
+                    }
                   />
                 </div>
-                {nickName === null || nickName !== review.user || (
-                  <div className={styles.private}>
-                    <ReviewEditButton
-                      movie={review.movie}
-                      count={count}
-                      id={review.id}
-                      starPoint={review.star}
-                      content={review.content}
-                    />
-                    <span>|</span>
-                    <ReviewDeleteButton
-                      movie={review.movie}
-                      count={count}
-                      id={review.id}
-                    />
-                  </div>
-                )}
+                {localStorage.user === undefined ||
+                  JSON.parse(localStorage.user).nickName !== review.user || (
+                    <div className={styles.private}>
+                      <ReviewEditButton
+                        movie={review.movie}
+                        count={count}
+                        id={review.id}
+                        starPoint={review.star}
+                        content={review.content}
+                      />
+                      <span>|</span>
+                      <ReviewDeleteButton
+                        movie={review.movie}
+                        count={count}
+                        id={review.id}
+                      />
+                    </div>
+                  )}
               </li>
             );
           })}
