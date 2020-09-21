@@ -28,7 +28,10 @@
         overflow: hidden;
         border-radius: 50%;
         vertical-align: middle;
-        background-color: dodgerblue;
+
+        img {
+          width: 100%;
+        }
       }
 
       .people-info-box {

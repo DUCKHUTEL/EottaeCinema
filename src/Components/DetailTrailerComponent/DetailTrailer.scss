@@ -3,6 +3,7 @@
   margin-bottom: 60px;
 
   .trailer-text {
+    font-family: "Noto Sans KR", "Roboto", "san-serif";
     font-size: 15px;
     margin-bottom: -20px;
   }
@@ -16,7 +17,7 @@
       .item {
         position: relative;
 
-        &:after {
+        .trailer-button:after {
           content: "";
           display: block;
           position: absolute;
@@ -27,20 +28,25 @@
           background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/main/btn_main_visual_play.png") no-repeat;
           margin: -40px 0 0 -20px;
           padding: 0;
-          // font: 0/0 a;
           border: 0;
           z-index: 1;
           background-color: rgba(255, 255, 255, 0);
-        }
-        img {
-          height: 200px;
+ 
+          img {
+            height: 200px;
+          }
         }
 
         .trailer-title {
           margin-top: 10px;
           width: 100%;
-          font-size: 13px;
           text-align: center;
+
+          .trailer-title-text {
+            font-size: 13px;
+            font-weight: 500;
+            color: #000;
+          }
         }
       }
 

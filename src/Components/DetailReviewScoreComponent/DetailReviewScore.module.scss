@@ -1,0 +1,50 @@
+.movie-score-box {
+  margin: 40px 0 33px 0;
+  text-align: center;
+
+  .score-info {
+    display: inline-block;
+    margin-bottom: 15px;
+    line-height: 35px;
+
+    em {
+      display: inline-block;
+      padding-right: 7px;
+      font-size: 15px;
+      color: #333;
+      vertical-align: middle;
+    }
+
+    .rating {
+      display: inline-block;
+      padding-left: 28px;
+      font-size: 35px;
+      font-weight: bold;
+      color: #000;
+      background: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/star_19.png") no-repeat 0 7px;
+      vertical-align: middle;
+    }
+
+    .max-rating {
+      position: relative;
+      display: inline-block;
+      margin: 0 0 -7px 8px;
+      padding-left: 12px;
+      font-size: 21px;
+      color: #666;
+      vertical-align: middle;
+    }
+
+    .max-rating::before {
+      content: "/";
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  .score-notion {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.3;
+  }
+}

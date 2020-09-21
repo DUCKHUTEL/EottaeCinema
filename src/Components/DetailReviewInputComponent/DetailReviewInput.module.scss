@@ -1,0 +1,87 @@
+.review-box {
+  height: 90px;
+  margin-bottom: 55px;
+  border: 1px solid #CCC;
+
+  .star-score-box {
+    float: left;
+    width: 320px;
+    height: 88px;
+    background-color: #F8F8F8;
+    text-align: center;
+    border-right: 1px solid #ccc;
+
+    .selected-score{
+      display: block;
+      margin: 20px 0 7px 0;
+      font-size: 13px;
+
+      em {
+        font-family: "Roboto", "Noto Sans KR";
+        font-size: 28px
+      }
+    }
+  }
+
+  .star-select-box {
+    .star-rate {
+      .star {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+        border: none;
+        background: transparent url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/ico_star_off.png") no-repeat 0 0/100% 100%;
+        transform: scale(1);
+        transition: all 0.3 ease-in-out;
+      }
+
+      .star-on {
+        background: transparent url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/ico_star_on.png") no-repeat 0 0/100% 100%;
+      }
+    }
+  }
+
+  .review-write-box {
+    float: left;
+    width: 538px;
+
+    textarea {
+      height: 70px;
+      border: none;
+      width: 100%;
+      padding: 13px 18px;
+      resize: none;
+      font-size: 14px;
+      line-height: 1.5;
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      outline: 0;
+    }
+
+    .byte-info {
+      display: block;
+      margin: 0 10px 10px 0;
+      text-align: right;
+      font-size: 10px;
+      color: #666;
+
+      .byte {
+        color: #000;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .submit-button {
+    float: left;
+    width: 119px;
+    height: 90px;
+    border: none;
+    margin: -1px -1px 0 0;
+    padding: 0;
+    background-color: #666;
+    color: #fff;
+    font-size: 15px;
+  }
+}
