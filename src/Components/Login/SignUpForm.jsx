@@ -5,13 +5,14 @@ import * as Yup from 'yup';
 import CustomTextInput from '../LogInUtility/CustomTextInput';
 
 function SignUpForm({
-  setLoginModal,
   signUp,
   checkNick,
   checkId,
+  logModal,
   signUpstatus,
   nickDupResult,
   idDupResult,
+  controlLogModal,
 }) {
   const [message, setMessage] = useState(
     '닉네임과 이메일은 중복 검사를 해주세요',
@@ -58,8 +59,8 @@ function SignUpForm({
   //signUp massage
   useEffect(() => {
     if (!signUpstatus) return;
-    if (signUpstatus) setLoginModal((state) => !state);
-  }, [signUpstatus, setLoginModal]);
+    if (signUpstatus) controlLogModal();
+  }, [signUpstatus, controlLogModal]);
   return (
     <Formik
       initialValues={{
