@@ -1,13 +1,13 @@
 import React from 'react';
 import DetailPageContainer from '../Containers/DetailPageContainer';
 import MainFooterComponent from '../Components/MainFooterComponent/MainFooterComponent';
-import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
+import MainHeaderContainer from '../Containers/MainHeaderContainer';
 
 export default function DetailPage() {
-  const index = 3;
+  const key = 3;
   return (
     <>
-      <MainHeaderComponent path={[index]} />
+      <MainHeaderContainer key={key} />
       <DetailPageContainer />
       <MainFooterComponent />
     </>

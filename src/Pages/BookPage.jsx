@@ -1,12 +1,12 @@
 import React from 'react';
 import BookContainer from '../Containers/BookContainer';
 import MainFooterComponent from '../Components/MainFooterComponent/MainFooterComponent';
-import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
+import MainHeaderContainer from '../Containers/MainHeaderContainer';
 export function BookPage() {
-  const index = 2;
+  const key = 2;
   return (
     <>
-      <MainHeaderComponent path={[index]} />
+      <MainHeaderContainer key={key} />
       <BookContainer />
       <MainFooterComponent />
     </>

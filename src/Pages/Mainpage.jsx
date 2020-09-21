@@ -1,15 +1,15 @@
 import React from 'react';
-import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
 import MainFooterComponent from '../Components/MainFooterComponent/MainFooterComponent';
 import MainWallpaperComponent from '../Components/MainWallpapterComponent/MainWallpaperComponent';
 import MainSubsectionComponent from '../Components/MainSubsectionComponent/MainSubsectionComponent';
 import MainMoviesContainer from '../Containers/MainMoviesContainer';
+import MainHeaderContainer from '../Containers/MainHeaderContainer';
 
 export default function Mainpage(props) {
-  const index = 1;
+  const key = 1;
   return (
     <>
-      <MainHeaderComponent path={[index, props.match.path]} />
+      <MainHeaderContainer key={key} path={props.match.path} />
       <MainWallpaperComponent />
       <MainMoviesContainer />
       <MainSubsectionComponent />

@@ -8,7 +8,6 @@ function SignUpForm({
   signUp,
   checkNick,
   checkId,
-  logModal,
   signUpstatus,
   nickDupResult,
   idDupResult,
