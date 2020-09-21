@@ -10,7 +10,8 @@ export default function DetailStillCut({ DBData }) {
   //   console.log(e);
   //   // e.preventDefault();
   // }, []);
-  const click = (e) => e.preventDefault();
+  // const click = (e) => e.preventDefault();
+
   return (
     <div className="movie-tab-info3">
       <div className="still-cut-text">
@@ -25,8 +26,8 @@ export default function DetailStillCut({ DBData }) {
           nav
           dots={false}
           dotData={true}
-          URLhashListener={true}
-          startPosition={'URLHash'}
+          // URLhashListener={true}
+          // startPosition={'URLHash'}
         >
           {DBData === undefined ||
             DBData.movieStillCut.split(';').map((url, i) => {
@@ -37,23 +38,13 @@ export default function DetailStillCut({ DBData }) {
                   id={`hashStillCut_${i}`}
                   data-hash={`#hashStillCut_${i}`}
                 >
-                  <Link
-                    to={{
-                      pathname: 'detail',
-                      search: `?title=${DBData.movieTitle}`,
-                      hash: `#hashStillCut_${i}`,
-                      state: DBData.movieTitle,
-                    }}
-                    onClick={click}
-                  >
-                    <img
-                      src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
-                        1,
-                        url.length - 1,
-                      )}`}
-                      alt={`트레일러${i}`}
-                    />
-                  </Link>
+                  <img
+                    src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
+                      1,
+                      url.length - 1,
+                    )}`}
+                    alt={`트레일러${i}`}
+                  />
                 </div>
               );
             })}
@@ -67,8 +58,8 @@ export default function DetailStillCut({ DBData }) {
           margin={20}
           nav
           dots
-          URLhashListener={true}
-          startPosition={'URLHash'}
+          // URLhashListener={true}
+          // startPosition={'URLHash'}
         >
           {DBData === undefined ||
             DBData.movieStillCut.split(';').map((url, i) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './DetailPeople.module.scss';
 
-export default function DetailPeople({ APIData, DBData }) {
+export default function DetailPeople({ loading, APIData, DBData }) {
   return (
     <div className={styles['movie-people-box']}>
       <div className={styles['movie-people-text']}>감독 및 배우</div>
@@ -35,17 +35,27 @@ export default function DetailPeople({ APIData, DBData }) {
                 <li key={index}>
                   <div className={styles['picture']}>
                     <img
-                      src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
-                        1,
-                        DBData.movieDirectorImg.length - 1,
+                      src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.replace(
+                        /"/gi,
+                        '',
                       )}`}
                       alt="배우"
                     />
                   </div>
                   <div className={styles['people-info-box']}>
                     <div className={styles['people-inner']}>
-                      {/* <span className={styles['people-name']}>{APIData === undefined || APIData.actors[index]}</span>
-                    <span className={styles['people-cast-name']}>{DBData === undefined || DBData.movieCastName.split(';')[index].substring(1, DBData.movieCastName.split(';')[index].length - 1)}</span> */}
+                      {/* <span className={styles['people-name']}>{loading === true && APIData.actors[index]}</span> */}
+                      <span className={styles['people-cast-name']}>
+                        {DBData === undefined ||
+                          (DBData === null &&
+                            DBData.movieCastName
+                              .split(';')
+                              [index].substring(
+                                1,
+                                DBData.movieCastName.split(';')[index].length -
+                                  1,
+                              ))}
+                      </span>
                     </div>
                   </div>
                 </li>
