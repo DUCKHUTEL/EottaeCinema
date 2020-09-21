@@ -138,4 +138,16 @@
       color: red;
     }
   }
+  
+  >button{
+    display: block;
+    width: 160px;
+    background-color: red;
+    color: #fff;
+    font-size: 15px;
+    margin: auto;
+    margin-top: 30px;
+    height: 40px;
+    border-radius: 5px;
+  }
 }

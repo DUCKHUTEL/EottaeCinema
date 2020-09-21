@@ -6,7 +6,6 @@ import BookMoviesPosterComponent from '../BookMoviesPosterComponent/BookMoviesPo
 function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
   const [sort, setSort] = useState('movieBookPer');
   const [show, setShow] = useState('hamberger');
-  console.log(from);
   useEffect(() => {
     if (from === undefined) {
       if (selectedTitle === '없음') selectTitle('테넷');

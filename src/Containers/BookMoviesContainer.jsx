@@ -14,6 +14,7 @@ function BookMoviesContainer({ from }) {
     },
     [dispatch],
   );
+
   const selectedTitle = useSelector((state) => state.selectData.title);
   if (moviesData.length === 0) {
     dispatch(push('/'));
@@ -24,7 +25,6 @@ function BookMoviesContainer({ from }) {
       selectTitle={selectTitle}
       selectedTitle={selectedTitle}
       moviesData={moviesData}
-      from={from}
     />
   );
 }

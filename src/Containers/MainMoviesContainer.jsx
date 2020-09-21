@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { startGetMoviesActionCreator } from '../Redux/modules/movies';
 import MainMoviesComponent from '../Components/MainMoviesComponenet/MainMoviesComponent';
+import { setSelectTitleAction } from '../Redux/modules/select';
 
 function MainMoviesContainer() {
   const dispatch = useDispatch();
@@ -11,8 +12,19 @@ function MainMoviesContainer() {
   }, [dispatch]);
   //   getMovies();
   const movies = useSelector((state) => state.movies.movies);
-
-  return <MainMoviesComponent movies={movies} getMovies={getMovies} />;
+  const selectTitle = useCallback(
+    (selectedTitle) => {
+      dispatch(setSelectTitleAction(selectedTitle));
+    },
+    [dispatch],
+  );
+  return (
+    <MainMoviesComponent
+      movies={movies}
+      selectTitle={selectTitle}
+      getMovies={getMovies}
+    />
+  );
 }
 
 export default MainMoviesContainer;

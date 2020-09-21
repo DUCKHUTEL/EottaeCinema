@@ -11,6 +11,7 @@ export default function DetailReview({
   DBData,
   selectedMovie,
   order,
+  setOrder,
   count,
   reviewsData,
   countIncrement,
@@ -36,6 +37,7 @@ export default function DetailReview({
             <DetailReviewInputContainer
               selectedMovie={selectedMovie}
               count={count}
+              setOrder={setOrder}
             />
             <DetailReviewsList
               order={order}

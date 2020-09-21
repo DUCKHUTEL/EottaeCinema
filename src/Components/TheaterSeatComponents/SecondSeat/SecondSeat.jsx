@@ -26,8 +26,6 @@ function SecondSeat({
     '14',
   ];
 
-  console.log(clickedSeat);
-
   useEffect(() => {
     clickSeat([]);
   }, [peopleCnt]);

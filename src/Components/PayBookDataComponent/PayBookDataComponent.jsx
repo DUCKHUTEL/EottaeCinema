@@ -12,7 +12,6 @@ function PayBookDataComponent({
   bookingSeat,
   bookingPeople,
 }) {
-  console.log(bookingData);
   return (
     bookingData && (
       <article className={styles.payBookDataBox}>

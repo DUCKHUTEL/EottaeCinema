@@ -154,8 +154,6 @@ function* addReviewSaga(action) {
       nickName,
     );
     const reviews = yield call(boardService.getReviewsOnTime, movie, count);
-    console.log('reviews', reviews);
-
     yield put(successAddReview(reviews));
   } catch (err) {
     yield put(failAddReview(err));
@@ -163,43 +161,60 @@ function* addReviewSaga(action) {
 }
 
 function* patchReviewSaga(action) {
-  const { movie, count, id, starPoint, content } = action.payload;
+  const { movie, count, id, starPoint, content, order } = action.payload;
   const token = JSON.parse(localStorage.user).accessToken;
   yield put(startPatchReview());
 
   try {
     yield call(boardService.editReview, token, id, starPoint, content);
-    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
-    yield put(successPatchReview(reviews));
+
+    if (order === 'LATEST') {
+      const reviews = yield call(boardService.getReviewsOnTime, movie, count);
+      yield put(successPatchReview(reviews));
+    } else if (order === 'BY_LIKES') {
+      const reviews = yield call(boardService.getReviewsOnFavor, movie, count);
+      yield put(successPatchReview(reviews));
+    }
   } catch (err) {
     yield put(failPatchReview(err));
   }
 }
 
 function* deleteReviewSaga(action) {
-  const { movie, count, id } = action.payload;
+  const { movie, count, id, order } = action.payload;
   const token = JSON.parse(localStorage.user).accessToken;
   yield put(startDeleteReview());
 
   try {
     yield call(boardService.deleteReview, token, id);
-    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
-    yield put(successDeleteReview(reviews));
+    if (order === 'LATEST') {
+      const reviews = yield call(boardService.getReviewsOnTime, movie, count);
+      yield put(successDeleteReview(reviews));
+    } else if (order === 'BY_LIKES') {
+      const reviews = yield call(boardService.getReviewsOnFavor, movie, count);
+      yield put(successDeleteReview(reviews));
+    }
   } catch (err) {
     yield put(failDeleteReview(err));
   }
 }
 
 function* clickLikeReviewSaga(action) {
-  const { movie, count, id } = action.payload;
+  const { movie, count, id, order } = action.payload;
   const token = JSON.parse(localStorage.user).accessToken;
   const nickName = JSON.parse(localStorage.user).nickName;
   yield put(startClickLikeOfReview());
 
   try {
     yield call(boardService.clickLikeReview, token, id, nickName);
-    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
-    yield put(successClickLikeOfReview(reviews));
+
+    if (order === 'LATEST') {
+      const reviews = yield call(boardService.getReviewsOnTime, movie, count);
+      yield put(successClickLikeOfReview(reviews));
+    } else if (order === 'BY_LIKES') {
+      const reviews = yield call(boardService.getReviewsOnFavor, movie, count);
+      yield put(successClickLikeOfReview(reviews));
+    }
   } catch (err) {
     yield put(failClickLikeOfReview(err));
   }
@@ -249,6 +264,7 @@ export const patchReviewSagaActionCreator = (
   id,
   starPoint,
   content,
+  order,
 ) => ({
   type: PATCH_REVIEW_SAGA,
   payload: {
@@ -257,24 +273,27 @@ export const patchReviewSagaActionCreator = (
     id,
     starPoint,
     content,
+    order,
   },
 });
 
-export const deleteReviewSagaActionCreator = (movie, count, id) => ({
+export const deleteReviewSagaActionCreator = (movie, count, id, order) => ({
   type: DELETE_REVIEW_SAGA,
   payload: {
     movie,
     count,
     id,
+    order,
   },
 });
 
-export const clickLikeReviewSagaActionCreator = (movie, count, id) => ({
+export const clickLikeReviewSagaActionCreator = (movie, count, id, order) => ({
   type: CLICK_LIKE_REVIEW_SAGA,
   payload: {
     movie,
     count,
     id,
+    order,
   },
 });
 
