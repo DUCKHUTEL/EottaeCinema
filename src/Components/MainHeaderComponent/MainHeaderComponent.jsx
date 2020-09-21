@@ -32,7 +32,6 @@ function MainHeaderComponent({
   //2. Handles login and logout according to the changed state.
   useEffect(() => {
     if (loginToken) setToken(true);
-    console.log(loginToken);
     if (!loginToken) {
       setToken(false);
     }

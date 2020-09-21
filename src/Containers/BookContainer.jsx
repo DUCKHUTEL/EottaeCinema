@@ -11,7 +11,6 @@ function BookContainer() {
   }, [useDispatch]);
 
   const path = useSelector((state) => state.router.location.state);
-
   const passedStep = path === undefined ? 0 : path;
   const step = path === undefined ? 0 : path.step ? path.step : 0;
 

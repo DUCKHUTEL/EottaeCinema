@@ -85,6 +85,10 @@ function* startLogOutSaga(action) {
   TokenService.delete();
   yield put(logsuccess(null));
   const path = yield select((state) => state.router.location.pathname);
+  if (path === '/ticketing') {
+    yield put(push(path, { step: 1 }));
+    return;
+  }
   yield put(push(path));
   try {
   } catch (error) {}
