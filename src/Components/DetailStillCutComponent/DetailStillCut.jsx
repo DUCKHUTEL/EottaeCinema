@@ -5,10 +5,6 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailStillCut.scss';
 
 export default function DetailStillCut({ DBData }) {
-  // React.useEffect((e) => {
-  //   console.log(e);
-  //   // e.preventDefault();
-  // }, []);
   // const click = (e) => e.preventDefault();
 
   return (
