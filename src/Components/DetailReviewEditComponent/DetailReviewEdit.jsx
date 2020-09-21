@@ -34,9 +34,9 @@ export default function DetailReviewEdit({
 
   const editClick = React.useCallback(async () => {
     const content = contentRef.current.value;
-    editReview(movie, count, id, editStarPoint, content);
+    editReview(movie, editStarPoint, content);
     setState('none');
-  }, [editReview, movie, count, id, editStarPoint, contentRef, setState]);
+  }, [editReview, movie, editStarPoint, contentRef, setState]);
 
   const closeClick = React.useCallback(() => {
     editStarSetPoint(starPoint);
@@ -121,9 +121,8 @@ export default function DetailReviewEdit({
               placeholder="평점 및 영화 관람평을 작성해주세요. 한글 110자 / 영문 220자 작성 가능합니다."
               onChange={onChange}
               ref={contentRef}
-            >
-              {content}
-            </textarea>
+              defaultValue={content}
+            />
             <span className={styles['byte-info']}>
               <span className={styles.byte}>{character}</span>/<em>220</em>
             </span>

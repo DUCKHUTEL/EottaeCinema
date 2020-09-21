@@ -14,12 +14,12 @@ export default function DetailReviewEditContainer({
   const dispatch = useDispatch();
 
   const editReview = React.useCallback(
-    (movie, count, id, starPoint, content) => {
+    (movie, starPoint, content) => {
       dispatch(
         patchReviewSagaActionCreator(movie, count, id, starPoint, content),
       );
     },
-    [dispatch],
+    [dispatch, count, id],
   );
 
   return (

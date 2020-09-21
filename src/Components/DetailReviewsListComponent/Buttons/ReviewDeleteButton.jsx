@@ -14,7 +14,7 @@ export default function ReviewDeleteButton({ movie, count, id }) {
   );
 
   const click = () => {
-    deleteReview(movie, id);
+    deleteReview(movie, count, id);
   };
 
   return (

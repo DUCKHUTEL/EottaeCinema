@@ -13,6 +13,7 @@ export default function DetailReviewsList({
   latestClick,
   byLikeClick,
 }) {
+  console.log(reviewsData);
   const nickName = JSON.parse(localStorage.user).nickName;
 
   const imogiImg = React.useCallback((star) => {
