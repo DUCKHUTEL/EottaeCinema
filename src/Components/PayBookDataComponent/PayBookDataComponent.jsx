@@ -5,6 +5,7 @@ import moment from 'moment';
 import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
 import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
+import PayBookDataStageComponent from '../PayBookDataStageComponent/PayBookDataStageComponent';
 function PayBookDataComponent({
   movies,
   bookingData,
@@ -78,7 +79,14 @@ function PayBookDataComponent({
         <div className={styles.seatMiniMap}>
           <p className={styles.screen}>SCREEN</p>
           <p className={styles.floor}>6F</p>
-          {bookingData.stage === '1' ? (
+          <PayBookDataStageComponent
+            stage={bookingData.stage}
+            bookedSeat={bookingData.bookedSeat}
+            clickedSeat={bookingSeat}
+            peopleCnt={bookingPeople.all}
+            type="pay"
+          />
+          {/* {bookingData.stage === '1' ? (
             <FirstSeat
               bookedSeat={bookingData.bookedSeat}
               clickedSeat={bookingSeat}
@@ -99,7 +107,7 @@ function PayBookDataComponent({
               peopleCnt={bookingPeople.all}
               type="pay"
             />
-          )}
+          )} */}
         </div>
       </article>
     )

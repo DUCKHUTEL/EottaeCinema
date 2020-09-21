@@ -4,6 +4,7 @@ import 'moment/locale/ko';
 import moment from 'moment';
 import OwlCarouselComponent from '../OwlCarouselComponent/OwlCarouselComponent';
 import BookPotalContainer from '../../Containers/BookPotalContainer';
+import BookTimeMovieViewComponent from '../BookTimeMovieViewComponent/BookTimeMovieViewComponent';
 
 function BookTimeMovieComponent({
   from,
@@ -70,7 +71,12 @@ function BookTimeMovieComponent({
           ))}
         </ul>
         <article>
-          {movieDataForBookBtn.length === 0 ? (
+          <BookTimeMovieViewComponent
+            movieDataForBookBtn={movieDataForBookBtn}
+            selectBookData={selectBookData}
+            filtertBy={filtertBy}
+          />
+          {/* {movieDataForBookBtn.length === 0 ? (
             <div className={styles.notice}>
               <p>조회되는 정보가 없어요오~</p>
               <p>조건을 변경해 주세여!</p>
@@ -142,7 +148,7 @@ function BookTimeMovieComponent({
                 </div>
               );
             })
-          )}
+          )} */}
         </article>
         {Booking && (
           <BookPotalContainer setStep={setStep} setMind={setMind} from={from} />
