@@ -1,15 +1,15 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import '../../Components/Login/LogInModalPortal.scss';
 import SignUpFormContainer from '../../Containers/SignUpFormContainer';
 import SignInFormContainer from '../../Containers/SignInFormContainer';
 
 // 얘는 포탈이면서 안에 로그인과 회원가입을 둘 다 가지고 있을 것.
 
-function LogInModalPortal({ setLoginModal }) {
+function LogInModalPortal({ controlLogModal, logModal }) {
   const [componenetState, setComponetState] = useState(false);
   const close = useCallback((e) => {
     if (e.target.id !== 'form') return;
-    setLoginModal((state) => !state);
+    controlLogModal();
   }, []);
 
   return (
@@ -17,12 +17,9 @@ function LogInModalPortal({ setLoginModal }) {
       <section className="form-container">
         <div className="form-close-btn"></div>
         {componenetState ? (
-          <SignUpFormContainer setLoginModal={setLoginModal} />
+          <SignUpFormContainer />
         ) : (
-          <SignInFormContainer
-            setLoginModal={setLoginModal}
-            setComponetState={setComponetState}
-          />
+          <SignInFormContainer setComponetState={setComponetState} />
         )}
       </section>
     </div>

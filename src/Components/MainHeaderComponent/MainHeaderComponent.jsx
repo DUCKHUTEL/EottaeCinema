@@ -1,17 +1,22 @@
-import React, { useRef, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import MainNavComponent from '../MainNavComponent/MainNavComponent';
 import styles from './MainHeaderComponent.module.scss';
 import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
-// import LogInModalPortal from '../Login/LogInModalPortal';
 import LogInModalContainer from '../../Containers/LogInModalContainer';
-import LogInModalPortal from '../Login/LogInModalPortal';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { success } from '../../Redux/modules/logModal';
 
 function MainHeaderComponent(props) {
   const [index, path] = props.path;
   const [token, setToken] = useState(false);
-  const [loginModal, setLoginModal] = useState(false);
+
+  const dispatch = useDispatch();
+  const logModal = useSelector((state) => state.logModal.modal);
+  const controlLogModal = () => {
+    dispatch(success());
+  };
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -27,7 +32,7 @@ function MainHeaderComponent(props) {
   }, []);
 
   const login = () => {
-    setLoginModal((state) => !state);
+    controlLogModal();
   };
 
   const logout = () => {};
@@ -75,7 +80,7 @@ function MainHeaderComponent(props) {
         </ul>
       </section>
       <MainNavComponent path={path} />
-      {loginModal && <LogInModalContainer setLoginModal={setLoginModal} />}
+      {logModal && <LogInModalContainer />}
     </header>
   );
 }

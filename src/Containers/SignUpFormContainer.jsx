@@ -7,11 +7,13 @@ import {
   checkIdSagaActionCreator,
 } from '../Redux/modules/auth';
 import { startSignInSagaActionCreator } from '../Redux/modules/signIn';
+import { success } from '../Redux/modules/logModal';
 
 function SignUpFormContainer({ setLoginModal }) {
   const nickDupResult = useSelector((state) => state.auth.checkNick);
   const idDupResult = useSelector((state) => state.auth.checkId);
   const signUpstatus = useSelector((state) => state.signUp.status);
+  const logModal = useSelector((state) => state.logModal.modal);
 
   const dispatch = useDispatch();
 
@@ -27,6 +29,9 @@ function SignUpFormContainer({ setLoginModal }) {
   const login = ({ id, password }) => {
     dispatch(startSignInSagaActionCreator(id, password));
   };
+  const controlLogModal = () => {
+    dispatch(success());
+  };
 
   return (
     <SignUpForm
@@ -35,9 +40,11 @@ function SignUpFormContainer({ setLoginModal }) {
       login={login}
       checkNick={checkNick}
       checkId={checkId}
+      logModal={logModal}
       signUpstatus={signUpstatus}
       nickDupResult={nickDupResult}
       idDupResult={idDupResult}
+      controlLogModal={controlLogModal}
     />
   );
 }
