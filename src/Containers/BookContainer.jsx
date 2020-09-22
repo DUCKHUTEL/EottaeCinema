@@ -8,7 +8,7 @@ function BookContainer() {
 
   const resetSelect = useCallback(() => {
     dispatch(resetSelectAction());
-  }, [useDispatch]);
+  }, [dispatch]);
 
   const path = useSelector((state) => state.router.location.state);
   const passedStep = path === undefined ? 0 : path;

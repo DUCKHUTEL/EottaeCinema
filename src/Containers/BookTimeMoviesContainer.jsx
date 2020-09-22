@@ -13,9 +13,12 @@ function BookTimeMoviesContainer({ setStep, from, type }) {
     [dispatch],
   );
 
-  const bookData = useCallback((bookId) => {
-    dispatch(getBookingDataAction(bookId));
-  });
+  const bookData = useCallback(
+    (bookId) => {
+      dispatch(getBookingDataAction(bookId));
+    },
+    [dispatch],
+  );
 
   const selectedDate = useSelector((state) => state.selectData.date);
 

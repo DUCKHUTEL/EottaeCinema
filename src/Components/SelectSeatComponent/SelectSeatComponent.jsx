@@ -1,8 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import styles from './SelectSeatComponent.module.scss';
-import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
-import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
-import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import moment from 'moment';
 import { useEffect } from 'react';
 import PayBookDataStageComponent from '../PayBookDataStageComponent/PayBookDataStageComponent';
@@ -81,7 +78,7 @@ function SelectSeatComponent({
                     (movie) => movie.movieTitle === bookingData.movieTitle,
                   )[0].moviePoster
                 }
-                alt={''}
+                alt={`${bookingData.movieTitle} 포스터`}
               />
             </div>
             <div className={styles.movieInfo}>
@@ -155,31 +152,6 @@ function SelectSeatComponent({
             clickSeat={clickSeat}
             type="select"
           />
-          {/* {bookingData.stage === '1' ? (
-            <FirstSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={clickedSeat}
-              clickSeat={clickSeat}
-              peopleCnt={ppc.all}
-              type="select"
-            />
-          ) : bookingData.stage === '6' ? (
-            <SixthSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={clickedSeat}
-              clickSeat={clickSeat}
-              peopleCnt={ppc.all}
-              type="select"
-            />
-          ) : (
-            <SecondSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={clickedSeat}
-              clickSeat={clickSeat}
-              peopleCnt={ppc.all}
-              type="select"
-            />
-          )} */}
         </div>
         <div className={styles.checkOut}>
           <div className={styles.costBox}>

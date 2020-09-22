@@ -27,7 +27,7 @@ function ScheduleMovieTimeSortTheaterResultComponent({
               <div>{Object.keys(movies)[0]}</div>
               <p>2D</p>
               <ul className={styles.BookBtnContainer}>
-                {movie.map((willBtnData, idx) => (
+                {movie.map((willBtnData) => (
                   <li
                     key={willBtnData.bookId}
                     id={willBtnData.bookId}
