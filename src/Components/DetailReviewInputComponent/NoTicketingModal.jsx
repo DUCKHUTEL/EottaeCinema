@@ -1,23 +1,45 @@
 import React from 'react';
+import { useCallback } from 'react';
 import styles from './NoTokenModal.module.scss';
+import { useDispatch } from 'react-redux';
+import { getReviewsSagaActionCreator } from '../../Redux/modules/board';
+import { history } from '../../Redux/create';
 
-export default function NoTicktingModal({ setTicketingState }) {
-  const dimmerClick = React.useCallback(
+function NoTicktingModal({
+  selectedMovie,
+  count,
+  setTicketingState,
+  selectTitle,
+}) {
+  const dispatch = useDispatch();
+
+  const dimmerClick = useCallback(
     (e) => {
       if (e.target.matches('#no-token-modal-inner')) return;
 
       setTicketingState(null);
+      dispatch(getReviewsSagaActionCreator(selectedMovie, count));
     },
-    [setTicketingState],
+    [dispatch, selectedMovie, count, setTicketingState],
   );
 
-  const okClick = () => {
+  const okClick = (e) => {
     setTicketingState(null);
+    e.preventDefault();
+    const title = selectedMovie;
+    selectTitle(title);
+    history.push('/ticketing', { title: title });
   };
 
-  const closeClick = () => {
-    setTicketingState(null);
-  };
+  const closeClick = useCallback(
+    (e) => {
+      if (e.target.matches('#no-token-modal-inner')) return;
+
+      setTicketingState(null);
+      dispatch(getReviewsSagaActionCreator(selectedMovie, count));
+    },
+    [dispatch, selectedMovie, count, setTicketingState],
+  );
 
   return (
     <div className={styles['no-token-modal-wrapper']} onClick={dimmerClick}>
@@ -42,3 +64,5 @@ export default function NoTicktingModal({ setTicketingState }) {
     </div>
   );
 }
+
+export default React.memo(NoTicktingModal);
