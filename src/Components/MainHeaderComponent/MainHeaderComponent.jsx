@@ -24,7 +24,6 @@ function MainHeaderComponent({
     }
     if (!UserService.CheckToken(user.accessToken).tokenState) {
       setToken(true);
-      console.log(user);
       return;
     }
     TokenService.delete();
