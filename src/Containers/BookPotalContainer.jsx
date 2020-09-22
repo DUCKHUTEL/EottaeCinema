@@ -21,7 +21,7 @@ function BookPotalContainer({ setMind, setStep, from, type }) {
 
   const login = useCallback(() => {
     dispatch(success());
-  }, [useDispatch]);
+  }, [dispatch]);
 
   const logModal = useSelector((state) => state.logModal.modal);
 

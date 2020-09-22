@@ -1,5 +1,5 @@
 import { createActions, handleActions } from 'redux-actions';
-import { put, select, takeLatest, take, call } from 'redux-saga/effects';
+import { put, select, takeLatest, call } from 'redux-saga/effects';
 import bookingService from '../../Services/bookingService';
 
 const initState = {

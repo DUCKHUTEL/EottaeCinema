@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import MainVideoPortal from '../Components/MainVideoPortal/MainVideoPortal';
 
-function MainVideoPortalContainer({ id, setModal }) {
+function MainVideoPortalContainer({ hide, id }) {
   return ReactDOM.createPortal(
-    <MainVideoPortal id={id} setModal={setModal} />,
+    <MainVideoPortal hide={hide} id={id} />,
     document.querySelector('#mainVideoPortal'),
   );
 }
