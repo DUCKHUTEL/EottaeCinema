@@ -27,28 +27,32 @@ function SixthSeat({
   ];
   useEffect(() => {
     clickSeat([]);
-  }, [peopleCnt]);
-  const choicSeat = useCallback((e) => {
-    e.preventDefault();
-    if (
-      !e.target.matches('a') ||
-      peopleCnt === 0 ||
-      e.target.parentNode.className.indexOf('block') !== -1 ||
-      e.target.parentNode.className.indexOf('booked') !== -1
-    )
-      return;
-    const seatData = e.target.dataset.seat;
+  }, [peopleCnt, clickSeat]);
 
-    if (clickedSeat.includes(seatData)) {
-      const idx = clickedSeat.indexOf(seatData);
-      const copy = [...clickedSeat];
-      copy.splice(idx, 1);
-      clickSeat(copy);
-      return;
-    }
+  const choicSeat = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (
+        !e.target.matches('a') ||
+        peopleCnt === 0 ||
+        e.target.parentNode.className.indexOf('block') !== -1 ||
+        e.target.parentNode.className.indexOf('booked') !== -1
+      )
+        return;
+      const seatData = e.target.dataset.seat;
 
-    clickSeat((state) => [...state, seatData]);
-  });
+      if (clickedSeat.includes(seatData)) {
+        const idx = clickedSeat.indexOf(seatData);
+        const copy = [...clickedSeat];
+        copy.splice(idx, 1);
+        clickSeat(copy);
+        return;
+      }
+
+      clickSeat((state) => [...state, seatData]);
+    },
+    [clickSeat],
+  );
   return (
     <div className={styles[type]}>
       <div

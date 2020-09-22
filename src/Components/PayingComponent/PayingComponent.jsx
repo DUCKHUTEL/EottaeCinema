@@ -2,10 +2,13 @@ import React from 'react';
 import { useCallback } from 'react';
 import styles from './PayingComponent.module.scss';
 function PayingComponent({ setStep, bookingPeople, pay }) {
-  const justPay = useCallback((e) => {
-    // pay();
-    setStep(4);
-  });
+  const justPay = useCallback(
+    (e) => {
+      pay();
+      setStep(4);
+    },
+    [pay, setStep],
+  );
   return (
     bookingPeople && (
       <article className={styles.payBox}>

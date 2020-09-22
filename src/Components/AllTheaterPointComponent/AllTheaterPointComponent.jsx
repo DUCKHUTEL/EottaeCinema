@@ -22,7 +22,7 @@ function AllTheaterPointComponent({
     if (point === '없음') {
       selectPoint('가양');
     }
-  }, [point]);
+  }, [selectPoint, point]);
 
   const localTabChange = useCallback((e) => {
     e.preventDefault();
@@ -30,12 +30,15 @@ function AllTheaterPointComponent({
     setActive(e.target.parentNode.id);
   }, []);
 
-  const selectTheater = useCallback((e) => {
-    if (!e.target.matches('a')) return;
-    e.preventDefault();
-    selectPoint(e.target.id);
-    setPoint(e.target.id);
-  }, []);
+  const selectTheater = useCallback(
+    (e) => {
+      if (!e.target.matches('a')) return;
+      e.preventDefault();
+      selectPoint(e.target.id);
+      setPoint(e.target.id);
+    },
+    [selectPoint],
+  );
 
   return (
     <ul

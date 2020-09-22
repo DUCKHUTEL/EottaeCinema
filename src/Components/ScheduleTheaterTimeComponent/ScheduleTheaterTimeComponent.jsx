@@ -3,7 +3,6 @@ import AllTheaterPointContainer from '../../Containers/AllTheaterPointContainer'
 import BookTimeMoviesContainer from '../../Containers/BookTimeMoviesContainer';
 import styles from './ScheduleTheaterTimeComponent.module.scss';
 function ScheduleTheaterTimeComponent({ point }) {
-  console.log(point);
   return (
     <>
       <div className={styles.scheduleThaeterBox}>
