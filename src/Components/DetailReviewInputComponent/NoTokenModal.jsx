@@ -1,8 +1,9 @@
 import React from 'react';
+import { useCallback } from 'react';
 import styles from './NoTokenModal.module.scss';
 
-export default function NoTokenModal({ setTokenState }) {
-  const dimmerClick = React.useCallback(
+export default function NoTokenModal({ setTokenState, login }) {
+  const dimmerClick = useCallback(
     (e) => {
       if (e.target.matches('#no-token-modal-inner')) return;
 
@@ -13,6 +14,7 @@ export default function NoTokenModal({ setTokenState }) {
 
   const okClick = () => {
     setTokenState('none');
+    login();
   };
 
   const closeClick = () => {
