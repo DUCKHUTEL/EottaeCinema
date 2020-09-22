@@ -67,7 +67,6 @@ function DetailTrailer({ DBData }) {
       {state === 'active' && (
         <DetailTrailerModal URL={id} setState={setState} />
       )}
-      g
     </div>
   );
 }
