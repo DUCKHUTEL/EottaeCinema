@@ -6,7 +6,6 @@ import { getMovieDataSagaActionCreator } from '../Redux/modules/detail';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { startGetMoviesActionCreator } from '../Redux/modules/movies';
-import { Redirect } from 'react-router-dom';
 import { setSelectTitleAction } from '../Redux/modules/select';
 
 export default function DetailPageContainer() {
@@ -30,9 +29,6 @@ export default function DetailPageContainer() {
     getMoviesDBData();
   }, [getMovieAPIData, getMoviesDBData]);
 
-  // if (selectedMovie === undefined) {
-  //   return <Redirect to="/" />;
-  // }
   const selectTitle = useCallback(
     (selectedTitle) => {
       dispatch(setSelectTitleAction(selectedTitle));

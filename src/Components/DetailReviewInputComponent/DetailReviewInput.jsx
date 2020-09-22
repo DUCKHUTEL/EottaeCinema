@@ -1,11 +1,17 @@
 import React from 'react';
 import styles from './DetailReviewInput.module.scss';
+import NoTicktingModal from './NoTicketingModal';
 import NoTokenModal from './NoTokenModal';
+import { useSelector } from 'react-redux';
 
-export default function DetailReviewInput({ addReview, setOrder }) {
+function DetailReviewInput({ addReview, setOrder }) {
   const [character, setCharacter] = React.useState(0);
   const [starPoint, setStarPoint] = React.useState(10);
   const [tokenState, setTokenState] = React.useState('none');
+  const noTicketing = useSelector((state) => state.board.error);
+  const [ticketingState, setTicketingState] = React.useState(noTicketing);
+  console.log(ticketingState, noTicketing);
+
   const contentRef = React.createRef(null);
 
   const getByte = React.useCallback((str) => {
@@ -32,7 +38,6 @@ export default function DetailReviewInput({ addReview, setOrder }) {
       return;
     }
 
-    console.log('add click');
     const content = contentRef.current.value;
     addReview(starPoint, content);
     setOrder('LATEST');
@@ -126,6 +131,11 @@ export default function DetailReviewInput({ addReview, setOrder }) {
       {tokenState === 'no token' && (
         <NoTokenModal setTokenState={setTokenState} />
       )}
+      {ticketingState === null || (
+        <NoTicktingModal setTicketingState={setTicketingState} />
+      )}
     </div>
   );
 }
+
+export default React.memo(DetailReviewInput);

@@ -18,6 +18,7 @@ export default function DetailReview({
   latestClick,
   byLikeClick,
 }) {
+  const user = JSON.parse(localStorage.getItem('user'));
   return (
     <li className={styles['movie-info2']}>
       <button
@@ -46,6 +47,7 @@ export default function DetailReview({
               countIncrement={countIncrement}
               latestClick={latestClick}
               byLikeClick={byLikeClick}
+              user={user}
             />
             <DetailReviewNotice />
           </div>

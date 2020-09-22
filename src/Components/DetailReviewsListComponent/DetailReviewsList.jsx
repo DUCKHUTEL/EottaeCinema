@@ -3,8 +3,9 @@ import styles from './DetailReviewsList.module.scss';
 import ReviewLikeButton from './Buttons/ReviewLikeButton';
 import ReviewEditButton from './Buttons/ReviewEditBotton';
 import ReviewDeleteButton from './Buttons/ReviewDeleteButton';
+// import { useSelector } from 'react-redux';
 
-export default function DetailReviewsList({
+function DetailReviewsList({
   order,
   count,
   reviewsData,
@@ -12,6 +13,20 @@ export default function DetailReviewsList({
   latestClick,
   byLikeClick,
 }) {
+  const [userState, setUserState] = React.useState(null);
+  React.useEffect(() => {
+    const user = (() => localStorage.user)();
+    if (user === undefined) {
+      setUserState(null);
+      return;
+    }
+
+    if (user) {
+      setUserState(true);
+      return;
+    }
+  }, []);
+
   const imogiImg = React.useCallback((star) => {
     if (star > 8) return 1;
     if (star > 6) return 2;
@@ -90,7 +105,7 @@ export default function DetailReviewsList({
                     }
                   />
                 </div>
-                {localStorage.user === undefined ||
+                {userState === null ||
                   JSON.parse(localStorage.user).nickName !== review.user || (
                     <div className={styles.private}>
                       <ReviewEditButton
@@ -122,3 +137,5 @@ export default function DetailReviewsList({
     </div>
   );
 }
+
+export default React.memo(DetailReviewsList);

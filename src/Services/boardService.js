@@ -33,9 +33,7 @@ export default class boardService {
       { headers: { Authorization: `Bearer ${token}` } },
     );
 
-    console.log(token, nickName);
-    console.log(res.data);
-    return res.data;
+    return res.data.update;
   }
 
   static async editReview(token, id, starPoint, content) {
