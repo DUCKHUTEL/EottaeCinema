@@ -1,8 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import styles from './SelectSeatComponent.module.scss';
-import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
-import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
-import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
 import moment from 'moment';
 import { useEffect } from 'react';
 import PayBookDataStageComponent from '../PayBookDataStageComponent/PayBookDataStageComponent';
