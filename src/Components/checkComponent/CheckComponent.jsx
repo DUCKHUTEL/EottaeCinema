@@ -14,7 +14,7 @@ function CheckComponent({
   const goMain = useCallback((e) => {
     history.push('/');
   }, []);
-  const { nickName, bookId } = checkData;
+  const { nickName } = checkData;
   return (
     checkData &&
     bookingData && (

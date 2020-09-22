@@ -22,6 +22,7 @@ function BookTimeMovieViewComponent({
         if (filtertBy === '심야')
           return movies.movieTime.split(':').join('') >= 210000;
         if (filtertBy === '스페셜관' || filtertBy === 'Atoms') return false;
+        return;
       });
       if (movie.length === 0) return;
       return (
