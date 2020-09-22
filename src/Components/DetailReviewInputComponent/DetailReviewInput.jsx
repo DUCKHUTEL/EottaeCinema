@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './DetailReviewInput.module.scss';
+import NoTokenModal from './NoTokenModal';
 
 export default function DetailReviewInput({ addReview, setOrder }) {
   const [character, setCharacter] = React.useState(0);
   const [starPoint, setStarPoint] = React.useState(10);
+  const [tokenState, setTokenState] = React.useState('none');
   const contentRef = React.createRef(null);
 
   const getByte = React.useCallback((str) => {
@@ -25,6 +27,12 @@ export default function DetailReviewInput({ addReview, setOrder }) {
   ]);
 
   const click = React.useCallback(() => {
+    if (localStorage.user === undefined) {
+      setTokenState('no token');
+      return;
+    }
+
+    console.log('add click');
     const content = contentRef.current.value;
     addReview(starPoint, content);
     setOrder('LATEST');
@@ -115,6 +123,9 @@ export default function DetailReviewInput({ addReview, setOrder }) {
       <button className={styles['submit-button']} onClick={click}>
         관람평 작성
       </button>
+      {tokenState === 'no token' && (
+        <NoTokenModal setTokenState={setTokenState} />
+      )}
     </div>
   );
 }

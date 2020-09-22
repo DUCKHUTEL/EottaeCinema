@@ -3,6 +3,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailStillCut.scss';
+import { Link } from 'react-router-dom';
 
 export default function DetailStillCut({ DBData }) {
   // const click = (e) => e.preventDefault();
@@ -30,16 +31,24 @@ export default function DetailStillCut({ DBData }) {
                 <div
                   className="item"
                   key={i}
-                  id={`hashStillCut_${i}`}
-                  // data-hash={`#hashStillCut_${i}`}
+                  // id={`hashStillCut_${i}`}
+                  // data-hash={`/detail#hashStillCut_${i}`}
                 >
-                  <img
-                    src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
-                      1,
-                      url.length - 1,
-                    )}`}
-                    alt={`트레일러${i}`}
-                  />
+                  <Link
+                    to={{
+                      pathname: '/detail',
+                      state: '테넷',
+                      hash: `#hashStillCut_${i}`,
+                    }}
+                  >
+                    <img
+                      src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
+                        1,
+                        url.length - 1,
+                      )}`}
+                      alt={`트레일러${i}`}
+                    />
+                  </Link>
                 </div>
               );
             })}
@@ -62,7 +71,8 @@ export default function DetailStillCut({ DBData }) {
                 <div
                   className="item"
                   key={i}
-                  // data-hash={`#hashStillCut_${i + 1}`}
+                  // data-hash={`#hashStillCut_${i}`}
+                  // startPosition={'URLHash'}
                 >
                   {/* <Route path={`/hashStillCut_${i}`}> */}
                   <img
