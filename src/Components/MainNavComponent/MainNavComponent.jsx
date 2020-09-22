@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import styles from './MainNavComponent.module.scss';
 import { Link } from 'react-router-dom';
@@ -33,7 +34,7 @@ function MainNavComponent({ path }) {
             </ul>
           </li>
           <li className={styles['cinema']}>
-            <a href="/">영화관</a>
+            <a href="#">영화관</a>
             <ul>
               <li className={styles['cinema-1']}>
                 스페셜관
@@ -226,7 +227,7 @@ function MainNavComponent({ path }) {
             </ul>
           </li>
           <li className={styles['event']}>
-            <a href="/">이벤트</a>
+            <a href="#">이벤트</a>
             <ul>
               <li>홈</li>
               <li>영화</li>
@@ -237,7 +238,7 @@ function MainNavComponent({ path }) {
             </ul>
           </li>
           <li className={styles['store']}>
-            <a href="/">스토어</a>
+            <a href="#">스토어</a>
             <ul>
               <li>베스트</li>
               <li>관람권</li>
@@ -248,7 +249,7 @@ function MainNavComponent({ path }) {
         </ul>
         <ul className={styles['menu']}>
           <li className={styles['my']}>
-            <a href="/">마이</a>
+            <a href="#">마이</a>
           </li>
           <li className={styles['reservation']}>
             <Link to="/ticketing">바로예매</Link>

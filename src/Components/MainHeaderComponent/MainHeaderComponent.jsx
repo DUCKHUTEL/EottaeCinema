@@ -27,7 +27,7 @@ function MainHeaderComponent({
       return;
     }
     TokenService.delete();
-  }, []);
+  }, [token]);
 
   //2. Handles login and logout according to the changed state.
   useEffect(() => {
