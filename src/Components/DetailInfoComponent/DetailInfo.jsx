@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import styles from './DetailInfo.module.scss';
 import Scrollbars from 'react-custom-scrollbars';
 import DetailGenderAge from '../DetailGenderAgeComponent/DetailGenderAge';
@@ -7,25 +8,12 @@ import DetailStillCut from '../DetailStillCutComponent/DetailStillCut';
 import DetailPeople from '../DetailPeopleComponent/DetailPeople';
 import DetailReviewContainer from '../../Containers/DetailReviewContainer';
 
-export default function DetailInfo({
-  loading,
-  APIData,
-  DBData,
-  getMoviesDBData,
-  selectedMovie,
-}) {
-  const [infoState, setInfoState] = React.useState('movie');
-  React.useEffect(() => {
-    getMoviesDBData();
-  }, [getMoviesDBData]);
+function DetailInfo({ APIData, DBData, selectedMovie }) {
+  const [infoState, setInfoState] = useState('movie');
 
-  function movieInfoClick() {
-    setInfoState('movie');
-  }
+  const movieInfoClick = () => setInfoState('movie');
 
-  function reviewInfoClick() {
-    setInfoState('review');
-  }
+  const reviewInfoClick = () => setInfoState('review');
 
   return (
     <ul className={styles.info}>
@@ -62,7 +50,7 @@ export default function DetailInfo({
             </div>
             <DetailTrailer APIData={APIData} DBData={DBData} />
             <DetailStillCut APIData={APIData} DBData={DBData} />
-            <DetailPeople loading={loading} APIData={APIData} DBData={DBData} />
+            <DetailPeople APIData={APIData} DBData={DBData} />
           </div>
         )}
       </li>
@@ -70,9 +58,10 @@ export default function DetailInfo({
         infoState={infoState}
         reviewInfoClick={reviewInfoClick}
         DBData={DBData}
-        getMoviesDBData={getMoviesDBData}
         selectedMovie={selectedMovie}
       />
     </ul>
   );
 }
+
+export default React.memo(DetailInfo);
