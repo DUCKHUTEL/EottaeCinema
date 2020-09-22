@@ -1,16 +1,34 @@
-.main-wallpape * {
+.main-wallpaper * {
   padding: 0;
 }
 
-.main-wallpape {
+.main-wallpaper {
   position: relative;
   z-index: 1;
   width: 100%;
   background-color: black;
 
-  .owl-prev {
-    border: 2px solid orangered;
-    background-image: url(/src/images/icon/arr_lf_19_wht.png);
+  .owl-theme {
+    .owl-nav {
+      .owl-prev {
+        left: 30px;
+        width: 31px;
+        height: 60px;
+        opacity: 0.6;
+        background-size: auto;
+        top: 44%;
+        background: url(/images/icon/arr_lf_31_wht.png) no-repeat center center !important;
+      }
+      .owl-next {
+        right: 30px;
+        width: 31px;
+        height: 60px;
+        opacity: 0.6;
+        background-size: auto;
+        top: 44%;
+        background: url(/images/icon/arr_rg_31_wht.png) no-repeat center center !important;
+      }
+    }
   }
 
   .play-button {

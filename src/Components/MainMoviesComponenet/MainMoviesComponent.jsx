@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import styles from './MainMoviesComponent.module.scss';
 import { useEffect } from 'react';
@@ -96,9 +97,9 @@ function MainMoviesComponent({ movies, selectTitle, getMovies }) {
             <nav className={styles['modal-button']}>
               <div>
                 <button className={styles['button-1']} id={movie.movieTitle}>
-                  <Link onClick={BookRouter} id={movie.movieTitle}>
+                  <a onClick={BookRouter} id={movie.movieTitle}>
                     예매하기
-                  </Link>
+                  </a>
                 </button>
                 <button
                   className={styles['button-2']}

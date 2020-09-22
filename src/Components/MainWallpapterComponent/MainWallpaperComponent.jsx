@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import './MainWallpaperComponent.scss';
 import OwlCarousel from 'react-owl-carousel';
+import './MainWallpaperComponent.scss';
 import { useCallback } from 'react';
 
 const images = [
@@ -23,9 +23,9 @@ function MainWallpaperComponent({ show }) {
   }, []);
 
   return (
-    <section className="main-wallpape">
+    <section className="main-wallpaper">
       <OwlCarousel
-        className="top-visual-box"
+        className="owl-theme"
         items={1}
         loop
         nav
@@ -34,7 +34,12 @@ function MainWallpaperComponent({ show }) {
         autoplaySpeed={500}
       >
         {images.map((images) => (
-          <button className="images" onClick={open} id={images.id}>
+          <button
+            className="images"
+            onClick={open}
+            id={images.id}
+            key={images.id}
+          >
             <img src={images.src} alt={images.title} />
             <div role="button" key={images.id}>
               <img

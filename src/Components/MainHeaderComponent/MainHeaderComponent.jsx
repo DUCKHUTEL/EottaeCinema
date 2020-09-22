@@ -79,7 +79,6 @@ function MainHeaderComponent({
           <li className={styles['memership']}>멤버십</li>
           <li className={styles['customer']}>고객센터</li>
           <li className={styles['login_logout']}>
-            {console.log(token)}
             {token ? (
               <button onClick={logout}>로그아웃</button>
             ) : (
