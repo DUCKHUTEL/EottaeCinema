@@ -31,10 +31,13 @@ function BookTimeMovieComponent({
   const doSortMovie = useCallback((e) => {
     setfilter(e.target.id);
   }, []);
-  const selectBookData = useCallback((e) => {
-    bookData(e.currentTarget.id);
-    setMind(true);
-  }, []);
+  const selectBookData = useCallback(
+    (e) => {
+      bookData(e.currentTarget.id);
+      setMind(true);
+    },
+    [bookData],
+  );
   return (
     <div
       className={

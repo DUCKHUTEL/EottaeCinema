@@ -2,10 +2,13 @@ import React from 'react';
 import { useCallback } from 'react';
 import styles from './PayingComponent.module.scss';
 function PayingComponent({ setStep, bookingPeople, pay }) {
-  const justPay = useCallback((e) => {
-    pay();
-    setStep(4);
-  });
+  const justPay = useCallback(
+    (e) => {
+      pay();
+      setStep(4);
+    },
+    [pay, setStep],
+  );
   return (
     bookingPeople && (
       <article className={styles.payBox}>
@@ -29,7 +32,9 @@ function PayingComponent({ setStep, bookingPeople, pay }) {
           <p>
             <span>상품 금액</span>
             <span>
-              <span className={styles.momey}>{bookingPeople.all * 10000}</span>{' '}
+              <span className={styles.momey}>{`${
+                bookingPeople.all * 12000
+              } `}</span>
               원
             </span>
           </p>
@@ -42,7 +47,9 @@ function PayingComponent({ setStep, bookingPeople, pay }) {
           <p>
             <span>상품 금액</span>
             <span>
-              <span className={styles.momey}>{bookingPeople.all * 10000}</span>{' '}
+              <span className={styles.momey}>{`${
+                bookingPeople.all * 12000
+              } `}</span>
               원
             </span>
           </p>

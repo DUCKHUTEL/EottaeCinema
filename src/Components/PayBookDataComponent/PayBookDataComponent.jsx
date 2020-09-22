@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './PayBookDataComponent.module.scss';
 import 'moment/locale/ko';
 import moment from 'moment';
-import FirstSeat from '../TheaterSeatComponents/FirstSeat/FirstSeat';
-import SixthSeat from '../TheaterSeatComponents/SixSeat/SixthSeat';
-import SecondSeat from '../TheaterSeatComponents/SecondSeat/SecondSeat';
+
 import PayBookDataStageComponent from '../PayBookDataStageComponent/PayBookDataStageComponent';
 function PayBookDataComponent({
   movies,
@@ -85,28 +83,6 @@ function PayBookDataComponent({
             peopleCnt={bookingPeople.all}
             type="pay"
           />
-          {/* {bookingData.stage === '1' ? (
-            <FirstSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={bookingSeat}
-              peopleCnt={bookingPeople.all}
-              type="pay"
-            />
-          ) : bookingData.stage === '6' ? (
-            <SixthSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={bookingSeat}
-              peopleCnt={bookingPeople.all}
-              type="pay"
-            />
-          ) : (
-            <SecondSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={bookingSeat}
-              peopleCnt={bookingPeople.all}
-              type="pay"
-            />
-          )} */}
         </div>
       </article>
     )

@@ -86,10 +86,9 @@ function* startLogOutSaga(action) {
   yield put(logsuccess(null));
   const path = yield select((state) => state.router.location.pathname);
   if (path === '/ticketing') {
-    yield put(push(path, { step: 1 }));
+    yield put(push('/'));
     return;
   }
-  return;
   try {
   } catch (error) {}
 }

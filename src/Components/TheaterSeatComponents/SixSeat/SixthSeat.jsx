@@ -27,7 +27,8 @@ function SixthSeat({
   ];
   useEffect(() => {
     clickSeat([]);
-  }, [peopleCnt]);
+  }, [peopleCnt, clickSeat]);
+
   const choicSeat = useCallback((e) => {
     e.preventDefault();
     if (
