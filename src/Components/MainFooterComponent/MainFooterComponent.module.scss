@@ -1,22 +1,79 @@
 @import '../../commonVariables';
 
+footer * {
+  color: #333;
+}
+
 footer {
   // 전체
-  padding-top: 50px;
 
-  .commercial {
-    @include layout;
+  address {
+    font-style: inherit;
   }
 
   .footer {
-    background-color: #f5f5f5;
+    background-color: #f6f6f6;
     address {
-      background-color: white;
-      p {
+      background-color: #fafafa;
+      .layout {
         @include layout;
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        .project-info {
+          padding-bottom: 20px;
+          img {
+            display: block;
+            padding-bottom: 12px;
+          }
+          p {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+          }
+          a {
+            font-size: 12px;
+          }
+        }
+
+        .team-info {
+          padding-top: 20px;
+          display: flex;
+          justify-content: space-between;
+          div {
+            display: flex;
+            img {
+              width: 80px;
+              height: 80px;
+            }
+            p {
+              padding-right: 15px;
+              padding-top: 10px;
+              padding-left: 15px;
+
+              div {
+                font-size: 14px;
+                font-weight: bold;
+                padding-bottom: 5px;
+              }
+              p {
+                font-size: 12px;
+                padding: 0;
+                white-space: nowrap;
+                padding-bottom: 5px;
+              }
+              .say {
+                padding-top: 5px;
+                border-top: 1px solid #666;
+                font-style: italic;
+              }
+            }
+          }
+        }
       }
     }
     ul {
+      padding-top: 5px;
       @include layout;
       display: flex;
       justify-content: space-between;

@@ -4,17 +4,68 @@ import styles from './MainFooterComponent.module.scss';
 export default function MainFooterComponent() {
   return (
     <footer>
-      <section className={styles['commercial']}>
-        <img
-          src="https://caching2.lottecinema.co.kr/lotte_image/2020/BeautyWater/0827/BeautyWater_980180.jpg"
-          alt="15세 이상 관람가 기기괴괴 성형수 9월 대개봉 호러 성형 괴담 평점 9.9 너에버 웹툰 원작 역대급 k-애니 비포 앤 애프터 공개"
-        ></img>
-      </section>
       <section className={styles['footer']}>
         <address>
-          <p>팀원 소개 들어갈 것</p>
+          <div className={styles['layout']}>
+            <div className={styles['project-info']}>
+              <h3 className="a11yHidden">오떼 시네마</h3>
+              <img src="\images\common\logo_black.png" alt="오떼 시네마 로고" />
+              <p>EOTTE CINEMA</p>
+              <p> 2020.08.24 ~ 2020.09.23</p>
+
+              <a href="https://github.com/DUCKHUTEL/EottaeCinema">
+                <img
+                  src="\images\footer-icon\iconfinder_71-github_4202098.png"
+                  alt="깃허브 아이콘"
+                  width="30px"
+                  height="40px"
+                />
+                https://github.com/DUCKHUTEL/EottaeCinema
+              </a>
+            </div>
+            <div className={styles['team-info']}>
+              <div>
+                <img
+                  src="\images\footer-icon\iconfinder_batman_hero_avatar_comics_4043232.png"
+                  alt="icon"
+                />
+                <p>
+                  <div>조장 : 백승일</div>
+                  <p>bigcoms6290@gmail.com</p>
+                  <p className={styles['say']}>
+                    say,
+                    <br /> 살려주세요...
+                  </p>
+                </p>
+              </div>
+              <div>
+                <img
+                  src="\images\footer-icon\iconfinder_sloth_lazybones_sluggard_avatar_4043272.png"
+                  alt="icon"
+                />
+                <p>
+                  <div>팀원 : 최예린</div>
+                  <p>bigcoms6290@gmail.com</p>
+                  <p className={styles['say']}>
+                    say, <br />
+                    숙면... 숙면이 필요하다...
+                  </p>
+                </p>
+              </div>
+              <div>
+                <img
+                  src="\images\footer-icon\iconfinder_anime_spirited_away_no_face_nobody_4043233.png"
+                  alt="icon"
+                />
+                <p>
+                  <div>팀원 : 류동우 </div>
+                  <p>detrox2020@gmail.com</p>
+                </p>
+              </div>
+            </div>
+          </div>
         </address>
-        <ul>
+        {/* <ul>
           <li>
             <img src="images\common\footer_award_NCSI5.png" alt="NCSI5" />
           </li>
@@ -48,7 +99,7 @@ export default function MainFooterComponent() {
               alt="brandcinema"
             />
           </li>
-        </ul>
+        </ul> */}
       </section>
     </footer>
   );

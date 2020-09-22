@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MainNavComponent from '../MainNavComponent/MainNavComponent';
 import styles from './MainHeaderComponent.module.scss';
 import UserService from '../../Services/userService';
