@@ -1,38 +1,63 @@
 import React from 'react';
+import { useState, useEffect, useCallback, createRef } from 'react';
 import styles from './DetailReviewInput.module.scss';
+import { useDispatch } from 'react-redux';
 import NoTicktingModal from './NoTicketingModal';
 import NoTokenModal from './NoTokenModal';
-import { useSelector } from 'react-redux';
+import { setSelectTitleAction } from '../../Redux/modules/select';
 
-function DetailReviewInput({ addReview, setOrder }) {
-  const [character, setCharacter] = React.useState(0);
-  const [starPoint, setStarPoint] = React.useState(10);
-  const [tokenState, setTokenState] = React.useState('none');
-  const noTicketing = useSelector((state) => state.board.error);
-  const [ticketingState, setTicketingState] = React.useState(noTicketing);
-  console.log(ticketingState, noTicketing);
+function DetailReviewInput({
+  selectedMovie,
+  count,
+  addReview,
+  setOrder,
+  noTicketing,
+  login,
+  logModal,
+}) {
+  const [character, setCharacter] = useState(0);
+  const [starPoint, setStarPoint] = useState(10);
+  const [tokenState, setTokenState] = useState('none');
+  const [ticketingState, setTicketingState] = useState(null);
 
-  const contentRef = React.createRef(null);
+  const contentRef = createRef(null);
+  const dispatch = useDispatch();
 
-  const getByte = React.useCallback((str) => {
+  useEffect(() => {
+    const ticket = noTicketing;
+    if (!ticket) {
+      setTicketingState(null);
+    }
+
+    if (ticket === 'no ticketing') {
+      setTicketingState('no ticketing');
+    }
+  }, [noTicketing, ticketingState]);
+
+  const selectTitle = useCallback(
+    (selectedTitle) => {
+      dispatch(setSelectTitleAction(selectedTitle));
+    },
+    [dispatch],
+  );
+
+  const getByte = useCallback((str) => {
     return str
       .split('')
       .map((s) => s.charCodeAt(0))
       .reduce((prev, c) => prev + (c === 10 ? 2 : c >> 7 ? 2 : 1), 0);
   }, []);
 
-  const onChange = React.useCallback(
+  const onChange = useCallback(
     (e) => {
       setCharacter(getByte(e.target.value));
     },
     [getByte],
   );
 
-  const starClick = React.useCallback((score) => setStarPoint(score), [
-    setStarPoint,
-  ]);
+  const starClick = useCallback((score) => setStarPoint(score), [setStarPoint]);
 
-  const click = React.useCallback(() => {
+  const click = useCallback(() => {
     if (localStorage.user === undefined) {
       setTokenState('no token');
       return;
@@ -129,10 +154,15 @@ function DetailReviewInput({ addReview, setOrder }) {
         관람평 작성
       </button>
       {tokenState === 'no token' && (
-        <NoTokenModal setTokenState={setTokenState} />
+        <NoTokenModal setTokenState={setTokenState} login={login} />
       )}
       {ticketingState === null || (
-        <NoTicktingModal setTicketingState={setTicketingState} />
+        <NoTicktingModal
+          selectedMovie={selectedMovie}
+          count={count}
+          setTicketingState={setTicketingState}
+          selectTitle={selectTitle}
+        />
       )}
     </div>
   );
