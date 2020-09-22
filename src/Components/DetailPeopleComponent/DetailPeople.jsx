@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './DetailPeople.module.scss';
 
-export default function DetailPeople({ loading, APIData, DBData }) {
-  console.log(DBData);
+export default function DetailPeople({ APIData, DBData }) {
   return (
     <div className={styles['movie-people-box']}>
       <div className={styles['movie-people-text']}>감독 및 배우</div>

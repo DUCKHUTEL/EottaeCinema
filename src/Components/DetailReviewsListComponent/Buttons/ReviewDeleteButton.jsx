@@ -1,12 +1,13 @@
 import React from 'react';
+import { useCallback } from 'react';
 import styles from '../DetailReviewsList.module.scss';
-import { deleteReviewSagaActionCreator } from '../../../Redux/modules/board';
 import { useDispatch } from 'react-redux';
+import { deleteReviewSagaActionCreator } from '../../../Redux/modules/board';
 
 export default function ReviewDeleteButton({ movie, count, id, order }) {
   const dispatch = useDispatch();
 
-  const deleteReview = React.useCallback(
+  const deleteReview = useCallback(
     (movie, count, id) => {
       dispatch(deleteReviewSagaActionCreator(movie, count, id, order));
     },

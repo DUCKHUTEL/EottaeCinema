@@ -1,9 +1,10 @@
 import React from 'react';
+import { useState, useCallback } from 'react';
 import styles from '../DetailReviewsList.module.scss';
-import { clickLikeReviewSagaActionCreator } from '../../../Redux/modules/board';
 import { useDispatch } from 'react-redux';
+import { clickLikeReviewSagaActionCreator } from '../../../Redux/modules/board';
 
-export default function ReviewLikeButton({
+function ReviewLikeButton({
   movie,
   count,
   id,
@@ -12,10 +13,10 @@ export default function ReviewLikeButton({
   like,
   nickName,
 }) {
-  const [status, setStatus] = React.useState(false);
+  const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
 
-  const likeReview = React.useCallback(
+  const likeReview = useCallback(
     (id) => {
       dispatch(clickLikeReviewSagaActionCreator(movie, count, id, order));
     },
@@ -42,3 +43,5 @@ export default function ReviewLikeButton({
     </button>
   );
 }
+
+export default React.memo(ReviewLikeButton);

@@ -1,38 +1,36 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+import { useCallback, useEffect } from 'react';
 import DetailVisualTop from '../Components/DetailVisualTopComponent/DetailVisualTop';
 import DetailContent from '../Components/DetailContentComponent/DetailContent';
 import DetailInfo from '../Components/DetailInfoComponent/DetailInfo';
-import { getMovieDataSagaActionCreator } from '../Redux/modules/detail';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { getMovieDataSagaActionCreator } from '../Redux/modules/detail';
 import { startGetMoviesActionCreator } from '../Redux/modules/movies';
-import { Redirect } from 'react-router-dom';
 import { setSelectTitleAction } from '../Redux/modules/select';
 
-export default function DetailPageContainer() {
+function DetailPageContainer() {
   const selectedMovie = useSelector((state) => state.router.location.state);
   const movieAPIData = useSelector((state) => state.detail.movieData);
   const moviesDBData = useSelector((state) => state.movies.movies);
-  const loading = useSelector((state) => state.detail.loading);
 
   const dispatch = useDispatch();
 
-  const getMovieAPIData = React.useCallback(() => {
+  const getMovieAPIData = useCallback(() => {
     dispatch(getMovieDataSagaActionCreator(selectedMovie));
   }, [dispatch, selectedMovie]);
 
-  const getMoviesDBData = React.useCallback(() => {
+  const getMoviesDBData = useCallback(() => {
     dispatch(startGetMoviesActionCreator());
   }, [dispatch]);
 
   useEffect(() => {
     getMovieAPIData();
-    getMoviesDBData();
-  }, [getMovieAPIData, getMoviesDBData]);
+  }, [getMovieAPIData]);
 
-  // if (selectedMovie === undefined) {
-  //   return <Redirect to="/" />;
-  // }
+  useEffect(() => {
+    getMoviesDBData();
+  }, [getMoviesDBData]);
+
   const selectTitle = useCallback(
     (selectedTitle) => {
       dispatch(setSelectTitleAction(selectedTitle));
@@ -50,16 +48,15 @@ export default function DetailPageContainer() {
       <DetailContent
         APIData={movieAPIData}
         DBData={DBData}
-        getMoviesDBData={getMoviesDBData}
         selectTitle={selectTitle}
       />
       <DetailInfo
-        loading={loading}
         APIData={movieAPIData}
         DBData={DBData}
-        getMoviesDBData={getMoviesDBData}
         selectedMovie={selectedMovie}
       />
     </>
   );
 }
+
+export default React.memo(DetailPageContainer);

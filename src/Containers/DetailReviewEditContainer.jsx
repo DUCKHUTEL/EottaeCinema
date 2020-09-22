@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import DetailReviewEdit from '../Components/DetailReviewEditComponent/DetailReviewEdit';
 import { patchReviewSagaActionCreator } from '../Redux/modules/board';
 
-export default function DetailReviewEditContainer({
+function DetailReviewEditContainer({
   movie,
   count,
   id,
@@ -41,3 +41,5 @@ export default function DetailReviewEditContainer({
     />
   );
 }
+
+export default React.memo(DetailReviewEditContainer);

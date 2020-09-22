@@ -1,16 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
 import DetailReviewInput from '../Components/DetailReviewInputComponent/DetailReviewInput';
+import { useSelector, useDispatch } from 'react-redux';
 import { addReviewSagaActionCreator } from '../Redux/modules/board';
+import { success } from '../Redux/modules/logModal';
 
 export default function DetailReviewInputContainer({
   selectedMovie,
   count,
   setOrder,
 }) {
+  const noTicketing = useSelector((state) => state.board.error);
+  const logModal = useSelector((state) => state.logModal.modal);
+
   const dispatch = useDispatch();
 
-  const addReview = React.useCallback(
+  const addReview = useCallback(
     (starPoint, content) => {
       dispatch(
         addReviewSagaActionCreator(selectedMovie, count, starPoint, content),
@@ -19,5 +24,19 @@ export default function DetailReviewInputContainer({
     [dispatch, selectedMovie, count],
   );
 
-  return <DetailReviewInput addReview={addReview} setOrder={setOrder} />;
+  const login = useCallback(() => {
+    dispatch(success());
+  }, [dispatch]);
+
+  return (
+    <DetailReviewInput
+      selectedMovie={selectedMovie}
+      count={count}
+      addReview={addReview}
+      setOrder={setOrder}
+      noTicketing={noTicketing}
+      login={login}
+      logModal={logModal}
+    />
+  );
 }

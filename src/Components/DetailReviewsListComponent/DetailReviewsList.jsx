@@ -1,24 +1,50 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import styles from './DetailReviewsList.module.scss';
 import ReviewLikeButton from './Buttons/ReviewLikeButton';
 import ReviewEditButton from './Buttons/ReviewEditBotton';
 import ReviewDeleteButton from './Buttons/ReviewDeleteButton';
 
-export default function DetailReviewsList({
+function DetailReviewsList({
   order,
   count,
   reviewsData,
   countIncrement,
   latestClick,
   byLikeClick,
+  token,
 }) {
-  const imogiImg = React.useCallback((star) => {
+  const [userState, setUserState] = useState(localStorage.getItem('user'));
+  const [nickName, setNickName] = useState(undefined);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (!user) {
+      setUserState(false);
+      setNickName(undefined);
+    }
+
+    if (user) {
+      setUserState(true);
+      setNickName(JSON.parse(localStorage.getItem('user')).nickName);
+    }
+  }, [userState]);
+
+  useEffect(() => {
+    if (token) setUserState(true);
+
+    if (!token) {
+      setUserState(false);
+    }
+  }, [token]);
+
+  const imogiImg = (star) => {
     if (star > 8) return 1;
     if (star > 6) return 2;
     if (star > 4) return 3;
     if (star > 2) return 4;
     if (star > 0) return 5;
-  }, []);
+  };
 
   return (
     <div className={styles['review-list-box']}>
@@ -84,32 +110,28 @@ export default function DetailReviewsList({
                     order={order}
                     favorit={review.favorit}
                     like={review.whoLikeThis}
-                    nickName={
-                      localStorage.user === undefined ||
-                      JSON.parse(localStorage.user).nickName
-                    }
+                    nickName={!userState || nickName}
                   />
                 </div>
-                {localStorage.user === undefined ||
-                  JSON.parse(localStorage.user).nickName !== review.user || (
-                    <div className={styles.private}>
-                      <ReviewEditButton
-                        movie={review.movie}
-                        count={count}
-                        id={review.id}
-                        starPoint={review.star}
-                        content={review.content}
-                        order={order}
-                      />
-                      <span>|</span>
-                      <ReviewDeleteButton
-                        movie={review.movie}
-                        count={count}
-                        id={review.id}
-                        order={order}
-                      />
-                    </div>
-                  )}
+                {!userState || nickName !== review.user || (
+                  <div className={styles.private}>
+                    <ReviewEditButton
+                      movie={review.movie}
+                      count={count}
+                      id={review.id}
+                      starPoint={review.star}
+                      content={review.content}
+                      order={order}
+                    />
+                    <span>|</span>
+                    <ReviewDeleteButton
+                      movie={review.movie}
+                      count={count}
+                      id={review.id}
+                      order={order}
+                    />
+                  </div>
+                )}
               </li>
             );
           })}
@@ -122,3 +144,5 @@ export default function DetailReviewsList({
     </div>
   );
 }
+
+export default React.memo(DetailReviewsList);
