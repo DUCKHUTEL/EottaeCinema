@@ -1,4 +1,4 @@
-import { takeEvery, put, call, takeLeading } from 'redux-saga/effects';
+import { takeEvery, put, call, takeLeading, select } from 'redux-saga/effects';
 import { createActions, handleActions, createAction } from 'redux-actions';
 import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
@@ -84,7 +84,12 @@ function* startSignInSaga(action) {
 function* startLogOutSaga(action) {
   TokenService.delete();
   yield put(logsuccess(null));
-  yield put(push('/signin'));
+  const path = yield select((state) => state.router.location.pathname);
+  if (path === '/ticketing') {
+    yield put(push(path, { step: 1 }));
+    return;
+  }
+  yield put(push(path));
   try {
   } catch (error) {}
 }

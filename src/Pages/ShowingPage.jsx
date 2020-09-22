@@ -1,13 +1,13 @@
 import React from 'react';
-import MainHeaderComponent from '../Components/MainHeaderComponent/MainHeaderComponent';
 import ShowingMovieComponent from '../Components/ShowingMovieComponent/ShowingMovieComponent';
 import MainFooterComponent from '../Components/MainFooterComponent/MainFooterComponent';
 import ShowingWallpaperComponent from '../Components/ShowingWallpaperComponent/ShowingWallpaperComponent';
+import MainHeaderContainer from '../Containers/MainHeaderContainer';
 export default function ShowingPage() {
-  const index = 5;
+  const key = 4;
   return (
     <>
-      <MainHeaderComponent path={[index]} />
+      <MainHeaderContainer key={key} />
       <ShowingWallpaperComponent />
       <ShowingMovieComponent />
       <MainFooterComponent />
