@@ -89,7 +89,7 @@ function* startLogOutSaga(action) {
     yield put(push(path, { step: 1 }));
     return;
   }
-  yield put(push(path));
+  return;
   try {
   } catch (error) {}
 }

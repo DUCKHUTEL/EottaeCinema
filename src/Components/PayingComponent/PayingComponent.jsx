@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import styles from './PayingComponent.module.scss';
 function PayingComponent({ setStep, bookingPeople, pay }) {
   const justPay = useCallback((e) => {
-    // pay();
+    pay();
     setStep(4);
   });
   return (
