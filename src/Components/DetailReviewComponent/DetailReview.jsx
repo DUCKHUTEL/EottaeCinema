@@ -4,8 +4,9 @@ import DetailReviewScore from '../DetailReviewScoreComponent/DetailReviewScore';
 import DetailReviewInputContainer from '../../Containers/DetailReviewInputContainer';
 import DetailReviewsList from '../DetailReviewsListComponent/DetailReviewsList';
 import DetailReviewNotice from '../DetailReviewNoticeComponent/DetailReviewNotice';
+import { useSelector } from 'react-redux';
 
-export default function DetailReview({
+function DetailReview({
   infoState,
   reviewInfoClick,
   DBData,
@@ -18,7 +19,8 @@ export default function DetailReview({
   latestClick,
   byLikeClick,
 }) {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const token = useSelector((state) => state.signIn.token);
+
   return (
     <li className={styles['movie-info2']}>
       <button
@@ -47,7 +49,7 @@ export default function DetailReview({
               countIncrement={countIncrement}
               latestClick={latestClick}
               byLikeClick={byLikeClick}
-              user={user}
+              token={token}
             />
             <DetailReviewNotice />
           </div>
@@ -56,3 +58,5 @@ export default function DetailReview({
     </li>
   );
 }
+
+export default React.memo(DetailReview);
