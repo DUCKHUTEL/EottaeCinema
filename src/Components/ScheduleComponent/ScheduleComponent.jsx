@@ -1,18 +1,15 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styles from './ScheduleComponent.module.scss';
-import BookMoviesContainer from '../../Containers/BookMoviesContainer';
-import BookTimeMoviesContainer from '../../Containers/BookTimeMoviesContainer';
-import BookTheaterContainer from '../../Containers/BookTheaterContainer';
 import { useState } from 'react';
-import AllTheaterPointContainer from '../../Containers/AllTheaterPointContainer';
-import { ScheduleTheaterContainer } from '../../Containers/ScheduleTheaterContainer';
 import ScheduleTheaterTimeContainer from '../../Containers/ScheduleTheaterTimeContainer';
 import { LoadingContainer } from '../../Containers/LoadingContainer';
 import ScheduleMovieTimeContainer from '../../Containers/ScheduleMovieTimeContainer';
 
 function ScheduleComponent({ selectTitle, selectPoint }) {
   const [select, setSeclect] = useState('theater');
-
+  useEffect(() => {
+    selectTitle('없음');
+  }, [selectTitle]);
   const methodClick = useCallback((e) => {
     if (!e.target.matches('section > button')) return;
     setSeclect(e.target.id);
@@ -20,12 +17,12 @@ function ScheduleComponent({ selectTitle, selectPoint }) {
 
   const setTheaterAll = useCallback(() => {
     selectPoint('전체');
-  }, []);
+  }, [selectPoint]);
 
   const setTitleAll = useCallback(() => {
     selectTitle('없음');
     selectPoint('가양');
-  }, []);
+  }, [selectTitle, selectPoint]);
 
   return (
     <main className={styles.ScheduleMain}>

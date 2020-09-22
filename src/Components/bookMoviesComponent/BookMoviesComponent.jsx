@@ -10,7 +10,7 @@ function BookmoviesComponent({ selectTitle, selectedTitle, moviesData, from }) {
     if (from === undefined) {
       if (selectedTitle === '없음') selectTitle('테넷');
     }
-  }, []);
+  }, [from, selectedTitle, selectTitle]);
 
   const changeSort = useCallback((e) => {
     setSort(e.target.value);

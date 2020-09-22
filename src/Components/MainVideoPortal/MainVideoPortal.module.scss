@@ -11,20 +11,14 @@
   padding-top: 10%;
 
   iframe {
-    border: 20px solid white;
+    background-color: white;
+    padding: 12px 20px;
     border-radius: 5px;
-
     .close-btn {
       position: absolute;
       left: 30%;
-      background-color: red;
       width: 30px;
       height: 30px;
     }
   }
 }
-
-// body {
-//   overflow: hidden;
-//   position: fixed;
-// }

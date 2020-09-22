@@ -7,7 +7,7 @@ function PayingContainer({ setStep }) {
   const bookingPeople = useSelector((state) => state.bookingData.people);
   const pay = useCallback(() => {
     dispatch(getCheckDataAction());
-  }, []);
+  }, [dispatch]);
   return (
     <PayingComponent
       setStep={setStep}
