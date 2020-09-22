@@ -8,7 +8,6 @@ function BookPotalComponent({
   bookingData,
   setMind,
   setStep,
-  selectTitle,
   selectPoint,
   type,
   login,

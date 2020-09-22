@@ -4,7 +4,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './DetailStillCut.scss';
 
-export default function DetailStillCut({ DBData }) {
+function DetailStillCut({ DBData }) {
   // const click = (e) => e.preventDefault();
 
   return (
@@ -30,16 +30,24 @@ export default function DetailStillCut({ DBData }) {
                 <div
                   className="item"
                   key={i}
-                  id={`hashStillCut_${i}`}
-                  // data-hash={`#hashStillCut_${i}`}
+                  // id={`hashStillCut_${i}`}
+                  // data-hash={`/detail#hashStillCut_${i}`}
                 >
+                  {/* <Link
+                    to={{
+                      pathname: '/detail',
+                      state: '테넷',
+                      hash: `#hashStillCut_${i}`,
+                    }}
+                  > */}
                   <img
                     src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
                       1,
                       url.length - 1,
                     )}`}
-                    alt={`트레일러${i}`}
+                    alt={`포스터${i + 1}`}
                   />
+                  {/* </Link> */}
                 </div>
               );
             })}
@@ -62,7 +70,8 @@ export default function DetailStillCut({ DBData }) {
                 <div
                   className="item"
                   key={i}
-                  // data-hash={`#hashStillCut_${i + 1}`}
+                  // data-hash={`#hashStillCut_${i}`}
+                  // startPosition={'URLHash'}
                 >
                   {/* <Route path={`/hashStillCut_${i}`}> */}
                   <img
@@ -70,7 +79,7 @@ export default function DetailStillCut({ DBData }) {
                       1,
                       url.length - 1,
                     )}`}
-                    alt={`트레일러${i}`}
+                    alt={`스틸컷${i + 1}`}
                   />
                   {/* </Route> */}
                 </div>
@@ -81,3 +90,5 @@ export default function DetailStillCut({ DBData }) {
     </div>
   );
 }
+
+export default React.memo(DetailStillCut);

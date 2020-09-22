@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DetailReview from '../Components/DetailReviewComponent/DetailReview';
 import {
@@ -7,22 +7,23 @@ import {
   getReviewsSagaActionCreator,
 } from '../Redux/modules/board';
 
-export default function DetailReviewContainer({
+function DetailReviewContainer({
   infoState,
   reviewInfoClick,
   DBData,
   selectedMovie,
 }) {
-  const [order, setOrder] = React.useState('LATEST');
-  const [count, setCount] = React.useState(1);
+  const [order, setOrder] = useState('LATEST');
+  const [count, setCount] = useState(1);
+
   const reviewsData = useSelector((state) => state.board.reviews);
   const dispatch = useDispatch();
 
-  const getReviews = React.useCallback(() => {
+  const getReviews = useCallback(() => {
     dispatch(getReviewsSagaActionCreator(selectedMovie, count));
   }, [dispatch, selectedMovie, count]);
 
-  const getReviewsByLikes = React.useCallback(() => {
+  const getReviewsByLikes = useCallback(() => {
     dispatch(getReviewsByLikesSagaActionCreator(selectedMovie, count));
   }, [dispatch, selectedMovie, count]);
 
@@ -71,3 +72,5 @@ export default function DetailReviewContainer({
     />
   );
 }
+
+export default React.memo(DetailReviewContainer);

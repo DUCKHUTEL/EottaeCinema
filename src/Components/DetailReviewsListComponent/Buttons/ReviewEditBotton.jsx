@@ -1,16 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
 import styles from '../DetailReviewsList.module.scss';
 import DetailReviewEditContainer from '../../../Containers/DetailReviewEditContainer';
 
-export default function ReviewEditButton({
-  movie,
-  count,
-  id,
-  starPoint,
-  content,
-  order,
-}) {
-  const [state, setState] = React.useState('none');
+function ReviewEditButton({ movie, count, id, starPoint, content, order }) {
+  const [state, setState] = useState('none');
 
   const click = () => {
     setState('active');
@@ -35,3 +29,5 @@ export default function ReviewEditButton({
     </>
   );
 }
+
+export default React.memo(ReviewEditButton);

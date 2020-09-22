@@ -3,12 +3,13 @@ import styles from './DetailContent.module.scss';
 import { history } from '../../Redux/create';
 
 export default function DetailContent({ APIData, DBData, selectTitle }) {
-  function BookRouter(e) {
+  const BookRouter = (e) => {
     e.preventDefault();
-    const title = e.target.id;
+    const title = DBData.movieTitle;
     selectTitle(title);
     history.push('/ticketing', { title: title });
-  }
+  };
+
   return (
     <div className={styles.content}>
       <h2 className={styles['a11y-hidden']}>영화</h2>
@@ -16,7 +17,7 @@ export default function DetailContent({ APIData, DBData, selectTitle }) {
       <div className={styles['detail-wrap']}>
         <div className={styles.poster}>
           {APIData === undefined || (
-            <img src={`${APIData.poster}`} alt="poster" />
+            <img src={`${APIData.poster}`} alt="영화 포스터" />
           )}
         </div>
         <div className={styles['title-info']}>
@@ -136,11 +137,7 @@ export default function DetailContent({ APIData, DBData, selectTitle }) {
             </button>
           </div>
           <div>
-            <button
-              className={styles.book}
-              onClick={BookRouter}
-              id={DBData === undefined || DBData.movieTitle}
-            >
+            <button className={styles.book} onClick={BookRouter}>
               예매하기
             </button>
           </div>

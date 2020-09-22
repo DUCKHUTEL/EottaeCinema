@@ -50,6 +50,16 @@
       bottom: 10px;
       left: 0;
       right: 0;
+
+      .owl-dot span {
+        background-color: #000;
+        opacity: 0.4;
+      }
+
+      .active span{
+        background-color: #000;
+        opacity: 1;
+      }
     }
   }
 }

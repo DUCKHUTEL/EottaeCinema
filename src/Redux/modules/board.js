@@ -4,7 +4,6 @@ import { put, call, takeEvery, takeLatest } from 'redux-saga/effects';
 const initialState = {
   loading: false,
   reviews: [],
-  count: 1,
   error: null,
 };
 
@@ -145,7 +144,7 @@ function* addReviewSaga(action) {
   yield put(startAddReview());
 
   try {
-    yield call(
+    const ticketing = yield call(
       boardService.addReview,
       token,
       movie,
@@ -153,8 +152,15 @@ function* addReviewSaga(action) {
       content,
       nickName,
     );
-    const reviews = yield call(boardService.getReviewsOnTime, movie, count);
-    yield put(successAddReview(reviews));
+
+    if (ticketing === true) {
+      const reviews = yield call(boardService.getReviewsOnTime, movie, count);
+      yield put(successAddReview(reviews));
+    }
+
+    if (ticketing === false) {
+      yield put(failAddReview('no ticketing'));
+    }
   } catch (err) {
     yield put(failAddReview(err));
   }

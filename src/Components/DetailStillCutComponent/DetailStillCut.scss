@@ -91,6 +91,16 @@
         text-align: center;
         width: 100%;
         bottom: 10px;
+        
+        .owl-dot span {
+          background-color: #000;
+          opacity: 0.4;
+        }
+
+        .active span{
+          background-color: #000;
+          opacity: 1;
+        }
       }
     }
   }

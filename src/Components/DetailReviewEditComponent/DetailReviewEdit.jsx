@@ -1,44 +1,44 @@
 import React from 'react';
+import { useState, useCallback, createRef } from 'react';
 import styles from './DetailReviewEdit.module.scss';
 
 export default function DetailReviewEdit({
   movie,
-  count,
-  id,
   starPoint,
   content,
   setState,
   editReview,
 }) {
-  const [character, setCharacter] = React.useState(content.length);
-  const [editStarPoint, editStarSetPoint] = React.useState(starPoint);
-  const contentRef = React.createRef(null);
+  const [character, setCharacter] = useState(content.length);
+  const [editStarPoint, editStarSetPoint] = useState(starPoint);
 
-  const getByte = React.useCallback((str) => {
+  const contentRef = createRef(null);
+
+  const getByte = useCallback((str) => {
     return str
       .split('')
       .map((s) => s.charCodeAt(0))
       .reduce((prev, c) => prev + (c === 10 ? 2 : c >> 7 ? 2 : 1), 0);
   }, []);
 
-  const onChange = React.useCallback(
+  const onChange = useCallback(
     (e) => {
       setCharacter(getByte(e.target.value));
     },
     [getByte],
   );
 
-  const starClick = React.useCallback((score) => editStarSetPoint(score), [
+  const starClick = useCallback((score) => editStarSetPoint(score), [
     editStarSetPoint,
   ]);
 
-  const editClick = React.useCallback(async () => {
+  const editClick = useCallback(async () => {
     const content = contentRef.current.value;
     editReview(movie, editStarPoint, content);
     setState('none');
   }, [editReview, movie, editStarPoint, contentRef, setState]);
 
-  const closeClick = React.useCallback(() => {
+  const closeClick = useCallback(() => {
     editStarSetPoint(starPoint);
     setState('none');
   }, [setState, starPoint]);
