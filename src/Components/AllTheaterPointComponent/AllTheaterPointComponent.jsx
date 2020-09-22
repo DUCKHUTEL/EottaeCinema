@@ -22,7 +22,7 @@ function AllTheaterPointComponent({
     if (point === '없음') {
       selectPoint('가양');
     }
-  }, [selectPoint, point]);
+  }, []);
 
   const localTabChange = useCallback((e) => {
     e.preventDefault();

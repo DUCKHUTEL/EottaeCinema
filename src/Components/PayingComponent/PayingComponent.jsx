@@ -32,7 +32,9 @@ function PayingComponent({ setStep, bookingPeople, pay }) {
           <p>
             <span>상품 금액</span>
             <span>
-              <span className={styles.momey}>{bookingPeople.all * 10000}</span>{' '}
+              <span className={styles.momey}>{`${
+                bookingPeople.all * 12000
+              } `}</span>
               원
             </span>
           </p>
@@ -45,7 +47,9 @@ function PayingComponent({ setStep, bookingPeople, pay }) {
           <p>
             <span>상품 금액</span>
             <span>
-              <span className={styles.momey}>{bookingPeople.all * 10000}</span>{' '}
+              <span className={styles.momey}>{`${
+                bookingPeople.all * 12000
+              } `}</span>
               원
             </span>
           </p>
