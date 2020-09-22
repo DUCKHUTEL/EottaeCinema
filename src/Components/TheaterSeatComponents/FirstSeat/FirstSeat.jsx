@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import styles from './FirstSeat.module.scss';
 function FirstSeat({
   bookedSeat,

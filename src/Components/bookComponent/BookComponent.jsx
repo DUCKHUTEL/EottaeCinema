@@ -12,7 +12,6 @@ import CheckContianer from '../../Containers/CheckContianer';
 
 function BookComponent({ passedStep }) {
   const [steps, setStep] = useState(passedStep === 0 ? 1 : passedStep);
-
   const changeStep = useCallback(
     (e) => {
       e.preventDefault();

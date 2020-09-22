@@ -13,9 +13,12 @@ function ScheduleMovieTimeSortTheaterContainer({ setStep }) {
     [dispatch],
   );
 
-  const bookData = useCallback((bookId) => {
-    dispatch(getBookingDataAction(bookId));
-  });
+  const bookData = useCallback(
+    (bookId) => {
+      dispatch(getBookingDataAction(bookId));
+    },
+    [dispatch],
+  );
 
   const selectedDate = useSelector((state) => state.selectData.date);
   const selectedTitle = useSelector((state) => state.selectData.title);

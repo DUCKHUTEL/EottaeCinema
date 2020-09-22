@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSelectTitleAction } from '../Redux/modules/select';
 import { push } from 'connected-react-router';
 import BookMoviesComponent from '../Components/bookMoviesComponent/BookMoviesComponent';
-function BookMoviesContainer({ from }) {
+function BookMoviesContainer() {
   const moviesData = useSelector((state) => state.movies.movies);
 
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ function BookMoviesContainer({ from }) {
   );
 
   const selectedTitle = useSelector((state) => state.selectData.title);
+
   if (moviesData.length === 0) {
     dispatch(push('/'));
   }

@@ -155,31 +155,6 @@ function SelectSeatComponent({
             clickSeat={clickSeat}
             type="select"
           />
-          {/* {bookingData.stage === '1' ? (
-            <FirstSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={clickedSeat}
-              clickSeat={clickSeat}
-              peopleCnt={ppc.all}
-              type="select"
-            />
-          ) : bookingData.stage === '6' ? (
-            <SixthSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={clickedSeat}
-              clickSeat={clickSeat}
-              peopleCnt={ppc.all}
-              type="select"
-            />
-          ) : (
-            <SecondSeat
-              bookedSeat={bookingData.bookedSeat}
-              clickedSeat={clickedSeat}
-              clickSeat={clickSeat}
-              peopleCnt={ppc.all}
-              type="select"
-            />
-          )} */}
         </div>
         <div className={styles.checkOut}>
           <div className={styles.costBox}>
