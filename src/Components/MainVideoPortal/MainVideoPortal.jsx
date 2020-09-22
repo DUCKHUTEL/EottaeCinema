@@ -1,54 +1,48 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './MainVideoPortal.module.scss';
 
+const autoPalyUrl = '?rel=0;amp;autoplay=1';
 const videos = [
   {
     id: 1,
     title: '뮤턴트',
-    src: 'https://www.youtube.com/embed/-01Lmk0RKDI',
+    src: `https://www.youtube.com/embed/-01Lmk0RKDI${autoPalyUrl}`,
   },
   {
     id: 2,
     title: '터넷',
-    src: 'https://www.youtube.com/embed/IW_khaePCBE',
+    src: `https://www.youtube.com/embed/IW_khaePCBE${autoPalyUrl}`,
   },
   {
     id: 3,
     title: '아웃포스트',
-    src: 'https://www.youtube.com/embed/TSWJB_Fbdgg',
+    src: `https://www.youtube.com/embed/TSWJB_Fbdgg${autoPalyUrl}`,
   },
   {
     id: 4,
     title: '기기괴괴',
-    src: 'https://www.youtube.com/embed/DNb9QP5kilE',
+    src: `https://www.youtube.com/embed/DNb9QP5kilE${autoPalyUrl}`,
   },
 ];
 
-function MainVideoPotal({ id, setModal }) {
+function MainVideoPotal({ hide, id }) {
   const index = id;
-  console.log(setModal);
 
   const [matchMovie] = videos.filter((video) => video.id === +index);
 
-  const click = () => {
-    setModal((state) => ({
-      ...state,
-      clickEvent: false,
-      videoId: '',
-    }));
-  };
+  const close = useCallback(() => {
+    hide();
+  }, []);
 
   return (
-    <div className={styles['video-background']} onClick={click}>
+    <div className={styles['video-background']} onClick={close}>
       {
         <iframe
           title={matchMovie.title}
           width="920"
           height="515"
           src={matchMovie.src}
-          frameborder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
         >
           <button className={styles['close-btn']}>
             <div className={styles['btn-1']}></div>

@@ -1,21 +1,18 @@
-.wallpaper * {
+.main-wallpape * {
   padding: 0;
 }
 
-.wallpaper {
+.main-wallpape {
   position: relative;
   z-index: 1;
   width: 100%;
   background-color: black;
 
-  // .images::after {
-  //   background-image: url(/public/images/icon/btn_main_visual_play.png);
-  //   width: 30px;
-  //   height: 30px;
-  //   position: absolute;
-  //   z-index: 50;
-  //   border-radius: 5px solid red;
-  // }
+  .owl-prev {
+    border: 2px solid orangered;
+    background-image: url(/src/images/icon/arr_lf_19_wht.png);
+  }
+
   .play-button {
     width: 60px !important;
     position: absolute;

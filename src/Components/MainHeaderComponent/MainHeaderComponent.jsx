@@ -24,10 +24,11 @@ function MainHeaderComponent({
     }
     if (!UserService.CheckToken(user.accessToken).tokenState) {
       setToken(true);
+      console.log(user);
       return;
     }
     TokenService.delete();
-  }, []);
+  }, [token]);
 
   //2. Handles login and logout according to the changed state.
   useEffect(() => {
@@ -79,6 +80,7 @@ function MainHeaderComponent({
           <li className={styles['memership']}>멤버십</li>
           <li className={styles['customer']}>고객센터</li>
           <li className={styles['login_logout']}>
+            {console.log(token)}
             {token ? (
               <button onClick={logout}>로그아웃</button>
             ) : (

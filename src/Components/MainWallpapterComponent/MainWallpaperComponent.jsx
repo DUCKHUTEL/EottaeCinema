@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import styles from './MainWallpaperComponent.module.scss';
+import './MainWallpaperComponent.scss';
 import OwlCarousel from 'react-owl-carousel';
-import MainVideoPortalContainer from '../../Containers/MainVideoPortalContainer';
-import { useState, useCallback } from 'react';
+import { useCallback } from 'react';
 
 const images = [
   { id: 1, title: '뮤턴트', src: 'images/wallpaper/Mutants_1920774.jpg' },
@@ -15,27 +16,17 @@ const images = [
   },
 ];
 
-function MainWallpaperComponent() {
-  const [modal, setModal] = useState({
-    clickEvent: false,
-    videoId: 0,
-  });
-
-  const click = useCallback((e) => {
-    const index = e.target.id;
-    setModal((state) => ({
-      ...state,
-      clickEvent: !state.clickEvent,
-      videoId: index,
-    }));
+function MainWallpaperComponent({ show }) {
+  const open = useCallback((e) => {
+    const id = e.currentTarget.id;
+    show(id);
   }, []);
 
   return (
-    <section className={styles['wallpaper']}>
+    <section className="main-wallpape">
       <OwlCarousel
         className="top-visual-box"
         items={1}
-        mergeFit
         loop
         nav
         autoplay
@@ -43,31 +34,19 @@ function MainWallpaperComponent() {
         autoplaySpeed={500}
       >
         {images.map((images) => (
-          <a className={styles['images']}>
-            <img
-              src={images.src}
-              alt={images.title}
-              id={images.id}
-              onClick={click}
-            />
-            <button>
+          <button className="images" onClick={open} id={images.id}>
+            <img src={images.src} alt={images.title} />
+            <div role="button" key={images.id}>
               <img
-                onClick={click}
-                className={styles['play-button']}
+                className="play-button"
                 src="images\icon\btn_main_visual_play.png"
                 alt="play-button"
               />
-            </button>
-            {modal.clickEvent && (
-              <MainVideoPortalContainer
-                id={modal.videoId}
-                setModal={setModal}
-              />
-            )}
-          </a>
+            </div>
+          </button>
         ))}
       </OwlCarousel>
-      <div className={styles['control']}></div>
+      <div className="control"></div>
     </section>
   );
 }
