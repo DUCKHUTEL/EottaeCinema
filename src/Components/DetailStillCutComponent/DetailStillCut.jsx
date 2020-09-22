@@ -38,8 +38,8 @@ function DetailStillCut({ DBData }) {
                       pathname: '/detail',
                       state: '테넷',
                       hash: `#hashStillCut_${i}`,
-                    }} */}
-                  >
+                    }}
+                  > */}
                   <img
                     src={`https://caching.lottecinema.co.kr//Media/MovieFile/${url.substring(
                       1,
