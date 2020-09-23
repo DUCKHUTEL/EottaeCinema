@@ -12,6 +12,8 @@ function ReviewLikeButton({
   favorit,
   like,
   nickName,
+  setTokenState,
+  login,
 }) {
   const [status, setStatus] = useState(false);
   const dispatch = useDispatch();
@@ -24,6 +26,11 @@ function ReviewLikeButton({
   );
 
   const click = () => {
+    if (localStorage.user === undefined) {
+      setTokenState('no token');
+      return;
+    }
+
     setStatus(!status);
     likeReview(id);
   };
