@@ -16,6 +16,7 @@ function BookComponent({ passedStep }) {
     (e) => {
       e.preventDefault();
       if (steps < +e.target.id) return;
+      if (steps === 4) return;
       setStep((state) => +e.target.id);
     },
     [steps],
