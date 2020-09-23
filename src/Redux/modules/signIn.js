@@ -7,16 +7,17 @@ import { push } from 'connected-react-router';
 const prefix = 'EOTTAECINEMA/LOUGIN';
 
 //action
-const { start, logsuccess, fail } = createActions(
+const { start, logsuccess, fail, init } = createActions(
   {
     LOGSUCCESS: (nickName, token) => ({ nickName, token }),
   },
   'START',
   'FAIL',
+  'INIT',
   { prefix },
 );
 
-export { logsuccess };
+export { logsuccess, init };
 
 //initialState
 const initialState = {
@@ -43,6 +44,11 @@ const reducer = handleActions(
     FAIL: (state, action) => ({
       loading: false,
       error: action.payload,
+      token: null,
+    }),
+    INIT: () => ({
+      loading: false,
+      error: null,
       token: null,
     }),
   },
@@ -81,9 +87,9 @@ function* startSignInSaga(action) {
   }
 }
 
-function* startLogOutSaga(action) {
+function* startLogOutSaga() {
   TokenService.delete();
-  yield put(logsuccess(null));
+  yield put(logsuccess(null, null));
   const path = yield select((state) => state.router.location.pathname);
   if (path === '/ticketing') {
     yield put(push('/'));

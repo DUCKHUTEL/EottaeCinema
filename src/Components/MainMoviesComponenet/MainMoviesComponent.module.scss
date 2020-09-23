@@ -96,21 +96,18 @@
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
-          // border: 3px solid red;
           font-weight: bold;
           margin-bottom: 6px;
         }
         .movie-info {
           display: flex;
           justify-content: center;
-          // border: 3px solid yellow;
           .movie-per,
           .movie-point,
           .movie-hart {
             font-size: 10px;
             text-align: center;
             font-weight: bold;
-            // border: 5px solid orangered;
             margin-left: 10px;
           }
           .movie-per::after {

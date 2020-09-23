@@ -21,11 +21,11 @@ function MainNavComponent({ path }) {
             </ul>
           </li>
           <li className={styles['movie']}>
-            <Link to="/movies">영화</Link>
+            <a href="#">영화</a>
             <ul>
               <li>홈</li>
               <li>
-                <Link to="/movies">현재 상영작</Link>
+                <a href="#">현재 상영작</a>
               </li>
               <li>상영 예정작</li>
               <li>아르떼</li>

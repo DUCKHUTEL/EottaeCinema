@@ -206,4 +206,8 @@
       }
     }
   }
+
+  .commercial {
+    @include layout;
+  }
 }
