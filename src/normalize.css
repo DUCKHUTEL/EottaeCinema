@@ -352,6 +352,9 @@ template {
 }
 
 /* reset */
+body {
+  min-width: 980px;
+}
 
 body * {
   box-sizing: border-box;
