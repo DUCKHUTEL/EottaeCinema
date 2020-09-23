@@ -68,7 +68,6 @@ function* checkBookDataStart() {
     const { bookId, bookedSeat } = bookingData[0];
     const selecetedSeat = bookingSeat.join(';');
     const newBookedSeat = bookedSeat + ';' + selecetedSeat;
-    console.log(bookId, selecetedSeat);
     const paySoBook = yield call(
       bookingService.book,
       bookId,
@@ -77,7 +76,6 @@ function* checkBookDataStart() {
       nickName,
       accessToken,
     );
-    console.log(paySoBook);
     yield put(success(paySoBook));
   } catch (e) {
     yield put(fail());

@@ -4,7 +4,6 @@ const url = 'https://eottae-cinema.herokuapp.com/book';
 
 export default class bookingService {
   static async book(bookId, bookedSeat, selectedSeat, nickName, token) {
-    console.log(bookId, bookedSeat, selectedSeat, nickName, token);
     const bookFunction = await Axios.post(
       url,
       { bookId, bookedSeat, selectedSeat, nickName },

@@ -75,7 +75,7 @@ function CheckComponent({
               <span className={styles.cost}>
                 주문금액
                 <span className={styles.coast}>
-                  {bookingPeople.all * 10000}원
+                  {bookingPeople.all * 12000}원
                 </span>
               </span>
               <span className={styles.minus}></span>
@@ -86,7 +86,7 @@ function CheckComponent({
               <span className={styles.result}></span>
               <span className={styles.resCose}>
                 총 결제 금액
-                <span>{bookingPeople.all * 10000}원</span>
+                <span>{bookingPeople.all * 12000}원</span>
               </span>
             </p>
           </div>
