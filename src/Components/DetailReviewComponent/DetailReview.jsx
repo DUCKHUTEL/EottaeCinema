@@ -1,10 +1,12 @@
 import React from 'react';
+import { useCallback } from 'react';
 import styles from './DetailReview.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
 import DetailReviewScore from '../DetailReviewScoreComponent/DetailReviewScore';
 import DetailReviewInputContainer from '../../Containers/DetailReviewInputContainer';
 import DetailReviewsList from '../DetailReviewsListComponent/DetailReviewsList';
 import DetailReviewNotice from '../DetailReviewNoticeComponent/DetailReviewNotice';
-import { useSelector } from 'react-redux';
+import { success } from '../../Redux/modules/logModal';
 
 function DetailReview({
   infoState,
@@ -20,6 +22,12 @@ function DetailReview({
   byLikeClick,
 }) {
   const token = useSelector((state) => state.signIn.token);
+
+  const dispatch = useDispatch();
+
+  const login = useCallback(() => {
+    dispatch(success());
+  }, [dispatch]);
 
   return (
     <li className={styles['movie-info2']}>
@@ -50,6 +58,7 @@ function DetailReview({
               latestClick={latestClick}
               byLikeClick={byLikeClick}
               token={token}
+              login={login}
             />
             <DetailReviewNotice />
           </div>
