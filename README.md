@@ -5,13 +5,17 @@
 ##프로젝트 기간
 2020.08.24 ~ 2020.09.23
 
+조장 백승일 [winbigcoms](https://github.com/winbigcoms)
+조원 최예린 [soda-cloud](https://github.com/soda-cloud)
+조원 류동우 [Detrox20](https://github.com/Detrox20)
+
 ## 롯데시네마 클론 코딩 프로젝트
 
 더 나은 롯데시네마 사이트 만들어보기 ! :fist_left:
 
-[배포 주소][https://eottaecinema.herokuapp.com/]
+[배포 주소](https://eottaecinema.herokuapp.com/)
 
-[github 주소][https://github.com/duckhutel]
+[github 주소](https://github.com/duckhutel)
 
 ![ottea](https://user-images.githubusercontent.com/62285847/93991782-9fd3d280-fdc7-11ea-84c5-7b7909fe0170.png)
 
