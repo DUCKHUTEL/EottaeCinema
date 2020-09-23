@@ -6,7 +6,9 @@
 2020.08.24 ~ 2020.09.23
 
 조장 백승일 [winbigcoms](https://github.com/winbigcoms)
+<br>
 조원 최예린 [soda-cloud](https://github.com/soda-cloud)
+<br>
 조원 류동우 [Detrox20](https://github.com/Detrox20)
 
 ## 롯데시네마 클론 코딩 프로젝트
