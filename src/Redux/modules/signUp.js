@@ -1,4 +1,4 @@
-import { takeEvery, put, call, takeLeading, select } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import { createActions, handleActions, createAction } from 'redux-actions';
 import UserService from '../../Services/userService';
 import TokenService from '../../Services/tokenService';
@@ -7,7 +7,7 @@ import { logsuccess } from '../modules/signIn';
 const prefix = 'EOTTAECINEMA/SIGNUP';
 
 //action
-const { start, success, fail } = createActions(
+const { success, fail, init } = createActions(
   {
     SUCCESS: (status) => status,
     FAIL: (error) => error,
@@ -15,6 +15,7 @@ const { start, success, fail } = createActions(
 
   'START',
   'FAIL',
+  'INIT',
   { prefix },
 );
 
@@ -43,6 +44,12 @@ const reducer = handleActions(
     FAIL: (state, action) => ({
       loading: false,
       error: action.payload,
+      status: false,
+    }),
+
+    INIT: (state, action) => ({
+      loading: false,
+      error: null,
       status: false,
     }),
   },
@@ -80,7 +87,6 @@ function* startSignUpSaga(action) {
     yield TokenService.save({ nickName, accessToken });
     yield put(logsuccess(nickName, accessToken));
   } catch (error) {
-    console.log(error);
     yield put(fail(error));
   }
 }

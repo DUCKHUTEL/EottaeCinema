@@ -1,20 +1,24 @@
 @import '../../commonVariables';
 
+$gary: #f6f6f6;
+
 footer * {
-  color: #333;
+  color: #707070;
 }
 
 footer {
   // 전체
-
+  margin-top: 50px;
+  padding-bottom: 20px;
   address {
     font-style: inherit;
   }
 
   .footer {
-    background-color: #f6f6f6;
+    background-color: #fafafa;
     address {
-      background-color: #fafafa;
+      background-color: #f6f6f6;
+      margin-bottom: 50px;
       .layout {
         @include layout;
         padding-top: 40px;
@@ -24,10 +28,10 @@ footer {
           padding-bottom: 20px;
           img {
             display: block;
-            padding-bottom: 12px;
+            padding-bottom: 20px;
           }
           p {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             margin-bottom: 8px;
           }
@@ -37,21 +41,25 @@ footer {
         }
 
         .team-info {
-          padding-top: 20px;
+          padding-top: 30px;
+          padding-bottom: 30px;
           display: flex;
           justify-content: space-between;
-          div {
+          .member-1,
+          .member-2,
+          .member-3 {
             display: flex;
             img {
               width: 80px;
               height: 80px;
             }
-            p {
+            div {
               padding-right: 15px;
               padding-top: 10px;
               padding-left: 15px;
 
-              div {
+              .name {
+                padding: 0;
                 font-size: 14px;
                 font-weight: bold;
                 padding-bottom: 5px;
@@ -72,6 +80,7 @@ footer {
         }
       }
     }
+
     ul {
       padding-top: 5px;
       @include layout;

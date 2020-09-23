@@ -23,7 +23,8 @@ export default class UserService {
       id,
       password,
     });
-    // 결과 값  {nickName : nickName,accessToken : token}
+    // 결과 값  성공: {nickName : nickName,accessToken : token}, 실패: {loginStatus:false}
+
     return response.data;
   }
 

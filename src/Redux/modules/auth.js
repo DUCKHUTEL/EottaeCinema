@@ -1,27 +1,27 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { createActions, handleActions, createAction } from 'redux-actions';
 import UserService from '../../Services/userService';
-import TokenService from '../../Services/tokenService';
 
 const prefix = 'EOTTAECINEMA/AUTH';
 
 //action
-const { checknick, checkid, checktoken, fail } = createActions(
+const { checknick, checkid, auinit } = createActions(
   {
     CHECKNICK: (result, nickname) => ({ result, nickname }),
     CHECKID: (result, id) => ({ result, id }),
-    CHECKTOKEN: (result) => result,
   },
   'FAIL',
+  'AUINIT',
   { prefix },
 );
+
+export { auinit };
 
 ///initialState
 const initialState = {
   error: null,
   checkNick: { result: '', nickname: '' },
   checkId: { result: '', id: '' },
-  token: false,
 };
 
 //reducer
@@ -44,16 +44,15 @@ const reducer = handleActions(
         id: action.payload.id,
       },
     }),
-    CHECKTOKEN: (state, action) => ({
-      ...state,
-      error: null,
-      token: action.payload,
-    }),
     FAIL: (state, action) => ({
       error: action.payload,
       checkNick: { result: '', nickname: '' },
       checkId: { result: '', id: '' },
-      token: false,
+    }),
+    AUINIT: (state, action) => ({
+      error: null,
+      checkNick: { result: '', nickname: '' },
+      checkId: { result: '', id: '' },
     }),
   },
   initialState,
@@ -97,10 +96,7 @@ function* checkIdSaga(action) {
   } catch (error) {}
 }
 
-function* ckeckTokenSaga(action) {}
-
 export function* AuthSaga() {
   yield takeEvery(CHECK_NICK_SAGA, checkNickSaga);
   yield takeEvery(CHECK_ID_SAGA, checkIdSaga);
-  yield takeEvery(CHECK_TOKEN_SAGA, ckeckTokenSaga);
 }

@@ -29,7 +29,6 @@ function SignUpForm({
 
   //nickname massage
   useEffect(() => {
-    console.log('nickname', nickDupResult);
     if (nickDupResult.result === '') return;
     if (nickDupResult.result) {
       setNickBtn(true);
@@ -43,7 +42,6 @@ function SignUpForm({
 
   //id massage
   useEffect(() => {
-    console.log('id', idDupResult);
     if (idDupResult.result === '') return;
     if (idDupResult.result) {
       setIdBtn(true);
@@ -87,10 +85,13 @@ function SignUpForm({
     >
       {({ values }) => {
         function clickNick() {
+          if (values.nickname.length < 1 || values.nickname.length > 6) return;
           checkNick(values.nickname);
         }
 
         function clickId() {
+          const check = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+          if (!check.test(values.id)) return;
           checkId(values.id);
         }
 
