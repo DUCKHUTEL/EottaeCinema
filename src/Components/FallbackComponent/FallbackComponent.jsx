@@ -10,7 +10,8 @@ function FallbackComponent() {
     <>
       <MainHeaderContainer key={key} />
       <div className={styles.errorPageBox}>
-        <p>와! 어떻게 들어오셨어요?</p>
+        <h2>앗! 페이지가 없어요</h2>
+        <p>페이지가 없어졌거나 잘못된 접근이에요</p>
         <p>다시 돌아가시면 되요!</p>
         <Link to="/">홈으로</Link>
       </div>
