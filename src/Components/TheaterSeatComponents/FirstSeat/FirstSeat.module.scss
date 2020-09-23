@@ -1,0 +1,158 @@
+ul{
+  margin: 0;
+}
+.miniMap{
+  width: 100%;
+  padding: 15px 0;
+  margin: 15px 0;
+  .seatBox{
+    background-color: #fff;
+    ul{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+      .seat{
+        width: 4px;
+        height: 4px;
+        margin-right: 3px;
+        background-color: #ccc;
+        a{
+          font-size: 0;
+        }
+      }
+      .block{
+        background-color: #000;
+      }
+      .booked{
+        background-color: #000;
+      }
+      .clicked{
+        background: #FF243E;
+        a{
+          color: #fff;
+        }
+      }
+      li:nth-child(1){
+        display: none;
+      }
+      li:nth-child(4){
+        margin-right: 15px;;
+      }
+      li:nth-child(14){
+        margin-right: 15px;;
+      }
+    }
+  }
+}
+.select{
+  width: 100%;
+  padding: 0 20px;
+  height: 638px;  
+  .seatBox{
+    padding-top: 40px;
+    background-color: #000;
+    ul{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      .seat{
+        cursor: pointer;
+        border-radius: 7px 7px 2px 0px;
+        background-color: #fff;
+        width: 21px;
+        height: 16px;
+        text-align: center;
+        margin-right: 5px;
+        a{
+          display: inline-block;
+          width: 100%;
+          height: 100%;
+          font-size: 10px;
+          padding: 0;
+          cursor: inherit;
+        }
+      }
+      .block{
+        background: #58240d;
+        opacity: 0.5;
+        cursor: default;
+      }
+      .booked{
+        background: #7c7c7c;
+        cursor: default;
+      }
+      .clicked{
+        background: #FF243E;
+        a{
+          color: #fff;
+        }
+      }
+      li:nth-child(1){
+        color: #fff;
+        margin-right: 40px;
+      }
+      li:nth-child(4){
+        margin-right: 25px;;
+      }
+      li:nth-child(14){
+        margin-right: 25px;;
+      }
+    }
+  }
+  .full.seatBox{
+    ul{
+      .seat{
+        background-color: inherit;
+      }
+      li{
+        a{
+          background-image: url("/images/icon/seat_no_select.png");
+        }
+      }
+      .clicked{
+        background: #FF243E;
+        a{
+          color: #fff;
+          background-image:none
+        }
+      }
+    }
+  }
+}
+.pay{
+  height: 80px;
+  ul{
+    display: flex;
+    justify-content: center;
+    margin:0;
+    margin-bottom: 5px;
+    padding: 0;
+    li:first-child{
+      display: none;
+    }
+    li{
+      height: 3px;
+      a{
+        cursor: inherit;
+        display: inline-block;
+        width: 4px;
+        height: 3px;
+        background-color: #C2C2C2;
+        margin-right: 1px;
+        font-size: 0px;
+      }
+    }
+    .clicked{
+      a{
+        background-color: red;
+      }
+    }
+    li:nth-child(4){
+      margin-right: 10px;;
+    }
+    li:nth-child(14){
+      margin-right: 10px;;
+    }
+
+  }
+}

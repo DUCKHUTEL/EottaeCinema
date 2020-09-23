@@ -1,0 +1,95 @@
+$red: #e50914;
+$gray: #333;
+$orange: #e87c03;
+$blue: #096be5;
+
+.btn-ok {
+  color: $orange;
+}
+
+.btn-no {
+  color: $red;
+}
+.login-Modal-form {
+  padding: 40px 72px;
+  h2 {
+    padding: 30px 0 20px;
+    font-size: 30px;
+    color: white;
+  }
+  .error-massage {
+    color: white;
+    font-size: 14px;
+    width: 300px;
+    height: 35px;
+    background-color: $orange;
+    border-radius: 5px;
+    margin-bottom: 60px;
+    padding: 10px;
+  }
+  section {
+    display: block;
+    width: 300px;
+    margin-bottom: 10px;
+    position: relative;
+
+    input {
+      display: block;
+      color: white;
+      font-size: 14px;
+      padding: 10px;
+      background-color: $gray;
+      border-style: none;
+      border-radius: 5px;
+      height: 60px;
+      width: 300px;
+      border-bottom: 1px solid $gray;
+      outline: none;
+    }
+
+    input:focus {
+      border-bottom: 1px solid $orange;
+      background-color: #3a3a3a;
+      transition: all 0.5s;
+    }
+
+    .input-error {
+      position: relative;
+      color: $red;
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: bold;
+      word-break: break-all;
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 14px;
+      font-weight: bold;
+      height: 60px;
+      width: 48px;
+    }
+  }
+  .sign-btn {
+    color: white;
+    font-size: 14px;
+    background-color: $red;
+    border-style: none;
+    border-radius: 5px;
+    height: 60px;
+    width: 300px;
+    margin-top: 25px;
+  }
+  .signUp-btn {
+    color: white;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-style: none;
+    border-radius: 5px;
+    height: 60px;
+    width: 300px;
+    margin-top: 10px;
+  }
+}

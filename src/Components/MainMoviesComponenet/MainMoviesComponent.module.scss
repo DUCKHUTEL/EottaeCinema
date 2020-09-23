@@ -1,0 +1,210 @@
+@import '../../commonVariables';
+
+//연령표기
+
+.age-all {
+  background-color: #5bc77e;
+  font-size: 8px;
+}
+.age-12 {
+  background-color: #4dd6ff;
+}
+.age-15 {
+  background-color: #ffc134;
+}
+
+.movies-info * {
+  color: white;
+}
+.movies-info {
+  position: relative;
+  background-color: #{$main-background-black};
+  z-index: 1;
+  width: 100%;
+
+  .standard-time {
+    width: 980px;
+    margin: 0 auto;
+    text-align: end;
+    padding-bottom: 30px;
+    .time-item {
+      display: inline;
+      @include main-header-icon;
+      background-image: url(../../images/icon/time2.png);
+    }
+  }
+  ul {
+    display: flex;
+    @include layout;
+    overflow: hidden;
+    position: relative;
+
+    //전체 적용
+    // 개별 적용
+    li {
+      &:hover nav {
+        display: block;
+      }
+
+      transform: translate3d(calc(-198px * 0), 0, 0);
+      transition: all 0.2s;
+      margin-right: 10px;
+      position: relative;
+      .movie-poster {
+        position: relative;
+        span {
+          display: inline-block;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+          text-align: center;
+          font-weight: bold;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          border-radius: 50px;
+        }
+        img {
+          width: 184px;
+          height: 262px;
+          border-radius: 5px;
+        }
+        figcaption {
+          position: absolute;
+          bottom: 0;
+          font-weight: bold;
+          height: 23px;
+          padding-left: 10px;
+          font-size: 26px;
+          font-style: italic;
+          font-family: 'Roboto', 'Noto Sans KR';
+          text-align: left;
+        }
+      }
+
+      table {
+        margin: 0 auto;
+        padding-top: 10%;
+        padding-bottom: 20%;
+        text-align: center;
+
+        .movie-title {
+          display: block;
+          text-align: center;
+          width: 184px;
+          height: 12px;
+          line-height: 12px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          font-weight: bold;
+          margin-bottom: 6px;
+        }
+        .movie-info {
+          display: flex;
+          justify-content: center;
+          .movie-per,
+          .movie-point,
+          .movie-hart {
+            font-size: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-left: 10px;
+          }
+          .movie-per::after {
+            content: '';
+            display: inline-block;
+            height: 8px;
+            padding-left: 10px;
+            border-right: 1px solid white;
+          }
+
+          .movie-point {
+            background-image: url(../../images/icon/ic_star.png);
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            padding-left: 10px;
+          }
+
+          .movie-point::after {
+            content: '';
+            display: inline-block;
+            height: 8px;
+            padding-left: 10px;
+            border-right: 1px solid white;
+          }
+
+          .movie-hart {
+            height: 16px;
+            background-image: url(../../images/icon/heart_rnd_16_off.png);
+            background-repeat: no-repeat;
+            background-position: 0 center;
+            padding-left: 15px;
+            text-indent: -999px;
+            overflow: hidden;
+          }
+        }
+      }
+
+      .modal-button {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 75%;
+
+        .button-1 {
+          a {
+            position: absolute;
+            top: 35%;
+            left: 10%;
+            width: 150px;
+            height: 34px;
+            line-height: 34px;
+            font-size: 14px;
+            border: 2px solid white;
+            border-radius: 5px;
+          }
+        }
+
+        .button-2 {
+          position: absolute;
+          top: 50%;
+          left: 10%;
+          width: 150px;
+          height: 34px;
+          line-height: 34px;
+          font-size: 14px;
+          border: 2px solid white;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+
+  .slide-button {
+    @include layout;
+    position: relative;
+    button {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-repeat: no-repeat;
+      background-position: 0 center;
+      text-indent: -999px;
+      overflow: hidden;
+    }
+
+    .left {
+      background-image: url(../../images/icon/arr_lf_19_wht.png);
+      top: -250px;
+      left: -70px;
+    }
+    .right {
+      background-image: url(../../images/icon/arr_rg_19_wht.png);
+      top: -250px;
+      right: -80px;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+.no-ticketing-modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .no-token-modal-inner {
+    position: relative;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    width: 600px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    padding: 30px 20px 25px 20px;
+    border-radius: 5px;
+
+    .message-box {
+      margin-bottom: 25px;
+
+      .message {
+        font-family: 'Noto Sans KR', 'Roboto', 'san-serif';
+        font-size: 24px;
+      }
+    }
+
+    .no-token-button-box {
+      display: flex;
+      justify-content: flex-end;
+      font-family: 'Noto Sans KR', 'Roboto', 'san-serif';
+
+      button {
+        width: 70px;
+        padding: 10px 0;
+        border-radius: 5px;
+        border: none;
+        font-size: 16px;
+        color: #fff;
+      }
+
+      .ok {
+        background-color: #1d89ff;
+        margin-right: 10px;
+      }
+
+      .close {
+        background-color: #1d89ff;
+      }
+    }
+  }
+}

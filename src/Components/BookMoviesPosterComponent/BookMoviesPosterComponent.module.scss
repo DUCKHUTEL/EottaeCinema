@@ -1,0 +1,82 @@
+.movieLi{
+  a{
+  padding: 10px 20px;
+  display:flex;
+  position: relative;
+  img{
+    width: 68px;
+  }
+  p{
+    position: absolute;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    bottom: 7px;
+    left: 22px;
+  }
+  .info{
+    padding-top: 10px;
+    margin-left: 10px;
+    .infoTitle{
+      margin-bottom: 10px;
+      >span[class*="ageCut"]{
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        margin-right: 5px;
+        border-radius: 13px;
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        vertical-align: middle;
+        padding-top: 5px;
+        vertical-align: top;
+      }
+      .ageCut12{
+        background-color: skyblue;
+      }
+      .ageCut15{
+        background-color: #FFC134;
+      }
+      .ageCut0{
+        background-color: green;
+      }
+      .movieTitle{
+        font-weight: bold;
+        font-size: 14px;
+        vertical-align: 5px;
+        line-height: 1.2;
+        display: inline-block;
+        width: 180px;
+      }
+    }
+    .calc{
+      margin-bottom: 7px;
+      .movieBookPer{
+        >span{
+          color: #ccc;
+        }
+      }
+      .moviePoing{
+        >span{
+          color: rgb(255, 206, 71);
+        }
+      }
+    }
+  }
+}}
+.active.movieLi{
+  a{
+    border: 2px solid #000;
+    &::after{
+      position: absolute;
+      background-image: url("/images/icon/check.png");
+      width: 18px;
+      height: 14px;
+      top: 15px;
+      right: 20px;
+      content: "";
+    }
+  }
+}

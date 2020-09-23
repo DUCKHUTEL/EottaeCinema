@@ -1,0 +1,381 @@
+@import '../../commonVariables';
+
+@mixin nav-title-hover {
+  border-bottom: 1px solid #{$red};
+  transition: all 0.5s;
+}
+
+@mixin nav-title {
+  background-color: #{$main-nav-background-black};
+  opacity: 0.9;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  display: flex;
+  visibility: hidden;
+  justify-content: center;
+}
+
+@mixin nav-title-item {
+  display: block;
+  height: 38px;
+  line-height: 38px;
+  padding-right: 1%;
+  padding-left: 1%;
+  font-size: 12px;
+  transition-property: color;
+  transition-duration: 1s;
+  color: rgba(0, 0, 0, 0);
+  & a {
+    font-size: 12px;
+  }
+}
+
+@mixin nav-cinema-line {
+  display: flex;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+@mixin nav-cinema-item {
+  display: block;
+  padding-top: 1%;
+  padding-right: 8px;
+  font-size: 12px;
+  transition-property: color;
+  transition-duration: 1s;
+  color: rgba(0, 0, 0, 0);
+  & a {
+    font-size: 12px;
+  }
+}
+//all
+
+.movie,
+.event,
+.store,
+.cinema {
+  a {
+    cursor: default;
+  }
+}
+
+//className nav-black
+
+.nav-black * {
+  color: white;
+}
+
+.nav-black {
+  position: relative;
+  width: 100%;
+
+  nav {
+    @include layout;
+    display: flex;
+    .main_nav {
+      margin: auto;
+      display: flex;
+      padding-left: 15%;
+      padding-top: 1%;
+      .book,
+      .movie,
+      .event,
+      .store {
+        @include main-header-nav-noicon;
+        width: 90px;
+
+        &:hover {
+          @include nav-title-hover;
+        }
+
+        &:hover ul {
+          visibility: visible;
+        }
+
+        &:hover li {
+          color: white;
+        }
+
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+          li {
+            @include nav-title-item;
+            color: rgba(0, 0, 0, 0);
+          }
+        }
+      }
+
+      .cinema {
+        @include main-header-nav-noicon;
+        width: 90px;
+
+        &:hover {
+          @include nav-title-hover;
+        }
+
+        &:hover ul {
+          visibility: visible;
+        }
+
+        &:hover ul li {
+          color: white;
+        }
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+          .cinema-1,
+          .cinema-2,
+          .cinema-3,
+          .cinema-4,
+          .cinema-5,
+          .cinema-6,
+          .cinema-7,
+          .cinema-8,
+          .cinema-9 {
+            @include nav-title-item;
+
+            &:hover ul {
+              visibility: visible;
+            }
+
+            &:hover ul li {
+              color: white;
+            }
+
+            ul {
+              @include nav-cinema-line;
+              visibility: hidden;
+              justify-content: center;
+              flex-wrap: wrap;
+              background-color: black;
+              li {
+                @include nav-cinema-item;
+                padding-left: 1%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      width: 180px;
+
+      li {
+        @include main-header-nav-noicon;
+        a {
+          font-size: 12px;
+          @include main-header-icon;
+        }
+      }
+
+      .my {
+        a {
+          pointer-events: none;
+          text-align: right;
+          background-image: url(../../images/icon/nav_side_my_wht.png);
+        }
+      }
+      .reservation {
+        a {
+          background-image: url(../../images/icon/nav_side_reserve_wht.png);
+        }
+      }
+
+      .burger-bar {
+        button {
+          pointer-events: none;
+          border-style: none;
+          width: 20px;
+          background-color: transparent;
+          background-image: url(../../images/icon/nav_side_all_wht.png);
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          text-indent: -999px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}
+
+//className: nav-white
+
+.nav-white * {
+  color: black;
+}
+
+.nav-white {
+  position: relative;
+  width: 100%;
+
+  nav {
+    @include layout;
+    display: flex;
+    .main_nav {
+      margin: auto;
+      display: flex;
+      padding-left: 15%;
+      padding-top: 1%;
+      .book,
+      .movie,
+      .event,
+      .store {
+        @include main-header-nav-noicon;
+        width: 90px;
+
+        &:hover {
+          @include nav-title-hover;
+        }
+
+        &:hover ul {
+          visibility: visible;
+        }
+
+        &:hover li {
+          color: black;
+        }
+
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+          background: #f5f5f5;
+          li {
+            @include nav-title-item;
+          }
+        }
+      }
+
+      .cinema {
+        @include main-header-nav-noicon;
+        width: 90px;
+
+        &:hover {
+          @include nav-title-hover;
+        }
+
+        &:hover ul {
+          visibility: visible;
+        }
+
+        &:hover ul li {
+          color: black;
+        }
+
+        a {
+          font-size: 14px;
+          color: inherit;
+        }
+        a::after {
+          @include main-header-nav-border-right;
+        }
+
+        ul {
+          @include nav-title;
+          background: #f5f5f5;
+
+          li {
+            color: white;
+          }
+          .cinema-1,
+          .cinema-2,
+          .cinema-3,
+          .cinema-4,
+          .cinema-5,
+          .cinema-6,
+          .cinema-7,
+          .cinema-8,
+          .cinema-9 {
+            @include nav-title-item;
+            color: black;
+            &:hover ul {
+              visibility: visible;
+            }
+
+            &:hover ul li {
+              color: white;
+            }
+
+            ul {
+              @include nav-cinema-line;
+              visibility: hidden;
+              justify-content: center;
+              flex-wrap: wrap;
+              background-color: black;
+              li {
+                @include nav-cinema-item;
+                padding-left: 1%;
+              }
+            }
+          }
+        }
+      }
+    }
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      width: 180px;
+
+      li {
+        @include main-header-nav-noicon;
+        a {
+          font-size: 12px;
+          @include main-header-icon;
+        }
+      }
+
+      .my {
+        a {
+          pointer-events: none;
+          text-align: right;
+          background-image: url(/images/icon-black/nav_side_my.png);
+        }
+      }
+      .reservation {
+        a {
+          background-image: url(/images/icon-black/nav_side_reserve.png);
+        }
+      }
+
+      .burger-bar {
+        button {
+          border-style: none;
+          width: 20px;
+          pointer-events: none;
+          background-color: transparent;
+          background-image: url(/images/icon-black/nav_side_all.png);
+          background-repeat: no-repeat;
+          background-position: 0 center;
+          text-indent: -999px;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+}

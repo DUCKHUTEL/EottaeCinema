@@ -1,0 +1,62 @@
+.main-wallpaper * {
+  padding: 0;
+}
+
+.main-wallpaper {
+  position: relative;
+  z-index: 1;
+  background-color: black;
+  width: 100%;
+  .img {
+    width: 100%;
+  }
+
+  .owl-theme {
+    .owl-nav {
+      .owl-prev {
+        left: 30px;
+        width: 31px;
+        height: 60px;
+        opacity: 0.6;
+        background-size: auto;
+        top: 44%;
+        background: url(/images/icon/arr_lf_31_wht.png) no-repeat center center !important;
+      }
+      .owl-next {
+        right: 30px;
+        width: 31px;
+        height: 60px;
+        opacity: 0.6;
+        background-size: auto;
+        top: 44%;
+        background: url(/images/icon/arr_rg_31_wht.png) no-repeat center center !important;
+      }
+    }
+  }
+
+  .play-button {
+    width: 60px !important;
+    position: absolute;
+    z-index: 50;
+    top: 46%;
+    left: 50%;
+  }
+  .control {
+    width: 100%;
+    height: 140px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+}
+
+.visible {
+  display: none;
+  background: white;
+}
