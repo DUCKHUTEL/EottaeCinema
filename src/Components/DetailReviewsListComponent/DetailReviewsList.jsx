@@ -4,6 +4,7 @@ import styles from './DetailReviewsList.module.scss';
 import ReviewLikeButton from './Buttons/ReviewLikeButton';
 import ReviewEditButton from './Buttons/ReviewEditBotton';
 import ReviewDeleteButton from './Buttons/ReviewDeleteButton';
+import NoTokenModal from '../DetailReviewInputComponent/NoTokenModal';
 
 function DetailReviewsList({
   order,
@@ -13,9 +14,11 @@ function DetailReviewsList({
   latestClick,
   byLikeClick,
   token,
+  login,
 }) {
   const [userState, setUserState] = useState(localStorage.getItem('user'));
   const [nickName, setNickName] = useState(undefined);
+  const [tokenState, setTokenState] = useState('none');
 
   useEffect(() => {
     const user = localStorage.getItem('user');
@@ -111,6 +114,8 @@ function DetailReviewsList({
                     favorit={review.favorit}
                     like={review.whoLikeThis}
                     nickName={!userState || nickName}
+                    setTokenState={setTokenState}
+                    login={login}
                   />
                 </div>
                 {!userState || nickName !== review.user || (
@@ -140,6 +145,9 @@ function DetailReviewsList({
         <button className={styles['review-list-more']} onClick={countIncrement}>
           <span>펼쳐보기</span>
         </button>
+      )}
+      {tokenState === 'no token' && (
+        <NoTokenModal setTokenState={setTokenState} login={login} />
       )}
     </div>
   );
