@@ -51,6 +51,16 @@
     font-size: 12px;
   }
 }
+//all
+
+.movie,
+.event,
+.store,
+.cinema {
+  a {
+    cursor: default;
+  }
+}
 
 //className nav-black
 
