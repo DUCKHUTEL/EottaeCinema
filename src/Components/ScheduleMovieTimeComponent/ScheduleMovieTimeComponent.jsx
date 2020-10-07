@@ -5,9 +5,7 @@ import ScheduleMovieTimeSortTheaterContainer from '../../Containers/ScheduleMovi
 function ScheduleMovieTimeComponent() {
   return (
     <>
-      <div>
-        <BookMoviesContainer from="schedule" />
-      </div>
+      <BookMoviesContainer from="schedule" />
       <ScheduleMovieTimeSortTheaterContainer />
     </>
   );
