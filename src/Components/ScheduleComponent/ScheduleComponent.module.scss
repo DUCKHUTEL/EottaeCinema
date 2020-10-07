@@ -6,7 +6,7 @@
   .a11yHidden { overflow: hidden; position: absolute; clip: rect(0, 0, 0, 0)};
   .ScheduleContentsBox{
     margin: 0 auto;
-    width: 1200px;
+    max-width: 1200px;
     height: 870px;
     background-color: #fff;
     .ScheduleContents{

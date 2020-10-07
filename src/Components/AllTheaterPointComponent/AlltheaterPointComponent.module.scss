@@ -18,14 +18,14 @@ li{
   .theaterTitle{
     >a{
       display: inline-block;
-      width: 175px;
+      width: 50%;
       background-color: #f3f3f3;
       padding: 12px 18px;
       font-size: 13px;
       font-weight: 600;
     }
     ul{
-      width: 175px;
+      width: 50%;
       position: absolute;
       right: 0;
       top: 0;
@@ -76,6 +76,34 @@ li{
           }
         }
       }
-     }
+    }
+  }
+}
+@media (max-width: 640px) {
+  .pointList{
+    height: 723px;
+    .theaterTitle{
+      >a{
+        width: 50%;
+      }
+      ul{
+        width: 50%;
+      }
+      width: 100%;
+    }
+    .theaterTitle.active{
+      >a::after{
+        display: none;
+      }
+      >ul{
+        li{
+          .activePoint{
+            &::after{
+              display: none;
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -1,9 +1,10 @@
 .theater{
+  width: 30%;
+  min-width: 218px;
   h3{
     padding-top: 16px;
     text-align: center;
     margin: 0;
-    width: 350px;
     height: 55px;
     background-color: #000;
     color: #fff;
@@ -11,7 +12,7 @@
   }
   .divide{
     position: relative;
-    width: 350px;
+    width: 100%;
     padding-top: 61px;
     &>div{
       width: 100%;
@@ -37,7 +38,12 @@
     .clicked button{
       border-bottom: 2px solid #000;
     }
-
   }
-  
+}
+@media (max-width: 640px) {
+  .theater{
+    .divide{
+      width: 100%;
+    }
+  }
 }

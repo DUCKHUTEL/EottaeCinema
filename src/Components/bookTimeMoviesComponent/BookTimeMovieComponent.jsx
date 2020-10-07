@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import styles from './BookTimeMovuesComponent.module.scss';
+import styles from './BookTimeMoviesComponent.module.scss';
 import 'moment/locale/ko';
 import moment from 'moment';
 import OwlCarouselComponent from '../OwlCarouselComponent/OwlCarouselComponent';
