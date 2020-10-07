@@ -9,7 +9,6 @@ import BookTheaterContainer from '../../Containers/BookTheaterContainer';
 import SelectSeatContainer from '../../Containers/SelectSeatContainer';
 import PayContiner from '../../Containers/PayContiner';
 import CheckContianer from '../../Containers/CheckContianer';
-
 function BookComponent({ passedStep }) {
   const [steps, setStep] = useState(passedStep === 0 ? 1 : passedStep);
   const changeStep = useCallback(

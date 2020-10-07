@@ -50,6 +50,26 @@ function SixthSeat({
 
     clickSeat((state) => [...state, seatData]);
   });
+  function blockSeatCalc(roIdx, coIdx, ro, co) {
+    // 훌수 줄에 블럭인 경우 || 짝수줄에 블럭인 경우
+    if (
+      ((roIdx + 1) % 2 && (coIdx + 1) % 2) ||
+      (!((roIdx + 1) % 2) && !((coIdx + 1) % 2))
+    ) {
+      return [styles.block, styles.seat].join(' ');
+      // 예매 된 경우, 숫자만큼 클릭 된 경우
+    } else if (clickedSeat.includes(`${ro}${co}`)) {
+      return [styles.clicked, styles.seat].join(' ');
+    } else if (
+      bookedId.includes(`${ro}${co}`) ||
+      (peopleCnt !== 0) === clickedSeat.length
+    ) {
+      return [styles.booked, styles.seat].join(' ');
+      // 숫자만큼 클릭되지 않은 경우
+    }
+    // 일반 상태
+    return styles.seat;
+  }
   return (
     <div className={styles[type]}>
       <div
@@ -64,24 +84,7 @@ function SixthSeat({
           <ul key={roIdx}>
             <li>{ro}</li>
             {col.map((co, coIdx) => (
-              <li
-                key={coIdx}
-                className={
-                  (roIdx + 1) % 2 && (coIdx + 1) % 2
-                    ? [styles.block, styles.seat].join(' ')
-                    : !((roIdx + 1) % 2) && !((coIdx + 1) % 2)
-                    ? [styles.block, styles.seat].join(' ')
-                    : bookedId.includes(`${ro}${co}`)
-                    ? [styles.booked, styles.seat].join(' ')
-                    : peopleCnt === 0 || peopleCnt < clickedSeat.length
-                    ? styles.seat
-                    : clickedSeat.includes(`${ro}${co}`)
-                    ? [styles.clicked, styles.seat].join(' ')
-                    : peopleCnt === clickedSeat.length
-                    ? [styles.booked, styles.seat].join(' ')
-                    : styles.seat
-                }
-              >
+              <li key={coIdx} className={blockSeatCalc(roIdx, coIdx, ro, co)}>
                 <a href="#" data-seat={`${ro}${co}`}>
                   {co}
                 </a>

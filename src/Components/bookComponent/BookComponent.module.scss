@@ -14,12 +14,13 @@ ul{
   position: relative;
   .BookContents{
     margin: auto;
-    width: 1280px;
+    max-width: 1280px;
     height: 870px;  
     display: flex;
     background-color: #fff;
     .steps{
-      width:78px;
+      width:6%;
+      min-width: 35px;
       padding: 0;
       height: 100%;
       li{
@@ -57,7 +58,26 @@ ul{
     }
     section.nowStep{
       display: flex;
-      
+      width: 94%;
     }
+  }
+}
+@media (max-width: 640px) {
+  .main{
+    .BookContents{
+      display: block;
+      >.steps{
+        display: flex;
+        width: 100%;
+        height: auto;
+        li{
+          width: 25%;
+        }
+      }
+      section.nowStep{
+        width: 100%;
+      }
+    }
+
   }
 }
