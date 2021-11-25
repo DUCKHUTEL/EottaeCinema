@@ -1,10 +1,9 @@
 .bookModal{
   position: fixed;
   z-index: 1;
-  top: -5%;
-  left: 25%;
-  margin-top: 256px;
-  margin-left: 250px;
+  top:50%;
+  left: 50%;
+  tranfrom:translate(-50%,-50%);
   width: 500px;
   .a11yHidden{
     overflow: hidden; position: absolute; clip: rect(0 0 0 0);
